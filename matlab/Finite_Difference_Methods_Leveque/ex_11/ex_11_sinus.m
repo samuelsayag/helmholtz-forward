@@ -13,7 +13,7 @@ du_cent = 1/2 * (du_plus + du_moins);
 % the "real" function
 du_v = cos(x0);
 
-format shorte
+format long
 
 % display error
 % Note: the order of the error
@@ -25,7 +25,7 @@ estim_err
 
 
 % graph the err = f(h) 
-plot(log(h), log(back_err), '.-', log(h), log(forw_err), '.-', log(h), log(cent_err), '.-')
+plot(log(h), log(abs(back_err)), '.-', log(h), log(forw_err), '.-', log(h), log(cent_err), '.-')
 % plot(h, back_err, h, forw_err, h, cent_err, '.-')
 title('Error (back, forw, cent) against step (h)')
 xlabel('step (h)')
