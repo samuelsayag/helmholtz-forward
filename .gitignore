@@ -1,0 +1,7 @@
+# matlab
+#==========
+*.asv
+
+# word temporary
+#==========
+~$*.*
