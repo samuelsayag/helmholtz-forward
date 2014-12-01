@@ -1,0 +1,36 @@
+**********************************************************************                                                                    
+*          This is Version 1.2 of AIR Tools for Matlab 8.0           *
+*--------------------------------------------------------------------*
+*                 Per Christian Hansen, DTU Compute                  *
+**********************************************************************
+
+Revisions in Version 1.2
+------------------------
+
+fanbeamtomo and paralleltomo now return the correct d.
+
+rzr allows b with multiple columns.
+
+All iterative methods now include box constraint.
+
+All ART methods now include a damping factor to avoid division by
+very small norms.
+
+All SIRT methods had some of the stopping rules changed:
+ - DP now always uses the standard residual vector r^k = b - A x^k,
+ - ME now always uses 0.5 r^k'(r^{k+1}+r^k)/||r^k||_2.
+
+The default value for lambda was changed to 1 in kaczmarz and
+symkaczmarz.
+
+The default value for lambda was changed to 1.9/norm(A'*M*A) in
+all SIRT methods.
+
+New functions:
+ - cart            - columnwise version of Kaczmarz's method,
+ - phantomgallery  - collection of 2D phantoms,
+ - seismicwavetomo - similar to seismictomo but without ray model.
+
+Note: for all ART methods NCP is implemented correct but it is not
+recommended as it often leads to a very early termination. CART with
+a random choice of columns converges very slowly and is not included.
