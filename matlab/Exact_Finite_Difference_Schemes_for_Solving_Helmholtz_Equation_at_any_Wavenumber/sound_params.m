@@ -1,4 +1,4 @@
-function [ c, omega, k, k2 ] = sound_params()
+function [ c, f, omega, k, k2 ] = sound_params()
 % function [ s, f, k, k2 ] = sound_params()
 % Produce sound parameters for finite difference
 % c : vector of speed of sound in tissue 

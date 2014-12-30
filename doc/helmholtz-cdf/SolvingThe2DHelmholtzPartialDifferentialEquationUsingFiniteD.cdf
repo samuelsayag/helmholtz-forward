@@ -1,0 +1,6934 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*  The Mathematica License under which this file was created prohibits  *)
+(*  restricting third parties in receipt of this file from republishing  *)
+(*  or redistributing it by any means, including but not limited to      *)
+(*  rights management or terms of use, without the express consent of    *)
+(*  Wolfram Research, Inc.                                               *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       835,         17]
+NotebookDataLength[    338303,       6913]
+NotebookOptionsPosition[    311654,       6336]
+NotebookOutlinePosition[    337973,       6898]
+CellTagsIndexPosition[    337860,       6892]
+WindowTitle->Solving the 2D Helmholtz Partial Differential Equation Using \
+Finite Differences
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ ButtonBox[
+  GraphicsBox[RasterBox[CompressedData["
+1:eJztvXmUXldxL8pazzeKUCRHkqVWz3O3utWTutWjWq1u9dz9SdbgSZ7AI1OY
+59EGMxgMGI9AgACBJIwmcBNCwnBvgm2mvPduCATWevfmvgD5864L5P3Neaf2
+WFW79vlOt2RJtrfXqnW+s3ftGn5Vu2r7bEtuvfXlp2/9P57znOd05fS133vO
+cy7Ln0/Mdf6vROebOhIlSpToKaaLXecSJUqUKFGiRBeIfmfoYtuRKNHTjX73
+RNo/iRKVod8V0MW2LVGii0VF+2Ize2Wj8hIleibQed2X//dCZ5bowtP/lehZ
+QRc7zxI9/fZ5efldF92/RIkSJUqUKFGiRIkSJUqUKFGiRIkSJXqq6b+v7k90
+3qm7Oq0kSoSoTM4kelrR/3MOBHXkf5Si7kSJEiVKlChRokSJEiVKlChRokSJ
+EiV6RtP/XO3+X4kSJbr49K+JnjH0PwT67yvFhHn/FT1jdLHzNVGiRIkSJUp0
+weh3hi62HYkSPd3od/8z7Z9EicrQ7wroYtuWKNHFoqJ9sZm9slF5iRI9E+i8
+7svfXjueFdF/IPot+x3QNYgicsrwRuevidEY4f0Pgar5dj5JxnKsgIpjsPF1
+fK5Id5HcsQ3q36yeajI2iudm9Z+LndViWH6fPTtpomBcz/1/ZGwSzV0sKlcD
+fnONp1/ntUoizOPXTlTNjXPNu0JSdTWk/8ht/A+hBv+HIcVn90VERqJEiRIl
+SpQoUaJEiRIlSpQoUaJEiRKVpYHWjpzas/782Z8/B1o89TNSfNK4mQNZg0pe
+hxvra2nLicvJ+dpynrYOp1/pa7Xy7LgmZVdOg3adWQPvQ+2d+ViXIsXbAtTm
+qK8Vnq1ZX3O7ov7mDiUf+PoUtetncxv63W5+txs+64eVp2Uqf5oRGd5+w9OH
+7AC92rZ280Rygb/Vyx4AwnrUnMamr7UD4dkWkpFl3weUnW1Er/W93/nncbDr
+Qf+Ak2vwaDY8bq3FBGxsNfHz9hFb4beKpVnb2k5s7oMYtWI79XPA+dlqCGEP
+fBZ7I1fpA6ybje5mn1fq6XLMY03tMDa2ej/7Wk0ssZ2t7QH1tbS7ddp3u97k
+hOWzv838AIqL09nSYXJV+9DX0mH2hd9Dfr3XO9DsZeI95eLd6vMa70ntN35H
+a9z+bvd7kuWTrR9eVoeJuZGF4tNnawmpJ23GZpQfsMebWrOBnPraOrOe1s6s
+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
+26SwUpi1uXHbu3a7f4dpNhh6m70tdFzb0OyefYPd2cr8way5s8PYjW23NrY6
+//Fv/8zH670PPJ7qt4tjS65vKOvP9XrbMEbNQRw8LtQ2Xbd0fEEm+EFyxsa8
+HsehmdhL49xKfTI5stPYNTXZp/S0dBis6hDGxhZnn80B5qO7/6lrQZho2Ydz
+crnr1rcw25sZNlTnTqOruasjW1kYyg5P9ZFYuRg1tpjcavP5ZXLN5p6ea/N8
+Cp82t2Y3WdNCfztc/b8XWf1gF8Sf7pkm/axryj733uOKYGynGm9yOMP7YRMH
+h1Md3WsWK7C3f2h/ru9g1prnd2yP+/3W5qnR1kpUyxp9Ld3N6yquiayWy7U4
+/92I17SRmkx7AB3bLc5bG2N1mMm3/qEeckVA3n5iVyNds9uMEd+EniD7IPSQ
+xjbWm7gM60vYn1w/bMSyeGxYvFivt/30Ct7rXA+kMsjT6UXxcHkUkUcwbs84
+Xhh/3p89fmHvd364fMM9nPqOzyOux9tzSmM71Yl4dpMYeDkeE2oDz0Nqrz2j
+hOcLGluUbwRvFl/sCzpH7Q7s4rmdzn3n7dzHc4T4Le9Z4k8j9X23ZAvZFyhm
+jWGdDn0Q7AiwFGoK8Veqc0hGo7UlVgNoX/DxoHVI573Jucb2jMfb5S/pAcLe
+Y7kT4BbNR17vuK7Qd88n1G+EB96nvJ6EexTXNrYHcG40SnZIcW6nPgmxJ/nS
+SP0g+xTtdVpzhF5H7GNxEuqeZJeVSbHANU/qfaxO4vmgXto6GubQFYHtcl2K
+zYf9gPJc0cRtYfucxIGu4XVWrqNWjid/1kP74yKf+1LfSn0r9a3Ut8I4p75F
+62fqW5dS3+J60/eKcK+KNTp9r6Bxe5Z+r8C2455H90hYG/Bzb0tHTp3uWaN+
+d6KxDjcWzDV3mKeds/wdwVqqB1NsLr6mRpQh8XHdnC+2xuqg62uiOs3vHI89
+ze05mWeTpbbszNmbsiz7XfaOd9+bx7HFUwNQa3Zs9biaf+CRR+mdT32rWvO/
+f/2/1TwQ/NZyWo2cVkUw9v/+278pnjNnbzTjbUhvmx5ralXzmu8m9U72T86z
+J6cHHn3U6bT0wCMfVs+3G/17jB9//93vKrK2WCJ6VO62Olz+/ruPqzUWI6C9
+7nf+bPTj8P8Skuhz7zuRveq2I1lrV4fDdI/FJMdveqov++6fXEPWwPu1V456
+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
+/VQG//6IbUVY91dby/OozL7R1EX2TlG8ByP6i+rURmrTRvOlTDxwbZD2T1xn
+l6Crq5+vYTKD3I3EgeBJxy/OuY/Li+mtgnvqW6lvVd2LsdjG1jGfU9+qYvMG
+9mthLLjdRfUlglfqW5uMB64N0v6J63x29a0YRpIdJfIvyDmv93x8ryiXM2zP
+9Usyi9aGPsl7ZKP5Xi3Pq/m8kb1SYGeQO2WwpPHscDks2Vsyh/q9zK6gxpXF
+rWxOsnysinNEXvC9okRekjWhf/sHh3M6qJ8DiAZjdJD+Hjho1hwM10myBiQ5
+gg6Qh+1y4+iZU7f53T0gyTwY2juI7Cz0M/S1e5DZ4eTkcwNDijTGA1knfBfu
+1f8d1uNPPpH9809+krV192Zveuvb1L3OzPyi++7/43/+5+yvvv43+e/u7N77
+7nPzx0+dUb9vvOUW/W28qyeX0aPk3HSLvh86cebq/P1A9t7367sy9Z0aqNtQ
+/hvGYR5+t/f05nQgu/kWfY8Fz/b9fflYn7a3p0/Nu+d+TW37ezXlur28Xqfv
+8SeeVPdYeq1Zl+u6+VajJ3+2GbkdPfrb+RNPPqmoE+5Tc7wUdgc8fpY6Dui/
+m+5NL5o3dlnb7LM3u6oyqXiuOj5pbOpV9xtveuExZXOrsR3o8NSw4r3l2mm1
+ti238+oT+l4Ans7//frew97/WF3t5i7kquPmLiF/wvubzD0H9t/iAbb/+PM3
+EHycT/stv+f1cnqzh968lv1TvnZlYVT7YWOM1rQpXb3UBuOD9+OU86PD3F9A
+fno+b0cbirn1X+FnxqzvV1UmHK4275RfcGeS/16ZHyUYaZ5eg5+OGfDgd3g6
+nHo0js4Gg+sTn7o2+9sPX5UNDg+4nFB5daAvzyeaPy6f1Hi/yqc3G4w1JqeM
+fP0E26cPj7g90ZE/O3N684sWDLY+h+0TcPRxQ3vH/IY8dPE3GHuf9N3T4amD
+xv9xt9f0HdoBdT8Hc8rf/H16asTk8BFnY4e1t7fPUL97B17wGXzvVKTPfEDd
+/UOmfqF6N8Bq78BBP0bm9bN74GDYPwZo3aXyI/0Eyw5qNB8X+gOv0a4PCf0p
+1qMkGhD6lRn79Gf/LPvWt7+Tffozf5b99re/zW6+7Q6l/yWveFX2re98R89/
+57/oHpXTD370j9ljX/1a9tCHP5L97Oc/V7+B57G//KqSAT1tdHpGzQEP8N98
+6x1qLciGcc3/NcUP4yevPqv4gP+xr35V8c+vrhtdXzU2DSv7YC3QTfkY8MNv
+qwd45lcrzkZYB33Pzo1OH6V2Gbn2/aFH9RN8J3Y9+hFkh8+lN771ruzd73u/
++w2ybbzU75wX5r/17f+i7IR7LhuvmL3gO8Zo9PCMWg82KN8Bs0EvQ47F1xAf
+zXuLM8gEm2Fc2ZjHGNaoWBsff4Pw/sGPfqTyhGDE9hLwAcbgwxuUbHTm4ecb
+t/fCfdId5GrRfiuzD9K5Lzj3Id5uwe5uws98M9QtxpbjwH4jP7qDnED2DeCa
+y9azuAU4YruxHyIf7wsHkQ/IxiAnYnW+SmxITxJ40Hh3LL8BG4I7taWb24X3
+mvEtwN7xF+T4APsd2ycOOxsf5BOOG48Pk+1zkPVvbkNRn5V84jJ538d7QIp3
+2X0Y2FWAubS/uf1oL3UTX4X1OW8P9y9WQ0itYj5H685BH0t2num2dQfvLzFf
+sD6p7g3TeZZfsZ5yUc59qW8Jfqa+RdanvpX6VnTvp75leVPfuoB962n2vSKK
+P6vp4b9XSjFEeznWlyW/GNZ0L8h1uXuQ2hucFQzFxrkvgX+BzTj/CuoF6SUH
+yXpS/4rswjUS9zqpLsTyS8orvo+lmAzaenuQ1habIzwX2V7ye5/HUN6jcl4h
+PYX9Vsqf4ezAwUOahg/536VpJPKbyutV76PheqazN6pHWLthu0eE9xEmZwTJ
+G0XPkUI9vUMjinpyPHsstvBtGP4bhL4BdY/z0Y9/XH1nHhmfVO/ve/8Hsvbu
+3uzowpK7F4I7C3u/9Oa33aW+1//6N7/OPvqxfG3vAf+tOieQB3Od6rv9gex9
+H/igWqfuhHr7HME3bKUvn1dj8A0753nebXeo8bfcdXfWdWBAU58h87uzz/Bb
+MjK1vPu9rgP6TuoXv/iFHuvrd3rectfbjZ63K1uxnl/88hfZ3/zt3+ZYDSq8
+fC7nv/sNhooG1Hf4t7x4IV/X7+zVOgaUnmtO6DuQa05MGUz6soffsqbuOjoQ
+HkAvf77+O95mjhzSMnKZ11w5pcZefssc87lf3ZkAeQz0uJWztjiudMIT3m+7
+9ojjsQR2fOpdJ8ydipYNvGCjvsfzBGNw52Hx/fIHTymyvgaE8LZ3LVZWl7nL
+gSfIeOJT16EYDJKYOxusPIPjl/J1X1L6+9yYx3vSY2JsUHcmL5534+DLva9e
+DuyGMe9nv4qdisHz55wsKxfwV/j1Ih25r50oH7rVncyAyR1DNqcgv/rNnU3+
+fMtLFlxOwW94vtkQ6IK5V+S54LHqVzwwfjTPG4Vdv5nr1/rXl/Td3m3Xzfg9
+ZTB18T9g7mzzp49rn4s16NZY9RG8ISdUDvb2K5kgG2L58FvXvR2c0Ljy9SWL
+yne1v+CsO3jQ1Sxbw8QaOMxrJ6/HQm3F9RL/HorU92Grp0StH8Z6RwUebo8g
+h9dzaUzqIQGf1nXmuutzOps98pGPZs+/4wVufmn9uJrDctR7LuP5d9yZTRyd
+02Nnrw/4gEDWxMycwwl+L+YylypYrrYB5oAfdFqfiD3DWrfls37AmOMx8dHr
+XhjYHNg1rHs76JyYOab4ltaO+77J7Rqm+WXtgffx/OlsN5hQHM+SeP3wR//o
+3rG9E0YOxUjbLMaC+DNiYnmDnL/INmxrNNZnz3q8TaxIjA6ycw/ZN1XyuCjP
+ic2jkfEyOV9N77P33Be3aTSCcwQrXiuHuX0xXZavSt0U5URyR9Rv3odwrBA2
+QzEdVXTZ8WiuIh1FPUjCsQgHm5PDjAqxi+FVsBcIX5X4cBoqEVsJN77/RAp5
+Azyq5k9krmrNsvwlfCqyg+eew8mQ0KODOEblx2I6QmVLOgqp2rkpgqN0Zoqc
+QwpjZXEX5y+Rc1/qW3FsU98ScCnSn/pW6lvV8InFKcaf+lbqW0//7xXxOBbU
+V4xTqf6ife0tm3PVerykcyjUV8iP66jlH7K/BbuGhfwyFNSpol4l4lXC3mrk
+cr3grLQR2cHeCTF5Sr5XbMZexDMwMqb+vjtF5ne//W3eBw+FPME69z5OKR/v
+V/PjaN04Wzvux0bQGJY5Iui0tuW8g8SO8bi9WMYhbDN/9/YPYhucLd7e/mHw
+cTTry/HsM+fN3sER9d9E3HrnC9Q9zstf9Zqsu09/1/7JT36Sff0b31B/xgPu
+kWB+fsl8u+7R90Sf+/wXct6+7I8//nH1fsvtd2T71bf6AfX7N7/5dfbHn/hE
+tr9fj73/gx9SfPvhW76iAUcw/v4P3q9+7wfqH8pl3KnG4S5pcW096+mH/4Zj
+KLvrHe/Ifw9l49Mz2ZPf+1525tqz7g4A6P33az10fEjxaj0fcrxjh49kP/np
+T6meXAfgctc77lHjd93zzuzA4HDWp84/w56GhtWZqDd/9g7qP6fy1j9aNOu9
+XmvD2ZPTigeeai7387qTh933e8CpJx+vrExmT37quuzL9592du4f8Othbvbo
+qJab4/jKW4+5v9PtrUoOyB7KDo0NZ3/34asVP8bHjjkZ+Risg/V3nD2qdGka
+cnKdzQNg34S623n0LRWlH2wGv2EMbLf6QTbIBTuUPDXudWHfIJ6A2ZfvP+X8
+sDieWJnKjudy4fcjb13PXnnbMS9P4WoxXFAY2nyz2MJT55Rfg7EC3e99zYr3
+s0/bCb/Bp/e9ZtXZTmIwM6r9zMnGAJ427hC/v/vI1dno+IjLqbGJ0extL13W
+Z2nIn4P62Tdk8knd1+h8Akw9Tvn6vkHiw6fffULZdwjkG/ze+kdLas2fvvvK
+XO8hNQb677j+qLYh5wObwP652TFlE5DVhflAB8QDyGJicwX0upzICfLGYWp8
+BTmvvE3/+S+IWc+gvpsCex7LsbExtaT3z1LWm/P0Dtl9ltervPf05f2gP+/t
+UMOCuulq4zirw+Okbg6idYOSDFvjR2htJXX/EJeb13XSg8apbl7rg77Ce9OY
+kxddE/QGRiPjmdwv9O9HP/qx7NYXvDDSG6VeymWxnhfwcnvHZbkjuo+/9e53
+ZFefvYnJGvdYjEiYmnXX3+h41W+xR/KeH+I4iMYHAxlCDsTyguH1o3/8P008
+x9V/p/GKV78291mwQczlSL+P4R+sk84sFN9i4vKlvKLjgzbOI2x9kT58VnEx
+lnIrnfs2eu6jv1Esgr3G83vcrfU65L3j9mnEl0FnK5Lh5vgaIadHIpiNhPLC
+GjSeiT5HcWdrwW4xd6vkc0GtCfVxjKVaw9bwnONYCfk2aOptyFd2n1s5Fhcc
+e5x7wtpY3yrAZlDMff97sLQ8KUe4/BBT3BPCmjIe8VUYI3w8twpibP2M9nxW
+h2K9SsilQVRH+vmaWP0cQfVXlCv5qam/ar+RcrBajvCeIdlxvs99Qh4QG1Lf
+ErFKfYv6lvqWjFXqWywWIU/qW6lvbbxvhXF5unyvkPsuzneOcSxmUm9mutH6
+2PcKsfaU+F7BeUX7eG5EavFT9b3C723Pm75XSGNC3Ynllhk/ODZpaII+x+3v
+iXB+fFJYh9/9uiHy7mmYvQ8RPcLvcT82HMxLNCmQ4AvhxbIlf8DO0Mah0XFF
+g6qOjebY6u/CcKf1wQceUPc1E9NHs94BfS/xsU98Qo3Bnx35/Be/qO549vf1
+6/uAnOBOCMaAd/zwjLsjgjshey/05Pe/l00cOZodGDyovst/4EP6fql3YCh/
+13SbuUPDBOtgze13vlC9f+FLX1LP733/+9kvf/lL9fvue96ZTc3MqjF4/+m/
+/DRf9311dwbvH/+TT2YHhg6a+4IR9RvkwnpL8A68sObqszdQPb/Ser745S8r
+nAaARhjZb+vwPHhIfYe/S91RDDud4Iel608fUTw35E89NqyerzLf+p/89HXq
++z78huf45KiS0zek79BuOHPEzdknrIHfj76tkl25OqXuF7AceL9ybQphMZy/
+T7t1X0Ey7nvtmtLTZ+5V4DeMw70HyIEnkB0bnzxkfB3OJibHlCw7Z/VrTJaM
+/oNk3NINZ2ac3sfM3Y+6a8nt+sqHzjhsYP59r10lWFnb4ffYxCGXa28z9zmY
+YExjrv/OxrvUu44NYP0Yst/6aePQp+wfVrErioHGQ/OeJDifcTIBy5uuOopy
+6ZAmm0vD+q4Zcgn4cQ65u6789/ys/rN1r759wdyF+TUffttxpQf0whPGFuYm
+FYYn1w4XxH/Y00EdDyCXzyanwVeOFcTmAF6vZIxk971uzcUMx1PHfVg9eayA
+T+MyqmtW3gdU/RrlNZrVwPFYnQ3r8bBYX4vG/NxQVL5Qz8eldVJvKu5T8X4h
+9SbJLm0L3M9fd+PNVWyojkGR7cOiXNyXY7jx2MSwCW38s7/4nOl9ct8sjnNx
+T/X44R6r/RzC68apPLDJ/p6ZX8i+81//Psf/nYJu7rOUZ7JNPPbymiLsEN84
+twHHM5YDm8FZOrOUybvJdO6L5Kh07ovaXE1WgGPR2mo1pFrMi3QVYVMNS0ln
+lVwMckuWPxToqbY36PuwqKM47+WeE8OqzL4rWROiOeyfcv+pjkMs14tt2RjP
+EJFdvC84L93P0jOCX1BHq/ldBb9x2fYh0Z7QL7oG8Uhyx6V9EounvM/oXuF5
+MhH8jtnqeamOi3Xu45T6VgznSUG2nCupb8VskfZKRF7qWxEfYj6Ftan6Gsnm
+WMzK4VnEk/oW9xHxpL4ViYeM5dP5e0Xct1jOFNU12faL8b3C53RRLYmtL5PH
+Exv+XhH3NcztZ+f3iqJ857lL+Q9NHM4OTSLi74qmQh5MeEzx5jQxZd6n3fwI
+5uG/ka4RQQ/8v9idzAlu5xS1fWJK9oXb7WzE/OHvESYf7BvBtuVyhidMfOFb
+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
+HK6fD3TF4ifldzE+Un+aF+NdZHc1vKrtO6lHFvdKnC9xmWwfR22slsNFNkVi
+UhTfahTkyUawZ/ylem2VfCkVt6K8kmwvKwfHumTdlGp2VTyKYl+lhqa+RfFP
+fasKTqlvifpS36KyUt+qEp8q+ZL6lntP3yu8nel7hYTnRvtmGfs3wy+tj9XX
+5YvwvSIWVyk2VO7SympOK9ly/lzOn0vquWrG7e8VRKtkDX73YytofT62zHkp
+uTXLbG7Z2rQS2LaM1i0TH7A9q8SeZSJnBdlmiftBfcFzywiTxeXlbCnHcymX
+tbgE7ysoFuYbsflmvGAIf2+GOU9LZo3nXwQSYrioyMwtLInr6R2A1mFlLaL8
+UT4sr2gf0BPGlR42vmTmPJ8ZXzJrgnksI1wXyAY5DsNF941+nt/H2HsR820e
+cHD+OZ+WnV6sa2lJto36T+0N55dDuUwv1iGtW0J4Of4lPLdM7JBk23jofND1
+YonPLy0j+1hMl7xNNGYhHjh3lJ2Lyyg/l9x7aCfFgdq0QjFeCvMwnp907dIy
+j5+x29qJ9prKm+BezuaS4UP1ktti4yP7gPEs4ENjPt5SLPweW+IYkDjT3FW/
+F5cJH9ah+IL6v0LqMK7BtlZjfl6Lad3kY2jdcji2JNR6LlPqS76OU5lF/Yn2
+HCNnWeht4K/1eTnscU7W8krQc1SsmJ1h/+P44R5D55e5XufLCpMj+L7M9UpY
+c/krTvbySgz7cD3lp/bz2HJfPc7eN7nfr2Q87ssMv2Xmg8+VVeQXi8myPxtI
+5wieM9L5gOqXcJVwW2H7Ap+FwpzB5yMec+ksRm1O575zOfctYR+5DwxzYuMy
+s4X4gDBc5rhiWTZPZJ+x3TxGUp5IeUj3C9+vzM9laqeEY5ijguzlMJZh7qIa
+b21cpjlL85r6sbwcl8/rH6+1dJ8yuUxvmI90ndinSD1aIXZIsnH9DOuNr3G0
+JlG8w/oR1nUeV4sjwXx5NWInz11sE6tly2EexvOTrl1e4fHD9QTvt3gf8/tO
+qvE8DjEf5Loi9W4uT46F32NSrZN7+4pbQ+sH2z9BbvOz0YU893FZ0t7HcUh9
+K/UtqS6kvpX6VpgrGMfUt1LfOn99K6z1QWyEmPF/b43V7tA3lpvpewWTv5Kl
+7xU8LuG+5D0nrMNh3KR6RvcFrV3hurBW4LhJNVPCisdiZW09W11dy1bXLK2r
+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
+    "], {{0, 0}, {1714, 38}}, {0, 255},
+    ColorFunction->RGBColor],
+   ImageSize->{1714, 38},
+   PlotRange->{{0, 1714}, {0, 38}}],
+  Alignment->Left,
+  BaseStyle->{"Hyperlink", "DemonstrationHeader"},
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com"], None},
+  ButtonNote->"http://demonstrations.wolfram.com"]], "DemonstrationHeader"],
+
+Cell["\<\
+Solving the 2D Helmholtz Partial Differential Equation Using Finite \
+Differences\
+\>", "DemoTitle"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 1., $CellContext`addFaceGrids$$ = 
+    False, $CellContext`angle$$ = 0., $CellContext`b$$ = 
+    0., $CellContext`c$$ = 0., $CellContext`centerGrid$$ = 
+    True, $CellContext`del$$ = 2.220446049250313*^-16, $CellContext`eastbc$$ =
+     1& , $CellContext`eastBCconstantValue$$ = 0, $CellContext`eastBCtype$$ = 
+    "Dirichlet", $CellContext`event$$ = 
+    "run_button", $CellContext`finalDisplayImage$$ = Grid[{{
+       Item[
+        Item[
+         Graphics3D[
+          GraphicsComplex[CompressedData["
+1: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
+cwtWxeaB/wFV0/PY
+           "], {{{
+              EdgeForm[], 
+              GraphicsGroup[{
+                Polygon[CompressedData["
+1:eJwtlHtoyFEUx+/Pa4x5b8Y2YlZKeYu8Iswjr8gQG5ZXHkNmTCmlRJSISFEi
+RZSSIlJERERERERERERE5PPtfP/4dO/v/s4995zvOfd2rV49vaZBSmkLNIR+
+0BRGwFBoBqNgv+daq4IWMAlKPZ8GN2EslMNUyIXR8Mr7hsE++y+D114bDgeh
+JUw2ms+BvZAH42AetIZq2GE/ircEcmAwbAfl0xd2QRPoDYehsc/aZvsS/5PN
+QBgDzWEiHHK+E5yP7AfBbudbal/y2Qv22Kbce7R3JAyARtDTOSiXGc5f8Q+B
+x9Dfts/suzs8cn761yJLaT1jnXwzX8q4BP7CQlgAifVihiL447X5cBTaQCd4
+CH2sTxfXvAd8hErX9pNjHQ+fPSqnD65BpfdL525wxnXRv532Kd93rHFneGCt
+dfZdr8nmuXMtc3yKcxlsgA4p+vKANZQ+v52f8jzmWlT5W9pOh1/2JTvp1Arm
+wukUfSW9siy0kUb10A7WwAn7Kbad7GcqpyxstdYxi/g2Ki7mi12LtsxXMq6C
+s5APtZCbxaj6zZYdLIcLjk0xNsnCh+Z5zCsYZ9lXe1gH571XPlpjsyLFebU+
+a5P8ZbFPNt9T3MMp8MY6q7depLin6vdTzl05XLL+df7W+lo47nOl10UoSBFf
+heeb/U82NSniKoStcCTFndJZNzzq7HOur3R8l+Id0Btx2Xvl40uKt0DxF2Wh
+t2r1zWv69yNFP6r3rjjmeuegXBbBVWsoLe+l6D315Vf7kUYnU7xXmt9K0afq
+12sp7p/u4c8Uvabz/qXoL/XZ2xT9K30LfE9Vk2L3g3J5kuIe6V5dT9HL8puf
+Ra1Us6cp7pnsujhf6XM7xX1TTJ2zyEN+u2aRq+xy3D+q28sU75B0LsxCC8XU
+zr2hur1P8X5J9/sp7qJ0+Q+uAIGY
+                 "]], 
+                Polygon[CompressedData["
+1:eJxNlnfY0FMUx8/vbWu/7d6mbNmSMsrIKKEQsiozo4iyN0kZmdnRIGUXWRlF
+pbSIIhIRJasiO9/Pc77v8/jj89z7+917zz333DNu634Dew4oiYi3REVxjrhe
+3CCaFRHfqP1a3CnuEqPFI+JA8a4YJe4VK8SXoqXWXKv2OtGqSBnIulE0V/8X
+tfuL/cTP5idxeOTYD2KtOET8KJaJT8UW4jPxkVgsdhMfe8+21h1dLhbXROqA
+LszZTmzrteh6j9jLOs8U7URl8agYLBpqXSPRWOyj7x3FDuIr8aFozdnEB6JU
+cwapvUDUVX+62k6is5ghautff7VniVrqVxa91T9eVFJ/V7X7es10n2u6177j
+NTXFsZbFmorijEhZTUUTcYm+y4rUoY4417rxb6D6AyLnzlO7tdhKvO8zj/Zd
+zvS/uaJF5FzOuEjs7LNzDyvtE/jGyeIw0U187/89RU37TEuxUAwXI8St4hax
+k+X+KXqII8UfvvNOtgm+sKX3wffu9h1ylxUsbxexue8E/ZaKY7CbuE/0EleK
+q0S9Iv1qied9Ik4U/cSp4lfreXPkvSz2P8ZOE7+J3cX2kT6Fb3URn4vl4gtx
+kbhMXG4/Yk/2vlrUL9Kf9xRVxB3oXWScvK7+NHGo9bpfPOD+Up+Ff1XsbxeK
+quqfHul7gzyGzJGRMbPM9usoOkTGD2O3izaeM8JnXmzbcge/izLfzbpIfz1B
+rBe3+Q4X2TeeFc+I1WJNZDyuEHtHxgvx8514SDzsOV1Fda9lDrHV1muR9bTv
+ZbVtutw6j/QZOtiGnO958ZztvlmR8ll3UqQ/Qjfvuca6fCsetE7/Rsbn2WKT
+OMh7jvT9sDf+XcM6cK5VllEu6wD2tsymkbHe37LxAXzhisic8ldkPJ4v/han
+RMYm/xjrHpkbetv2L/iMnK16kf5HXiCPjfIdtBKF7+YpMSkyR1QyyKvlsWaR
+8dnD98s3i8eredxrJ0b6FTJKxFGR8cx438j4OlpU8LpxPkdR5Jzx7rN2k21b
+6nl9fE7O/o9bbFHP+54nWhRZj96OzGPUEGpHC0P/zcg56IAu6Mh+fS13ks9b
+5nvY5HOGdRpnPct1mOg15NGWjsny2KSWNY6M0bFiTGSMECvEKHFJDaOWHWF/
+oMZRz8hb5MGDI+saeZs4JXariTMjY4v7Jp8Piaw7r6p9TUwRkyPrWhPn+wG2
+54v2KXyroXhFXGp74k9lrmHMYQyZxAU5jVy2MdKW1OYmkTZF/w1igngyMr9v
+9JnH+ozU7mo++3rrX1s8YVuQq7rbJuSzzpE5ndxOnV/ndRvMeq+dYJtSC2p4
+v43W9THrMMb9pr4DxsjNdf2fGCGf14mMneNEgyLtiL2wO7mzvngpsq7NFu+J
+OZHx317sIWZF1hf+3ySGRdZIamUXj1PH2nk+ctpYf+JrpeUij3w/NLKmUduq
+RtYzfJZY6RPpy7Msq533mmMZQ60D9ZnaXWJ9hvn/XI9xxin/85UZtj/3xbuH
+erxN5Btgntciu7llLIisF+hHHSTXzPBacg7vgvmet9As8NzhPhM+v9ZnpaYR
+N7wreZdQK8nH5NTlthG2IifxdiAeiIupal92nzvjrqZaT3J/B+tBjODXvJF4
+K9Uosl73sy8MsX/wjzHikFxBzljiOeTWwR5HBvm7rmXP914dfc4lXksOXOq9
+ia1e1gF/I9+R/2v7PUZ9Jr+9YabZFozxDiWeyBfUFfIf/kk9L/W7jzcEb4cG
+bnlLNIrMC7zDu9qm2LZ8zmT7wSrLJidRq2bbv9rbr8gX5Llp1u0/C8R26g==
+
+                 "]]}]}, {}, {}, {}, {}}, {{
+              GrayLevel[0], 
+              
+              Line[{34, 2, 38, 39, 40, 3, 41, 42, 43, 4, 44, 45, 46, 5, 157, 
+               156, 155, 10, 169, 168, 167, 15, 184, 183, 182, 20, 193, 192, 
+               191, 25, 133, 132, 131, 24, 130, 129, 128, 23, 127, 126, 125, 
+               22, 124, 123, 122, 21, 176, 177, 178, 16, 173, 174, 175, 11, 
+               158, 159, 160, 6, 140, 141, 142, 1, 32, 33, 34}]}, {
+              
+              Line[{142, 210, 211, 49, 136, 204, 205, 31, 139, 213, 214, 52, 
+               151, 225, 226, 61, 157}], 
+              
+              Line[{10, 67, 66, 65, 9, 64, 63, 62, 8, 58, 57, 56, 7, 55, 54, 
+               53, 6}], 
+              
+              Line[{155, 231, 230, 59, 149, 195, 194, 50, 137, 207, 206, 29, 
+               134, 201, 200, 47, 140}], 
+              
+              Line[{160, 198, 199, 70, 145, 219, 220, 37, 148, 237, 238, 73, 
+               154, 240, 241, 79, 169}], 
+              
+              Line[{15, 91, 90, 89, 14, 85, 84, 83, 13, 82, 81, 80, 12, 76, 
+               75, 74, 11}], 
+              
+              Line[{167, 243, 242, 77, 152, 216, 215, 71, 146, 228, 227, 35, 
+               143, 222, 221, 68, 158}], 
+              
+              Line[{175, 234, 235, 94, 163, 249, 250, 28, 166, 258, 259, 97, 
+               172, 261, 262, 103, 184}], 
+              
+              Line[{16, 98, 99, 100, 17, 104, 105, 106, 18, 110, 111, 112, 19,
+                113, 114, 115, 20}], 
+              
+              Line[{178, 267, 268, 118, 187, 270, 271, 88, 181, 282, 283, 121,
+                190, 273, 274, 109, 193}], 
+              
+              Line[{182, 264, 263, 101, 170, 252, 251, 95, 164, 255, 254, 26, 
+               161, 246, 245, 92, 173}], 
+              
+              Line[{191, 285, 284, 107, 188, 288, 287, 119, 179, 276, 275, 86,
+                185, 279, 278, 116, 176}], 
+              
+              Line[{141, 209, 48, 202, 135, 203, 30, 208, 138, 212, 51, 196, 
+               150, 224, 60, 232, 156}], 
+              
+              Line[{159, 197, 69, 223, 144, 218, 36, 229, 147, 236, 72, 217, 
+               153, 239, 78, 244, 168}], 
+              
+              Line[{174, 233, 93, 247, 162, 248, 27, 256, 165, 257, 96, 253, 
+               171, 260, 102, 265, 183}], 
+              
+              Line[{177, 266, 117, 280, 186, 269, 87, 277, 180, 281, 120, 289,
+                189, 272, 108, 286, 192}]}, {
+              
+              Line[{2, 136, 135, 134, 7, 145, 144, 143, 12, 163, 162, 161, 17,
+                187, 186, 185, 22}], 
+              
+              Line[{34, 49, 202, 201, 55, 70, 223, 222, 76, 94, 247, 246, 100,
+                118, 280, 279, 124}], 
+              
+              Line[{3, 139, 138, 137, 8, 148, 147, 146, 13, 166, 165, 164, 18,
+                181, 180, 179, 23}], 
+              
+              Line[{40, 31, 208, 207, 58, 37, 229, 228, 82, 28, 256, 255, 106,
+                88, 277, 276, 127}], 
+              
+              Line[{4, 151, 150, 149, 9, 154, 153, 152, 14, 172, 171, 170, 19,
+                190, 189, 188, 24}], 
+              
+              Line[{43, 52, 196, 195, 64, 73, 217, 216, 85, 97, 253, 252, 112,
+                121, 289, 288, 130}], 
+              
+              Line[{46, 61, 232, 231, 67, 79, 244, 243, 91, 103, 265, 264, 
+               115, 109, 286, 285, 133}], 
+              
+              Line[{122, 116, 266, 267, 98, 92, 233, 234, 74, 68, 197, 198, 
+               53, 47, 209, 210, 32}], 
+              
+              Line[{125, 86, 269, 270, 104, 26, 248, 249, 80, 35, 218, 219, 
+               56, 29, 203, 204, 38}], 
+              
+              Line[{128, 119, 281, 282, 110, 95, 257, 258, 83, 71, 236, 237, 
+               62, 50, 212, 213, 41}], 
+              
+              Line[{131, 107, 272, 273, 113, 101, 260, 261, 89, 77, 239, 240, 
+               65, 59, 224, 225, 44}], 
+              
+              Line[{33, 211, 48, 200, 54, 199, 69, 221, 75, 235, 93, 245, 99, 
+               268, 117, 278, 123}], 
+              
+              Line[{39, 205, 30, 206, 57, 220, 36, 227, 81, 250, 27, 254, 105,
+                271, 87, 275, 126}], 
+              
+              Line[{42, 214, 51, 194, 63, 238, 72, 215, 84, 259, 96, 251, 111,
+                283, 120, 287, 129}], 
+              
+              Line[{45, 226, 60, 230, 66, 241, 78, 242, 90, 262, 102, 263, 
+               114, 274, 108, 284, 132}]}, {}, {}}}, 
+           VertexNormals -> CompressedData["
+1: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
+            "]], {Axes -> True, AxesLabel -> {
+             Text[
+              Style["x", Italic, 12]], 
+             Text[
+              Style["y", Italic, 12]], None}, BoxRatios -> {1, 1, 0.4}, 
+           ImagePadding -> {{20, 15}, {15, 1}}, ImageSize -> {260, 
+             Rational[395, 2]}, Method -> {"RotationControl" -> "Globe"}, 
+           PlotRange -> {All, All, All}, 
+           PlotRangePadding -> {Automatic, Automatic, Automatic}, 
+           SphericalRegion -> True, TicksStyle -> 9}]]]}, {
+       Item[
+        Graphics[
+         GraphicsComplex[CompressedData["
+1:eJx1Vn9MFVQUZswhf1AJSSZIM8woYESW2oQ6vmSitrECQRKLUARmIU6spIe4
+JDdM5xJnuYSgcGCOEIjEGXDeQxEUiAciPyNtiAhuNTU2HGz92D3nNM6rt7Fv
+33uXc88959zvfk9uzoje6uri4tL+998/aD43kBAMOhSXdfw7zOROiDPXORTn
+jwP+G532QfV/iuuP3sfpHJzP/6DeR5/DqU4K9fdO+6pzOdUNb40e/f2nxddl
+n8++LQipGb4GW04XWu49tQMZJ4p+u2wdPSf4TfWvy9entAgGVLx+O3JJGYaN
+T7jWzh+CmyuOxp65dRYjnz8RuH71ACQ8sjfBz8eOMbtXRt/d2QsRH7/oMWy7
+hIk4knW4qBuC74/VnUptw21uB78OauuUOmYsCrfGf94L8xa/YAla+m9dXpra
+tan2gy7hGzvPfrjqXLdwa9lkfseDHuEFe1ZUJIT1C6+Pyb48mj0o/JdnG25m
+NgwJL7ljq196ZweWTHpGl+7ugDn7OqcjrBWYXdRqC0lqgbjMieIj79Vj7Or9
+z9WutUOXlz3J1t6Emwb2hO9NroGpd2ffXz7ShoHFF1NX9hyHOO/84cyqSol/
+tc4y5mG1CZ/afv5GYmGLcFoPaj2o9cKpPsKpPsKpPsKpPsKpPsKpPsKpPno/
+HBtoa+i+cl360TLrYMmaA0PSj9KQtXl1kYPSj/3xs9ND3fqlH8n7mt44ebFH
++rGqPHfZ47nd0g//HovvIUsXNAZHx/pZciHlyOlx9y8d8Nrbre4vx9vh6TNb
+P3mivA+qq7ZfGPTulLl/5nB8QbZnt/Cvtr36vt9DvcLnRgZHNbgPCP900WMB
+ibOG1L1xoO1U3Invsuwyj/M2hD2cVNkuuqHuD+TT/Tm+oHTneP4uiffKseqw
+A3nVwt9M9rt9d9gu3CsnaUlR7hXhVeY8ggHmPIKF5jyCj5rzCNJ5BL8w+Uie
+4SYf4RtMPsLnmHycdJPrwXnx95wXc86LOeel6i2c+1dY4J+1prtd+lc1HNXs
+NtQs/WsKtHo3jdilf+b3Wumf4WWw2eiW4D2jW4LFRrcEO877v3NhkufHxcXX
+wycv/6NrwtPe8qxMmu4TXlPh3hea87OTjlN90GHiwZ/lQa7LDhXBAhMPMkLT
+Fq4b/wEoHph1dqB49H2LnjecHxWRfKk/TfZLyYlJ7gn8XnhIeuO6jOZG4YG+
+CVsyH7Tq/OBHys/HxJN9Uk08UPGEB5t4wuk+It1HpPuIdB/l/Lyez6/qKZzP
+z5z78YepH3I/0k39kPtB9UPuB9UPTxr9BtJv9DL6DaTfGG/0G0i/8arRb9ho
+9BunjX7DQqPfqPQFlb6g0hdU+oJKXzge0LxzPKB553hA887x6Pdajke8TPpM
+7yUq/UGlP6j0B5X+IL8npO/I7wnpO/J7QvqO/J6QviO/J6TvyO8J6Tvye0L6
+zvmCyhdUvqDyFV49U4+knqo/wufO1CNUeqT9kXDyRzIPjDwPjDwPjDwPjDwP
+jOSfgPwTkn8C8k9I/gnIPyH5JyD/hOSfgPwTKr+Eyi+h8kuo/BIqv4TKL6Hy
+S6j8DSp/g8rfyDun6gtcX+V/UPkfVP4Hlf9B5X9Q+R9U/geV/0Hlf1D5H/wL
+2ovGiQ==
+          "], {{{
+             EdgeForm[], 
+             RGBColor[0.293416, 0.0574044, 0.529412], 
+             GraphicsGroup[{
+               
+               Polygon[{{151, 23, 179}, {52, 3, 36}, {36, 3, 31}, {31, 3, 
+                49}, {179, 23, 196}, {191, 23, 151}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.4056961858009037, 0.25262932015915646`, 0.6872353840151724], 
+             GraphicsGroup[{
+               
+               Polygon[{{126, 18, 152}, {44, 8, 80}, {89, 8, 77}, {69, 8, 
+                89}, {152, 18, 116}, {77, 8, 44}, {116, 18, 136}, {136, 18, 
+                163}}], 
+               Polygon[{{32, 31, 49, 50}, {180, 179, 196, 197}}], 
+               
+               Polygon[{{163, 18, 151, 179, 180}, {53, 52, 36, 8, 69}, {80, 8,
+                 36, 31, 32}, {192, 191, 151, 18, 126}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.4792682270059452, 0.3805512305812604, 0.79064978816011], 
+             GraphicsGroup[{
+               Polygon[{{104, 13, 122}, {28, 13, 117}}], 
+               
+               Polygon[{{181, 180, 197, 198}, {193, 192, 126, 127}, {127, 126,
+                 152, 153}, {137, 136, 163, 164}, {164, 163, 180, 181}, {81, 
+                80, 32, 33}, {45, 44, 80, 81}, {54, 53, 69, 70}, {33, 32, 50, 
+                51}, {70, 69, 89, 90}}], 
+               
+               Polygon[{{122, 13, 116, 136, 137}, {153, 152, 116, 13, 28}, {
+                90, 89, 77, 13, 104}, {117, 13, 77, 44, 45}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.5528402682109869, 0.5084731410033646, 0.894064192305048], 
+             GraphicsGroup[{
+               
+               Polygon[{{26, 2, 62}, {184, 22, 172}, {156, 24, 199}, {62, 2, 
+                37}, {70, 4, 54}, {127, 22, 193}, {55, 4, 78}, {194, 24, 
+                156}}], 
+               
+               Polygon[{{154, 153, 28, 29}, {29, 28, 117, 118}, {138, 137, 
+                164, 165}, {91, 90, 104, 105}, {82, 81, 33, 34}, {165, 164, 
+                181, 182}, {105, 104, 122, 123}, {123, 122, 137, 138}, {118, 
+                117, 45, 46}, {46, 45, 81, 82}}], 
+               Polygon[{{34, 33, 51, 2, 26}, {78, 4, 70, 90, 91}, {182, 181, 
+                198, 24, 194}, {172, 22, 127, 153, 154}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.6098400582316799, 0.6015054711100566, 0.9105478371302148], 
+             GraphicsGroup[{
+               
+               Polygon[{{47, 46, 82, 83}, {124, 123, 138, 139}, {183, 182, 
+                194, 195}, {157, 156, 199, 200}, {63, 62, 37, 38}, {27, 26, 
+                62, 63}, {83, 82, 34, 35}, {79, 78, 91, 92}, {119, 118, 46, 
+                47}, {139, 138, 165, 166}, {166, 165, 182, 183}, {173, 172, 
+                154, 155}, {155, 154, 29, 30}, {56, 55, 78, 79}, {195, 194, 
+                156, 157}, {185, 184, 172, 173}, {106, 105, 123, 124}, {30, 
+                29, 118, 119}, {92, 91, 105, 106}, {35, 34, 26, 27}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.6639325324909702, 0.6884170258536815, 0.9117809789362288], 
+             GraphicsGroup[{
+               
+               Polygon[{{30, 17, 155}, {155, 17, 173}, {35, 7, 83}, {106, 9, 
+                92}, {27, 7, 35}, {195, 19, 183}, {146, 19, 167}, {76, 7, 
+                99}, {174, 17, 141}, {94, 9, 93}, {183, 19, 166}, {121, 19, 
+                146}, {84, 9, 94}, {92, 9, 79}, {141, 17, 111}, {99, 7, 71}}], 
+               
+               Polygon[{{125, 124, 139, 140}, {64, 63, 38, 39}, {120, 119, 47,
+                 48}, {158, 157, 200, 201}}], 
+               
+               Polygon[{{111, 17, 30, 119, 120}, {140, 139, 166, 19, 121}, {
+                186, 185, 173, 17, 174}, {167, 19, 195, 157, 158}, {57, 56, 
+                79, 9, 84}, {93, 9, 106, 124, 125}, {48, 47, 83, 7, 76}, {71, 
+                7, 27, 63, 64}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.7180250067502605, 0.7753285805973064, 0.9130141207422429], 
+             GraphicsGroup[{
+               
+               Polygon[{{140, 14, 125}, {120, 12, 111}, {112, 14, 128}, {125, 
+                14, 93}, {132, 12, 107}, {48, 12, 120}, {121, 14, 140}, {76, 
+                12, 48}}], 
+               
+               Polygon[{{58, 57, 84, 85}, {85, 84, 94, 95}, {72, 71, 64, 
+                65}, {65, 64, 39, 40}, {187, 186, 174, 175}, {100, 99, 71, 
+                72}, {147, 146, 167, 168}, {175, 174, 141, 142}, {168, 167, 
+                158, 159}, {159, 158, 201, 202}}], 
+               
+               Polygon[{{128, 14, 121, 146, 147}, {142, 141, 111, 12, 132}, {
+                107, 12, 76, 99, 100}, {95, 94, 93, 14, 112}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.7711505038041686, 0.8498390275084724, 0.9102142699303378], 
+             GraphicsGroup[{
+               
+               Polygon[{{169, 168, 159, 160}, {133, 132, 107, 108}, {59, 58, 
+                85, 86}, {160, 159, 202, 203}, {73, 72, 65, 66}, {113, 112, 
+                128, 129}, {108, 107, 100, 101}, {176, 175, 142, 143}, {66, 
+                65, 40, 41}, {129, 128, 147, 148}, {96, 95, 112, 113}, {188, 
+                187, 175, 176}, {148, 147, 168, 169}, {86, 85, 95, 96}, {143, 
+                142, 132, 133}, {101, 100, 72, 73}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.8197292170029775, 0.8660387339346232, 0.8884510499502413], 
+             GraphicsGroup[{
+               
+               Polygon[{{87, 86, 96, 97}, {130, 129, 148, 149}, {102, 101, 73,
+                 74}, {149, 148, 169, 170}, {161, 160, 203, 204}, {114, 113, 
+                129, 130}, {67, 66, 41, 42}, {109, 108, 101, 102}, {177, 176, 
+                143, 144}, {134, 133, 108, 109}, {74, 73, 66, 67}, {60, 59, 
+                86, 87}, {189, 188, 176, 177}, {144, 143, 133, 134}, {97, 96, 
+                113, 114}, {170, 169, 160, 161}}]}]}, {
+             EdgeForm[], 
+             RGBColor[
+             0.8683079302017864, 0.8822384403607739, 0.8666878299701448], 
+             GraphicsGroup[{
+               
+               Polygon[{{61, 60, 87, 88}, {178, 177, 144, 145}, {98, 97, 114, 
+                115}, {145, 144, 134, 135}, {88, 87, 97, 98}, {131, 130, 149, 
+                150}, {150, 149, 170, 171}, {103, 102, 74, 75}, {135, 134, 
+                109, 110}, {162, 161, 204, 205}, {190, 189, 177, 178}, {110, 
+                109, 102, 103}, {68, 67, 42, 43}, {75, 74, 67, 68}, {171, 170,
+                 161, 162}, {115, 114, 130, 131}}]}]}, {
+             EdgeForm[], 
+             RGBColor[0.941176, 0.906538, 0.834043], 
+             GraphicsGroup[{
+               Polygon[{{68, 6, 75}, {162, 20, 171}, {103, 11, 110}, {178, 21,
+                 190}, {135, 16, 145}, {150, 15, 131}, {88, 5, 61}, {115, 10, 
+                98}}], 
+               
+               Polygon[{{145, 16, 21, 178}, {43, 1, 6, 68}, {110, 11, 16, 
+                135}, {171, 20, 15, 150}, {98, 10, 5, 88}, {131, 15, 10, 
+                115}, {205, 25, 20, 162}, {75, 6, 11, 103}}]}]}}, {{}, 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{61, 88, 98, 115, 131, 150, 171, 162, 205}], 
+              Line[{190, 178, 145, 135, 110, 103, 75, 68, 43}]}, -0.0082], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{42, 67, 74, 102, 109, 134, 144, 177, 189}], 
+              Line[{60, 87, 97, 114, 130, 149, 170, 161, 204}]}, -0.0164], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{41, 66, 73, 101, 108, 133, 143, 176, 188}], 
+              
+              Line[{59, 86, 96, 113, 129, 148, 169, 160, 
+               203}]}, -0.024600000000000004`], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{40, 65, 72, 100, 107, 132, 142, 175, 187}], 
+              Line[{58, 85, 95, 112, 128, 147, 168, 159, 202}]}, -0.0328], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{39, 64, 71, 99, 76, 48, 120, 111, 141, 174, 186}], 
+              
+              Line[{57, 84, 94, 93, 125, 140, 121, 146, 167, 158, 
+               201}]}, -0.041], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{38, 63, 27, 35, 83, 47, 119, 30, 155, 173, 185}], 
+              Line[{56, 79, 92, 106, 124, 139, 166, 183, 195, 157, 
+               200}]}, -0.04920000000000001], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{37, 62, 26, 34, 82, 46, 118, 29, 154, 172, 184}], 
+              
+              Line[{199, 156, 194, 182, 165, 138, 123, 105, 91, 78, 
+               55}]}, -0.05740000000000001], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{54, 70, 90, 104, 122, 137, 164, 181, 198}], 
+              Line[{193, 127, 153, 28, 117, 45, 81, 33, 51}]}, -0.0656], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{50, 32, 80, 44, 77, 89, 69, 53}], 
+              Line[{192, 126, 152, 116, 136, 163, 180, 197}]}, -0.0738], 
+            Tooltip[{
+              Directive[{
+                Opacity[0.4], 
+                GrayLevel[0]}], 
+              Line[{49, 31, 36, 52}], 
+              Line[{196, 179, 151, 191}]}, -0.082], {}, {}}}], {
+         AspectRatio -> 1, Frame -> True, ImagePadding -> {{20, 15}, {20, 1}},
+           ImageSize -> {260, 
+            Rational[395, 2]}, PlotRange -> {{-0.5, 0.5}, {-0.5, 0.5}}, 
+          PlotRangeClipping -> True, PlotRangePadding -> {
+            Scaled[0.02], 
+            Scaled[0.02]}}]]}}, 
+     Spacings -> {0, 0}], $CellContext`forceGrid$$ = {{1., 1., 1., 1., 1.}, {
+    1., 1., 1., 1., 1.}, {1., 1., 1., 1., 1.}, {1., 1., 1., 1., 1.}, {1., 1., 
+    1., 1., 1.}}, $CellContext`forceTermSelection$$ = 
+    1, $CellContext`grid$$ = CompressedData["
+1:eJxTTMoPSmVmYGBghWImBhh4sB9K20PoC2h8uDqYvD0qH4Pej6ruAhofBi7Y
+Y6cx7NmPpg+Njw7Q7cHwB8w9OGh0e9D9gRFOaDS6OIa9aP5ChBsAUwI3UQ==
+
+    "], $CellContext`gstatusMessage$$ = "ready..", $CellContext`gtick$$ = 
+    0, $CellContext`h$$ = Rational[1, 4], $CellContext`kValue$$ = 
+    5., $CellContext`lenX$$ = 1, $CellContext`lenY$$ = 
+    1, $CellContext`northbc$$ = 1& , $CellContext`northBCconstantValue$$ = 
+    0, $CellContext`northBCtype$$ = 
+    "Sommerfeld", $CellContext`plotPerformanceGoal$$ = 
+    "Quality", $CellContext`plotToShow$$ = 
+    "solution and contour", $CellContext`rightHandVector$$ = SparseArray[
+    Automatic, {15}, 0., {
+     1, {{0, 9}, {{4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}}}, {0.0625, 
+      0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 0.0625, 
+      0.0625}}], $CellContext`southbc$$ = 
+    1& , $CellContext`southBCconstantValue$$ = 0, $CellContext`southBCtype$$ =
+     "Sommerfeld", $CellContext`stdx$$ = 0.3, $CellContext`stdy$$ = 
+    0.3, $CellContext`systemMatrix$$ = SparseArray[
+    Automatic, {15, 15}, 0, {
+     1, {{0, 3, 6, 9, 13, 18, 22, 26, 31, 35, 39, 44, 48, 51, 54, 57}, {{1}, {
+       4}, {7}, {2}, {5}, {8}, {3}, {6}, {9}, {1}, {4}, {5}, {7}, {2}, {4}, {
+       5}, {6}, {8}, {3}, {5}, {6}, {9}, {4}, {7}, {8}, {10}, {5}, {7}, {8}, {
+       9}, {11}, {6}, {8}, {9}, {12}, {7}, {10}, {11}, {13}, {8}, {10}, {
+       11}, {12}, {14}, {9}, {11}, {12}, {15}, {7}, {10}, {13}, {8}, {11}, {
+       14}, {9}, {12}, {15}}}, {
+      1., Complex[0., -1.0607061697448554`], -1., 1., Complex[
+       0., -1.0607061697448554`], -1., 1., Complex[
+       0., -1.0607061697448554`], -1., -1., 
+       2.4435507916125605`, -1., -1., -1., -1., 
+       2.4435507916125605`, -1., -1., -1., -1., 2.4435507916125605`, -1., -1.,
+        2.4435507916125605`, -1., -1., -1., -1., 
+       2.4435507916125605`, -1., -1., -1., -1., 2.4435507916125605`, -1., -1.,
+        2.4435507916125605`, -1., -1., -1., -1., 
+       2.4435507916125605`, -1., -1., -1., -1., 2.4435507916125605`, -1., -1.,
+        Complex[0., -1.0607061697448554`], 1., -1., Complex[
+       0., -1.0607061697448554`], 1., -1., Complex[0., -1.0607061697448554`], 
+       1.}}], $CellContext`testCase$$ = 
+    1, $CellContext`u$$ = {{
+     0., -0.05815489143234313, -0.0904142310650519, -0.05815489143234313, 
+     0.}, {0, -0.043983701975560285`, -0.07441134270506723, \
+-0.04398370197556028, 0}, {
+     0, -0.03741017564302091, -0.06594626035574812, -0.03741017564302092, 
+      0}, {0, -0.043983701975560285`, -0.07441134270506723, \
+-0.043983701975560285`, 0}, {
+     0., -0.05815489143234313, -0.0904142310650519, -0.05815489143234313, 
+     0.}}, $CellContext`westbc$$ = 1& , $CellContext`westBCconstantValue$$ = 
+    0, $CellContext`westBCtype$$ = "Dirichlet", $CellContext`x0$$ = 
+    0., $CellContext`y0$$ = 0., $CellContext`zAxisScale$$ = False, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[
+       Item[
+        Grid[{{
+           Item[
+            Grid[{{
+               Grid[{{
+                  Button[
+                   Text[
+                    Style["solve", 12]], {$CellContext`event$$ = "run_button"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {50, 28}]}, {
+                  Button[
+                   Text[
+                    Style["reset", 12]], {$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {50, 28}]}}, Spacings -> {0, 0.2}], 
+               Grid[{{
+                  Row[{
+                    Style["k", Italic, 11], 
+                    Spacer[3], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`kValue$$, {$CellContext`kValue$$ = #; \
+$CellContext`event$$ = "k_changed"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {0., 
+                    100., 1.}, ImageSize -> Tiny, ContinuousAction -> False], 
+                    Spacer[2], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt2[$CellContext`kValue$$, {3, 0}]], 
+                    11]]}], 
+                  Row[{
+                    Style["\[Theta]", 11], 
+                    Spacer[3], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`angle$$, {$CellContext`angle$$ = #; \
+$CellContext`event$$ = "k_changed"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0, 2 Pi, Rational[1, 100] Pi}, ImageSize -> Tiny, 
+                    ContinuousAction -> False], 
+                    Spacer[2], 
+                    Text[
+                    Style[
+                    Row[{
+                    Dynamic[
+                    $CellContext`padIt2[(180./Pi) $CellContext`angle$$, {5, 
+                    2}]], Degree}], 11]]}]}, {
+                  Row[{
+                    Text[
+                    Style["test case", 12]], 
+                    Spacer[2], 
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`testCase$$, {$CellContext`testCase$$ = \
+#; Which[$CellContext`testCase$$ == 
+                    1, $CellContext`angle$$ = 0.; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/4; $CellContext`lenX$$ = 
+                    1; $CellContext`lenY$$ = 1; $CellContext`kValue$$ = 
+                    5; $CellContext`a$$ = 1.; $CellContext`b$$ = 
+                    0.; $CellContext`c$$ = 0.; $CellContext`x0$$ = 
+                    0.; $CellContext`y0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    1; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    2, $CellContext`angle$$ = 0.; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    True; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/12; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    16; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    3, $CellContext`angle$$ = 
+                    109 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    True; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/12; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    52; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    4, $CellContext`angle$$ = 
+                    208 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/16; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    7; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Dirichlet"; $CellContext`northbc$$ = 
+                    Cos[(2 Pi) #]& ; $CellContext`northBCconstantValue$$ = 
+                    1.; $CellContext`westBCtype$$ = 
+                    "Sommerfeld"; $CellContext`eastBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southBCtype$$ = 
+                    "Dirichlet"; $CellContext`southbc$$ = 
+                    Cos[Pi #]& ; $CellContext`southBCconstantValue$$ = 
+                    1., $CellContext`testCase$$ == 
+                    5, $CellContext`angle$$ = 
+                    208 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/16; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    7; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`eastBCtype$$ = 
+                    "Sommerfeld"; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    Cos[(2 Pi) #]& ; $CellContext`westBCconstantValue$$ = 
+                    1.; $CellContext`southBCtype$$ = 
+                    "Dirichlet"; $CellContext`southbc$$ = 
+                    Cos[Pi #]& ; $CellContext`southBCconstantValue$$ = 
+                    1.]; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    1 -> Style["1", 11], 2 -> Style["2", 11], 3 -> 
+                    Style["3", 11], 4 -> Style["4", 11], 5 -> Style["5", 11]},
+                     ImageSize -> All, ContinuousAction -> False]}], 
+                  Text[
+                   Style[
+                    Row[{"-", "\[Del]"^2, 
+                    Style["u", Italic], " - ", Style["k", Italic]^2, 
+                    Style["u", Italic], " = ", 
+                    Style["f", Italic], "(", 
+                    Style["x", Italic], ", ", 
+                    Style["y", Italic], ")"}], 12]]}}, Alignment -> Center, 
+                Spacings -> {0.5, 0.4}, Frame -> {None, All}, FrameStyle -> 
+                Directive[
+                  Thickness[0.005], 
+                  GrayLevel[0.5]]]}}, Alignment -> Center, 
+             Spacings -> {0.2, 0}], Alignment -> {Center, Top}], 
+           Item[
+            Grid[{{
+               PopupMenu[
+                
+                Dynamic[$CellContext`plotToShow$$, {$CellContext`plotToShow$$ = \
+#; $CellContext`event$$ = "plot_changed", 
+                  AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                "solution and contour" -> Style["solution + contour", 11], 
+                 "solution and density" -> Style["solution + density", 11], 
+                 "solution data" -> Style["solution data", 11], 
+                 "system matrix information" -> Style["system matrix", 11]}, 
+                ImageSize -> All, ContinuousAction -> False], 
+               Grid[{{
+                  RadioButtonBar[
+                   
+                   Dynamic[$CellContext`plotPerformanceGoal$$, \
+{$CellContext`plotPerformanceGoal$$ = #; $CellContext`event$$ = 
+                    "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                   "Speed" -> Text[
+                    Style["speed", 11]], "Quality" -> Text[
+                    Style["quality", 11]]}, Appearance -> "Vertical"]}, {
+                  Style["plot", 11]}}], 
+               Grid[{{
+                  Checkbox[
+                   
+                   Dynamic[$CellContext`addFaceGrids$$, \
+{$CellContext`addFaceGrids$$ = #; $CellContext`event$$ = "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}, {
+                  Style[
+                   Column[{"face", "grids"}], 11]}}], 
+               Grid[{{
+                  Checkbox[
+                   
+                   Dynamic[$CellContext`zAxisScale$$, \
+{$CellContext`zAxisScale$$ = #; $CellContext`event$$ = "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}, {
+                  Style[
+                   Column[{"zoom", "scale"}], 11]}}]}}, Alignment -> Center, 
+             Spacings -> {0.7, 0.4}, Frame -> {All}, FrameStyle -> Directive[
+               Thickness[0.005], 
+               GrayLevel[0.5]]], Alignment -> {Center, Top}]}}, 
+         Spacings -> {0.2, 0}, Alignment -> {Center, Top}]]], 
+      Manipulate`Dump`ThisIsNotAControl}, {
+      Hold[
+       Item[
+        Grid[{{
+           TabView[{Style["geometry/boundary conditions", 11] -> Item[
+               Grid[{{
+                  Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["grid", 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`h$$, {$CellContext`h$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    Rational[1, 4] -> Style[
+                    Rational[1, 4], 11], Rational[1, 6] -> Style[
+                    Rational[1, 6], 11], Rational[1, 8] -> Style[
+                    Rational[1, 8], 11], Rational[1, 10] -> Style[
+                    Rational[1, 10], 11], Rational[1, 12] -> Style[
+                    Rational[1, 12], 11], Rational[1, 14] -> Style[
+                    Rational[1, 14], 11], Rational[1, 16] -> Style[
+                    Rational[1, 16], 11]}], 
+                    Spacer[1], 
+                    Style["center grid ", 12], 
+                    Checkbox[
+                    
+                    Dynamic[$CellContext`centerGrid$$, \
+{$CellContext`centerGrid$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}}, 
+                    Spacings -> {0.2, 0.5}]}, {
+                    Grid[{{
+                    Text[
+                    Style[
+                    Row[{
+                    Style["x", Italic], " length"}], 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`lenX$$, {$CellContext`lenX$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {1, 
+                    2}], 
+                    Spacer[95], 
+                    Text[
+                    Style[
+                    Row[{
+                    Style["y", Italic], " length"}], 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`lenY$$, {$CellContext`lenY$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {1, 
+                    2}]}}, Spacings -> {0.6, 0.1}]}}, Spacings -> {0, 0.5}], 
+                  SpanFromLeft}, {
+                  Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`northBCtype$$, \
+{$CellContext`northBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`northBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"], 
+                    SpanFromLeft}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`northbc$$, {$CellContext`northbc$$ = \
+#; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a x", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["x", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["x", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["x", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    SpanFromLeft}, {
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`northBCconstantValue$$, \
+{$CellContext`northBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`northBCconstantValue$$, {
+                    3, 1}]], 10]], 
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`northBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]]}}, 
+                    Spacings -> {0.2, 0}, Alignment -> Center, Frame -> None],
+                     SpanFromLeft}}, Frame -> None, Spacings -> {0.1, 0}, 
+                   Alignment -> Center], SpanFromLeft}, {
+                  Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`westBCtype$$, \
+{$CellContext`westBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`westBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"]}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`westbc$$, {$CellContext`westbc$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a y", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["y", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["y", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["y", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]]}, {
+                    Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`westBCconstantValue$$, \
+{$CellContext`westBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`westBCconstantValue$$, {
+                    3, 1}]], 10]]}, {
+                    Row[{
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`westBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]], 
+                    Spacer[2], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`westBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]]}], 
+                    SpanFromLeft}}, Spacings -> {0.1, 0}, Alignment -> 
+                    Center]}}, Alignment -> Center, Spacings -> {0, 0}]}}], 
+                  Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`eastBCtype$$, \
+{$CellContext`eastBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`eastBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"], 
+                    SpanFromLeft}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`eastbc$$, {$CellContext`eastbc$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a y", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["y", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["y", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["y", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]], 
+                    SpanFromLeft}, {
+                    Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`eastBCconstantValue$$, \
+{$CellContext`eastBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`eastBCconstantValue$$, {
+                    3, 1}]], 10]]}, {
+                    Row[{
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`eastBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]], 
+                    Spacer[2], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`eastBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]]}], 
+                    SpanFromLeft}}, Spacings -> {0.1, 0}, Alignment -> 
+                    Center]}}, Alignment -> Center, Spacings -> {0, 0}], 
+                    SpanFromLeft}}]}, {
+                  Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`southBCtype$$, \
+{$CellContext`southBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`southBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"]}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`southbc$$, {$CellContext`southbc$$ = \
+#; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a x", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["x", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["x", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["x", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]]}, {
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`southBCconstantValue$$, \
+{$CellContext`southBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`southBCconstantValue$$, {
+                    3, 1}]], 10]], 
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`southBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`southBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]]}}, 
+                    Spacings -> {0.2, 0}]}}], SpanFromLeft}}, 
+                Spacings -> {2, 0.3}, Alignment -> Center, Frame -> All, 
+                FrameStyle -> Directive[
+                  Thickness[0.005], 
+                  GrayLevel[0.5]]], Alignment -> {Center, Top}], 
+             Style["source", 11] -> Item[
+               Grid[{{
+                  Item[
+                   PopupMenu[
+                    
+                    Dynamic[$CellContext`forceTermSelection$$, \
+{$CellContext`forceTermSelection$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    1 -> Style["a", Italic, 12], 3 -> Style[
+                    Row[{
+                    Style["a", Italic], " exp (", Row[{
+                    Style["x", Italic], " - ", Subscript[
+                    Style["x", Italic], "0"]^2}] Subscript["2 \[Sigma]", 
+                    Style["x", Italic]]^(-2), " + ", Row[{
+                    Style["y", Italic], " - ", Subscript[
+                    Style["y", Italic], "0"]^2}] Subscript["2 \[Sigma]", 
+                    Style["y", Italic]]^(-2), ")"}], 12], 4 -> Style[
+                    Row[{
+                    Style["a", Italic], " ( cos( ", 
+                    Style["b", Italic], " \[Pi] ", 
+                    Style["x", Italic], " ) + sin( ", 
+                    Style["c", Italic], " \[Pi] ", 
+                    Style["y", Italic], " ) )"}], 12], 5 -> Style[
+                    Row[{
+                    Style["a", Italic], " cos( ", 
+                    Style["b", Italic], " \[Pi] ", 
+                    Style["x", Italic], " ) * sin( ", 
+                    Style["c", Italic], " \[Pi] ", 
+                    Style["y", Italic], " )"}], 12]}, ImageSize -> {260, 40}, 
+                    ContinuousAction -> False], Alignment -> {Center}], 
+                  SpanFromLeft}, {
+                  Spacer[2], 
+                  Text[
+                   Style["a", Italic, 12]], 
+                  Manipulator[
+                   
+                   Dynamic[$CellContext`a$$, {$CellContext`a$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False], 
+                  Text[
+                   Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`a$$, {3, 1}]], 11]], 
+                  Button[
+                   Text[
+                    Style[
+                    "zero", 10]], {$CellContext`a$$ = 0; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                    ImageSize -> {45, 20}], 
+                  Button[
+                   Text[
+                    Style[
+                    "one", 10]], {$CellContext`a$$ = 1; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                    ImageSize -> {45, 20}]}, {
+                  Spacer[2], 
+                  Text[
+                   Style["b", Italic, 12]], 
+                  Manipulator[
+                   
+                   Dynamic[$CellContext`b$$, {$CellContext`b$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                   Dynamic[
+                    
+                    Or[$CellContext`forceTermSelection$$ == 
+                    2, $CellContext`forceTermSelection$$ == 
+                    4, $CellContext`forceTermSelection$$ == 5]]], 
+                  Text[
+                   Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`b$$, {3, 1}]], 11]], 
+                  Button[
+                   Text[
+                    Style[
+                    "zero", 10]], {$CellContext`b$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}], 
+                  Button[
+                   Text[
+                    Style[
+                    "one", 10]], {$CellContext`b$$ = 1.; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                    ImageSize -> {45, 20}]}, {
+                  Spacer[2], 
+                  Text[
+                   Style["c", Italic, 12]], 
+                  Manipulator[
+                   
+                   Dynamic[$CellContext`c$$, {$CellContext`c$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                   Dynamic[
+                    
+                    Or[$CellContext`forceTermSelection$$ == 
+                    4, $CellContext`forceTermSelection$$ == 5]]], 
+                  Text[
+                   Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`c$$, {3, 1}]], 11]], 
+                  Button[
+                   Text[
+                    Style[
+                    "zero", 10]], {$CellContext`c$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}], 
+                  Button[
+                   Text[
+                    Style[
+                    "one", 10]], {$CellContext`c$$ = 1.; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                    ImageSize -> {45, 20}]}, {
+                  Spacer[2], 
+                  Text[
+                   Style[
+                    Row[{
+                    Subscript[
+                    Style["x", Italic], "0"]}], 12]], 
+                  Manipulator[
+                   
+                   Dynamic[$CellContext`x0$$, {$CellContext`x0$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-1.5, 1.5, 0.01}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                   Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                  Text[
+                   Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`x0$$, {3, 2}]], 11]], 
+                  Button[
+                   Text[
+                    Style[
+                    "zero", 10]], {$CellContext`x0$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}], 
+                  Button[
+                   Text[
+                    Style[
+                    "one", 10]], {$CellContext`x0$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}]}, {
+                  Spacer[2], 
+                  Text[
+                   Style[
+                    Row[{
+                    Subscript[
+                    Style["y", Italic], "0"]}], 12]], 
+                  Manipulator[
+                   
+                   Dynamic[$CellContext`y0$$, {$CellContext`y0$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-1.5, 1.5, 0.01}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                   Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                  Text[
+                   Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`y0$$, {3, 2}]], 11]], 
+                  Button[
+                   Text[
+                    Style[
+                    "zero", 10]], {$CellContext`y0$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}], 
+                  Button[
+                   Text[
+                    Style[
+                    "one", 10]], {$CellContext`y0$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                   ImageSize -> {45, 20}]}, {
+                  Item[
+                   Row[{
+                    Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["\[Sigma]"], 
+                    Style["x", Italic]]}], 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`stdx$$, {$CellContext`stdx$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0.1, 3, 0.05}, ImageSize -> Tiny, ContinuousAction -> 
+                    False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`stdx$$, {3, 2}]], 11]], 
+                    Spacer[20], 
+                    Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["\[Sigma]"], 
+                    Style["y", Italic]]}], 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`stdy$$, {$CellContext`stdy$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0.1, 3, 0.05}, ImageSize -> Tiny, ContinuousAction -> 
+                    False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`stdy$$, {3, 2}]], 11]]}],
+                    Alignment -> Center], SpanFromLeft}, {
+                  Dynamic[
+                   Grid[{{
+                    Plot3D[
+                    Evaluate[
+                    $CellContext`forceTermExpressionCommon[$CellContext`\
+forceTermSelection$$, $CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`stdy$$, $CellContext`stdx$$, $CellContext`x0$$, \
+$CellContext`y0$$, $CellContext`x, $CellContext`y]], 
+                    Evaluate[{$CellContext`x, 
+                    Part[$CellContext`grid$$, -1, 1, 1], 
+                    Part[$CellContext`grid$$, -1, -1, 1]}], {$CellContext`y, 
+                    Part[$CellContext`grid$$, -1, 1, 2], 
+                    Part[$CellContext`grid$$, 1, 1, 2]}, 
+                    PerformanceGoal -> $CellContext`plotPerformanceGoal$$, 
+                    ImagePadding -> {{10, 10}, {20, 25}}, ImageMargins -> 1, 
+                    PlotRange -> All, PlotLabel -> Text[
+                    Style[
+                    Row[{
+                    Style["f", Italic], "(", 
+                    Style["x", Italic], ", ", 
+                    Style["y", Italic], ") = ", 
+                    $CellContext`forceTermUsedFormatCommon[$CellContext`\
+forceTermSelection$$, $CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`stdy$$, $CellContext`stdx$$, $CellContext`x0$$, \
+$CellContext`y0$$, $CellContext`x, $CellContext`y]}], 11]], AxesLabel -> {
+                    Text[
+                    Style["x", Italic, 11]], 
+                    Text[
+                    Style["y", Italic, 11]], None}, 
+                    ImageSize -> {$CellContext`ContentSizeW + 
+                    30, $CellContext`ContentSizeH - 240}, TicksStyle -> 9]}}, 
+                    Spacings -> {0, 0}, Frame -> None]], SpanFromLeft}}, 
+                Spacings -> {0.3, 0.2}, Alignment -> Left, 
+                Frame -> {None, All}, FrameStyle -> Directive[
+                  Thickness[0.005], 
+                  GrayLevel[0.5]]], Alignment -> {Center, Top}]}, 
+            ImageSize -> {315, 410}]}}, Spacings -> {0.1, 0.}, Alignment -> 
+         Center]]], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`gstatusMessage$$], "reseting..."}, 0}, {{
+       Hold[$CellContext`gtick$$], 0}, 0}, {{
+       Hold[$CellContext`del$$], 2.220446049250313*^-16}, 0}, {{
+       Hold[$CellContext`testCase$$], 1}, 0}, {{
+       Hold[$CellContext`angle$$], 0.}, 0}, {{
+       Hold[$CellContext`systemMatrix$$], {}}, 0}, {{
+       Hold[$CellContext`rightHandVector$$], {}}, 0}, {{
+       Hold[$CellContext`zAxisScale$$], False}, 0}, {{
+       Hold[$CellContext`centerGrid$$], True}, 0}, {{
+       Hold[$CellContext`event$$], "run_button"}, 0}, {{
+       Hold[$CellContext`finalDisplayImage$$], {}}, 0}, {{
+       Hold[$CellContext`addFaceGrids$$], False}, 0}, {{
+       Hold[$CellContext`plotPerformanceGoal$$], "Quality"}, 0}, {{
+       Hold[$CellContext`h$$], 
+       Rational[1, 4]}, 0}, {{
+       Hold[$CellContext`lenX$$], 1}, 0}, {{
+       Hold[$CellContext`lenY$$], 1}, 0}, {{
+       Hold[$CellContext`kValue$$], 5.}, 0}, {{
+       Hold[$CellContext`a$$], 1.}, 0}, {{
+       Hold[$CellContext`b$$], 0.}, 0}, {{
+       Hold[$CellContext`c$$], 0.}, 0}, {{
+       Hold[$CellContext`x0$$], 0.}, 0}, {{
+       Hold[$CellContext`y0$$], 0.}, 0}, {{
+       Hold[$CellContext`stdx$$], 0.3}, 0}, {{
+       Hold[$CellContext`stdy$$], 0.3}, 0}, {{
+       Hold[$CellContext`forceTermSelection$$], 1}, 0}, {{
+       Hold[$CellContext`plotToShow$$], "solution and contour"}, 0}, {{
+       Hold[$CellContext`northBCtype$$], "Sommerfeld"}, 0}, {{
+       Hold[$CellContext`northbc$$], 1& }, 0}, {{
+       Hold[$CellContext`northBCconstantValue$$], 0}, 0}, {{
+       Hold[$CellContext`westBCtype$$], "Dirichlet"}, 0}, {{
+       Hold[$CellContext`westbc$$], 1& }, 0}, {{
+       Hold[$CellContext`westBCconstantValue$$], 0}, 0}, {{
+       Hold[$CellContext`eastBCtype$$], "Dirichlet"}, 0}, {{
+       Hold[$CellContext`eastbc$$], 1& }, 0}, {{
+       Hold[$CellContext`eastBCconstantValue$$], 0}, 0}, {{
+       Hold[$CellContext`southBCtype$$], "Sommerfeld"}, 0}, {{
+       Hold[$CellContext`southbc$$], 1& }, 0}, {{
+       Hold[$CellContext`southBCconstantValue$$], 0}, 0}, {{
+       Hold[$CellContext`forceGrid$$], {{-1, -1, -1, -1, -1}, {-1, -1, -1, \
+-1, -1}, {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}}}, 
+      0}, {{
+       Hold[$CellContext`grid$$], CompressedData["
+1:eJxTTMoPSmVmYGBghWImBhh4sB9K20PoC2h8uDqYvD0qH4Pej6ruAhofBi7Y
+Y6cx7NmPpg+Njw7Q7cHwB8w9OGh0e9D9gRFOaDS6OIa9aP5ChBsAUwI3UQ==
+
+       "]}, 0}, {{
+       Hold[$CellContext`u$$], {}}, 0}}, Typeset`size$$ = {
+    270., {201., 206.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 1., $CellContext`addFaceGrids$$ = 
+        False, $CellContext`angle$$ = 0., $CellContext`b$$ = 
+        0., $CellContext`c$$ = 0., $CellContext`centerGrid$$ = 
+        True, $CellContext`del$$ = 
+        2.220446049250313*^-16, $CellContext`eastbc$$ = 
+        1& , $CellContext`eastBCconstantValue$$ = 
+        0, $CellContext`eastBCtype$$ = "Dirichlet", $CellContext`event$$ = 
+        "run_button", $CellContext`finalDisplayImage$$ = {}, \
+$CellContext`forceGrid$$ = {{-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}, {-1, \
+-1, -1, -1, -1}, {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}}, \
+$CellContext`forceTermSelection$$ = 1, $CellContext`grid$$ = CompressedData["
+1:eJxTTMoPSmVmYGBghWImBhh4sB9K20PoC2h8uDqYvD0qH4Pej6ruAhofBi7Y
+Y6cx7NmPpg+Njw7Q7cHwB8w9OGh0e9D9gRFOaDS6OIa9aP5ChBsAUwI3UQ==
+
+         "], $CellContext`gstatusMessage$$ = 
+        "reseting...", $CellContext`gtick$$ = 0, $CellContext`h$$ = 
+        Rational[1, 4], $CellContext`kValue$$ = 5., $CellContext`lenX$$ = 
+        1, $CellContext`lenY$$ = 1, $CellContext`northbc$$ = 
+        1& , $CellContext`northBCconstantValue$$ = 
+        0, $CellContext`northBCtype$$ = 
+        "Sommerfeld", $CellContext`plotPerformanceGoal$$ = 
+        "Quality", $CellContext`plotToShow$$ = 
+        "solution and contour", $CellContext`rightHandVector$$ = {}, \
+$CellContext`southbc$$ = 1& , $CellContext`southBCconstantValue$$ = 
+        0, $CellContext`southBCtype$$ = "Sommerfeld", $CellContext`stdx$$ = 
+        0.3, $CellContext`stdy$$ = 
+        0.3, $CellContext`systemMatrix$$ = {}, $CellContext`testCase$$ = 
+        1, $CellContext`u$$ = {}, $CellContext`westbc$$ = 
+        1& , $CellContext`westBCconstantValue$$ = 
+        0, $CellContext`westBCtype$$ = "Dirichlet", $CellContext`x0$$ = 
+        0., $CellContext`y0$$ = 0., $CellContext`zAxisScale$$ = False}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`gtick$$; {$CellContext`finalDisplayImage$$, \
+$CellContext`u$$, $CellContext`forceGrid$$, $CellContext`grid$$, \
+$CellContext`systemMatrix$$, $CellContext`rightHandVector$$} = \
+$CellContext`process[$CellContext`u$$, $CellContext`forceGrid$$, \
+$CellContext`grid$$, $CellContext`systemMatrix$$, \
+$CellContext`rightHandVector$$, $CellContext`finalDisplayImage$$, \
+$CellContext`event$$, $CellContext`h$$, $CellContext`h$$, \
+$CellContext`lenX$$, $CellContext`lenY$$, $CellContext`centerGrid$$, \
+$CellContext`addFaceGrids$$, $CellContext`plotPerformanceGoal$$, \
+$CellContext`kValue$$, $CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`x0$$, $CellContext`y0$$, $CellContext`stdx$$, \
+$CellContext`stdy$$, $CellContext`forceTermSelection$$, \
+$CellContext`plotToShow$$, $CellContext`northBCtype$$, \
+$CellContext`northbc$$, $CellContext`northBCconstantValue$$, \
+$CellContext`westBCtype$$, $CellContext`westbc$$, \
+$CellContext`westBCconstantValue$$, $CellContext`eastBCtype$$, \
+$CellContext`eastbc$$, $CellContext`eastBCconstantValue$$, \
+$CellContext`southBCtype$$, $CellContext`southbc$$, \
+$CellContext`southBCconstantValue$$, $CellContext`zAxisScale$$, \
+$CellContext`angle$$, 
+          Unevaluated[$CellContext`gstatusMessage$$]]; FinishDynamic[]; 
+       Framed[$CellContext`finalDisplayImage$$, FrameStyle -> Directive[
+           Thickness[0.005], Gray], ImageMargins -> 0]), "Specifications" :> {
+        Item[
+         Grid[{{
+            Item[
+             Grid[{{
+                Grid[{{
+                   Button[
+                    Text[
+                    Style["solve", 12]], {$CellContext`event$$ = "run_button"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {50, 28}]}, {
+                   Button[
+                    Text[
+                    Style["reset", 12]], {$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {50, 28}]}}, Spacings -> {0, 0.2}], 
+                Grid[{{
+                   Row[{
+                    Style["k", Italic, 11], 
+                    Spacer[3], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`kValue$$, {$CellContext`kValue$$ = #; \
+$CellContext`event$$ = "k_changed"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {0., 
+                    100., 1.}, ImageSize -> Tiny, ContinuousAction -> False], 
+                    Spacer[2], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt2[$CellContext`kValue$$, {3, 0}]], 
+                    11]]}], 
+                   Row[{
+                    Style["\[Theta]", 11], 
+                    Spacer[3], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`angle$$, {$CellContext`angle$$ = #; \
+$CellContext`event$$ = "k_changed"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0, 2 Pi, Rational[1, 100] Pi}, ImageSize -> Tiny, 
+                    ContinuousAction -> False], 
+                    Spacer[2], 
+                    Text[
+                    Style[
+                    Row[{
+                    Dynamic[
+                    $CellContext`padIt2[(180./Pi) $CellContext`angle$$, {5, 
+                    2}]], Degree}], 11]]}]}, {
+                   Row[{
+                    Text[
+                    Style["test case", 12]], 
+                    Spacer[2], 
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`testCase$$, {$CellContext`testCase$$ = \
+#; Which[$CellContext`testCase$$ == 
+                    1, $CellContext`angle$$ = 0.; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/4; $CellContext`lenX$$ = 
+                    1; $CellContext`lenY$$ = 1; $CellContext`kValue$$ = 
+                    5; $CellContext`a$$ = 1.; $CellContext`b$$ = 
+                    0.; $CellContext`c$$ = 0.; $CellContext`x0$$ = 
+                    0.; $CellContext`y0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    1; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    2, $CellContext`angle$$ = 0.; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    True; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/12; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    16; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    3, $CellContext`angle$$ = 
+                    109 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    True; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/12; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    52; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`northbc$$ = 
+                    1& ; $CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    1& ; $CellContext`westBCconstantValue$$ = 
+                    0; $CellContext`eastBCtype$$ = 
+                    "Dirichlet"; $CellContext`eastbc$$ = 
+                    1& ; $CellContext`eastBCconstantValue$$ = 
+                    0; $CellContext`southBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southbc$$ = 
+                    1& ; $CellContext`southBCconstantValue$$ = 
+                    0, $CellContext`testCase$$ == 
+                    4, $CellContext`angle$$ = 
+                    208 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/16; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    7; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Dirichlet"; $CellContext`northbc$$ = 
+                    Cos[(2 Pi) #]& ; $CellContext`northBCconstantValue$$ = 
+                    1.; $CellContext`westBCtype$$ = 
+                    "Sommerfeld"; $CellContext`eastBCtype$$ = 
+                    "Sommerfeld"; $CellContext`southBCtype$$ = 
+                    "Dirichlet"; $CellContext`southbc$$ = 
+                    Cos[Pi #]& ; $CellContext`southBCconstantValue$$ = 
+                    1., $CellContext`testCase$$ == 
+                    5, $CellContext`angle$$ = 
+                    208 Degree; $CellContext`zAxisScale$$ = 
+                    False; $CellContext`centerGrid$$ = 
+                    True; $CellContext`addFaceGrids$$ = 
+                    False; $CellContext`plotPerformanceGoal$$ = 
+                    "Quality"; $CellContext`h$$ = 1/16; $CellContext`lenX$$ = 
+                    2; $CellContext`lenY$$ = 2; $CellContext`kValue$$ = 
+                    7; $CellContext`a$$ = 1.; $CellContext`y0$$ = 
+                    0.; $CellContext`x0$$ = 0.; $CellContext`stdx$$ = 
+                    0.3; $CellContext`stdy$$ = 
+                    0.3; $CellContext`forceTermSelection$$ = 
+                    3; $CellContext`plotToShow$$ = 
+                    "solution and contour"; $CellContext`northBCtype$$ = 
+                    "Sommerfeld"; $CellContext`eastBCtype$$ = 
+                    "Sommerfeld"; $CellContext`westBCtype$$ = 
+                    "Dirichlet"; $CellContext`westbc$$ = 
+                    Cos[(2 Pi) #]& ; $CellContext`westBCconstantValue$$ = 
+                    1.; $CellContext`southBCtype$$ = 
+                    "Dirichlet"; $CellContext`southbc$$ = 
+                    Cos[Pi #]& ; $CellContext`southBCconstantValue$$ = 
+                    1.]; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    1 -> Style["1", 11], 2 -> Style["2", 11], 3 -> 
+                    Style["3", 11], 4 -> Style["4", 11], 5 -> Style["5", 11]},
+                     ImageSize -> All, ContinuousAction -> False]}], 
+                   Text[
+                    Style[
+                    Row[{"-", "\[Del]"^2, 
+                    Style["u", Italic], " - ", Style["k", Italic]^2, 
+                    Style["u", Italic], " = ", 
+                    Style["f", Italic], "(", 
+                    Style["x", Italic], ", ", 
+                    Style["y", Italic], ")"}], 12]]}}, Alignment -> Center, 
+                 Spacings -> {0.5, 0.4}, Frame -> {None, All}, FrameStyle -> 
+                 Directive[
+                   Thickness[0.005], 
+                   GrayLevel[0.5]]]}}, Alignment -> Center, 
+              Spacings -> {0.2, 0}], Alignment -> {Center, Top}], 
+            Item[
+             Grid[{{
+                PopupMenu[
+                 
+                 Dynamic[$CellContext`plotToShow$$, \
+{$CellContext`plotToShow$$ = #; $CellContext`event$$ = "plot_changed", 
+                   AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                 "solution and contour" -> Style["solution + contour", 11], 
+                  "solution and density" -> Style["solution + density", 11], 
+                  "solution data" -> Style["solution data", 11], 
+                  "system matrix information" -> Style["system matrix", 11]}, 
+                 ImageSize -> All, ContinuousAction -> False], 
+                Grid[{{
+                   RadioButtonBar[
+                    
+                    Dynamic[$CellContext`plotPerformanceGoal$$, \
+{$CellContext`plotPerformanceGoal$$ = #; $CellContext`event$$ = 
+                    "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    "Speed" -> Text[
+                    Style["speed", 11]], "Quality" -> Text[
+                    Style["quality", 11]]}, Appearance -> "Vertical"]}, {
+                   Style["plot", 11]}}], 
+                Grid[{{
+                   Checkbox[
+                    
+                    Dynamic[$CellContext`addFaceGrids$$, \
+{$CellContext`addFaceGrids$$ = #; $CellContext`event$$ = "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}, {
+                   Style[
+                    Column[{"face", "grids"}], 11]}}], 
+                Grid[{{
+                   Checkbox[
+                    
+                    Dynamic[$CellContext`zAxisScale$$, \
+{$CellContext`zAxisScale$$ = #; $CellContext`event$$ = "plot_changed", 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}, {
+                   Style[
+                    Column[{"zoom", "scale"}], 11]}}]}}, Alignment -> Center, 
+              Spacings -> {0.7, 0.4}, Frame -> {All}, FrameStyle -> Directive[
+                Thickness[0.005], 
+                GrayLevel[0.5]]], Alignment -> {Center, Top}]}}, 
+          Spacings -> {0.2, 0}, Alignment -> {Center, Top}], ControlPlacement -> 
+         Top], 
+        Item[
+         Grid[{{
+            TabView[{Style["geometry/boundary conditions", 11] -> Item[
+                Grid[{{
+                   Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["grid", 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`h$$, {$CellContext`h$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    Rational[1, 4] -> Style[
+                    Rational[1, 4], 11], Rational[1, 6] -> Style[
+                    Rational[1, 6], 11], Rational[1, 8] -> Style[
+                    Rational[1, 8], 11], Rational[1, 10] -> Style[
+                    Rational[1, 10], 11], Rational[1, 12] -> Style[
+                    Rational[1, 12], 11], Rational[1, 14] -> Style[
+                    Rational[1, 14], 11], Rational[1, 16] -> Style[
+                    Rational[1, 16], 11]}], 
+                    Spacer[1], 
+                    Style["center grid ", 12], 
+                    Checkbox[
+                    
+                    Dynamic[$CellContext`centerGrid$$, \
+{$CellContext`centerGrid$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ]]}}, 
+                    Spacings -> {0.2, 0.5}]}, {
+                    Grid[{{
+                    Text[
+                    Style[
+                    Row[{
+                    Style["x", Italic], " length"}], 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`lenX$$, {$CellContext`lenX$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {1, 
+                    2}], 
+                    Spacer[95], 
+                    Text[
+                    Style[
+                    Row[{
+                    Style["y", Italic], " length"}], 12]], 
+                    SetterBar[
+                    
+                    Dynamic[$CellContext`lenY$$, {$CellContext`lenY$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {1, 
+                    2}]}}, Spacings -> {0.6, 0.1}]}}, Spacings -> {0, 0.5}], 
+                   SpanFromLeft}, {
+                   Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`northBCtype$$, \
+{$CellContext`northBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`northBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"], 
+                    SpanFromLeft}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`northbc$$, {$CellContext`northbc$$ = \
+#; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a x", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["x", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["x", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["x", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    SpanFromLeft}, {
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`northBCconstantValue$$, \
+{$CellContext`northBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`northBCconstantValue$$, {
+                    3, 1}]], 10]], 
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`northBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`northBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`northBCtype$$ == "Dirichlet"]]}}, 
+                    Spacings -> {0.2, 0}, Alignment -> Center, Frame -> None],
+                     SpanFromLeft}}, Frame -> None, Spacings -> {0.1, 0}, 
+                    Alignment -> Center], SpanFromLeft}, {
+                   Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`westBCtype$$, \
+{$CellContext`westBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`westBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"]}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`westbc$$, {$CellContext`westbc$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a y", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["y", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["y", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["y", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]]}, {
+                    Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`westBCconstantValue$$, \
+{$CellContext`westBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> Dynamic[$CellContext`westBCtype$$ == 
+                    "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`westBCconstantValue$$, {
+                    3, 1}]], 10]]}, {
+                    Row[{
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`westBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]], 
+                    Spacer[2], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`westBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`westBCtype$$ == "Dirichlet"]]}], 
+                    SpanFromLeft}}, Spacings -> {0.1, 0}, Alignment -> 
+                    Center]}}, Alignment -> Center, Spacings -> {0, 0}]}}], 
+                   Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`eastBCtype$$, \
+{$CellContext`eastBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`eastBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"], 
+                    SpanFromLeft}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`eastbc$$, {$CellContext`eastbc$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(
+                    1.& ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a y", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["y", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["y", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["y", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]], 
+                    SpanFromLeft}, {
+                    Grid[{{
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`eastBCconstantValue$$, \
+{$CellContext`eastBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> Dynamic[$CellContext`eastBCtype$$ == 
+                    "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`eastBCconstantValue$$, {
+                    3, 1}]], 10]]}, {
+                    Row[{
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`eastBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]], 
+                    Spacer[2], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`eastBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`eastBCtype$$ == "Dirichlet"]]}], 
+                    SpanFromLeft}}, Spacings -> {0.1, 0}, Alignment -> 
+                    Center]}}, Alignment -> Center, Spacings -> {0, 0}], 
+                    SpanFromLeft}}]}, {
+                   Grid[{{
+                    RadioButtonBar[
+                    
+                    Dynamic[$CellContext`southBCtype$$, \
+{$CellContext`southBCtype$$ = #; If[
+                    
+                    And[$CellContext`northBCtype$$ == 
+                    "Sommerfeld", $CellContext`southBCtype$$ == 
+                    "Sommerfeld", $CellContext`westBCtype$$ == 
+                    "Sommerfeld", $CellContext`eastBCtype$$ == 
+                    "Sommerfeld"], $CellContext`southBCtype$$ = 
+                    "Dirichlet", $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]]}& ], {
+                    "Dirichlet" -> Text[
+                    Style["Dirichlet", 10]], "Sommerfeld" -> Text[
+                    Style["Sommerfeld", 10]]}, Appearance -> "Vertical"]}, {
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`southbc$$, {$CellContext`southbc$$ = \
+#; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {(1.& 
+                    ) -> Style["a", Italic, 11], (#& ) -> 
+                    Style["a x", Italic, 11], (#^2& ) -> Style[
+                    Row[{
+                    Style["a ", Italic], Style["x", Italic]^2}], 11], (Cos[
+                    Pi #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(\[Pi] ", 
+                    Style["x", Italic], ")"}], 11], (Cos[(2 Pi) #]& ) -> Style[
+                    Row[{
+                    Style["a", Italic], " cos(2 \[Pi] ", 
+                    Style["x", Italic], ")"}], 11]}, ImageSize -> All, 
+                    ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]]}, {
+                    Grid[{{
+                    Text[
+                    Style["a", Italic, 12]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`southBCconstantValue$$, \
+{$CellContext`southBCconstantValue$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {-20,
+                     20, 0.1}, ImageSize -> Tiny, ContinuousAction -> False, 
+                    Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`southBCconstantValue$$, {
+                    3, 1}]], 10]], 
+                    Button[
+                    Text[
+                    Style[
+                    "zero", 11]], {$CellContext`southBCconstantValue$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]], 
+                    Button[
+                    Text[
+                    Style[
+                    "one", 11]], {$CellContext`southBCconstantValue$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}, Enabled -> 
+                    Dynamic[$CellContext`southBCtype$$ == "Dirichlet"]]}}, 
+                    Spacings -> {0.2, 0}]}}], SpanFromLeft}}, 
+                 Spacings -> {2, 0.3}, Alignment -> Center, Frame -> All, 
+                 FrameStyle -> Directive[
+                   Thickness[0.005], 
+                   GrayLevel[0.5]]], Alignment -> {Center, Top}], 
+              Style["source", 11] -> Item[
+                Grid[{{
+                   Item[
+                    PopupMenu[
+                    
+                    Dynamic[$CellContext`forceTermSelection$$, \
+{$CellContext`forceTermSelection$$ = #; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    1 -> Style["a", Italic, 12], 3 -> Style[
+                    Row[{
+                    Style["a", Italic], " exp (", Row[{
+                    Style["x", Italic], " - ", Subscript[
+                    Style["x", Italic], "0"]^2}] Subscript["2 \[Sigma]", 
+                    Style["x", Italic]]^(-2), " + ", Row[{
+                    Style["y", Italic], " - ", Subscript[
+                    Style["y", Italic], "0"]^2}] Subscript["2 \[Sigma]", 
+                    Style["y", Italic]]^(-2), ")"}], 12], 4 -> Style[
+                    Row[{
+                    Style["a", Italic], " ( cos( ", 
+                    Style["b", Italic], " \[Pi] ", 
+                    Style["x", Italic], " ) + sin( ", 
+                    Style["c", Italic], " \[Pi] ", 
+                    Style["y", Italic], " ) )"}], 12], 5 -> Style[
+                    Row[{
+                    Style["a", Italic], " cos( ", 
+                    Style["b", Italic], " \[Pi] ", 
+                    Style["x", Italic], " ) * sin( ", 
+                    Style["c", Italic], " \[Pi] ", 
+                    Style["y", Italic], " )"}], 12]}, ImageSize -> {260, 40}, 
+                    ContinuousAction -> False], Alignment -> {Center}], 
+                   SpanFromLeft}, {
+                   Spacer[2], 
+                   Text[
+                    Style["a", Italic, 12]], 
+                   Manipulator[
+                    
+                    Dynamic[$CellContext`a$$, {$CellContext`a$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False], 
+                   Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`a$$, {3, 1}]], 11]], 
+                   Button[
+                    Text[
+                    Style[
+                    "zero", 10]], {$CellContext`a$$ = 0; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                     ImageSize -> {45, 20}], 
+                   Button[
+                    Text[
+                    Style[
+                    "one", 10]], {$CellContext`a$$ = 1; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                     ImageSize -> {45, 20}]}, {
+                   Spacer[2], 
+                   Text[
+                    Style["b", Italic, 12]], 
+                   Manipulator[
+                    
+                    Dynamic[$CellContext`b$$, {$CellContext`b$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                    Dynamic[
+                    
+                    Or[$CellContext`forceTermSelection$$ == 
+                    2, $CellContext`forceTermSelection$$ == 
+                    4, $CellContext`forceTermSelection$$ == 5]]], 
+                   Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`b$$, {3, 1}]], 11]], 
+                   Button[
+                    Text[
+                    Style[
+                    "zero", 10]], {$CellContext`b$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}], 
+                   Button[
+                    Text[
+                    Style[
+                    "one", 10]], {$CellContext`b$$ = 1.; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                     ImageSize -> {45, 20}]}, {
+                   Spacer[2], 
+                   Text[
+                    Style["c", Italic, 12]], 
+                   Manipulator[
+                    
+                    Dynamic[$CellContext`c$$, {$CellContext`c$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-10., 10., 0.1}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                    Dynamic[
+                    
+                    Or[$CellContext`forceTermSelection$$ == 
+                    4, $CellContext`forceTermSelection$$ == 5]]], 
+                   Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`c$$, {3, 1}]], 11]], 
+                   Button[
+                    Text[
+                    Style[
+                    "zero", 10]], {$CellContext`c$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}], 
+                   Button[
+                    Text[
+                    Style[
+                    "one", 10]], {$CellContext`c$$ = 1.; $CellContext`event$$ = 
+                    "reset"; AddTo[$CellContext`gtick$$, $CellContext`del$$]},
+                     ImageSize -> {45, 20}]}, {
+                   Spacer[2], 
+                   Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["x", Italic], "0"]}], 12]], 
+                   Manipulator[
+                    
+                    Dynamic[$CellContext`x0$$, {$CellContext`x0$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-1.5, 1.5, 0.01}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                   Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`x0$$, {3, 2}]], 11]], 
+                   Button[
+                    Text[
+                    Style[
+                    "zero", 10]], {$CellContext`x0$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}], 
+                   Button[
+                    Text[
+                    Style[
+                    "one", 10]], {$CellContext`x0$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}]}, {
+                   Spacer[2], 
+                   Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["y", Italic], "0"]}], 12]], 
+                   Manipulator[
+                    
+                    Dynamic[$CellContext`y0$$, {$CellContext`y0$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], \
+{-1.5, 1.5, 0.01}, ImageSize -> Small, ContinuousAction -> False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                   Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`y0$$, {3, 2}]], 11]], 
+                   Button[
+                    Text[
+                    Style[
+                    "zero", 10]], {$CellContext`y0$$ = 
+                    0.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}], 
+                   Button[
+                    Text[
+                    Style[
+                    "one", 10]], {$CellContext`y0$$ = 
+                    1.; $CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}, 
+                    ImageSize -> {45, 20}]}, {
+                   Item[
+                    Row[{
+                    Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["\[Sigma]"], 
+                    Style["x", Italic]]}], 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`stdx$$, {$CellContext`stdx$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0.1, 3, 0.05}, ImageSize -> Tiny, ContinuousAction -> 
+                    False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`stdx$$, {3, 2}]], 11]], 
+                    Spacer[20], 
+                    Text[
+                    Style[
+                    Row[{
+                    Subscript[
+                    Style["\[Sigma]"], 
+                    Style["y", Italic]]}], 11]], 
+                    Manipulator[
+                    
+                    Dynamic[$CellContext`stdy$$, {$CellContext`stdy$$ = #; \
+$CellContext`event$$ = "reset"; 
+                    AddTo[$CellContext`gtick$$, $CellContext`del$$]}& ], {
+                    0.1, 3, 0.05}, ImageSize -> Tiny, ContinuousAction -> 
+                    False, Enabled -> 
+                    Dynamic[$CellContext`forceTermSelection$$ == 3]], 
+                    Text[
+                    Style[
+                    Dynamic[
+                    $CellContext`padIt1[$CellContext`stdy$$, {3, 2}]], 11]]}],
+                     Alignment -> Center], SpanFromLeft}, {
+                   Dynamic[
+                    Grid[{{
+                    Plot3D[
+                    Evaluate[
+                    $CellContext`forceTermExpressionCommon[$CellContext`\
+forceTermSelection$$, $CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`stdy$$, $CellContext`stdx$$, $CellContext`x0$$, \
+$CellContext`y0$$, $CellContext`x, $CellContext`y]], 
+                    Evaluate[{$CellContext`x, 
+                    Part[$CellContext`grid$$, -1, 1, 1], 
+                    Part[$CellContext`grid$$, -1, -1, 1]}], {$CellContext`y, 
+                    Part[$CellContext`grid$$, -1, 1, 2], 
+                    Part[$CellContext`grid$$, 1, 1, 2]}, 
+                    PerformanceGoal -> $CellContext`plotPerformanceGoal$$, 
+                    ImagePadding -> {{10, 10}, {20, 25}}, ImageMargins -> 1, 
+                    PlotRange -> All, PlotLabel -> Text[
+                    Style[
+                    Row[{
+                    Style["f", Italic], "(", 
+                    Style["x", Italic], ", ", 
+                    Style["y", Italic], ") = ", 
+                    $CellContext`forceTermUsedFormatCommon[$CellContext`\
+forceTermSelection$$, $CellContext`a$$, $CellContext`b$$, $CellContext`c$$, \
+$CellContext`stdy$$, $CellContext`stdx$$, $CellContext`x0$$, \
+$CellContext`y0$$, $CellContext`x, $CellContext`y]}], 11]], AxesLabel -> {
+                    Text[
+                    Style["x", Italic, 11]], 
+                    Text[
+                    Style["y", Italic, 11]], None}, 
+                    ImageSize -> {$CellContext`ContentSizeW + 
+                    30, $CellContext`ContentSizeH - 240}, TicksStyle -> 9]}}, 
+                    Spacings -> {0, 0}, Frame -> None]], SpanFromLeft}}, 
+                 Spacings -> {0.3, 0.2}, Alignment -> Left, 
+                 Frame -> {None, All}, FrameStyle -> Directive[
+                   Thickness[0.005], 
+                   GrayLevel[0.5]]], Alignment -> {Center, Top}]}, 
+             ImageSize -> {315, 410}]}}, Spacings -> {0.1, 0.}, Alignment -> 
+          Center], ControlPlacement -> 
+         Left], {{$CellContext`gstatusMessage$$, "reseting..."}, 0, 
+         ControlType -> None}, {{$CellContext`gtick$$, 0}, 0, ControlType -> 
+         None}, {{$CellContext`del$$, 2.220446049250313*^-16}, 0, ControlType -> 
+         None}, {{$CellContext`testCase$$, 1}, 0, ControlType -> 
+         None}, {{$CellContext`angle$$, 0.}, 0, ControlType -> 
+         None}, {{$CellContext`systemMatrix$$, {}}, 0, ControlType -> 
+         None}, {{$CellContext`rightHandVector$$, {}}, 0, ControlType -> 
+         None}, {{$CellContext`zAxisScale$$, False}, 0, ControlType -> 
+         None}, {{$CellContext`centerGrid$$, True}, 0, ControlType -> 
+         None}, {{$CellContext`event$$, "run_button"}, 0, ControlType -> 
+         None}, {{$CellContext`finalDisplayImage$$, {}}, 0, ControlType -> 
+         None}, {{$CellContext`addFaceGrids$$, False}, 0, ControlType -> 
+         None}, {{$CellContext`plotPerformanceGoal$$, "Quality"}, 0, 
+         ControlType -> None}, {{$CellContext`h$$, 
+          Rational[1, 4]}, 0, ControlType -> None}, {{$CellContext`lenX$$, 1},
+          0, ControlType -> None}, {{$CellContext`lenY$$, 1}, 0, ControlType -> 
+         None}, {{$CellContext`kValue$$, 5.}, 0, ControlType -> 
+         None}, {{$CellContext`a$$, 1.}, 0, ControlType -> 
+         None}, {{$CellContext`b$$, 0.}, 0, ControlType -> 
+         None}, {{$CellContext`c$$, 0.}, 0, ControlType -> 
+         None}, {{$CellContext`x0$$, 0.}, 0, ControlType -> 
+         None}, {{$CellContext`y0$$, 0.}, 0, ControlType -> 
+         None}, {{$CellContext`stdx$$, 0.3}, 0, ControlType -> 
+         None}, {{$CellContext`stdy$$, 0.3}, 0, ControlType -> 
+         None}, {{$CellContext`forceTermSelection$$, 1}, 0, ControlType -> 
+         None}, {{$CellContext`plotToShow$$, "solution and contour"}, 0, 
+         ControlType -> None}, {{$CellContext`northBCtype$$, "Sommerfeld"}, 0,
+          ControlType -> None}, {{$CellContext`northbc$$, 1& }, 0, 
+         ControlType -> None}, {{$CellContext`northBCconstantValue$$, 0}, 0, 
+         ControlType -> None}, {{$CellContext`westBCtype$$, "Dirichlet"}, 0, 
+         ControlType -> None}, {{$CellContext`westbc$$, 1& }, 0, ControlType -> 
+         None}, {{$CellContext`westBCconstantValue$$, 0}, 0, ControlType -> 
+         None}, {{$CellContext`eastBCtype$$, "Dirichlet"}, 0, ControlType -> 
+         None}, {{$CellContext`eastbc$$, 1& }, 0, ControlType -> 
+         None}, {{$CellContext`eastBCconstantValue$$, 0}, 0, ControlType -> 
+         None}, {{$CellContext`southBCtype$$, "Sommerfeld"}, 0, ControlType -> 
+         None}, {{$CellContext`southbc$$, 1& }, 0, ControlType -> 
+         None}, {{$CellContext`southBCconstantValue$$, 0}, 0, ControlType -> 
+         None}, {{$CellContext`forceGrid$$, {{-1, -1, -1, -1, -1}, {-1, -1, \
+-1, -1, -1}, {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1}, {-1, -1, -1, -1, \
+-1}}}, 0, ControlType -> None}, {{$CellContext`grid$$, CompressedData["
+1:eJxTTMoPSmVmYGBghWImBhh4sB9K20PoC2h8uDqYvD0qH4Pej6ruAhofBi7Y
+Y6cx7NmPpg+Njw7Q7cHwB8w9OGh0e9D9gRFOaDS6OIa9aP5ChBsAUwI3UQ==
+
+          "]}, 0, ControlType -> None}, {{$CellContext`u$$, {}}, 0, 
+         ControlType -> None}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        ContinuousAction -> False, SynchronousInitialization -> True, 
+        Alignment -> Center, ImageMargins -> 0, FrameMargins -> 0, 
+        TrackedSymbols :> {$CellContext`gtick$$}, Paneled -> True, Frame -> 
+        False}, "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{613., {255., 260.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>(({$CellContext`process[
+          Pattern[$CellContext`$u, 
+           Blank[]], 
+          Pattern[$CellContext`$forceGrid, 
+           Blank[]], 
+          Pattern[$CellContext`$grid, 
+           Blank[]], 
+          Pattern[$CellContext`$AA, 
+           Blank[]], 
+          Pattern[$CellContext`$rightHandVector, 
+           Blank[]], 
+          Pattern[$CellContext`$finalDisplayImage, 
+           Blank[]], 
+          Pattern[$CellContext`event, 
+           Blank[]], 
+          Pattern[$CellContext`hx, 
+           Blank[]], 
+          Pattern[$CellContext`hy, 
+           Blank[]], 
+          Pattern[$CellContext`Lx, 
+           Blank[]], 
+          Pattern[$CellContext`Ly, 
+           Blank[]], 
+          Pattern[$CellContext`centerGrid, 
+           Blank[]], 
+          Pattern[$CellContext`addFaceGrids, 
+           Blank[]], 
+          Pattern[$CellContext`plotPerformanceGoal, 
+           Blank[]], 
+          Pattern[$CellContext`kValue, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`plotToShow, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`northbc, 
+           Blank[]], 
+          Pattern[$CellContext`northBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westbc, 
+           Blank[]], 
+          Pattern[$CellContext`westBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastbc, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southbc, 
+           Blank[]], 
+          Pattern[$CellContext`southBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`zAxisScale, 
+           Blank[]], 
+          Pattern[$CellContext`angle, 
+           Blank[]], 
+          Pattern[$CellContext`gstatusMessage, 
+           Blank[]]] := 
+        Module[{$CellContext`u = $CellContext`$u, $CellContext`AA = \
+$CellContext`$AA, $CellContext`forceGrid = $CellContext`$forceGrid, \
+$CellContext`grid = $CellContext`$grid, $CellContext`rightHandVector = \
+$CellContext`$rightHandVector, $CellContext`finalDisplayImage = \
+$CellContext`$finalDisplayImage}, If[
+            
+            StringMatchQ[$CellContext`event, {
+             "reset", 
+              "run_button"}], {$CellContext`grid, $CellContext`forceGrid, \
+$CellContext`u, $CellContext`AA, $CellContext`rightHandVector} = \
+$CellContext`initializeSystem[$CellContext`hx, $CellContext`hy, \
+$CellContext`Lx, $CellContext`Ly, $CellContext`centerGrid, \
+$CellContext`forceTermSelection, $CellContext`a, $CellContext`b, \
+$CellContext`c, $CellContext`x0, $CellContext`stdx, $CellContext`y0, \
+$CellContext`stdy, $CellContext`northBCtype, $CellContext`northbc, \
+$CellContext`northBCconstantValue, $CellContext`westBCtype, \
+$CellContext`westbc, $CellContext`westBCconstantValue, \
+$CellContext`eastBCtype, $CellContext`eastbc, \
+$CellContext`eastBCconstantValue, $CellContext`southBCtype, \
+$CellContext`southbc, $CellContext`southBCconstantValue, $CellContext`kValue, \
+$CellContext`angle]]; If[
+            Or[$CellContext`event == "run_button", 
+             And[
+              
+              StringMatchQ[$CellContext`event, {
+               "reset", "reset", "k_changed"}], 
+              
+              StringMatchQ[$CellContext`plotToShow, {
+               "system matrix information", 
+                "solution data"}]]], $CellContext`u = \
+$CellContext`solve[$CellContext`u, $CellContext`AA, \
+$CellContext`rightHandVector, $CellContext`northBCtype, \
+$CellContext`westBCtype, $CellContext`eastBCtype, $CellContext`southBCtype]]; \
+$CellContext`finalDisplayImage = $CellContext`makeFinalPlot[$CellContext`u, \
+$CellContext`AA, $CellContext`Lx, $CellContext`Ly, $CellContext`grid, \
+$CellContext`plotToShow, $CellContext`plotPerformanceGoal, \
+$CellContext`addFaceGrids, $CellContext`zAxisScale]; \
+$CellContext`gstatusMessage = 
+           "ready.."; {$CellContext`finalDisplayImage, $CellContext`u, \
+$CellContext`forceGrid, $CellContext`grid, $CellContext`AA, \
+$CellContext`rightHandVector}], $CellContext`initializeSystem[
+          Pattern[$CellContext`hx, 
+           Blank[]], 
+          Pattern[$CellContext`hy, 
+           Blank[]], 
+          Pattern[$CellContext`Lx, 
+           Blank[]], 
+          Pattern[$CellContext`Ly, 
+           Blank[]], 
+          Pattern[$CellContext`centerGrid, 
+           Blank[]], 
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`northbc, 
+           Blank[]], 
+          Pattern[$CellContext`northBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westbc, 
+           Blank[]], 
+          Pattern[$CellContext`westBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastbc, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southbc, 
+           Blank[]], 
+          Pattern[$CellContext`southBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`kValue, 
+           Blank[]], 
+          Pattern[$CellContext`angle, 
+           Blank[]]] := 
+        Module[{$CellContext`nCol, $CellContext`nRow, $CellContext`grid, \
+$CellContext`forceGrid, $CellContext`u, $CellContext`AA, \
+$CellContext`rightHandVector}, {$CellContext`nRow, $CellContext`nCol} = \
+$CellContext`getSolutionDomainDimensions[$CellContext`hx, $CellContext`hy, \
+$CellContext`Lx, $CellContext`Ly]; 
+          With[{$CellContext`$nRow = $CellContext`nRow, $CellContext`$nCol = \
+$CellContext`nCol}, $CellContext`u = 
+            Table[0., {$CellContext`$nRow}, {$CellContext`$nCol}]]; \
+$CellContext`grid = $CellContext`makeGridCommon[$CellContext`hx, \
+$CellContext`hy, $CellContext`Lx, $CellContext`Ly, $CellContext`centerGrid]; \
+$CellContext`forceGrid = Which[$CellContext`forceTermSelection == 1, 
+             
+             With[{$CellContext`$nRow = $CellContext`nRow, $CellContext`$nCol = \
+$CellContext`nCol}, 
+              
+              Table[$CellContext`a, {$CellContext`$nRow}, \
+{$CellContext`$nCol}]], $CellContext`forceTermSelection == 2, 
+             Map[$CellContext`evaluateForceCommon[
+               Part[#, 1], 
+               
+               Part[#, 
+                2], $CellContext`a, $CellContext`b, $CellContext`c]& , \
+$CellContext`grid, {2}], $CellContext`forceTermSelection == 3, 
+             
+             Map[$CellContext`a 
+              Exp[(Part[#, 1] - $CellContext`x0)^2/(
+                 2 $CellContext`stdx^2) + (Part[#, 2] - $CellContext`y0)^2/(
+                 2 $CellContext`stdy^2)]& , $CellContext`grid, {
+              2}], $CellContext`forceTermSelection == 4, 
+             
+             Map[$CellContext`a (Cos[($CellContext`b Pi) Part[#, 1]] + 
+               Sin[($CellContext`c Pi) Part[#, 2]])& , $CellContext`grid, {
+              2}], $CellContext`forceTermSelection == 5, 
+             
+             Map[$CellContext`a (Cos[($CellContext`b Pi) Part[#, 1]] 
+               Sin[($CellContext`c Pi) Part[#, 2]])& , $CellContext`grid, {
+              2}]]; $CellContext`forceGrid = 
+           Re[$CellContext`forceGrid]; $CellContext`u = \
+$CellContext`setBoundaryConditions[$CellContext`u, $CellContext`grid, \
+$CellContext`northBCtype, $CellContext`northbc, \
+$CellContext`northBCconstantValue, $CellContext`westBCtype, \
+$CellContext`westbc, $CellContext`westBCconstantValue, \
+$CellContext`eastBCtype, $CellContext`eastbc, \
+$CellContext`eastBCconstantValue, $CellContext`southBCtype, \
+$CellContext`southbc, $CellContext`southBCconstantValue]; {$CellContext`AA, \
+$CellContext`rightHandVector} = \
+$CellContext`makeSystemMatrixAndRightHandSide[$CellContext`u, \
+$CellContext`hx, $CellContext`kValue, $CellContext`northBCtype, \
+$CellContext`westBCtype, $CellContext`eastBCtype, $CellContext`southBCtype, \
+$CellContext`forceGrid, $CellContext`angle]; {$CellContext`grid, \
+$CellContext`forceGrid, $CellContext`u, $CellContext`AA, \
+$CellContext`rightHandVector}], $CellContext`getSolutionDomainDimensions[
+          Pattern[$CellContext`hx, 
+           Blank[]], 
+          Pattern[$CellContext`hy, 
+           Blank[]], 
+          Pattern[$CellContext`Lx, 
+           Blank[]], 
+          Pattern[$CellContext`Ly, 
+           Blank[]]] := {$CellContext`Ly/$CellContext`hy + 
+          1, $CellContext`Lx/$CellContext`hx + 1}, $CellContext`makeGridCommon[
+          Pattern[$CellContext`hx, 
+           Blank[]], 
+          Pattern[$CellContext`hy, 
+           Blank[]], 
+          Pattern[$CellContext`Lx, 
+           Blank[]], 
+          Pattern[$CellContext`Ly, 
+           Blank[]], 
+          Pattern[$CellContext`centerGrid, 
+           Blank[]]] := 
+        Module[{$CellContext`i, $CellContext`j, $CellContext`nx, \
+$CellContext`ny, $CellContext`grid}, {$CellContext`ny, $CellContext`nx} = \
+$CellContext`getSolutionDomainDimensions[$CellContext`hx, $CellContext`hy, \
+$CellContext`Lx, $CellContext`Ly]; 
+          With[{$CellContext`$icfrom = 
+             Floor[$CellContext`ny/2], $CellContext`$icto = -
+              Floor[$CellContext`ny/2], $CellContext`$jcfrom = -
+              Floor[$CellContext`nx/2], $CellContext`$jcto = 
+             Floor[$CellContext`nx/2], $CellContext`$ifrom = $CellContext`ny - 
+              1, $CellContext`$jto = $CellContext`nx - 1}, $CellContext`grid = 
+            If[$CellContext`centerGrid, 
+              
+              Table[{$CellContext`j $CellContext`hx, $CellContext`i \
+$CellContext`hy}, {$CellContext`i, $CellContext`$icfrom, $CellContext`$icto, \
+-1}, {$CellContext`j, $CellContext`$jcfrom, $CellContext`$jcto}], 
+              
+              Table[{$CellContext`j $CellContext`hx, $CellContext`i \
+$CellContext`hy}, {$CellContext`i, $CellContext`$ifrom, 
+                0, -1}, {$CellContext`j, 0, $CellContext`$jto}]]]; 
+          N[$CellContext`grid]], $CellContext`evaluateForceCommon = ReplaceAll[
+          Unevaluated[#3 #^#6 + #4 #2^#7], HoldPattern[0.^0.] :> 
+          0.]& , $CellContext`setBoundaryConditions[
+          Pattern[$CellContext`$u, 
+           Blank[]], 
+          Pattern[$CellContext`grid, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`northbc, 
+           Blank[]], 
+          Pattern[$CellContext`northBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westbc, 
+           Blank[]], 
+          Pattern[$CellContext`westBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastbc, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCconstantValue, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southbc, 
+           Blank[]], 
+          Pattern[$CellContext`southBCconstantValue, 
+           Blank[]]] := 
+        Module[{$CellContext`u = $CellContext`$u, $CellContext`nRow, \
+$CellContext`nCol, $CellContext`i, $CellContext`j}, {$CellContext`nRow, \
+$CellContext`nCol} = Dimensions[$CellContext`u]; 
+          If[$CellContext`northBCtype == "Dirichlet", Part[$CellContext`u, 1, 
+              Span[
+              2, $CellContext`nCol - 1]] = $CellContext`northBCconstantValue 
+             Table[
+               $CellContext`northbc[
+                
+                Part[$CellContext`grid, 1, $CellContext`j, 
+                 1]], {$CellContext`j, 2, $CellContext`nCol - 1}]]; 
+          If[$CellContext`westBCtype == "Dirichlet", Part[$CellContext`u, 
+              Span[2, $CellContext`nRow - 1], 
+              1] = $CellContext`westBCconstantValue Table[
+               $CellContext`westbc[
+                
+                Part[$CellContext`grid, $CellContext`i, 1, 
+                 2]], {$CellContext`i, 2, $CellContext`nRow - 1}]]; 
+          If[$CellContext`eastBCtype == "Dirichlet", Part[$CellContext`u, 
+              Span[
+              2, $CellContext`nRow - 
+               1], $CellContext`nCol] = $CellContext`eastBCconstantValue Table[
+               $CellContext`eastbc[
+                
+                Part[$CellContext`grid, $CellContext`i, $CellContext`nCol, 
+                 2]], {$CellContext`i, 2, $CellContext`nRow - 1}]]; 
+          If[$CellContext`southBCtype == "Dirichlet", 
+            Part[$CellContext`u, $CellContext`nRow, 
+              Span[
+              2, $CellContext`nCol - 1]] = $CellContext`southBCconstantValue 
+             Table[
+               $CellContext`southbc[
+                
+                Part[$CellContext`grid, $CellContext`nRow, $CellContext`j, 
+                 1]], {$CellContext`j, 2, $CellContext`nCol - 
+                1}]]; $CellContext`u = \
+$CellContext`setCornerNodeCommon[$CellContext`u, 1, 
+             1, $CellContext`nCol, $CellContext`nRow]; $CellContext`u = \
+$CellContext`setCornerNodeCommon[$CellContext`u, 
+             1, $CellContext`nCol, $CellContext`nCol, $CellContext`nRow]; \
+$CellContext`u = $CellContext`setCornerNodeCommon[$CellContext`u, \
+$CellContext`nRow, 
+             1, $CellContext`nCol, $CellContext`nRow]; $CellContext`u = \
+$CellContext`setCornerNodeCommon[$CellContext`u, $CellContext`nRow, \
+$CellContext`nCol, $CellContext`nCol, $CellContext`nRow]], \
+$CellContext`setCornerNodeCommon[
+          Pattern[$CellContext`$u, 
+           Blank[]], 
+          Pattern[$CellContext`i, 
+           Blank[]], 
+          Pattern[$CellContext`j, 
+           Blank[]], 
+          Pattern[$CellContext`nx, 
+           Blank[]], 
+          Pattern[$CellContext`ny, 
+           Blank[]]] := Module[{$CellContext`u = $CellContext`$u}, Which[
+            And[$CellContext`i == 1, $CellContext`j == 1], 
+            Part[$CellContext`u, 1, 1] = Mean[{
+               Part[$CellContext`u, 2, 1], 
+               Part[$CellContext`u, 1, 2]}], 
+            And[$CellContext`i == 1, $CellContext`j == $CellContext`nx], 
+            Part[$CellContext`u, 1, $CellContext`nx] = Mean[{
+               Part[$CellContext`u, 1, $CellContext`nx - 1], 
+               Part[$CellContext`u, 2, $CellContext`nx]}], 
+            And[$CellContext`i == $CellContext`ny, $CellContext`j == 1], 
+            Part[$CellContext`u, $CellContext`ny, 1] = Mean[{
+               Part[$CellContext`u, $CellContext`ny - 1, 1], 
+               Part[$CellContext`u, $CellContext`ny, 2]}], 
+            
+            And[$CellContext`i == $CellContext`ny, $CellContext`j == \
+$CellContext`nx], Part[$CellContext`u, $CellContext`ny, $CellContext`nx] = 
+            Mean[{
+               Part[$CellContext`u, $CellContext`ny, $CellContext`nx - 1], 
+               
+               Part[$CellContext`u, $CellContext`ny - 
+                1, $CellContext`nx]}]]; $CellContext`u], \
+$CellContext`makeSystemMatrixAndRightHandSide[
+          Pattern[$CellContext`u, 
+           Blank[]], 
+          Pattern[$CellContext`h, 
+           Blank[]], 
+          Pattern[$CellContext`kValue, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`forceGrid, 
+           Blank[]], 
+          Pattern[$CellContext`angle, 
+           Blank[]]] := 
+        Module[{$CellContext`AA, $CellContext`k1, $CellContext`k2, \
+$CellContext`i, $CellContext`j, $CellContext`n = 
+           0, $CellContext`eqs, $CellContext`vars, $CellContext`uu, \
+$CellContext`U, $CellContext`An, $CellContext`b, $CellContext`keepList, \
+$CellContext`nRow, $CellContext`nCol, $CellContext`sin1, $CellContext`sin2, \
+$CellContext`omega, $CellContext`sum, $CellContext`prod}, $CellContext`sum = 
+           2. $CellContext`h^2; $CellContext`prod = 
+           1. $CellContext`h^4; $CellContext`omega = 
+           4. BesselJ[0, Sqrt[$CellContext`kValue] $CellContext`h] + (
+              Sqrt[$CellContext`kValue] $CellContext`h)^2; $CellContext`k1 = 
+           Sqrt[$CellContext`kValue] Cos[$CellContext`angle]; $CellContext`k2 = 
+           Sqrt[$CellContext`kValue] 
+            Cos[$CellContext`angle]; $CellContext`sin1 = 
+           Simplify[(2. I) 
+             Sin[$CellContext`k1 $CellContext`h]]; $CellContext`sin2 = 
+           Simplify[(2. I) 
+             Sin[$CellContext`k2 $CellContext`h]]; {$CellContext`nRow, \
+$CellContext`nCol} = Dimensions[$CellContext`u]; $CellContext`U = 
+           Array[$CellContext`uu[#, #2]& , {$CellContext`nRow, \
+$CellContext`nCol}]; 
+          With[{$CellContext`$nRow = $CellContext`nRow, $CellContext`$nCol = \
+$CellContext`nCol}, $CellContext`eqs = 
+             Table[0., {$CellContext`$nRow $CellContext`$nCol}]; \
+$CellContext`vars = $CellContext`eqs]; 
+          For[$CellContext`i = 1, $CellContext`i <= $CellContext`nRow, 
+            Increment[$CellContext`i], 
+            For[$CellContext`j = 1, $CellContext`j <= $CellContext`nCol, 
+             Increment[$CellContext`j], Increment[$CellContext`n]; If[
+               Or[
+                And[$CellContext`i == 1, $CellContext`j == 1], 
+                And[$CellContext`i == $CellContext`nRow, $CellContext`j == 1], 
+                And[$CellContext`i == 1, $CellContext`j == $CellContext`nCol], 
+                
+                And[$CellContext`i == $CellContext`nRow, $CellContext`j == \
+$CellContext`nCol]], {$CellContext`eqs, $CellContext`vars} = \
+$CellContext`processCornersCommon[$CellContext`u, $CellContext`eqs, \
+$CellContext`n, $CellContext`U, $CellContext`i, $CellContext`j, \
+$CellContext`vars, $CellContext`northBCtype, $CellContext`westBCtype, \
+$CellContext`southBCtype, $CellContext`eastBCtype, $CellContext`nRow, \
+$CellContext`nCol], 
+               If[
+                
+                Or[$CellContext`i == 
+                 1, $CellContext`i == $CellContext`nRow, $CellContext`j == 
+                 1, $CellContext`j == $CellContext`nCol], 
+                Which[$CellContext`i == 1, 
+                 
+                 If[$CellContext`northBCtype == "Dirichlet", 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                  Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin1 Part[$CellContext`U, $CellContext`i + 1, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i + 2, $CellContext`j] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`i == $CellContext`nRow, 
+                 
+                 If[$CellContext`southBCtype == "Dirichlet", 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                  Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin1 Part[$CellContext`U, $CellContext`i - 1, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i - 2, $CellContext`j] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`j == 1, 
+                 
+                 If[$CellContext`westBCtype == "Dirichlet", 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                  Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin2 Part[$CellContext`U, $CellContext`i, $CellContext`j + 1] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j + 2] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`j == $CellContext`nCol, 
+                 
+                 If[$CellContext`eastBCtype == "Dirichlet", 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                  Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                  Part[$CellContext`eqs, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin2 Part[$CellContext`U, $CellContext`i, $CellContext`j - 1] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j - 2] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j]]], 
+                Part[$CellContext`vars, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j]; 
+                Part[$CellContext`eqs, $CellContext`n] = -
+                    Part[$CellContext`U, $CellContext`i + 1, $CellContext`j] - 
+                   Part[$CellContext`U, $CellContext`i - 
+                    1, $CellContext`j] + $CellContext`omega 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j - 1] - 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j + 
+                    1] - ($CellContext`kValue $CellContext`h)^2 
+                   Part[$CellContext`U, $CellContext`i, $CellContext`j] == \
+$CellContext`h^2 
+                   Part[$CellContext`forceGrid, $CellContext`i, \
+$CellContext`j]]]]]; $CellContext`vars = 
+           Flatten[$CellContext`U]; $CellContext`AA = 
+           CoefficientArrays[$CellContext`eqs, $CellContext`vars]; \
+$CellContext`keepList = \
+$CellContext`obtainListOfRowsToKeep[$CellContext`nRow, $CellContext`nCol, \
+$CellContext`northBCtype, $CellContext`southBCtype, $CellContext`westBCtype, \
+$CellContext`eastBCtype]; $CellContext`An = Part[
+             
+             Part[$CellContext`AA, 
+              2], $CellContext`keepList, $CellContext`keepList]; \
+$CellContext`b = -Part[
+              
+              Part[$CellContext`AA, 
+               1], $CellContext`keepList]; {$CellContext`An, \
+$CellContext`b}], $CellContext`processCornersCommon[
+          Pattern[$CellContext`u, 
+           Blank[]], 
+          Pattern[$CellContext`$eqs, 
+           Blank[]], 
+          Pattern[$CellContext`n, 
+           Blank[]], 
+          Pattern[$CellContext`U, 
+           Blank[]], 
+          Pattern[$CellContext`i, 
+           Blank[]], 
+          Pattern[$CellContext`j, 
+           Blank[]], 
+          Pattern[$CellContext`$vars, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`nRow, 
+           Blank[]], 
+          Pattern[$CellContext`nCol, 
+           Blank[]]] := 
+        Module[{$CellContext`vars = $CellContext`$vars, $CellContext`eqs = \
+$CellContext`$eqs}, 
+          Part[$CellContext`vars, $CellContext`n] = 
+           Part[$CellContext`U, $CellContext`i, $CellContext`j]; Which[
+            And[$CellContext`i == 1, $CellContext`j == 1], 
+            Which[
+             
+             Or[$CellContext`northBCtype == 
+              "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+             If[
+              
+              And[$CellContext`northBCtype == 
+               "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] == Mean[{
+                  Part[$CellContext`u, 1, 2], 
+                  Part[$CellContext`u, 2, 1]}], 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+               Part[$CellContext`u, 1, 1]], True, 
+             Part[$CellContext`eqs, $CellContext`n] = 
+             Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                 Part[$CellContext`U, 1, 2], 
+                 Part[$CellContext`U, 2, 1]}] == 0], 
+            And[$CellContext`i == $CellContext`nRow, $CellContext`j == 1], 
+            Which[
+             
+             Or[$CellContext`southBCtype == 
+              "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+             If[
+              
+              And[$CellContext`southBCtype == 
+               "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                  Part[$CellContext`u, $CellContext`i, 2], 
+                  Part[$CellContext`u, $CellContext`i - 1, 1]}] == 0, 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+               Part[$CellContext`u, $CellContext`nRow, 1]], True, 
+             Part[$CellContext`eqs, $CellContext`n] = 
+             Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                 Part[$CellContext`U, $CellContext`i, 2], 
+                 Part[$CellContext`U, $CellContext`i - 1, 1]}] == 0.], 
+            And[$CellContext`i == 1, $CellContext`j == $CellContext`nCol], 
+            Which[
+             
+             Or[$CellContext`northBCtype == 
+              "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+             If[
+              
+              And[$CellContext`northBCtype == 
+               "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                  Part[$CellContext`U, 1, $CellContext`j - 1], 
+                  Part[$CellContext`U, 2, $CellContext`j]}] == 0., 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+               Part[$CellContext`u, 1, $CellContext`nCol]], True, 
+             Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                  Part[$CellContext`U, 1, $CellContext`j - 1], 
+                  Part[$CellContext`U, 2, $CellContext`j]}] == 0.; Null], 
+            
+            And[$CellContext`i == $CellContext`nRow, $CellContext`j == \
+$CellContext`nCol], 
+            Which[
+             
+             Or[$CellContext`southBCtype == 
+              "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+             If[
+              
+              And[$CellContext`southBCtype == 
+               "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+              Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                  Part[$CellContext`U, $CellContext`i, $CellContext`j - 1], 
+                  Part[$CellContext`U, $CellContext`i - 1, $CellContext`j]}] == 
+               0., Part[$CellContext`eqs, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j] - 
+               Part[$CellContext`u, $CellContext`nRow, $CellContext`nCol]], 
+             True, Part[$CellContext`eqs, $CellContext`n] = 
+             Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j - 1], 
+                 Part[$CellContext`U, $CellContext`i - 1, $CellContext`j]}] == 
+              0.]]; {$CellContext`eqs, $CellContext`vars}], \
+$CellContext`obtainListOfRowsToKeep[
+          Pattern[$CellContext`nRow, 
+           Blank[]], 
+          Pattern[$CellContext`nCol, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]]] := 
+        Module[{$CellContext`rowsToRemove = {}}, 
+          If[$CellContext`northBCtype == "Dirichlet", 
+            AppendTo[$CellContext`rowsToRemove, 
+              Range[1, $CellContext`nCol]]; Null]; 
+          If[$CellContext`southBCtype == "Dirichlet", 
+            AppendTo[$CellContext`rowsToRemove, 
+              
+              Range[($CellContext`nRow - 1) $CellContext`nCol + 
+               1, $CellContext`nRow $CellContext`nCol]]; Null]; 
+          If[$CellContext`westBCtype == "Dirichlet", 
+            AppendTo[$CellContext`rowsToRemove, 
+              Range[
+              1, $CellContext`nRow $CellContext`nCol, $CellContext`nCol]]; 
+            Null]; If[$CellContext`eastBCtype == "Dirichlet", 
+            AppendTo[$CellContext`rowsToRemove, 
+              
+              Range[$CellContext`nCol, $CellContext`nRow $CellContext`nCol, \
+$CellContext`nCol]]; Null]; Complement[
+            Range[$CellContext`nRow $CellContext`nCol], 
+            Flatten[$CellContext`rowsToRemove]]], $CellContext`solve[
+          Pattern[$CellContext`$u, 
+           Blank[]], 
+          Pattern[$CellContext`AA, 
+           Blank[]], 
+          Pattern[$CellContext`rightHandVector, 
+           Blank[]], 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]]] := 
+        Module[{$CellContext`u = $CellContext`$u, $CellContext`nRow, \
+$CellContext`nCol, $CellContext`x, $CellContext`loc, $CellContext`mask}, \
+{$CellContext`nRow, $CellContext`nCol} = 
+           Dimensions[$CellContext`u]; $CellContext`x = 
+           LinearSolve[$CellContext`AA, $CellContext`rightHandVector]; \
+$CellContext`mask = $CellContext`setUnknownsMask[{$CellContext`nRow, \
+$CellContext`nCol}, $CellContext`northBCtype, $CellContext`westBCtype, \
+$CellContext`eastBCtype, $CellContext`southBCtype]; $CellContext`loc = 
+           Position[$CellContext`mask, 1]; 
+          MapThread[($CellContext`u = 
+            ReplacePart[$CellContext`u, # -> #2])& , {$CellContext`loc, \
+$CellContext`x}]; Re[$CellContext`u]], $CellContext`setUnknownsMask[{
+           Pattern[$CellContext`nRow, 
+            Blank[]], 
+           Pattern[$CellContext`nCol, 
+            Blank[]]}, 
+          Pattern[$CellContext`northBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`westBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`eastBCtype, 
+           Blank[]], 
+          Pattern[$CellContext`southBCtype, 
+           Blank[]]] := 
+        Module[{$CellContext`mask}, $CellContext`mask = 
+           Table[0, {$CellContext`nRow}, {$CellContext`nCol}]; Which[
+            
+            And[$CellContext`westBCtype == 
+             "Dirichlet", $CellContext`northBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[2, -2], 
+              Span[2, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[1, -2], 
+              Span[2, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[2, -2], 
+              Span[1, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[2, -2], 
+              Span[2, -1]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[2, -1], 
+              Span[2, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[1, -2], 
+              Span[1, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[1, -2], 
+              Span[2, -1]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[1, -1], 
+              Span[2, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[1, -2], 
+              Span[1, -1]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[1, -1], 
+              Span[2, -1]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Sommerfeld", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[1, -1], 
+              Span[1, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Dirichlet", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[2, -1], 
+              Span[1, -2]] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Dirichlet"], 
+            Part[$CellContext`mask, 
+              Span[2, -2], All] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Sommerfeld", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[2, -1], All] = 1, 
+            
+            And[$CellContext`northBCtype == 
+             "Dirichlet", $CellContext`westBCtype == 
+             "Dirichlet", $CellContext`eastBCtype == 
+             "Sommerfeld", $CellContext`southBCtype == "Sommerfeld"], 
+            Part[$CellContext`mask, 
+              Span[2, -1], 
+              Span[2, -1]] = 
+            1]; $CellContext`mask], $CellContext`makeFinalPlot[
+          Pattern[$CellContext`u, 
+           Blank[]], 
+          Pattern[$CellContext`AA, 
+           Blank[]], 
+          Pattern[$CellContext`Lx, 
+           Blank[]], 
+          Pattern[$CellContext`Ly, 
+           Blank[]], 
+          Pattern[$CellContext`grid, 
+           Blank[]], 
+          Pattern[$CellContext`plotToShow, 
+           Blank[]], 
+          Pattern[$CellContext`plotPerformanceGoal, 
+           Blank[]], 
+          Pattern[$CellContext`addFaceGrids, 
+           Blank[]], 
+          Pattern[$CellContext`zAxisScale, 
+           Blank[]]] := 
+        Module[{$CellContext`tmp, $CellContext`finalDisplayImage, \
+$CellContext`nRow, $CellContext`nCol, $CellContext`plot, $CellContext`n, \
+$CellContext`dim, $CellContext`cond}, {$CellContext`nRow, $CellContext`nCol} = 
+           Dimensions[$CellContext`u]; $CellContext`tmp = 
+           MapThread[
+            Append[#, #2]& , {$CellContext`grid, $CellContext`u}, 
+             2]; $CellContext`tmp = Chop[
+             Flatten[$CellContext`tmp, 1]]; If[
+            
+            Or[$CellContext`plotToShow == 
+             "solution and density", $CellContext`plotToShow == 
+             "solution and contour"], $CellContext`plot = Item[
+              
+              ListPlot3D[$CellContext`tmp, 
+               PerformanceGoal -> $CellContext`plotPerformanceGoal, 
+               ImagePadding -> {{20, 15}, {15, 1}}, PlotRange -> All, 
+               
+               If[$CellContext`zAxisScale == True, 
+                BoxRatios -> {$CellContext`Lx, $CellContext`Ly, 
+                  Min[{$CellContext`Lx, $CellContext`Ly}]}, {}], AxesLabel -> {
+                 Text[
+                  Style["x", Italic, 12]], 
+                 Text[
+                  Style["y", Italic, 12]], None}, TicksStyle -> 9, 
+               SphericalRegion -> True, 
+               
+               If[$CellContext`addFaceGrids, FaceGrids -> All, FaceGrids -> 
+                None], ImageSize -> {$CellContext`ContentSizeW, \
+($CellContext`ContentSizeH - 10)/2}]]]; 
+          Which[$CellContext`plotToShow == 
+            "solution and density", $CellContext`finalDisplayImage = 
+            Grid[{{$CellContext`plot}, {
+                Item[
+                 
+                 ListDensityPlot[$CellContext`tmp, PlotRange -> All, 
+                  ImageSize -> {$CellContext`ContentSizeW, \
+($CellContext`ContentSizeH - 10)/2}, ImagePadding -> {{20, 15}, {20, 1}}, 
+                  PerformanceGoal -> $CellContext`plotPerformanceGoal]]}}, 
+              Spacings -> {0, 0}], $CellContext`plotToShow == 
+            "solution and contour", $CellContext`finalDisplayImage = Grid[{{
+                Item[$CellContext`plot]}, {
+                Item[
+                 
+                 ListContourPlot[$CellContext`tmp, Contours -> 10, 
+                  ImageSize -> {$CellContext`ContentSizeW, \
+($CellContext`ContentSizeH - 10)/2}, ImagePadding -> {{20, 15}, {20, 1}}, 
+                  PerformanceGoal -> $CellContext`plotPerformanceGoal]]}}, 
+              Spacings -> {0, 0}], $CellContext`plotToShow == 
+            "solution data", $CellContext`finalDisplayImage = \
+$CellContext`makeScrolledPane[
+              Normal[$CellContext`u], $CellContext`ContentSizeH - 
+              40, $CellContext`ContentSizeW], $CellContext`plotToShow == 
+            "system matrix information", $CellContext`cond = Part[
+               LUDecomposition[$CellContext`AA], 3]; $CellContext`dim = 
+             Dimensions[$CellContext`AA]; $CellContext`n = Min[30, 
+               First[$CellContext`dim]]; $CellContext`finalDisplayImage = 
+             Grid[{{
+                 Style[
+                  Text[
+                   Row[{"condition number = ", $CellContext`cond}]], 12]}, {
+                 Style[
+                  Text[
+                   Row[{"matrix size = ", $CellContext`dim}]], 12]}, {
+                 Style[
+                  Text["eigenvalues"], 12]}, {
+                 $CellContext`makeScrolledPane[
+                  Transpose[
+                   Partition[
+                    Eigenvalues[
+                    Normal[$CellContext`AA], $CellContext`n], 1]], 
+                  45, $CellContext`ContentSizeW - 20]}, {
+                 Style[
+                  Text["A matrix"], 12]}, {
+                 $CellContext`makeScrolledPane[
+                  Normal[
+                   Part[$CellContext`AA, 
+                    Span[1, $CellContext`n], 
+                    Span[1, $CellContext`n]]], $CellContext`ContentSizeH - 
+                  140, $CellContext`ContentSizeW]}}]]; \
+$CellContext`finalDisplayImage], 
+        Attributes[PlotRange] = {ReadProtected}, $CellContext`ContentSizeW = 
+        260, $CellContext`ContentSizeH = 405, $CellContext`makeScrolledPane[
+          PatternTest[
+           Pattern[$CellContext`mat, 
+            Blank[]], MatrixQ[#, NumberQ]& ], 
+          PatternTest[
+           Pattern[$CellContext`nRow, 
+            Blank[]], And[
+            IntegerQ[#], 
+            Positive[#]]& ], 
+          PatternTest[
+           Pattern[$CellContext`nCol, 
+            Blank[]], And[
+            IntegerQ[#], 
+            Positive[#]]& ]] := 
+        Module[{$CellContext`t}, $CellContext`t = 
+           Grid[$CellContext`mat, Spacings -> {0.4, 0.4}, Alignment -> Left, 
+             Frame -> All]; $CellContext`t = Text[
+             Style[
+              NumberForm[
+               Chop[
+                N[$CellContext`t]], {6, 5}, NumberSigns -> {"-", ""}, 
+               NumberPadding -> {"", ""}, SignPadding -> True], 
+              LineBreakWithin -> False]]; 
+          Pane[$CellContext`t, 
+            ImageSize -> {$CellContext`nCol, $CellContext`nRow}, Scrollbars -> 
+            True]], $CellContext`makeScrolledPane[
+          PatternTest[
+           Pattern[$CellContext`lst, 
+            Blank[]], VectorQ[#, NumericQ]& ], 
+          PatternTest[
+           Pattern[$CellContext`nRow, 
+            Blank[]], And[
+            IntegerQ[#], 
+            Positive[#]]& ], 
+          PatternTest[
+           Pattern[$CellContext`nCol, 
+            Blank[]], And[
+            IntegerQ[#], 
+            Positive[#]]& ]] := 
+        Module[{$CellContext`t}, $CellContext`t = 
+           Grid[{$CellContext`lst}, Spacings -> {0.4, 0.4}, Alignment -> Left,
+              Frame -> All]; $CellContext`t = Text[
+             Style[
+              AccountingForm[
+               Chop[
+                N[$CellContext`t]], {6, 5}, NumberSigns -> {"-", ""}, 
+               NumberPadding -> {"", ""}, SignPadding -> True], 
+              LineBreakWithin -> False]]; 
+          Pane[$CellContext`t, 
+            ImageSize -> {$CellContext`nCol, $CellContext`nRow}, Scrollbars -> 
+            True]], $CellContext`padIt2[
+          PatternTest[
+           Pattern[$CellContext`v, 
+            Blank[]], And[
+            NumericQ[#], Im[#] == 0]& ], 
+          Pattern[$CellContext`f, 
+           Blank[List]]] := AccountingForm[
+          Chop[
+           N[$CellContext`v]], $CellContext`f, NumberSigns -> {"", ""}, 
+          NumberPadding -> {"0", "0"}, SignPadding -> 
+          True], $CellContext`padIt1[
+          PatternTest[
+           Pattern[$CellContext`v, 
+            Blank[]], And[
+            NumericQ[#], Im[#] == 0]& ], 
+          Pattern[$CellContext`f, 
+           Blank[List]]] := AccountingForm[
+          Chop[
+           N[$CellContext`v]], $CellContext`f, NumberSigns -> {"-", "+"}, 
+          NumberPadding -> {"0", "0"}, SignPadding -> True], 
+        Attributes[Subscript] = {
+         NHoldRest}, $CellContext`forceTermExpressionCommon[
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`n0, 
+           Blank[]], 
+          Pattern[$CellContext`n1, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]]] := 
+        Module[{$CellContext`forceTermUsed}, 
+          Which[$CellContext`forceTermSelection == 
+            1, $CellContext`forceTermUsed = $CellContext`a, \
+$CellContext`forceTermSelection == 
+            2, $CellContext`forceTermUsed = $CellContext`a \
+$CellContext`x^$CellContext`n0 + $CellContext`b \
+$CellContext`y^$CellContext`n1, $CellContext`forceTermSelection == 
+            3, $CellContext`forceTermUsed = $CellContext`a 
+             Exp[-(($CellContext`x - $CellContext`x0)^2/(
+                 2 $CellContext`stdx^2) + ($CellContext`y - \
+$CellContext`y0)^2/(2 $CellContext`stdy^2))], $CellContext`forceTermSelection == 
+            4, $CellContext`forceTermUsed = $CellContext`a (
+              Cos[($CellContext`b Pi) $CellContext`x] + 
+              Sin[($CellContext`c 
+                 Pi) $CellContext`y]), $CellContext`forceTermSelection == 
+            5, $CellContext`forceTermUsed = $CellContext`a (
+              Cos[($CellContext`b Pi) $CellContext`x] 
+              Sin[($CellContext`c 
+                 Pi) $CellContext`y])]; $CellContext`forceTermUsed], \
+$CellContext`forceTermExpressionCommon[
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]]] := 
+        Module[{$CellContext`forceTermUsed}, 
+          Which[$CellContext`forceTermSelection == 
+            1, $CellContext`forceTermUsed = $CellContext`a, \
+$CellContext`forceTermSelection == 
+            3, $CellContext`forceTermUsed = $CellContext`a 
+             Exp[-(($CellContext`x - $CellContext`x0)^2/(
+                 2 $CellContext`stdx^2) + ($CellContext`y - \
+$CellContext`y0)^2/(2 $CellContext`stdy^2))], $CellContext`forceTermSelection == 
+            4, $CellContext`forceTermUsed = $CellContext`a (
+              Cos[($CellContext`b Pi) $CellContext`x] + 
+              Sin[($CellContext`c 
+                 Pi) $CellContext`y]), $CellContext`forceTermSelection == 
+            5, $CellContext`forceTermUsed = $CellContext`a (
+              Cos[($CellContext`b Pi) $CellContext`x] 
+              Sin[($CellContext`c 
+                 Pi) $CellContext`y])]; $CellContext`forceTermUsed], \
+$CellContext`forceTermUsedFormatCommon[
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`n0, 
+           Blank[]], 
+          Pattern[$CellContext`n1, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]]] := 
+        Module[{$CellContext`forceTermUsed}, 
+          Which[$CellContext`forceTermSelection == 
+            1, $CellContext`forceTermUsed = $CellContext`a, \
+$CellContext`forceTermSelection == 2, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a $CellContext`x^$CellContext`n0 + \
+$CellContext`b $CellContext`y^$CellContext`n1], \
+$CellContext`forceTermSelection == 3, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a 
+              Exp[-(($CellContext`x - $CellContext`x0)^2/(
+                  2 $CellContext`stdx^2) + ($CellContext`y - \
+$CellContext`y0)^2/(
+                  2 $CellContext`stdy^2))]], $CellContext`forceTermSelection == 
+            4, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a (Cos[($CellContext`b Pi) $CellContext`x] + 
+               Sin[($CellContext`c 
+                  Pi) $CellContext`y])], $CellContext`forceTermSelection == 
+            5, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a (Cos[($CellContext`b Pi) $CellContext`x] 
+               Sin[($CellContext`c 
+                  Pi) $CellContext`y])]]; $CellContext`forceTermUsed], \
+$CellContext`forceTermUsedFormatCommon[
+          Pattern[$CellContext`forceTermSelection, 
+           Blank[]], 
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`stdy, 
+           Blank[]], 
+          Pattern[$CellContext`stdx, 
+           Blank[]], 
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]], 
+          Pattern[$CellContext`x, 
+           Blank[]], 
+          Pattern[$CellContext`y, 
+           Blank[]]] := 
+        Module[{$CellContext`forceTermUsed}, 
+          Which[$CellContext`forceTermSelection == 
+            1, $CellContext`forceTermUsed = $CellContext`a, \
+$CellContext`forceTermSelection == 3, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a 
+              Exp[-(($CellContext`x - $CellContext`x0)^2/(
+                  2 $CellContext`stdx^2) + ($CellContext`y - \
+$CellContext`y0)^2/(
+                  2 $CellContext`stdy^2))]], $CellContext`forceTermSelection == 
+            4, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a (Cos[($CellContext`b Pi) $CellContext`x] + 
+               Sin[($CellContext`c 
+                  Pi) $CellContext`y])], $CellContext`forceTermSelection == 
+            5, $CellContext`forceTermUsed = 
+            HoldForm[$CellContext`a (Cos[($CellContext`b Pi) $CellContext`x] 
+               Sin[($CellContext`c 
+                  Pi) $CellContext`y])]]; $CellContext`forceTermUsed]}; 
+      Typeset`initDone$$ = True); ReleaseHold[{{
+         HoldComplete[$CellContext`evaluateForceCommon = ReplaceAll[
+             Unevaluated[#3 #^#6 + #4 #2^#7], HoldPattern[0.^0.] :> 0.]& ; 
+          Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`padIt1[
+             PatternTest[
+              Pattern[$CellContext`v, 
+               Blank[]], And[
+               NumericQ[#], Im[#] == 0]& ], 
+             Pattern[$CellContext`f, 
+              Blank[List]]] := AccountingForm[
+             Chop[
+              N[$CellContext`v]], $CellContext`f, NumberSigns -> {"-", "+"}, 
+             NumberPadding -> {"0", "0"}, SignPadding -> True]; Null], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"padIt2", "[", 
+                   RowBox[{
+                    RowBox[{"v_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"NumericQ", "[", "#", "]"}], "&&", 
+                    RowBox[{
+                    RowBox[{"Im", "[", "#", "]"}], "==", "0"}]}], "&"}], 
+                    ")"}]}], ",", "f_List"}], "]"}], ":=", 
+                 RowBox[{"AccountingForm", "[", 
+                   RowBox[{
+                    RowBox[{"Chop", "[", 
+                    RowBox[{"N", "@", "v"}], "]"}], ",", "f", ",", 
+                    RowBox[{"NumberSigns", "->", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\"", ",", "\"\""}], "}"}]}], ",", 
+                    RowBox[{"NumberPadding", "->", 
+                    RowBox[{"{", 
+                    RowBox[{"\"0\"", ",", "\"0\""}], "}"}]}], ",", 
+                    RowBox[{"SignPadding", "->", "True"}]}], "]"}]}], ";"}], 
+             ""}]]], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`getSolutionDomainDimensions[
+             Pattern[$CellContext`hx, 
+              Blank[]], 
+             Pattern[$CellContext`hy, 
+              Blank[]], 
+             Pattern[$CellContext`Lx, 
+              Blank[]], 
+             Pattern[$CellContext`Ly, 
+              Blank[]]] := {$CellContext`Ly/$CellContext`hy + 
+             1, $CellContext`Lx/$CellContext`hx + 1}; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`makeGridCommon[
+             Pattern[$CellContext`hx, 
+              Blank[]], 
+             Pattern[$CellContext`hy, 
+              Blank[]], 
+             Pattern[$CellContext`Lx, 
+              Blank[]], 
+             Pattern[$CellContext`Ly, 
+              Blank[]], 
+             Pattern[$CellContext`centerGrid, 
+              Blank[]]] := 
+           Module[{$CellContext`i, $CellContext`j, $CellContext`nx, \
+$CellContext`ny, $CellContext`grid}, {$CellContext`ny, $CellContext`nx} = \
+$CellContext`getSolutionDomainDimensions[$CellContext`hx, $CellContext`hy, \
+$CellContext`Lx, $CellContext`Ly]; 
+             With[{$CellContext`$icfrom = 
+                Floor[$CellContext`ny/2], $CellContext`$icto = -
+                 Floor[$CellContext`ny/2], $CellContext`$jcfrom = -
+                 Floor[$CellContext`nx/2], $CellContext`$jcto = 
+                Floor[$CellContext`nx/
+                  2], $CellContext`$ifrom = $CellContext`ny - 
+                 1, $CellContext`$jto = $CellContext`nx - 
+                 1}, $CellContext`grid = If[$CellContext`centerGrid, 
+                 
+                 Table[{$CellContext`j $CellContext`hx, $CellContext`i \
+$CellContext`hy}, {$CellContext`i, $CellContext`$icfrom, $CellContext`$icto, \
+-1}, {$CellContext`j, $CellContext`$jcfrom, $CellContext`$jcto}], 
+                 
+                 Table[{$CellContext`j $CellContext`hx, $CellContext`i \
+$CellContext`hy}, {$CellContext`i, $CellContext`$ifrom, 
+                   0, -1}, {$CellContext`j, 0, $CellContext`$jto}]]]; 
+             N[$CellContext`grid]]; Null], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"forceTermUsedFormatCommon", "[", 
+                   
+                   RowBox[{
+                    "forceTermSelection_", ",", "a_", ",", "b_", ",", "c_", 
+                    ",", "stdy_", ",", "stdx_", ",", "x0_", ",", "y0_", ",", 
+                    "x_", ",", "y_"}], "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", "forceTermUsed", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"forceTermSelection", "\[Equal]", "1"}], ",", 
+                    RowBox[{"forceTermUsed", "=", "a"}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "3"}], ",", 
+                    RowBox[{"forceTermUsed", "=", 
+                    RowBox[{"HoldForm", "[", 
+                    RowBox[{"a", 
+                    RowBox[{"Exp", "[", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"x", "-", "x0"}], ")"}], "^", "2"}], "/", 
+                    RowBox[{"(", 
+                    RowBox[{"2", 
+                    RowBox[{
+                    RowBox[{"(", "stdx", ")"}], "^", "2"}]}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"y", "-", "y0"}], ")"}], "^", "2"}], "/", 
+                    RowBox[{"(", 
+                    RowBox[{"2", 
+                    RowBox[{
+                    RowBox[{"(", "stdy", ")"}], "^", "2"}]}], ")"}]}]}], 
+                    ")"}]}], "]"}]}], "]"}]}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "4"}], ",", 
+                    RowBox[{"forceTermUsed", "=", 
+                    RowBox[{"HoldForm", "[", 
+                    RowBox[{"a", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", "Pi", "x"}], "]"}], "+", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"c", "Pi", "y"}], "]"}]}], ")"}]}], "]"}]}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "5"}], ",", 
+                    RowBox[{"forceTermUsed", "=", 
+                    RowBox[{"HoldForm", "[", 
+                    RowBox[{"a", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", "Pi", "x"}], "]"}], "*", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"c", "Pi", "y"}], "]"}]}], ")"}]}], "]"}]}]}], 
+                    "]"}], ";", "forceTermUsed"}]}], "]"}]}], ";"}], ""}]]], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`forceTermExpressionCommon[
+             Pattern[$CellContext`forceTermSelection, 
+              Blank[]], 
+             Pattern[$CellContext`a, 
+              Blank[]], 
+             Pattern[$CellContext`b, 
+              Blank[]], 
+             Pattern[$CellContext`c, 
+              Blank[]], 
+             Pattern[$CellContext`stdy, 
+              Blank[]], 
+             Pattern[$CellContext`stdx, 
+              Blank[]], 
+             Pattern[$CellContext`x0, 
+              Blank[]], 
+             Pattern[$CellContext`y0, 
+              Blank[]], 
+             Pattern[$CellContext`x, 
+              Blank[]], 
+             Pattern[$CellContext`y, 
+              Blank[]]] := 
+           Module[{$CellContext`forceTermUsed}, 
+             Which[$CellContext`forceTermSelection == 
+               1, $CellContext`forceTermUsed = $CellContext`a, \
+$CellContext`forceTermSelection == 
+               3, $CellContext`forceTermUsed = $CellContext`a 
+                Exp[-(($CellContext`x - $CellContext`x0)^2/(
+                    2 $CellContext`stdx^2) + ($CellContext`y - \
+$CellContext`y0)^2/(2 $CellContext`stdy^2))], $CellContext`forceTermSelection == 
+               4, $CellContext`forceTermUsed = $CellContext`a (
+                 Cos[$CellContext`b Pi $CellContext`x] + 
+                 Sin[$CellContext`c 
+                   Pi $CellContext`y]), $CellContext`forceTermSelection == 
+               5, $CellContext`forceTermUsed = $CellContext`a (
+                 Cos[$CellContext`b Pi $CellContext`x] 
+                 Sin[$CellContext`c 
+                   Pi $CellContext`y])]; $CellContext`forceTermUsed]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`setCornerNodeCommon[
+             Pattern[$CellContext`$u, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`j, 
+              Blank[]], 
+             Pattern[$CellContext`nx, 
+              Blank[]], 
+             Pattern[$CellContext`ny, 
+              Blank[]]] := Module[{$CellContext`u = $CellContext`$u}, Which[
+               And[$CellContext`i == 1, $CellContext`j == 1], 
+               Part[$CellContext`u, 1, 1] = Mean[{
+                  Part[$CellContext`u, 2, 1], 
+                  Part[$CellContext`u, 1, 2]}], 
+               And[$CellContext`i == 1, $CellContext`j == $CellContext`nx], 
+               Part[$CellContext`u, 1, $CellContext`nx] = Mean[{
+                  Part[$CellContext`u, 1, $CellContext`nx - 1], 
+                  Part[$CellContext`u, 2, $CellContext`nx]}], 
+               And[$CellContext`i == $CellContext`ny, $CellContext`j == 1], 
+               Part[$CellContext`u, $CellContext`ny, 1] = Mean[{
+                  Part[$CellContext`u, $CellContext`ny - 1, 1], 
+                  Part[$CellContext`u, $CellContext`ny, 2]}], 
+               
+               And[$CellContext`i == $CellContext`ny, $CellContext`j == \
+$CellContext`nx], Part[$CellContext`u, $CellContext`ny, $CellContext`nx] = 
+               Mean[{
+                  Part[$CellContext`u, $CellContext`ny, $CellContext`nx - 1], 
+                  
+                  Part[$CellContext`u, $CellContext`ny - 
+                   1, $CellContext`nx]}]]; $CellContext`u]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`makeScrolledPane[
+             PatternTest[
+              Pattern[$CellContext`mat, 
+               Blank[]], MatrixQ[#, NumberQ]& ], 
+             PatternTest[
+              Pattern[$CellContext`nRow, 
+               Blank[]], And[
+               IntegerQ[#], 
+               Positive[#]]& ], 
+             PatternTest[
+              Pattern[$CellContext`nCol, 
+               Blank[]], And[
+               IntegerQ[#], 
+               Positive[#]]& ]] := 
+           Module[{$CellContext`t}, $CellContext`t = 
+              Grid[$CellContext`mat, Spacings -> {0.4, 0.4}, Alignment -> 
+                Left, Frame -> All]; $CellContext`t = Text[
+                Style[
+                 NumberForm[
+                  Chop[
+                   N[$CellContext`t]], {6, 5}, NumberSigns -> {"-", ""}, 
+                  NumberPadding -> {"", ""}, SignPadding -> True], 
+                 LineBreakWithin -> False]]; 
+             Pane[$CellContext`t, 
+               ImageSize -> {$CellContext`nCol, $CellContext`nRow}, 
+               Scrollbars -> True]]; Null], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"makeScrolledPane", "[", 
+                   RowBox[{
+                    RowBox[{"lst_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"VectorQ", "[", 
+                    RowBox[{"#", ",", "NumericQ"}], "]"}], "&"}], ")"}]}], 
+                    ",", 
+                    RowBox[{"nRow_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"IntegerQ", "[", "#", "]"}], "&&", 
+                    RowBox[{"Positive", "[", "#", "]"}]}], "&"}], ")"}]}], 
+                    ",", 
+                    RowBox[{"nCol_", "?", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"IntegerQ", "[", "#", "]"}], "&&", 
+                    RowBox[{"Positive", "[", "#", "]"}]}], "&"}], ")"}]}]}], 
+                   "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", "t", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"t", "=", 
+                    RowBox[{"Grid", "[", 
+                    RowBox[{
+                    RowBox[{"{", "lst", "}"}], ",", 
+                    RowBox[{"Spacings", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{".4", ",", ".4"}], "}"}]}], ",", 
+                    RowBox[{"Alignment", "\[Rule]", "Left"}], ",", 
+                    RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]}], ";", 
+                    RowBox[{"t", "=", 
+                    RowBox[{"Text", "@", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"AccountingForm", "[", 
+                    RowBox[{
+                    RowBox[{"Chop", "[", 
+                    RowBox[{"N", "@", "t"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"6", ",", "5"}], "}"}], ",", 
+                    RowBox[{"NumberSigns", "->", 
+                    RowBox[{"{", 
+                    RowBox[{"\"-\"", ",", "\"\""}], "}"}]}], ",", 
+                    RowBox[{"NumberPadding", "->", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\"", ",", "\"\""}], "}"}]}], ",", 
+                    RowBox[{"SignPadding", "->", "True"}]}], "]"}], ",", 
+                    RowBox[{"LineBreakWithin", "\[Rule]", "False"}]}], 
+                    "]"}]}]}], ";", 
+                    RowBox[{"Pane", "[", 
+                    RowBox[{"t", ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"nCol", ",", "nRow"}], "}"}]}], ",", 
+                    RowBox[{"Scrollbars", "\[Rule]", "True"}]}], "]"}]}]}], 
+                   "]"}]}], ";"}], ""}]]], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`process[
+             Pattern[$CellContext`$u, 
+              Blank[]], 
+             Pattern[$CellContext`$forceGrid, 
+              Blank[]], 
+             Pattern[$CellContext`$grid, 
+              Blank[]], 
+             Pattern[$CellContext`$AA, 
+              Blank[]], 
+             Pattern[$CellContext`$rightHandVector, 
+              Blank[]], 
+             Pattern[$CellContext`$finalDisplayImage, 
+              Blank[]], 
+             Pattern[$CellContext`event, 
+              Blank[]], 
+             Pattern[$CellContext`hx, 
+              Blank[]], 
+             Pattern[$CellContext`hy, 
+              Blank[]], 
+             Pattern[$CellContext`Lx, 
+              Blank[]], 
+             Pattern[$CellContext`Ly, 
+              Blank[]], 
+             Pattern[$CellContext`centerGrid, 
+              Blank[]], 
+             Pattern[$CellContext`addFaceGrids, 
+              Blank[]], 
+             Pattern[$CellContext`plotPerformanceGoal, 
+              Blank[]], 
+             Pattern[$CellContext`kValue, 
+              Blank[]], 
+             Pattern[$CellContext`a, 
+              Blank[]], 
+             Pattern[$CellContext`b, 
+              Blank[]], 
+             Pattern[$CellContext`c, 
+              Blank[]], 
+             Pattern[$CellContext`x0, 
+              Blank[]], 
+             Pattern[$CellContext`y0, 
+              Blank[]], 
+             Pattern[$CellContext`stdx, 
+              Blank[]], 
+             Pattern[$CellContext`stdy, 
+              Blank[]], 
+             Pattern[$CellContext`forceTermSelection, 
+              Blank[]], 
+             Pattern[$CellContext`plotToShow, 
+              Blank[]], 
+             Pattern[$CellContext`northBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`northbc, 
+              Blank[]], 
+             Pattern[$CellContext`northBCconstantValue, 
+              Blank[]], 
+             Pattern[$CellContext`westBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`westbc, 
+              Blank[]], 
+             Pattern[$CellContext`westBCconstantValue, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`eastbc, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCconstantValue, 
+              Blank[]], 
+             Pattern[$CellContext`southBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`southbc, 
+              Blank[]], 
+             Pattern[$CellContext`southBCconstantValue, 
+              Blank[]], 
+             Pattern[$CellContext`zAxisScale, 
+              Blank[]], 
+             Pattern[$CellContext`angle, 
+              Blank[]], 
+             Pattern[$CellContext`gstatusMessage, 
+              Blank[]]] := 
+           Module[{$CellContext`u = $CellContext`$u, $CellContext`AA = \
+$CellContext`$AA, $CellContext`forceGrid = $CellContext`$forceGrid, \
+$CellContext`grid = $CellContext`$grid, $CellContext`rightHandVector = \
+$CellContext`$rightHandVector, $CellContext`finalDisplayImage = \
+$CellContext`$finalDisplayImage}, If[
+               
+               StringMatchQ[$CellContext`event, {
+                "reset", 
+                 "run_button"}], {$CellContext`grid, $CellContext`forceGrid, \
+$CellContext`u, $CellContext`AA, $CellContext`rightHandVector} = \
+$CellContext`initializeSystem[$CellContext`hx, $CellContext`hy, \
+$CellContext`Lx, $CellContext`Ly, $CellContext`centerGrid, \
+$CellContext`forceTermSelection, $CellContext`a, $CellContext`b, \
+$CellContext`c, $CellContext`x0, $CellContext`stdx, $CellContext`y0, \
+$CellContext`stdy, $CellContext`northBCtype, $CellContext`northbc, \
+$CellContext`northBCconstantValue, $CellContext`westBCtype, \
+$CellContext`westbc, $CellContext`westBCconstantValue, \
+$CellContext`eastBCtype, $CellContext`eastbc, \
+$CellContext`eastBCconstantValue, $CellContext`southBCtype, \
+$CellContext`southbc, $CellContext`southBCconstantValue, $CellContext`kValue, \
+$CellContext`angle]]; If[
+               Or[$CellContext`event == "run_button", 
+                And[
+                 
+                 StringMatchQ[$CellContext`event, {
+                  "reset", "reset", "k_changed"}], 
+                 
+                 StringMatchQ[$CellContext`plotToShow, {
+                  "system matrix information", 
+                   "solution data"}]]], $CellContext`u = \
+$CellContext`solve[$CellContext`u, $CellContext`AA, \
+$CellContext`rightHandVector, $CellContext`northBCtype, \
+$CellContext`westBCtype, $CellContext`eastBCtype, $CellContext`southBCtype]]; \
+$CellContext`finalDisplayImage = $CellContext`makeFinalPlot[$CellContext`u, \
+$CellContext`AA, $CellContext`Lx, $CellContext`Ly, $CellContext`grid, \
+$CellContext`plotToShow, $CellContext`plotPerformanceGoal, \
+$CellContext`addFaceGrids, $CellContext`zAxisScale]; \
+$CellContext`gstatusMessage = 
+              "ready.."; {$CellContext`finalDisplayImage, $CellContext`u, \
+$CellContext`forceGrid, $CellContext`grid, $CellContext`AA, \
+$CellContext`rightHandVector}]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`makeSystemMatrixAndRightHandSide[
+             Pattern[$CellContext`u, 
+              Blank[]], 
+             Pattern[$CellContext`h, 
+              Blank[]], 
+             Pattern[$CellContext`kValue, 
+              Blank[]], 
+             Pattern[$CellContext`northBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`westBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`southBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`forceGrid, 
+              Blank[]], 
+             Pattern[$CellContext`angle, 
+              Blank[]]] := 
+           Module[{$CellContext`AA, $CellContext`k1, $CellContext`k2, \
+$CellContext`i, $CellContext`j, $CellContext`n = 
+              0, $CellContext`eqs, $CellContext`vars, $CellContext`uu, \
+$CellContext`U, $CellContext`An, $CellContext`b, $CellContext`keepList, \
+$CellContext`nRow, $CellContext`nCol, $CellContext`sin1, $CellContext`sin2, \
+$CellContext`omega, $CellContext`sum, $CellContext`prod}, $CellContext`sum = 
+              2. $CellContext`h^2; $CellContext`prod = 
+              1. $CellContext`h^4; $CellContext`omega = 
+              4. BesselJ[0, Sqrt[$CellContext`kValue] $CellContext`h] + (
+                 Sqrt[$CellContext`kValue] $CellContext`h)^2; $CellContext`k1 = 
+              Sqrt[$CellContext`kValue] 
+               Cos[$CellContext`angle]; $CellContext`k2 = 
+              Sqrt[$CellContext`kValue] 
+               Cos[$CellContext`angle]; $CellContext`sin1 = 
+              Simplify[
+               2. I Sin[$CellContext`k1 $CellContext`h]]; $CellContext`sin2 = 
+              Simplify[
+               2. I Sin[$CellContext`k2 $CellContext`h]]; {$CellContext`nRow, \
+$CellContext`nCol} = Dimensions[$CellContext`u]; $CellContext`U = 
+              Array[$CellContext`uu[#, #2]& , {$CellContext`nRow, \
+$CellContext`nCol}]; 
+             With[{$CellContext`$nRow = $CellContext`nRow, $CellContext`$nCol = \
+$CellContext`nCol}, $CellContext`eqs = 
+                Table[0., {$CellContext`$nRow $CellContext`$nCol}]; \
+$CellContext`vars = $CellContext`eqs]; 
+             For[$CellContext`i = 1, $CellContext`i <= $CellContext`nRow, 
+               Increment[$CellContext`i], 
+               For[$CellContext`j = 1, $CellContext`j <= $CellContext`nCol, 
+                Increment[$CellContext`j], Increment[$CellContext`n]; If[
+                  Or[
+                   And[$CellContext`i == 1, $CellContext`j == 1], 
+                   
+                   And[$CellContext`i == $CellContext`nRow, $CellContext`j == 
+                    1], 
+                   
+                   And[$CellContext`i == 
+                    1, $CellContext`j == $CellContext`nCol], 
+                   
+                   And[$CellContext`i == $CellContext`nRow, $CellContext`j == \
+$CellContext`nCol]], {$CellContext`eqs, $CellContext`vars} = \
+$CellContext`processCornersCommon[$CellContext`u, $CellContext`eqs, \
+$CellContext`n, $CellContext`U, $CellContext`i, $CellContext`j, \
+$CellContext`vars, $CellContext`northBCtype, $CellContext`westBCtype, \
+$CellContext`southBCtype, $CellContext`eastBCtype, $CellContext`nRow, \
+$CellContext`nCol], 
+                  If[
+                   
+                   Or[$CellContext`i == 
+                    1, $CellContext`i == $CellContext`nRow, $CellContext`j == 
+                    1, $CellContext`j == $CellContext`nCol], 
+                   Which[$CellContext`i == 1, 
+                    
+                    If[$CellContext`northBCtype == "Dirichlet", 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                    Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin1 Part[$CellContext`U, $CellContext`i + 1, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i + 2, $CellContext`j] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`i == $CellContext`nRow, 
+                    
+                    If[$CellContext`southBCtype == "Dirichlet", 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                    Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin1 Part[$CellContext`U, $CellContext`i - 1, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i - 2, $CellContext`j] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`j == 1, 
+                    
+                    If[$CellContext`westBCtype == "Dirichlet", 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                    Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin2 Part[$CellContext`U, $CellContext`i, $CellContext`j + 1] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j + 2] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j]], \
+$CellContext`j == $CellContext`nCol, 
+                    
+                    If[$CellContext`eastBCtype == "Dirichlet", 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                    Part[$CellContext`u, $CellContext`i, $CellContext`j]; 
+                    Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j], 
+                    Part[$CellContext`eqs, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - \
+$CellContext`sin2 Part[$CellContext`U, $CellContext`i, $CellContext`j - 1] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j - 2] == 
+                    0; Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j]]], 
+                   Part[$CellContext`vars, $CellContext`n] = 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j]; 
+                   Part[$CellContext`eqs, $CellContext`n] = -
+                    Part[$CellContext`U, $CellContext`i + 1, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i - 
+                    1, $CellContext`j] + $CellContext`omega 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j - 1] - 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j + 
+                    1] - ($CellContext`kValue $CellContext`h)^2 
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j] == \
+$CellContext`h^2 
+                    Part[$CellContext`forceGrid, $CellContext`i, \
+$CellContext`j]]]]]; $CellContext`vars = 
+              Flatten[$CellContext`U]; $CellContext`AA = 
+              CoefficientArrays[$CellContext`eqs, $CellContext`vars]; \
+$CellContext`keepList = \
+$CellContext`obtainListOfRowsToKeep[$CellContext`nRow, $CellContext`nCol, \
+$CellContext`northBCtype, $CellContext`southBCtype, $CellContext`westBCtype, \
+$CellContext`eastBCtype]; $CellContext`An = Part[
+                
+                Part[$CellContext`AA, 
+                 2], $CellContext`keepList, $CellContext`keepList]; \
+$CellContext`b = -Part[
+                 
+                 Part[$CellContext`AA, 
+                  1], $CellContext`keepList]; {$CellContext`An, \
+$CellContext`b}]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`solve[
+             Pattern[$CellContext`$u, 
+              Blank[]], 
+             Pattern[$CellContext`AA, 
+              Blank[]], 
+             Pattern[$CellContext`rightHandVector, 
+              Blank[]], 
+             Pattern[$CellContext`northBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`westBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`southBCtype, 
+              Blank[]]] := 
+           Module[{$CellContext`u = $CellContext`$u, $CellContext`nRow, \
+$CellContext`nCol, $CellContext`x, $CellContext`loc, $CellContext`mask}, \
+{$CellContext`nRow, $CellContext`nCol} = 
+              Dimensions[$CellContext`u]; $CellContext`x = 
+              LinearSolve[$CellContext`AA, $CellContext`rightHandVector]; \
+$CellContext`mask = $CellContext`setUnknownsMask[{$CellContext`nRow, \
+$CellContext`nCol}, $CellContext`northBCtype, $CellContext`westBCtype, \
+$CellContext`eastBCtype, $CellContext`southBCtype]; $CellContext`loc = 
+              Position[$CellContext`mask, 1]; 
+             MapThread[($CellContext`u = 
+               ReplacePart[$CellContext`u, # -> #2])& , {$CellContext`loc, \
+$CellContext`x}]; Re[$CellContext`u]]; Null], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"setUnknownsMask", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"nRow_", ",", "nCol_"}], "}"}], ",", 
+                    "northBCtype_", ",", "westBCtype_", ",", "eastBCtype_", 
+                    ",", "southBCtype_"}], "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", "mask", "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "=", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"{", "nRow", "}"}], ",", 
+                    RowBox[{"{", "nCol", "}"}]}], "]"}]}], ";", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}], ",", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "1"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"1", ";;", 
+                    RowBox[{"-", "2"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Dirichlet\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "2"}]}], ",", "All"}], 
+                    "\[RightDoubleBracket]"}], "=", "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}], ",", "All"}], 
+                    "\[RightDoubleBracket]"}], "=", "1"}], ",", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], 
+                    "&&", 
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], "&&", 
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Sommerfeld\""}], 
+                    "&&", 
+                    RowBox[{"southBCtype", "==", "\"Sommerfeld\""}]}], ",", 
+                    RowBox[{
+                    RowBox[{"mask", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"-", "1"}]}]}], "\[RightDoubleBracket]"}], "=", 
+                    "1"}]}], "]"}], ";", "mask"}]}], "]"}]}], ";"}], ""}]]], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`processCornersCommon[
+             Pattern[$CellContext`u, 
+              Blank[]], 
+             Pattern[$CellContext`$eqs, 
+              Blank[]], 
+             Pattern[$CellContext`n, 
+              Blank[]], 
+             Pattern[$CellContext`U, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`j, 
+              Blank[]], 
+             Pattern[$CellContext`$vars, 
+              Blank[]], 
+             Pattern[$CellContext`northBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`westBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`southBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`nRow, 
+              Blank[]], 
+             Pattern[$CellContext`nCol, 
+              Blank[]]] := 
+           Module[{$CellContext`vars = $CellContext`$vars, $CellContext`eqs = \
+$CellContext`$eqs}, 
+             Part[$CellContext`vars, $CellContext`n] = 
+              Part[$CellContext`U, $CellContext`i, $CellContext`j]; Which[
+               And[$CellContext`i == 1, $CellContext`j == 1], 
+               Which[
+                
+                Or[$CellContext`northBCtype == 
+                 "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+                If[
+                 
+                 And[$CellContext`northBCtype == 
+                  "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] == Mean[{
+                    Part[$CellContext`u, 1, 2], 
+                    Part[$CellContext`u, 2, 1]}], 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                  Part[$CellContext`u, 1, 1]], True, 
+                Part[$CellContext`eqs, $CellContext`n] = 
+                Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, 1, 2], 
+                    Part[$CellContext`U, 2, 1]}] == 0], 
+               And[$CellContext`i == $CellContext`nRow, $CellContext`j == 1], 
+               Which[
+                
+                Or[$CellContext`southBCtype == 
+                 "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+                If[
+                 
+                 And[$CellContext`southBCtype == 
+                  "Dirichlet", $CellContext`westBCtype == "Dirichlet"], 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`u, $CellContext`i, 2], 
+                    Part[$CellContext`u, $CellContext`i - 1, 1]}] == 0, 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                  Part[$CellContext`u, $CellContext`nRow, 1]], True, 
+                Part[$CellContext`eqs, $CellContext`n] = 
+                Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, $CellContext`i, 2], 
+                    Part[$CellContext`U, $CellContext`i - 1, 1]}] == 0.], 
+               And[$CellContext`i == 1, $CellContext`j == $CellContext`nCol], 
+               Which[
+                
+                Or[$CellContext`northBCtype == 
+                 "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+                If[
+                 
+                 And[$CellContext`northBCtype == 
+                  "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, 1, $CellContext`j - 1], 
+                    Part[$CellContext`U, 2, $CellContext`j]}] == 0., 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] == 
+                  Part[$CellContext`u, 1, $CellContext`nCol]], True, 
+                Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, 1, $CellContext`j - 1], 
+                    Part[$CellContext`U, 2, $CellContext`j]}] == 0.; Null], 
+               
+               And[$CellContext`i == $CellContext`nRow, $CellContext`j == \
+$CellContext`nCol], 
+               Which[
+                
+                Or[$CellContext`southBCtype == 
+                 "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+                If[
+                 
+                 And[$CellContext`southBCtype == 
+                  "Dirichlet", $CellContext`eastBCtype == "Dirichlet"], 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j - 1], 
+                    
+                    Part[$CellContext`U, $CellContext`i - 
+                    1, $CellContext`j]}] == 0., 
+                 Part[$CellContext`eqs, $CellContext`n] = 
+                 Part[$CellContext`U, $CellContext`i, $CellContext`j] - 
+                  Part[$CellContext`u, $CellContext`nRow, $CellContext`nCol]],
+                 True, Part[$CellContext`eqs, $CellContext`n] = 
+                Part[$CellContext`U, $CellContext`i, $CellContext`j] - Mean[{
+                    Part[$CellContext`U, $CellContext`i, $CellContext`j - 1], 
+                    
+                    Part[$CellContext`U, $CellContext`i - 
+                    1, $CellContext`j]}] == 
+                 0.]]; {$CellContext`eqs, $CellContext`vars}]; Null], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"initializeSystem", "[", 
+                   
+                   RowBox[{
+                    "hx_", ",", "hy_", ",", "Lx_", ",", "Ly_", ",", 
+                    "centerGrid_", ",", "forceTermSelection_", ",", "a_", ",",
+                     "b_", ",", "c_", ",", "x0_", ",", "stdx_", ",", "y0_", 
+                    ",", "stdy_", ",", "northBCtype_", ",", "northbc_", ",", 
+                    "northBCconstantValue_", ",", "westBCtype_", ",", 
+                    "westbc_", ",", "westBCconstantValue_", ",", 
+                    "eastBCtype_", ",", "eastbc_", ",", 
+                    "eastBCconstantValue_", ",", "southBCtype_", ",", 
+                    "southbc_", ",", "southBCconstantValue_", ",", "kValue_", 
+                    ",", "angle_"}], "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{
+                    "nCol", ",", "nRow", ",", "grid", ",", "forceGrid", ",", 
+                    "u", ",", "AA", ",", "rightHandVector"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"nRow", ",", "nCol"}], "}"}], "=", 
+                    RowBox[{"getSolutionDomainDimensions", "[", 
+                    RowBox[{"hx", ",", "hy", ",", "Lx", ",", "Ly"}], "]"}]}], 
+                    ";", 
+                    RowBox[{"With", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"$nRow", "=", "nRow"}], ",", 
+                    RowBox[{"$nCol", "=", "nCol"}]}], "}"}], ",", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"0.", ",", 
+                    RowBox[{"{", "$nRow", "}"}], ",", 
+                    RowBox[{"{", "$nCol", "}"}]}], "]"}]}]}], "]"}], ";", 
+                    RowBox[{"grid", "=", 
+                    RowBox[{"makeGridCommon", "[", 
+                    
+                    RowBox[{
+                    "hx", ",", "hy", ",", "Lx", ",", "Ly", ",", 
+                    "centerGrid"}], "]"}]}], ";", 
+                    RowBox[{"forceGrid", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"forceTermSelection", "\[Equal]", "1"}], ",", 
+                    RowBox[{"With", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"$nRow", "=", "nRow"}], ",", 
+                    RowBox[{"$nCol", "=", "nCol"}]}], "}"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"a", ",", 
+                    RowBox[{"{", "$nRow", "}"}], ",", 
+                    RowBox[{"{", "$nCol", "}"}]}], "]"}]}], "]"}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "2"}], ",", 
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"evaluateForceCommon", "[", 
+                    RowBox[{
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", "a", ",", "b", ",", "c"}],
+                     "]"}], "&"}], ",", "grid", ",", 
+                    RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "3"}], ",", 
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"a", 
+                    RowBox[{"Exp", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "-", "x0"}], ")"}], "^", "2"}],
+                     "/", 
+                    RowBox[{"(", 
+                    RowBox[{"2", 
+                    RowBox[{"stdx", "^", "2"}]}], ")"}]}], "+", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], "-", "y0"}], ")"}], "^", "2"}],
+                     "/", 
+                    RowBox[{"(", 
+                    RowBox[{"2", 
+                    RowBox[{"stdy", "^", "2"}]}], ")"}]}]}], "]"}]}], ")"}], 
+                    "&"}], ",", "grid", ",", 
+                    RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "4"}], ",", 
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"a", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", "\[Pi]", 
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "+", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"c", "\[Pi]", 
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], ")"}]}], ")"}], 
+                    "&"}], ",", "grid", ",", 
+                    RowBox[{"{", "2", "}"}]}], "]"}], ",", 
+                    RowBox[{"forceTermSelection", "\[Equal]", "5"}], ",", 
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"a", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Cos", "[", 
+                    RowBox[{"b", "\[Pi]", 
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "*", 
+                    RowBox[{"Sin", "[", 
+                    RowBox[{"c", "\[Pi]", 
+                    
+                    RowBox[{"#", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], ")"}]}], ")"}], 
+                    "&"}], ",", "grid", ",", 
+                    RowBox[{"{", "2", "}"}]}], "]"}]}], "]"}]}], ";", 
+                    RowBox[{"forceGrid", "=", 
+                    RowBox[{"Re", "[", "forceGrid", "]"}]}], ";", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"setBoundaryConditions", "[", 
+                    
+                    RowBox[{
+                    "u", ",", "grid", ",", "northBCtype", ",", "northbc", ",",
+                     "northBCconstantValue", ",", "westBCtype", ",", "westbc",
+                     ",", "westBCconstantValue", ",", "eastBCtype", ",", 
+                    "eastbc", ",", "eastBCconstantValue", ",", "southBCtype", 
+                    ",", "southbc", ",", "southBCconstantValue"}], "]"}]}], 
+                    ";", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"AA", ",", "rightHandVector"}], "}"}], "=", 
+                    RowBox[{"makeSystemMatrixAndRightHandSide", "[", 
+                    
+                    RowBox[{
+                    "u", ",", "hx", ",", "kValue", ",", "northBCtype", ",", 
+                    "westBCtype", ",", "eastBCtype", ",", "southBCtype", ",", 
+                    "forceGrid", ",", "angle"}], "]"}]}], ";", 
+                    RowBox[{"{", 
+                    
+                    RowBox[{
+                    "grid", ",", "forceGrid", ",", "u", ",", "AA", ",", 
+                    "rightHandVector"}], "}"}]}]}], "]"}]}], ";"}], ""}]]], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"setBoundaryConditions", "[", 
+                   
+                   RowBox[{
+                    "$u_", ",", "grid_", ",", "northBCtype_", ",", "northbc_",
+                     ",", "northBCconstantValue_", ",", "westBCtype_", ",", 
+                    "westbc_", ",", "westBCconstantValue_", ",", 
+                    "eastBCtype_", ",", "eastbc_", ",", 
+                    "eastBCconstantValue_", ",", "southBCtype_", ",", 
+                    "southbc_", ",", "southBCconstantValue_"}], "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"u", "=", "$u"}], ",", "nRow", ",", "nCol", ",", 
+                    "i", ",", "j"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"nRow", ",", "nCol"}], "}"}], "=", 
+                    RowBox[{"Dimensions", "[", "u", "]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"northBCtype", "\[Equal]", "\"Dirichlet\""}], ",", 
+                    RowBox[{
+                    RowBox[{"u", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"nCol", "-", "1"}]}]}], "\[RightDoubleBracket]"}],
+                     "=", 
+                    RowBox[{"northBCconstantValue", "*", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"northbc", "[", 
+                    RowBox[{"grid", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "j", ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"j", ",", "2", ",", 
+                    RowBox[{"nCol", "-", "1"}]}], "}"}]}], "]"}]}]}]}], "]"}],
+                     ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"westBCtype", "\[Equal]", "\"Dirichlet\""}], ",", 
+                    RowBox[{
+                    RowBox[{"u", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"nRow", "-", "1"}]}], ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"westBCconstantValue", "*", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"westbc", "[", 
+                    RowBox[{"grid", "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "1", ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "2", ",", 
+                    RowBox[{"nRow", "-", "1"}]}], "}"}]}], "]"}]}]}]}], "]"}],
+                     ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"eastBCtype", "\[Equal]", "\"Dirichlet\""}], ",", 
+                    RowBox[{
+                    RowBox[{"u", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"2", ";;", 
+                    RowBox[{"nRow", "-", "1"}]}], ",", "nCol"}], 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"eastBCconstantValue", "*", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"eastbc", "[", 
+                    RowBox[{"grid", "\[LeftDoubleBracket]", 
+                    RowBox[{"i", ",", "nCol", ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "2", ",", 
+                    RowBox[{"nRow", "-", "1"}]}], "}"}]}], "]"}]}]}]}], "]"}],
+                     ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"southBCtype", "\[Equal]", "\"Dirichlet\""}], ",", 
+                    RowBox[{
+                    RowBox[{"u", "\[LeftDoubleBracket]", 
+                    RowBox[{"nRow", ",", 
+                    RowBox[{"2", ";;", 
+                    RowBox[{"nCol", "-", "1"}]}]}], "\[RightDoubleBracket]"}],
+                     "=", 
+                    RowBox[{"southBCconstantValue", "*", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"southbc", "[", 
+                    RowBox[{"grid", "\[LeftDoubleBracket]", 
+                    RowBox[{"nRow", ",", "j", ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"j", ",", "2", ",", 
+                    RowBox[{"nCol", "-", "1"}]}], "}"}]}], "]"}]}]}]}], "]"}],
+                     ";", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"setCornerNodeCommon", "[", 
+                    
+                    RowBox[{
+                    "u", ",", "1", ",", "1", ",", "nCol", ",", "nRow"}], 
+                    "]"}]}], ";", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"setCornerNodeCommon", "[", 
+                    
+                    RowBox[{
+                    "u", ",", "1", ",", "nCol", ",", "nCol", ",", "nRow"}], 
+                    "]"}]}], ";", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"setCornerNodeCommon", "[", 
+                    
+                    RowBox[{
+                    "u", ",", "nRow", ",", "1", ",", "nCol", ",", "nRow"}], 
+                    "]"}]}], ";", 
+                    RowBox[{"u", "=", 
+                    RowBox[{"setCornerNodeCommon", "[", 
+                    RowBox[{"u", ",", "nRow", ",", "nCol", ",", "nCol", ",", 
+                    "nRow"}], "]"}]}]}]}], "]"}]}], ";"}], ""}]]], 
+         HoldComplete[Null], 
+         ErrorBox[
+          ErrorBox[
+           BoxData[{
+             RowBox[{
+               RowBox[{
+                 RowBox[{"makeFinalPlot", "[", 
+                   
+                   RowBox[{
+                    "u_", ",", "AA_", ",", "Lx_", ",", "Ly_", ",", "grid_", 
+                    ",", "plotToShow_", ",", "plotPerformanceGoal_", ",", 
+                    "addFaceGrids_", ",", "zAxisScale_"}], "]"}], ":=", 
+                 RowBox[{"Module", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    
+                    RowBox[{
+                    "tmp", ",", "finalDisplayImage", ",", "nRow", ",", "nCol",
+                     ",", "plot", ",", "n", ",", "dim", ",", "cond"}], "}"}], 
+                    ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"nRow", ",", "nCol"}], "}"}], "=", 
+                    RowBox[{"Dimensions", "[", "u", "]"}]}], ";", 
+                    RowBox[{"tmp", "=", 
+                    RowBox[{"MapThread", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Append", "[", 
+                    RowBox[{"#1", ",", "#2"}], "]"}], "&"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"grid", ",", "u"}], "}"}], ",", "2"}], "]"}]}], 
+                    ";", 
+                    RowBox[{"tmp", "=", 
+                    RowBox[{"Chop", "@", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"tmp", ",", "1"}], "]"}]}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    
+                    RowBox[{"plotToShow", "\[Equal]", 
+                    "\"solution and density\""}], "||", 
+                    
+                    RowBox[{"plotToShow", "\[Equal]", 
+                    "\"solution and contour\""}]}], ",", 
+                    RowBox[{"plot", "=", 
+                    RowBox[{"Item", "@", 
+                    RowBox[{"ListPlot3D", "[", 
+                    RowBox[{"tmp", ",", 
+                    
+                    RowBox[{"PerformanceGoal", "\[Rule]", 
+                    "plotPerformanceGoal"}], ",", 
+                    RowBox[{"ImagePadding", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"20", ",", "15"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"15", ",", "1"}], "}"}]}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"zAxisScale", "\[Equal]", "True"}], ",", 
+                    RowBox[{"BoxRatios", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"Lx", ",", "Ly", ",", 
+                    RowBox[{"Min", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"Lx", ",", "Ly"}], "}"}], "]"}]}], "}"}]}], ",", 
+                    RowBox[{"{", "}"}]}], "]"}], ",", 
+                    RowBox[{"AxesLabel", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Text", "@", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{"\"x\"", ",", "Italic", ",", "12"}], "]"}]}], ",", 
+                    RowBox[{"Text", "@", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{"\"y\"", ",", "Italic", ",", "12"}], "]"}]}], ",",
+                     "None"}], "}"}]}], ",", 
+                    RowBox[{"TicksStyle", "\[Rule]", "9"}], ",", 
+                    RowBox[{"SphericalRegion", "\[Rule]", "True"}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{"addFaceGrids", ",", 
+                    RowBox[{"FaceGrids", "\[Rule]", "All"}], ",", 
+                    RowBox[{"FaceGrids", "\[Rule]", "None"}]}], "]"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"ContentSizeW", ",", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"ContentSizeH", "-", "10"}], ")"}], "/", "2"}]}], 
+                    "}"}]}]}], "]"}]}]}]}], "]"}], ";", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"plotToShow", "==", "\"solution and density\""}], 
+                    ",", 
+                    RowBox[{"finalDisplayImage", "=", 
+                    RowBox[{"Grid", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", "plot", "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Item", "@", 
+                    RowBox[{"ListDensityPlot", "[", 
+                    RowBox[{"tmp", ",", 
+                    RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"ContentSizeW", ",", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"ContentSizeH", "-", "10"}], ")"}], "/", "2"}]}], 
+                    "}"}]}], ",", 
+                    RowBox[{"ImagePadding", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"20", ",", "15"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"20", ",", "1"}], "}"}]}], "}"}]}], ",", 
+                    
+                    RowBox[{"PerformanceGoal", "\[Rule]", 
+                    "plotPerformanceGoal"}]}], "]"}]}], "}"}]}], "}"}], ",", 
+                    RowBox[{"Spacings", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], ",", 
+                    RowBox[{"plotToShow", "==", "\"solution and contour\""}], 
+                    ",", 
+                    RowBox[{"finalDisplayImage", "=", 
+                    RowBox[{"Grid", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"Item", "@", "plot"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Item", "@", 
+                    RowBox[{"ListContourPlot", "[", 
+                    RowBox[{"tmp", ",", 
+                    RowBox[{"Contours", "\[Rule]", "10"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"ContentSizeW", ",", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"ContentSizeH", "-", "10"}], ")"}], "/", "2"}]}], 
+                    "}"}]}], ",", 
+                    RowBox[{"ImagePadding", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"20", ",", "15"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"20", ",", "1"}], "}"}]}], "}"}]}], ",", 
+                    
+                    RowBox[{"PerformanceGoal", "\[Rule]", 
+                    "plotPerformanceGoal"}]}], "]"}]}], "}"}]}], "}"}], ",", 
+                    RowBox[{"Spacings", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}]}], ",", 
+                    RowBox[{"plotToShow", "==", "\"solution data\""}], ",", 
+                    RowBox[{"finalDisplayImage", "=", 
+                    RowBox[{"makeScrolledPane", "[", 
+                    RowBox[{
+                    RowBox[{"Normal", "@", "u"}], ",", 
+                    RowBox[{"ContentSizeH", "-", "40"}], ",", 
+                    "ContentSizeW"}], "]"}]}], ",", 
+                    
+                    RowBox[{
+                    "plotToShow", "==", "\"system matrix information\""}], 
+                    ",", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"cond", "=", 
+                    RowBox[{
+                    RowBox[{"LUDecomposition", "[", "AA", "]"}], "[", 
+                    RowBox[{"[", "3", "]"}], "]"}]}], ";", 
+                    RowBox[{"dim", "=", 
+                    RowBox[{"Dimensions", "[", "AA", "]"}]}], ";", 
+                    RowBox[{"n", "=", 
+                    RowBox[{"Min", "[", 
+                    RowBox[{"30", ",", 
+                    RowBox[{"First", "@", "dim"}]}], "]"}]}], ";", 
+                    RowBox[{"finalDisplayImage", "=", 
+                    RowBox[{"Grid", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"Text", "@", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"condition number = \"", ",", "cond"}], "}"}], 
+                    "]"}]}], ",", "12"}], "]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"Text", "@", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"\"matrix size = \"", ",", "dim"}], "}"}], 
+                    "]"}]}], ",", "12"}], "]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"Text", "[", "\"eigenvalues\"", "]"}], ",", 
+                    "12"}], "]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"makeScrolledPane", "[", 
+                    RowBox[{
+                    RowBox[{"Transpose", "@", 
+                    RowBox[{"Partition", "[", 
+                    RowBox[{
+                    RowBox[{"Eigenvalues", "[", 
+                    RowBox[{
+                    RowBox[{"Normal", "@", "AA"}], ",", "n"}], "]"}], ",", 
+                    "1"}], "]"}]}], ",", "45", ",", 
+                    RowBox[{"ContentSizeW", "-", "20"}]}], "]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Style", "[", 
+                    RowBox[{
+                    RowBox[{"Text", "[", "\"A matrix\"", "]"}], ",", "12"}], 
+                    "]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"makeScrolledPane", "[", 
+                    RowBox[{
+                    RowBox[{"Normal", "@", 
+                    RowBox[{"AA", "\[LeftDoubleBracket]", 
+                    RowBox[{
+                    RowBox[{"1", ";;", "n"}], ",", 
+                    RowBox[{"1", ";;", "n"}]}], "\[RightDoubleBracket]"}]}], 
+                    ",", 
+                    RowBox[{"ContentSizeH", "-", "140"}], ",", 
+                    "ContentSizeW"}], "]"}], "}"}]}], "}"}], "]"}]}]}], 
+                    ")"}]}], "]"}], ";", "finalDisplayImage"}]}], "]"}]}], 
+               ";"}], ""}]]], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`obtainListOfRowsToKeep[
+             Pattern[$CellContext`nRow, 
+              Blank[]], 
+             Pattern[$CellContext`nCol, 
+              Blank[]], 
+             Pattern[$CellContext`northBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`southBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`westBCtype, 
+              Blank[]], 
+             Pattern[$CellContext`eastBCtype, 
+              Blank[]]] := 
+           Module[{$CellContext`rowsToRemove = {}}, 
+             If[$CellContext`northBCtype == "Dirichlet", 
+               AppendTo[$CellContext`rowsToRemove, 
+                 Range[1, $CellContext`nCol]]; Null]; 
+             If[$CellContext`southBCtype == "Dirichlet", 
+               AppendTo[$CellContext`rowsToRemove, 
+                 
+                 Range[($CellContext`nRow - 1) $CellContext`nCol + 
+                  1, $CellContext`nRow $CellContext`nCol]]; Null]; 
+             If[$CellContext`westBCtype == "Dirichlet", 
+               AppendTo[$CellContext`rowsToRemove, 
+                 Range[
+                 1, $CellContext`nRow $CellContext`nCol, $CellContext`nCol]]; 
+               Null]; If[$CellContext`eastBCtype == "Dirichlet", 
+               AppendTo[$CellContext`rowsToRemove, 
+                 
+                 Range[$CellContext`nCol, $CellContext`nRow \
+$CellContext`nCol, $CellContext`nCol]]; Null]; Complement[
+               Range[$CellContext`nRow $CellContext`nCol], 
+               Flatten[$CellContext`rowsToRemove]]]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`myGrid[
+             Pattern[$CellContext`tab, 
+              Blank[]], 
+             Pattern[$CellContext`opts, 
+              BlankNullSequence[]]] := 
+           Module[{$CellContext`divlocal, $CellContext`divglobal, \
+$CellContext`pos}, $CellContext`divglobal = ReplaceAll[
+                ReplaceAll[Dividers, {$CellContext`opts}], 
+                Dividers -> {False, False}]; 
+             If[Head[$CellContext`divglobal] =!= 
+               List, $CellContext`divglobal = {$CellContext`divglobal, \
+$CellContext`divglobal}]; If[Length[$CellContext`divglobal] == 1, 
+               AppendTo[$CellContext`divglobal, False]]; $CellContext`pos = 
+              Position[$CellContext`tab, Dividers -> Blank[], 
+                1]; $CellContext`divlocal = 
+              MapIndexed[ReplaceAll[# - Part[#2, 1] + 1 -> Dividers, 
+                 Part[$CellContext`tab, #]]& , 
+                Flatten[$CellContext`pos]]; Part[$CellContext`divglobal, 2] = {
+                Part[$CellContext`divglobal, 2], $CellContext`divlocal}; Grid[
+               Delete[$CellContext`tab, $CellContext`pos], 
+               Dividers -> $CellContext`divglobal, $CellContext`opts]]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[MakeBoxes[
+             Derivative[
+              Pattern[$CellContext`indices, 
+               BlankSequence[]]][
+              Pattern[$CellContext`f, 
+               Blank[]]][
+              Pattern[$CellContext`vars, 
+               BlankSequence[]]], TraditionalForm] := SubscriptBox[
+             MakeBoxes[$CellContext`f, TraditionalForm], 
+             RowBox[
+              Map[ToString, 
+               Flatten[
+                ReplaceAll[
+                 Thread[
+                  $CellContext`dummyhead[{$CellContext`vars}, 
+                   
+                   Partition[{$CellContext`indices}, 
+                    1]]], $CellContext`dummyhead -> Table]]]]]; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`ContentSizeW = 260; Null], 
+         HoldComplete[Null], 
+         HoldComplete[$CellContext`ContentSizeH = 405; Null]}}]; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->870091126],
+
+Cell[TextData[{
+ "This Demonstration implements a recently published algorithm for an \
+improved finite difference scheme for solving the Helmholtz partial \
+differential equation ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Del]", "2"], "u"}], "+", 
+     RowBox[{
+      SuperscriptBox["k", "2"], "u"}]}], "=", 
+    RowBox[{"-", 
+     RowBox[{"f", "(", 
+      RowBox[{"x", ",", "y"}], ")"}]}]}], TraditionalForm]], "InlineMath"],
+ " on a rectangle with uniform grid spacing. Dirichlet and Sommerfeld \
+boundary conditions are supported. You can specify different source functions \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"f", "(", 
+    RowBox[{"x", ",", "y"}], ")"}], TraditionalForm]], "InlineMath"],
+ ". You can prescribe Sommerfeld boundary conditions on up to three edges of \
+the rectangle at the same time. You can vary the ",
+ Cell[BoxData[
+  FormBox["k", TraditionalForm]], "InlineMath"],
+ " value and the angle of incidence ",
+ Cell[BoxData[
+  FormBox["\[Theta]", TraditionalForm]], "InlineMath"],
+ ". The numerical scheme is converted to a standard system of linear \
+equations ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"A", " ", "u"}], "=", "b"}], TraditionalForm]], "InlineMath"],
+ " system, which can then be solved. You can view the generated matrix ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]], "InlineMath"],
+ " and its eigenvalues as well as the solution data using the dropdown menu \
+in the top row. "
+}], "ManipulateCaption"],
+
+Cell["THINGS TO TRY", "ManipulateCaption",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047],
+ CellTags->"ControlSuggestions"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TooltipBox[
+   PaneSelectorBox[{False->Cell[TextData[StyleBox["Resize Images",
+     FontFamily->"Verdana"]]], True->Cell[TextData[StyleBox["Resize Images",
+     FontFamily->"Verdana",
+     FontColor->GrayLevel[0.5]]]]}, Dynamic[
+     CurrentValue["MouseOver"]]],
+   "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+   TooltipStyle->{
+    FontFamily -> "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.35], 
+     Background -> GrayLevel[0.98]}]]],
+ StyleBox["\[NonBreakingSpace]\[FilledVerySmallSquare]\[NonBreakingSpace]",
+  FontColor->RGBColor[0.928786, 0.43122, 0.104662]],
+ Cell[BoxData[
+  TooltipBox[
+   PaneSelectorBox[{False->Cell[TextData[StyleBox["Rotate and Zoom in 3D",
+     FontFamily->"Verdana"]]], True->Cell[TextData[StyleBox[
+    "Rotate and Zoom in 3D",
+     FontFamily->"Verdana",
+     FontColor->GrayLevel[0.5]]]]}, Dynamic[
+     CurrentValue["MouseOver"]]],
+   RowBox[{
+    "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+     FrameBox[
+     "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], "\" (or \"", 
+     FrameBox[
+     "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+   TooltipStyle->{
+    FontFamily -> "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.35], 
+     Background -> GrayLevel[0.98]}]]],
+ StyleBox["\[NonBreakingSpace]\[FilledVerySmallSquare]\[NonBreakingSpace]",
+  FontColor->RGBColor[0.928786, 0.43122, 0.104662]],
+ Cell[BoxData[
+  TooltipBox[
+   PaneSelectorBox[{False->Cell[TextData[StyleBox["Slider Zoom",
+     FontFamily->"Verdana"]]], True->Cell[TextData[StyleBox["Slider Zoom",
+     FontFamily->"Verdana",
+     FontColor->GrayLevel[0.5]]]]}, Dynamic[
+     CurrentValue["MouseOver"]]],
+   RowBox[{"\"Hold down the \"", 
+     FrameBox[
+     "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], 
+     "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+     FrameBox[
+     "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], "\" and/or \"", 
+     FrameBox[
+     "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], "\" at the same time as \"", 
+     FrameBox[
+     "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+      GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+   TooltipStyle->{
+    FontFamily -> "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.35], 
+     Background -> GrayLevel[0.98]}]]],
+ StyleBox["\[NonBreakingSpace]\[FilledVerySmallSquare]\[NonBreakingSpace]",
+  FontColor->RGBColor[0.928786, 0.43122, 0.104662]],
+ Cell[BoxData[
+  TooltipBox[
+   PaneSelectorBox[{False->Cell[TextData[StyleBox["Gamepad Controls",
+     FontFamily->"Verdana"]]], True->Cell[TextData[StyleBox["Gamepad Controls",
+     FontFamily->"Verdana",
+     FontColor->GrayLevel[0.5]]]]}, Dynamic[
+     CurrentValue["MouseOver"]]],
+   "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+   TooltipStyle->{
+    FontFamily -> "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.35], 
+     Background -> GrayLevel[0.98]}]]],
+ StyleBox["\[NonBreakingSpace]\[FilledVerySmallSquare]\[NonBreakingSpace]",
+  FontColor->RGBColor[0.928786, 0.43122, 0.104662]],
+ Cell[BoxData[
+  TooltipBox[
+   PaneSelectorBox[{False->Cell[TextData[StyleBox["Automatic Animation",
+     FontFamily->"Verdana"]]], True->Cell[TextData[StyleBox[
+    "Automatic Animation",
+     FontFamily->"Verdana",
+     FontColor->GrayLevel[0.5]]]]}, Dynamic[
+     CurrentValue["MouseOver"]]],
+   RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+     AdjustmentBox[
+      Cell[
+       GraphicsData[
+       "CompressedBitmap", 
+        "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+       0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+      BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+     "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+     StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+     AdjustmentBox[
+      Cell[
+       GraphicsData[
+       "CompressedBitmap", 
+        "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+       ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+      BoxBaselineShift -> 0.1839080459770115, 
+      BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+     "\"menu.\""}],
+   TooltipStyle->{
+    FontFamily -> "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.35], 
+     Background -> GrayLevel[0.98]}]]]
+}], "ManipulateCaption",
+ CellMargins->{{Inherited, Inherited}, {0, 0}},
+ Deployed->True,
+ FontFamily->"Verdana",
+ CellTags->"ControlSuggestions"],
+
+Cell["DETAILS", "DetailsSection"],
+
+Cell[TextData[{
+ "Details of the algorithm are described in [1]. This implementation converts \
+the finite difference scheme to the standard ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"A", " ", "u"}], "=", "b"}], TraditionalForm]], "InlineMath"],
+ " form and uses the built-in ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " function ",
+ StyleBox["LinearSolve", "MR"],
+ " to obtain the solution. Sparse matrices are used. The matrix ",
+ Cell[BoxData[
+  FormBox["A", TraditionalForm]], "InlineMath"],
+ " and its eigenvalues and the numerical solution ",
+ Cell[BoxData[
+  FormBox["u", TraditionalForm]], "InlineMath"],
+ " can be viewed using the dropdown menu. The discretized scheme is given by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", 
+      SuperscriptBox["h", "2"]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["u", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "j"}]]}], "+", 
+       SubscriptBox["u", 
+        RowBox[{
+         RowBox[{"i", "+", "1"}], ",", "j"}]], "-", 
+       RowBox[{"\[Omega]", " ", 
+        SubscriptBox["u", 
+         RowBox[{"i", ",", "j"}]]}], "+", 
+       SubscriptBox["u", 
+        RowBox[{"i", ",", 
+         RowBox[{"j", "-", "1"}]}]], "+", 
+       SubscriptBox["u", 
+        RowBox[{"i", ",", 
+         RowBox[{"j", "+", "1"}]}]], "-", 
+       RowBox[{
+        SuperscriptBox["k", "2"], " ", 
+        SubscriptBox["u", 
+         RowBox[{"i", ",", "j"}]]}]}], ")"}]}], "=", 
+    SubscriptBox["f", 
+     RowBox[{"i", ",", "j"}]]}], TraditionalForm]], "InlineMath"],
+ " where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Omega]", "=", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"k", " ", "h"}], ")"}], "2"], "+", 
+     RowBox[{"4", " ", 
+      RowBox[{
+       SubscriptBox["J", "0"], "(", 
+       RowBox[{"h", " ", "k"}], ")"}]}]}]}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["J", "0"], "(", 
+     RowBox[{"k", " ", "h"}], ")"}], "=", 
+    RowBox[{
+     FractionBox["1", "\[Pi]"], 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", "0", "\[Pi]"], 
+      RowBox[{
+       RowBox[{"cos", "(", 
+        RowBox[{"k", " ", "h", " ", 
+         RowBox[{"sin", "(", "\[Theta]", ")"}]}], ")"}], "d", 
+       "\[InvisibleSpace]", "\[Theta]"}]}]}]}], TraditionalForm]], 
+  "InlineMath"],
+ "."
+}], "DetailNotes",
+ CellID->32823640],
+
+Cell["\<\
+Click the \"solve\" button after making changes to the UI variables to get a \
+new solution. The \"reset\" button is used to initialize the system back to \
+the state it was before the \"solve\" button was clicked. Different types of \
+plots and options are available to choose from. \
+\>", "DetailNotes",
+ CellID->49034629],
+
+Cell["Reference", "DetailNotes",
+ CellID->2015220495],
+
+Cell[TextData[{
+ "[1] Y. S. Wong and G. Li, \"Exact Finite Difference Schemes for Solving \
+Helmholtz Equation at Any Wavenumber,\" ",
+ StyleBox["International Journal of Numerical Analysis and Modeling",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["Series B",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["Computing and Information",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["2",
+  FontWeight->"Bold"],
+ "(1), 2010 pp. 91\[Dash]108."
+}], "DetailNotes",
+ CellID->239642231],
+
+Cell["RELATED LINKS", "RelatedLinksSection"],
+
+Cell[TextData[{
+ ButtonBox["Heat Conduction Equation",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://mathworld.wolfram.com/HeatConductionEquation.html"], None},
+  ButtonNote->"http://mathworld.wolfram.com/HeatConductionEquation.html"],
+ " (",
+ ButtonBox["Wolfram",
+  BaseStyle->"SiteLink",
+  ButtonData->{
+    URL["http://mathworld.wolfram.com/"], None},
+  ButtonNote->"http://mathworld.wolfram.com/"],
+ " ",
+ StyleBox[ButtonBox["MathWorld",
+  BaseStyle->"SiteLink",
+  ButtonData->{
+    URL["http://mathworld.wolfram.com/"], None},
+  ButtonNote->"http://mathworld.wolfram.com/"],
+  FontSlant->"Italic"],
+ ")"
+}], "RelatedLinks",
+ CellID->584775398],
+
+Cell[BoxData[
+ ButtonBox[
+  PaneSelectorBox[{False->Cell[BoxData[
+    GraphicsBox[RasterBox[CompressedData["
+1:eJztmjlPZFcQhZH8H5z7LzmYFGkSyAwZkEEGZEDEkrBEbAEgAjCLxS6xCbEP
+Bnu8SAYaRoIEhPDnPqJcvm/p17THyJp3pGnVPbdu1bl1T7dGo/nm/Xffvv+q
+qqrqa/78wJ+/4ufn56enp4eHh7u7u9vb25ubm0KhcFNEoQiCT0Wwa4wA88kh
+WCYhKS39eKAtCUFCSUmW4AN/96T6sY30qa1gUCk6NdiUK8Q+ij9riFZOR5YZ
+xu5yFsNgG8zzXMTV1dX5+fmHHDnKBLbBPHLR2dnZW8vJ8X8F5pGLbJkjRxbI
+LfZpv0U5crwauYuEpaWlmZkZPt9ayN/Y39+fKeKthZSGXPRj+WhoaHjnwHJi
+YsJ2mUBra2t1dTVbzc3NvI5tQZKsWLu+Znd3t+LZ2Vl2fZBSFlIyCIaHhwnI
+hEdSTU0Ny46ODl/cgyLKEYitbFI7JOkIu6ps12HLKtNOaXV1dTYcApaQlOWs
+dEbBlkkik0t5wYgRjwCrAK9H4dOrKtmRg/39/cr0j5gdctG5A+R5BiCyra3t
++xcQo5PAdhkgd5+cnCRG/8HBATzL6iKISdYDaUunenp6FMe6yMpyWZVlJkxA
+cyZTw9cAdZCnJNDYoy7iOGfZ3dzcZMkn70KLlHbwkLwL+lGrL4U0+wloi7Mw
+UrW1tUUsQxKwRQJzi87WzhIzHJacYnRaqiNLElCi7uJVWfniM3bkOpxCIQl2
+hRQEJom6KCP8iwvIQwwBYvw8dUHNpK0IlsvLywMDA3omzSeoqev7IKksdShi
+VqS+BmiBQHIgGHBWlvZQl5RbeN538TySKO6Ho++al8QQ7O4GGvk6wWzlBLus
+hoPUgMc2sUOI7Wh12GVEfpgZIRddFMHyIjMaGxvp6JmVlRWUbG9vS1JsMgqn
+pqZYjoyMcFNI+Spa04pEg6Ds4eGhfrEp3viCqMKoYIBaZHtGXSBTbqFXFgmj
+dgHvY19BRTyCHOaDH6I64YN2vlHA2zJLR4HnYIwEdO/s7IzNSYJ3UVmIfRTd
+SPPncY3XD6ZsBi/z6MfTDy2Li6JlFVOcUvoq2QD9NHxyFBznp4MjtJCrU9pl
+dJHePRiat7rMH+REfRLs6q0F5JmLPM/FbQglO14UXcor8NXWcwTfrJKQi34q
+H0jq7e0NSBTOzc0RyM8iEQa/uroK09LSAkOO/tqpBJLJUU34o6Mj4sHBQSWQ
+7DOjZXd2duDVF2iAqmDVVCQqGFDBfsrwj9VJauevCaipduItn5saTzKl0Ikk
+ekkSoJ0G4uELxqqVP+2yVDZe8qgPaUMo2VFqAWkMgSNJ3ZMgF/1cPuQizzAl
+LsIn8ejoKHFtba0eqL29HZIlvJIhqaC4vQjVJJ80/SaInJ+fJ1ZmbFlVUEHx
+6nJ8fMxS8+STU4FguwhYW1uLbiW1I0aVYj268WRaQTX1d1E7SWKLINqXpvAp
+k9dlNSi7rB8CxyUjY0cYLMS4KIUtU1onQS76WD5Q1dfX55muri502nJ3d3do
+aIgcRIpZWFg4OTlRDEmCZSpHJGmcGhsbs1MMJ6WsMD093VcE+UbSjjqQnIoK
+FijujxCTmd7OX8TEG28aiHUWbVGpbFkRD8hA0sfItOmoCjZDX1kD9LdI71g5
+KnER5l94gb4Iwbj+FQQuejWSXATPN1HPwWd9fT3LyttVAr6P/GjoeyRbRn2V
+jsBFnxty0S/lo6mp6Z0Dw8dCr6hTEnJR5XUQzGyj/Pr6OuLtIqSdnp5W3q5C
+IFX/mKZ/LRwfHy/3OBf5TNqikIt+/eKxsbGxuLi4t7f31kL+gcUiMib/Z54B
+QevcRTkqh1z0W44cFcBc9HuOHK+Cuejq6kqmSsnMnZYjgFxh/2P28fHx/v6+
+UChcXl7+EQf46+vrpN0cXyAwA4bBNpgHC/0JwypFcA==
+      "], {{0, 0}, {194, 22}}, {0, 255},
+      ColorFunction->RGBColor],
+     ImageSize->{194, 22},
+     PlotRange->{{0, 194}, {0, 22}}]]], True->Cell[BoxData[
+    GraphicsBox[RasterBox[CompressedData["
+1:eJztmjtPLEcQhZH8H5z7LzlwinQjiCwIIYQQyICMRwRkPCIQCRgIeCa8At6S
+vetrW2aXlTYAhD/PEeW63TOzu4wxsj1HYlVdXV11qvrMLEJ88+n7bz991dXV
+9TU/m/z8ab+8vDw/Pz8+PjabzUaj8fDwUK/XHxLUE2A0XmEeofHPwnPLQhBQ
+pFBqLT+crELaCgaVw9OOZGVOvRR/1hBnbtlpyxmm7nIWwSAbxPOSoFarVSqV
+H0uU6BDIBvFIRR/NpcS/G6WKShRHqaISxVGqSNjd3d3Y2ODzo4n8hYuLi40E
+H02kNaSinzrHwMDAdw4sV1dXbffy8nJkZKS7u5utoaGhvb0928JJsGzt+pxT
+U1OyNzc32fVGTlqcooGxuLiIQSR+KPX09LAcHx/3yT1IohgB29JmlYOSjrCr
+zNYOW5aZcgrr6+uz4WCwxElazopnDLaMEpE05QlDRn4IWAb8uhQ+PauWFTk4
+NzenSH+J7UMqqjjgrLQBSI6Ojv7wCmx4YtguA6T3tbU1bPhfXV3hZ9mdAJtg
+XZC2dGp6elp2qoosLc0qLTNhApozkRq+BqiDXCWGxh6riOOcZff4+Jgln9wL
+JXLK4cfJvcAftnooxNlPQFucxTMxMcHWyckJtgSJwRYBzC2erZ3FZjgsOcXo
+tFRFlgTARNXlV2bFy99mRdrhFAwJsBZyEIgkVlGb8DcuQA8yGJDx81SDmslo
+Apb7+/vcvq5J8wlyqn1vZKUlD0lMiuTXAM0QCA4IAykwcKpKThfe76t4P5RI
+7oejZ81TYgjWu4FCPk8wWynBmtVwoBr4kU3qEFIrWh52GZEfZpuQiqoJWFbb
+xuDgIBW95+DgACanp6eilBoszbBcWloaHh7GKV3FOS1JbARpr6+v9cYm+eAr
+YoYxYQBbaHuPquDM6UK3LCcelQv83vYZlMQjiNHrOuaJPyjnCwV+W7ZTUeA6
+GCMG1Xl5psZkwauoI6ReijrS/Llc8+uFKZnhl3j08vRDa0dFcVrZJCeVHiUb
+oJ+GD47B8fn5eY5QQqrOKdeminTvwdC81CX+ICbWSbCruxagZyryfhq3IbSs
+WE1Uyi3waOs6gierJd5DRdUv9QwxPd14EHw1uSD92qkAgjVwtayL407jV1Bq
+Wk3Ars8GSAbLpiSpKiKDvcr0vWNbqeWquSqyeDo1v34DhCeUqGXKpJwG4pGv
+Ij2Jpk/K6RmUX/TIj9OG0LKi2ALCGAJHsqpnQSr6uXNAcmZmxnvOzs5ohE/s
+5eVl3Ut/f7+ebpws8SsYJxlk60tNOYnXs2Ontra2sBWZmlYZlFB+Vbm5uWGp
+efLJqYCwNQKYf7yVVQ4bVrLJaY3gJ9ISqqjvReVEiS099XFR/DmTV7MalDXr
+h8Bx0WizIh4kxLhINTk5mVM6C1LR584hFXkPBHp7e22JnBYWFog5PDyUZ3t7
++/b2VjZOAixSMXISxik6slMMJyetsL6+PpOAeHNSjjw4ORUTFkjuj2ATmV/O
+N2LkzW8csHUWbjFVtiyJB86A0udo2lRUBpuhz6wB+i7yKxZHERWNjY1tvwKb
+3oNx/S0IVPRmZKkIP0+iroNPnmKWxcsVAc8jLw09R5JlrKt8BCp6b0hFv3QO
+vagNDB8JvSFPS+zs7JC/eB4Iz87Oxv6joyN9YQmE3d3dFS9XEFDVH9P018KV
+lZVOj9PIO3GL8WYV/ceAlpDr+fn5RxP5AjsJPppFa5QqKlEcUtGvJUoUgKno
+txIl3gRTUa1Wk6hyIkullQggVdh/zD49PTWbzXq9fn9//3sa8BOctVvifwjE
+gGCQDeJBQn8AEYN5ZQ==
+      "], {{0, 0}, {194, 22}}, {0, 255},
+      ColorFunction->RGBColor],
+     ImageSize->{194, 22},
+     PlotRange->{{0, 194}, {0, 22}}]]]}, Dynamic[
+    CurrentValue["MouseOver"]]],
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/versions/source.jsp?id=\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD&version=0012"], 
+    None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD-source.nb"]], \
+"DemoSourceNotebookSection",
+ CellFrame->{{0, 0}, {1, 1}},
+ ShowCellBracket->False,
+ CellMargins->{{48, 48}, {28, 28}},
+ CellGroupingRules->{"SectionGrouping", 25},
+ CellFrameMargins->{{48, 48}, {6, 8}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87]],
+
+Cell["PERMANENT CITATION", "CitationSection"],
+
+Cell[TextData[{
+ "\[NonBreakingSpace]",
+ ButtonBox["Nasser M. Abbasi",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Nasser%20M.%\
+20Abbasi"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Nasser%20M.%20Abbasi"]
+}], "Author",
+ FontColor->GrayLevel[0.6]],
+
+Cell[TextData[{
+ "\"",
+ ButtonBox["Solving the 2D Helmholtz Partial Differential Equation Using \
+Finite Differences",
+  BaseStyle->"SiteLink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/"],
+ "\"",
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ ButtonBox["http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/",
+  BaseStyle->"SiteLink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/"], None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/\
+SolvingThe2DHelmholtzPartialDifferentialEquationUsingFiniteD/"],
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ ButtonBox["Wolfram Demonstrations Project",
+  BaseStyle->"SiteLink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ "Published: ",
+ "June 3, 2012"
+}], "Citations"],
+
+Cell[TextData[{
+ "\[Copyright] ",
+ StyleBox[ButtonBox["Wolfram Demonstrations Project & Contributors",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Terms of Use",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/termsofuse.html"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/termsofuse.html"],
+  FontColor->GrayLevel[0.6]]
+}], "Text",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ CellMargins->{{48, 48}, {20, 50}},
+ CellFrameColor->GrayLevel[0.45098],
+ FontFamily->"Verdana",
+ FontSize->9,
+ FontColor->GrayLevel[0.6],
+ CellTags->"Copyright"]
+},
+Editable->False,
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+CellInsertionPointCell->None,
+CellGrouping->Manual,
+WindowSize->{750, 650},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowElements->{
+ "StatusArea", "MemoryMonitor", "MagnificationPopUp", "VerticalScrollBar", 
+  "MenuBar"},
+WindowTitle->"Solving the 2D Helmholtz Partial Differential Equation Using \
+Finite Differences",
+DockedCells->{},
+CellContext->Notebook,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->Notebook[{
+   Cell[
+    CellGroupData[{
+      Cell[
+      "Demonstration Styles", "Title", 
+       CellChangeTimes -> {
+        3.3509184553711*^9, {3.36928902713192*^9, 3.36928902738193*^9}, {
+         3.3754479092466917`*^9, 3.3754479095123196`*^9}, {
+         3.375558447161495*^9, 3.375558447395873*^9}, {3.37572892702972*^9, 
+         3.375728927639103*^9}}], 
+      Cell[
+       StyleData[StyleDefinitions -> "Default.nb"]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Style Environment Names", "Section", 
+          CellChangeTimes -> {{3.369277974278112*^9, 3.369277974396138*^9}}], 
+         Cell[
+          StyleData[All, "Working"], ShowCellBracket -> False]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Notebook Options", "Section", 
+          CellChangeTimes -> {{3.374865264950812*^9, 3.374865265419568*^9}}], 
+         Cell[
+         "  The options defined for the style below will be used at the \
+Notebook level.  ", "Text"], 
+         Cell[
+          StyleData["Notebook"], Editable -> True, 
+          PageHeaders -> {{None, None, None}, {None, None, None}}, 
+          PageFooters -> {{None, None, None}, {None, None, None}}, 
+          PageHeaderLines -> {False, False}, 
+          PageFooterLines -> {False, False}, 
+          PrintingOptions -> {
+           "FacingPages" -> False, "FirstPageFooter" -> False, 
+            "RestPagesFooter" -> False}, CellFrameLabelMargins -> 6, 
+          DefaultNewInlineCellStyle -> "InlineMath", DefaultInlineFormatType -> 
+          "DefaultTextInlineFormatType", ShowStringCharacters -> True, 
+          CacheGraphics -> False, StyleMenuListing -> None, 
+          DemonstrationSite`Private`CreateCellID -> True, 
+          DemonstrationSite`Private`TrackCellChangeTimes -> False]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Input/Output", "Section", 
+          CellChangeTimes -> {{3.3756313297791014`*^9, 
+           3.3756313299509783`*^9}}], 
+         Cell[
+         "The cells in this section define styles used for input and output \
+to the kernel.  Be careful when modifying, renaming, or removing these \
+styles, because the front end associates special meanings with these style \
+names.    ", "Text"], 
+         Cell[
+          StyleData["Input"], CellMargins -> {{48, 4}, {6, 4}}], 
+         Cell[
+          StyleData["Output"], CellMargins -> {{48, 4}, {6, 4}}], 
+         Cell[
+          StyleData["DemonstrationHeader"], Deletable -> False, 
+          CellFrame -> {{0, 0}, {0, 0}}, ShowCellBracket -> False, 
+          CellMargins -> {{0, 0}, {30, 0}}, 
+          CellGroupingRules -> {"SectionGrouping", 20}, 
+          CellHorizontalScrolling -> True, 
+          CellFrameMargins -> {{0, 0}, {0, 0}}, CellFrameColor -> 
+          RGBColor[0, 0, 0], StyleMenuListing -> None, Background -> 
+          RGBColor[0, 0, 0]], 
+         Cell[
+          StyleData["ShowSource"], CellFrame -> {{0, 0}, {0, 1}}, 
+          ShowCellBracket -> False, CellMargins -> {{48, 48}, {8, 28}}, 
+          CellFrameMargins -> {{48, 48}, {6, 8}}, CellFrameColor -> 
+          RGBColor[0.87, 0.87, 0.87], StyleMenuListing -> None, FontFamily -> 
+          "Helvetica", FontSize -> 10, FontWeight -> "Bold", FontSlant -> 
+          "Plain", FontColor -> RGBColor[1, 0.42, 0]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Basic Styles", "Section", 
+          CellChangeTimes -> {{3.34971724802035*^9, 3.34971724966638*^9}, {
+           3.35091840608065*^9, 3.35091840781999*^9}, {3.35091845122987*^9, 
+           3.35091845356607*^9}, {3.35686681885432*^9, 3.35686681945788*^9}, {
+           3.375657418186455*^9, 3.375657418452083*^9}}], 
+         Cell[
+          StyleData["Hyperlink"], StyleMenuListing -> None, FontColor -> 
+          GrayLevel[0]], 
+         Cell[
+          StyleData["SiteLink"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, FontColor -> 
+          GrayLevel[0.45098], 
+          ButtonBoxOptions -> {
+           Active -> True, Appearance -> {Automatic, None}, 
+            ButtonFunction :> (FrontEndExecute[{
+               NotebookLocate[#2]}]& ), ButtonNote -> ButtonData}], 
+         Cell[
+          StyleData["Link"], FontColor -> GrayLevel[0.45098]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DemoNotes"], CellFrame -> True, 
+             CellMargins -> {{0, 0}, {0, 0}}, 
+             CellFrameMargins -> {{48, 48}, {4, 4}}, CellFrameColor -> 
+             GrayLevel[0.99], StyleMenuListing -> None, FontFamily -> 
+             "Verdana", FontSize -> 10, FontColor -> GrayLevel[0.45098], 
+             DemonstrationSite`Private`ReturnCreatesNewCell -> True], 
+            Cell[
+             StyleData["DemoNotes", "Printout"], 
+             CellMargins -> {{24, 0}, {0, 10}}, FontSize -> 9]}, Open]], 
+         Cell[
+          StyleData["SnapshotsSection"], CellFrame -> {{0, 0}, {0, 2}}, 
+          ShowCellBracket -> False, ShowGroupOpener -> True, 
+          CellMargins -> {{48, 48}, {10, 30}}, 
+          PrivateCellOptions -> {"DefaultCellGroupOpen" -> False}, 
+          CellGroupingRules -> {"SectionGrouping", 30}, 
+          CellFrameMargins -> {{8, 8}, {8, 2}}, CellFrameColor -> 
+          RGBColor[0.870588, 0.521569, 0.121569], DefaultNewCellStyle -> 
+          "SnapshotCaption", StyleMenuListing -> None, FontFamily -> 
+          "Verdana", FontSize -> 12, FontColor -> GrayLevel[0.45098]], 
+         Cell[
+          StyleData[
+          "SnapshotCaption", StyleDefinitions -> StyleData["DemoNotes"]], 
+          ShowCellBracket -> False], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SnapshotOutput"], ShowCellBracket -> False, 
+             CellMargins -> {{48, 10}, {5, 7}}, Evaluatable -> True, 
+             CellGroupingRules -> "InputGrouping", PageBreakWithin -> False, 
+             GroupPageBreakWithin -> False, DefaultFormatType -> 
+             DefaultInputFormatType, ShowAutoStyles -> True, 
+             "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, 
+             AutoItalicWords -> {}, LanguageCategory -> "Mathematica", 
+             FormatType -> InputForm, NumberMarks -> True, 
+             LinebreakAdjustments -> {0.85, 2, 10, 0, 1}, CounterIncrements -> 
+             "Input", MenuSortingValue -> 1500, MenuCommandKey -> "9", 
+             DemonstrationSite`Private`StripStyleOnPaste -> True], 
+            Cell[
+             StyleData["SnapshotOuput", "Printout"], 
+             CellMargins -> {{39, 0}, {4, 6}}, 
+             LinebreakAdjustments -> {0.85, 2, 10, 1, 1}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DemoTitle"], Deletable -> False, ShowCellBracket -> 
+             False, CellMargins -> {{48, 48}, {22, 10}}, 
+             CellGroupingRules -> {"SectionGrouping", 20}, StyleMenuListing -> 
+             None, FontFamily -> "Verdana", FontSize -> 20, FontWeight -> 
+             "Bold", FontColor -> RGBColor[0.597406, 0, 0.0527047], 
+             Background -> GrayLevel[1]], 
+            Cell[
+             StyleData["DemoName", "Printout"], 
+             CellMargins -> {{24, 8}, {8, 27}}, 
+             HyphenationOptions -> {"HyphenationCharacter" -> "-"}, FontSize -> 
+             16]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DetailsSection"], CellFrame -> {{0, 0}, {1, 0}}, 
+             ShowCellBracket -> False, CellMargins -> {{48, 48}, {8, 28}}, 
+             CellGroupingRules -> {"SectionGrouping", 25}, 
+             CellFrameMargins -> {{48, 48}, {6, 8}}, CellFrameColor -> 
+             RGBColor[0.87, 0.87, 0.87], StyleMenuListing -> None, FontFamily -> 
+             "Helvetica", FontSize -> 12, FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.597406, 0, 0.0527047]], 
+            Cell[
+             StyleData["DetailsSection", "Printout"], 
+             CellMargins -> {{12, 0}, {0, 16}}, PageBreakBelow -> False, 
+             FontSize -> 12]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DemoSection"], CellFrame -> {{0, 0}, {1, 0}}, 
+             ShowCellBracket -> False, CellMargins -> {{48, 48}, {8, 28}}, 
+             CellGroupingRules -> {"SectionGrouping", 30}, 
+             CellFrameMargins -> {{48, 48}, {6, 8}}, CellFrameColor -> 
+             RGBColor[0.87, 0.87, 0.87], StyleMenuListing -> None, FontFamily -> 
+             "Helvetica", FontSize -> 12, FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.597406, 0, 0.0527047]], 
+            Cell[
+             StyleData["DemoSection", "Printout"], 
+             CellMargins -> {{12, 0}, {0, 16}}, PageBreakBelow -> False, 
+             FontSize -> 12]}, Open]], 
+         Cell[
+          StyleData["ManipulateSection"], CellFrame -> {{0, 0}, {0, 2}}, 
+          ShowCellBracket -> False, CellMargins -> {{48, 48}, {10, 30}}, 
+          CellGroupingRules -> {"SectionGrouping", 30}, 
+          CellFrameMargins -> {{8, 8}, {8, 2}}, CellFrameColor -> 
+          RGBColor[0.870588, 0.521569, 0.121569], StyleMenuListing -> None, 
+          FontFamily -> "Verdana", FontSize -> 12], 
+         Cell[
+          StyleData["ManipulateCaptionSection"], 
+          CellFrame -> {{0, 0}, {0, 2}}, ShowCellBracket -> False, 
+          CellMargins -> {{48, 48}, {10, 30}}, 
+          CellGroupingRules -> {"SectionGrouping", 30}, 
+          CellFrameMargins -> {{8, 8}, {8, 2}}, CellFrameColor -> 
+          RGBColor[0.870588, 0.521569, 0.121569], DefaultNewCellStyle -> 
+          "ManipulateCaption", StyleMenuListing -> None, FontFamily -> 
+          "Verdana", FontSize -> 12, FontColor -> GrayLevel[0.45098]], 
+         Cell[
+          StyleData["ManipulateCaption"], ShowCellBracket -> False, 
+          CellMargins -> {{48, 48}, {10, 16}}, StyleMenuListing -> None, 
+          FontFamily -> "Verdana", FontSize -> 12, FontColor -> GrayLevel[0], 
+          DemonstrationSite`Private`ReturnCreatesNewCell -> True], 
+         Cell[
+          StyleData[
+          "SeeAlsoSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          ShowCellBracket -> False, DefaultNewCellStyle -> "SeeAlso"], 
+         Cell[
+          StyleData["SeeAlso", StyleDefinitions -> StyleData["DemoNotes"]], 
+          CellDingbat -> 
+          Cell["\[FilledSmallSquare]", FontColor -> 
+            RGBColor[0.928786, 0.43122, 0.104662]], ShowCellBracket -> False, 
+          FontColor -> GrayLevel[0.45098]], 
+         Cell[
+          StyleData[
+          "RelatedLinksSection", StyleDefinitions -> 
+           StyleData["DemoSection"]], ShowCellBracket -> False, 
+          DefaultNewCellStyle -> "RelatedLinks"], 
+         Cell[
+          StyleData[
+          "RelatedLinks", StyleDefinitions -> StyleData["DemoNotes"], 
+           FontColor -> RGBColor[0.928786, 0.43122, 0.104662]], 
+          ShowCellBracket -> False, FontColor -> GrayLevel[0.45098]], 
+         Cell[
+          StyleData[
+          "CategoriesSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          ShowCellBracket -> False, DefaultNewCellStyle -> "Categories"], 
+         Cell[
+          StyleData["Categories", StyleDefinitions -> StyleData["DemoNotes"]],
+           ShowCellBracket -> False], 
+         Cell[
+          StyleData[
+          "AuthorSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          ShowCellBracket -> False, CellMargins -> {{48, 48}, {4, 18}}, 
+          CellElementSpacings -> {"CellMinHeight" -> 3}, 
+          CellFrameMargins -> {{48, 48}, {6, 3}}, DefaultNewCellStyle -> 
+          "Author", FontSize -> 1, FontColor -> GrayLevel[1]], 
+         Cell[
+          StyleData[
+          "Author", StyleDefinitions -> StyleData["DemoNotes"], FontColor -> 
+           GrayLevel[0.64]], ShowCellBracket -> False], 
+         Cell[
+          StyleData[
+          "DetailNotes", StyleDefinitions -> StyleData["DemoNotes"]], 
+          ShowCellBracket -> False, FontColor -> GrayLevel[0]], 
+         Cell[
+          StyleData[
+          "CitationSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          ShowCellBracket -> False, CellMargins -> {{48, 48}, {8, 14}}, 
+          DefaultNewCellStyle -> "Categories"], 
+         Cell[
+          StyleData["Citations", StyleDefinitions -> StyleData["DemoNotes"]], 
+          ShowCellBracket -> False, ParagraphSpacing -> {0, 6}], 
+         Cell[
+          StyleData[
+          "RevisionSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          DefaultNewCellStyle -> "RevisionNotes"], 
+         Cell[
+          StyleData[
+          "RevisionNotes", StyleDefinitions -> StyleData["DemoNotes"]], 
+          ShowCellBracket -> False]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Specific Styles", "Section", 
+          CellChangeTimes -> {{3.34971724802035*^9, 3.34971724966638*^9}, {
+           3.35091840608065*^9, 3.35091840781999*^9}, {3.35091845122987*^9, 
+           3.35091845356607*^9}, {3.36230868322317*^9, 3.36230868335672*^9}, {
+           3.36928857618576*^9, 3.36928857640452*^9}, {3.3737586217185173`*^9,
+            3.373758622077897*^9}}], 
+         Cell[
+          StyleData["InitializationSection"], CellFrame -> {{0, 0}, {0, 2}}, 
+          ShowCellBracket -> False, CellMargins -> {{48, 48}, {10, 30}}, 
+          CellGroupingRules -> {"SectionGrouping", 30}, 
+          CellFrameMargins -> {{8, 8}, {8, 2}}, CellFrameColor -> 
+          RGBColor[0.870588, 0.521569, 0.121569], StyleMenuListing -> None, 
+          FontFamily -> "Verdana", FontSize -> 12, FontColor -> 
+          GrayLevel[0.45098]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["AnchorBar"], ShowCellBracket -> False, 
+             CellMargins -> {{48, 44}, {3, 6}}, StyleMenuListing -> None, 
+             FontFamily -> "Verdana", FontSize -> 9, FontColor -> 
+             GrayLevel[0.5]], 
+            Cell[
+             StyleData["AnchorBar", "Presentation"], FontSize -> 18], 
+            Cell[
+             StyleData["AnchorBar", "SlideShow"], StyleMenuListing -> None], 
+            Cell[
+             StyleData["AnchorBar", "Printout"], FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["AnchorLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, FontColor -> 
+             RGBColor[0.5, 0.5, 0.5], 
+             ButtonBoxOptions -> {
+              Active -> True, ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`NotebookLocate[#2]}]& ), ButtonNote -> 
+               ButtonData}], 
+            Cell[
+             StyleData["AnchorLink", "Printout"], 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["GamePadStatus"], ShowCellBracket -> False, 
+             CellMargins -> {{48, 48}, {5, 5}}, StyleMenuListing -> None, 
+             FontFamily -> "Verdana", FontSize -> 10], 
+            Cell[
+             StyleData["GamePadStatus", "Printout"], 
+             CellMargins -> {{24, 0}, {0, 10}}, FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DemoInstruction"], CellMargins -> {{48, 48}, {5, 5}}, 
+             CellFrameLabelMargins -> 2, MenuSortingValue -> 800, 
+             MenuCommandKey -> "8", StyleMenuListing -> None, FontFamily -> 
+             "Verdana", FontSize -> 11, Background -> RGBColor[1, 0.85, 0.5], 
+             DemonstrationSite`Private`ReturnCreatesNewCell -> True], 
+            Cell[
+             StyleData["DemoInstruction", "Printout"], 
+             CellMargins -> {{24, 0}, {0, 10}}, Hyphenation -> True, 
+             HyphenationOptions -> {"HyphenationCharacter" -> "-"}, 
+             LineSpacing -> {1., 2, 2.}, FontSize -> 9]}, Open]], 
+         Cell[
+          StyleData[
+          "ImplementationSection", StyleDefinitions -> 
+           StyleData["DemoSection"]], Deletable -> True, DefaultNewCellStyle -> 
+          "ImplementationNotes"], 
+         Cell[
+          StyleData[
+          "ImplementationNotes", StyleDefinitions -> StyleData["DemoNotes"]]], 
+         Cell[
+          StyleData[
+          "StatusSection", StyleDefinitions -> StyleData["DemoSection"]], 
+          DefaultNewCellStyle -> "StatusNotes"], 
+         Cell[
+          StyleData[
+          "StatusNotes", StyleDefinitions -> StyleData["DemoNotes"]]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SectionGloss"], StyleMenuListing -> None, FontSize -> 
+             0.85 Inherited, FontWeight -> "Plain", FontColor -> 
+             GrayLevel[0.6]], 
+            Cell[
+             StyleData["SectionGloss", "Printout"]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["InlineFormula"], 
+             "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, LanguageCategory -> 
+             "Formula", AutoSpacing -> True, ScriptLevel -> 1, 
+             AutoMultiplicationSymbol -> False, SingleLetterItalics -> False, 
+             SpanMaxSize -> 1, StyleMenuListing -> None, FontFamily -> 
+             "Courier", FontSize -> 1.05 Inherited, 
+             ButtonBoxOptions -> {Appearance -> {Automatic, None}}, 
+             FractionBoxOptions -> {BaseStyle -> {SpanMaxSize -> Automatic}}, 
+             GridBoxOptions -> {
+              GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                 "Rows" -> {{1.}}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData["InlineFormula", "Printout"], 
+             CellMargins -> {{2, 0}, {0, 8}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["InlineOutput"], CellHorizontalScrolling -> True, 
+             "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, LanguageCategory -> 
+             None, AutoMultiplicationSymbol -> False, StyleMenuListing -> 
+             None, FontFamily -> "Courier", FontSize -> 1.05 Inherited], 
+            Cell[
+             StyleData["InlineOutput", "Printout"], 
+             CellMargins -> {{2, 0}, {0, 8}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["InlineMath"], DefaultFormatType -> 
+             "DefaultTextFormatType", DefaultInlineFormatType -> 
+             "TraditionalForm", LanguageCategory -> "Formula", AutoSpacing -> 
+             True, ScriptLevel -> 1, AutoMultiplicationSymbol -> False, 
+             SingleLetterItalics -> True, SpanMaxSize -> DirectedInfinity[1], 
+             StyleMenuListing -> None, FontFamily -> "Times", FontSize -> 
+             1.05 Inherited, 
+             ButtonBoxOptions -> {Appearance -> {Automatic, None}}, 
+             GridBoxOptions -> {
+              GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                 "Rows" -> {{1.}}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData["InlineMath", "Printout"], 
+             CellMargins -> {{2, 0}, {0, 8}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["TableBase"], CellMargins -> {{48, 48}, {4, 4}}, 
+             SpanMaxSize -> 1, StyleMenuListing -> None, FontFamily -> 
+             "Courier", FontSize -> 11, 
+             ButtonBoxOptions -> {Appearance -> {Automatic, None}}, 
+             GridBoxOptions -> {
+              GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                 "Rows" -> {{Baseline}}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData["TableBase", "Printout"], 
+             CellMargins -> {{2, 0}, {0, 8}}, FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData[
+             "1ColumnTableMod", StyleDefinitions -> StyleData["TableBase"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.04], {
+                    Scaled[0.966]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+                  "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], 
+                   Offset[0.126], {
+                    Offset[0.77]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.4]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData[
+             "1ColumnTableMod", "Printout", StyleDefinitions -> 
+              StyleData["TableBase", "Printout"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.078], {
+                    Scaled[0.922]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+                  "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], {
+                    Offset[0.56]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.56]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData[
+             "2ColumnTableMod", StyleDefinitions -> StyleData["TableBase"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.05], 
+                   Scaled[0.41], {
+                    Scaled[0.565]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+                  "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], 
+                   Offset[0.14], {
+                    Offset[0.77]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.4]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData[
+             "2ColumnTableMod", "Printout", StyleDefinitions -> 
+              StyleData["TableBase", "Printout"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.079], 
+                   Scaled[0.363], {
+                    Scaled[0.558]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}},
+                  "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], {
+                    Offset[0.56]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.56]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData[
+             "3ColumnTableMod", StyleDefinitions -> StyleData["TableBase"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.04], 
+                   Scaled[0.266], 
+                   Scaled[0.26], {
+                    Scaled[0.44]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+                 "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], 
+                   Offset[0.14], {
+                    Offset[0.77]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.4]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}], 
+            Cell[
+             StyleData[
+             "3ColumnTableMod", "Printout", StyleDefinitions -> 
+              StyleData["TableBase", "Printout"]], 
+             GridBoxOptions -> {GridBoxItemSize -> {"Columns" -> {
+                   Scaled[0.08], 
+                   Scaled[0.25], 
+                   Scaled[0.25], {
+                    Scaled[0.42]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+                 "RowsIndexed" -> {}}, GridBoxSpacings -> {"Columns" -> {
+                   Offset[0.28], {
+                    Offset[0.56]}, 
+                   Offset[0.28]}, "ColumnsIndexed" -> {}, "Rows" -> {
+                   Offset[0.2], {
+                    Offset[0.56]}, 
+                   Offset[0.2]}, "RowsIndexed" -> {}}}]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["TableText"], Deletable -> False, StyleMenuListing -> 
+             None, FontFamily -> "Verdana", FontSize -> 0.952 Inherited], 
+            Cell[
+             StyleData["TableText", "Printout"], 
+             CellMargins -> {{24, 0}, {0, 8}}, Hyphenation -> True, 
+             HyphenationOptions -> {"HyphenationCharacter" -> "-"}, 
+             LineSpacing -> {1., 2, 2.}]}, Open]], 
+         Cell[
+          StyleData["Continuation"], FontColor -> GrayLevel[1]]}, Closed]]}, 
+     Open]]}, Visible -> False, FrontEndVersion -> 
+  "8.0 for Microsoft Windows (32-bit) (February 23, 2011)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ControlSuggestions"->{
+  Cell[294516, 5902, 258, 7, 70, "ManipulateCaption",
+   CellTags->"ControlSuggestions"],
+  Cell[294777, 5911, 5495, 119, 70, "ManipulateCaption",
+   CellTags->"ControlSuggestions"]},
+ "Copyright"->{
+  Cell[310832, 6311, 818, 23, 70, "Text",
+   CellTags->"Copyright"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ControlSuggestions", 337567, 6881},
+ {"Copyright", 337767, 6886}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1330, 32, 34328, 567, 70, "DemonstrationHeader"],
+Cell[35661, 601, 110, 3, 70, "DemoTitle"],
+Cell[35774, 606, 257226, 5252, 70, "Output",
+ CellID->870091126],
+Cell[293003, 5860, 1510, 40, 70, "ManipulateCaption"],
+Cell[294516, 5902, 258, 7, 70, "ManipulateCaption",
+ CellTags->"ControlSuggestions"],
+Cell[294777, 5911, 5495, 119, 70, "ManipulateCaption",
+ CellTags->"ControlSuggestions"],
+Cell[300275, 6032, 33, 0, 70, "DetailsSection"],
+Cell[300311, 6034, 2447, 80, 70, "DetailNotes",
+ CellID->32823640],
+Cell[302761, 6116, 334, 6, 70, "DetailNotes",
+ CellID->49034629],
+Cell[303098, 6124, 53, 1, 70, "DetailNotes",
+ CellID->2015220495],
+Cell[303154, 6127, 466, 16, 70, "DetailNotes",
+ CellID->239642231],
+Cell[303623, 6145, 44, 0, 70, "RelatedLinksSection"],
+Cell[303670, 6147, 660, 21, 70, "RelatedLinks",
+ CellID->584775398],
+Cell[304333, 6170, 4928, 92, 70, "DemoSourceNotebookSection",
+ CellGroupingRules->{"SectionGrouping", 25}],
+Cell[309264, 6264, 45, 0, 70, "CitationSection"],
+Cell[309312, 6266, 344, 10, 70, "Author"],
+Cell[309659, 6278, 1170, 31, 70, "Citations"],
+Cell[310832, 6311, 818, 23, 70, "Text",
+ CellTags->"Copyright"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
+(* NotebookSignature 1QqojFIUqq2j8xQ7Si9obfqQ *)

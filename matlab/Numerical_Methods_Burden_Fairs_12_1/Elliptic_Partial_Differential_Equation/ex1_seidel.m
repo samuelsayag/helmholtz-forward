@@ -3,7 +3,8 @@ clc;
 
 dim = [3, 3];
 % build the matrix
-[A, b] = build_rect_grid( dim(1), dim(2), 'interior_2D_2ndOrder_centered_5pt', ...
+[A, b] = build_two_dimensional_problem( dim(1), dim(2),...
+    'interior_2D_2ndOrder_centered_5pt', ...
     'dirichlet_boundary');
 
 %-------- display some debug info ------------------

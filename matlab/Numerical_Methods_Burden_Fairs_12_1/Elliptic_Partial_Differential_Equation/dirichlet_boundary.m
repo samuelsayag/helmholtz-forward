@@ -6,9 +6,9 @@ l = feval(lab_func, i, j);
 b(l) = 0;
 
 
-% if i-1 <= 0
-%     b(l) = b(l) + 0;
-% end
+ if i-1 <= 0
+     b(l) = b(l) + 0;
+ end
 
 if j+1 >= m
     b(l) = b(l) + (200 * (0.5/n) * i);
@@ -18,9 +18,9 @@ if i+1 >= n
     b(l) = b(l) + (200 * (0.5/m) * j);
 end
 
-% if j-1 <= 0
-%     A(l, lab_func(i, j-1)) = -4;
-% end
+if j-1 <= 0
+    b(l) = b(l) + 0;
+end
 
 end
 

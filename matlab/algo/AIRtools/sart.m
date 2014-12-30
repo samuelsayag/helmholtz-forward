@@ -472,8 +472,8 @@ while ~stop
     end % end the different cases of lambda strategies.
     
     % Nonnegativity and box constraints.
-    if nonneg, xki = max(xki,0); end
-    if boxcon, xki = min(xki,L); end
+    if nonneg, xk1 = max(xk1,0); end
+    if boxcon, xk1 = min(xk1,L); end
     
     % New residual.
     rxk1 = b - A*xk1;

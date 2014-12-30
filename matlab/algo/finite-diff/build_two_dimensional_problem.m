@@ -1,4 +1,4 @@
-function [ A, b ] = build_rect_grid( n, m, func_inter, func_bound )
+function [ A, b ] = build_two_dimensional_problem( n, m, func_inter, func_bound )
 %BUILD_SQUARE_GRID Summary of this function goes here
 %   Detailed explanation goes here
 

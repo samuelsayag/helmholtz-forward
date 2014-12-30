@@ -14,8 +14,8 @@ function  [x, numIter, omega] = gauss_seidel( func, x, maxIter, epsilon)
 
 if nargin < 4; epsilon = 1.0e-9; end
 if nargin < 3; maxIter = 500; end
-k = maxIter+1;
-% k = 10;
+k = maxIter+1; 
+%k = 10;
 p = 1; omega = 1;
 for numIter = 1:maxIter
     xOld = x;    
