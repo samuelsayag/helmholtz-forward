@@ -20,10 +20,10 @@ m = n;
 func_inter = @(A, n, m, i , j, lab) interior_2D_2ndOrder_centered_5pt(...
     A, n, m, i , j, lab, k, h);
 % parameters necessary to compute boundary points
-S_dirichlet = 1;
-W_dirichlet = 0;
-N_dirichlet = 0;
-E_dirichlet = 0;
+S_dirichlet = 0;
+W_dirichlet = 2;
+N_dirichlet = 1;
+E_dirichlet = 1;
 % function that will handle the bouindary points
 func_bound = @(b, n, m, i, j, lab) dirichlet_boundary(b, n, m, i, j,...
     lab, S_dirichlet, W_dirichlet, N_dirichlet, E_dirichlet);

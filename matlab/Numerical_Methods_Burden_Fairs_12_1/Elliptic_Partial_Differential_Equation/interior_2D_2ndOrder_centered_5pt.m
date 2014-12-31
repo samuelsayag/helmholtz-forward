@@ -13,17 +13,18 @@ if i-1 > 0
     A(l, feval(lab_func, i-1, j)) = -1;
 end
 
-if j+1 < m
-    A(l, feval(lab_func, i, j+1)) = -1;
-end
-
-if i+1 < n
-    A(l, feval(lab_func, i+1, j)) = -1;
-end
-
 if j-1 > 0
     A(l, feval(lab_func, i, j-1)) = -1;
 end
+
+if j+1 < m+1
+    A(l, feval(lab_func, i, j+1)) = -1;
+end
+
+if i+1 < n+1
+    A(l, feval(lab_func, i+1, j)) = -1;
+end
+
 
 end
 

@@ -1,7 +1,7 @@
 clear;
 clc;
 
-dim = [100, 100];
+dim = [3, 3];
 
 % build the matrix
 [A, b] = build_two_dimensional_problem( dim(1), dim(2),... 
@@ -9,12 +9,12 @@ dim = [100, 100];
     'dirichlet_boundary');
 
 %-------- display some debug info ------------------
-% full(A)
-% full(b')
+full(A)
+full(b')
 % -------- display some debug info ------------------
 tstart = tic;
 
-numIter = 10000000;
+numIter = 1e5;
 options.nonneg = true;
 [x info restart] = sart(A, b', numIter, [], options);        
 
