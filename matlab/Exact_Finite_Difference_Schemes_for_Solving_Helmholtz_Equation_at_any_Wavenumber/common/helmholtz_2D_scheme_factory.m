@@ -42,10 +42,10 @@ if ~isfield(params , 'boundary')
     params.boundary = 'dirichlet';
 end
 
-dirich_s = isa(params.dirichlet.S, 'function_handle'); 
-dirich_w = isa(params.dirichlet.W, 'function_handle'); 
-dirich_n = isa(params.dirichlet.N, 'function_handle'); 
-dirich_e = isa(params.dirichlet.E, 'function_handle'); 
+dirich_s = isfield(params.dirichlet, 'S'); 
+dirich_w = isfield(params.dirichlet, 'W'); 
+dirich_n = isfield(params.dirichlet, 'N'); 
+dirich_e = isfield(params.dirichlet, 'E'); 
 
 % THROW EXCEPTION IF ALL ARE FALSE (impossible to apply Sommerfeld 
 % on all the sides
@@ -84,8 +84,18 @@ end
 function [f_corn_pt] = factory_corner_scheme(key, params)
 % sides are given in the right direction 
     % define small function handle that are valids for all the function
+    dirich_s = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.S);
+    dirich_w = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.W);
+    dirich_n = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.N);
+    dirich_e = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.E);
+    
     c_std = @(params, A, b, i, j)ctrl_pt_std(params, A, b, i, j);
     c_new = @(params, A, b, i, j)ctrl_pt_new(params, A, b, i, j);    
+    
     % define an equal operator for dirichlet choice    
     ceq = @(x,y) strcmp(x{1},y{1}) && x{2} == y{2} && strcmp(x{3},y{3})...
         && x{4} == y{4} && strcmp(x{5},y{5});
@@ -95,82 +105,82 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
    % dirichlet on both sides
    if(ceq(condition, {'N', 1, 'E', 1, 'std'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_std, params.dirichlet.N,...
-           params.dirichlet.E, 'left_pt', 'down_pt');
-       
+           params, A, b, i, j, c_std, dirich_n,...
+           dirich_e, 'left_pt', 'down_pt');
+       return
    elseif (ceq(condition, {'N', 1, 'E', 1, 'new'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_new, params.dirichlet.N,...
-           params.dirichlet.E, 'left_pt', 'down_pt');
-       
+           params, A, b, i, j, c_new, dirich_n,...
+           dirich_e, 'left_pt', 'down_pt');
+       return
    elseif (ceq(condition, {'E', 1, 'S', 1, 'std'}))
        f_corn_pt = @(params, A, b, i, j)dirichlet_corner_generic(...
-           params, A, b, i, j, c_std, params.dirichlet.S,...
-           params.dirichlet.E, 'left_pt', 'up_pt');
-       
+           params, A, b, i, j, c_std, dirich_s,...
+           dirich_e, 'left_pt', 'up_pt');
+       return 
    elseif (ceq(condition, {'E', 1, 'S', 1, 'new'}))
        f_corn_pt = @(params, A, b, i, j)dirichlet_corner_generic(...
-           params, A, b, i, j, c_new, params.dirichlet.S,...
-           params.dirichlet.E, 'left_pt', 'up_pt');
-       
+           params, A, b, i, j, c_new, dirich_s,...
+           dirich_e, 'left_pt', 'up_pt');
+       return
    elseif (ceq(condition, {'S', 1, 'W', 1, 'std'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_std, params.dirichlet.S,...
-           params.dirichlet.W, 'right_pt', 'up_pt');
-       
+           params, A, b, i, j, c_std, dirich_s,...
+           dirich_w, 'right_pt', 'up_pt');
+       return
    elseif (ceq(condition, {'S', 1, 'W', 1, 'new'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_new, params.dirichlet.S,...
-           params.dirichlet.W, 'right_pt', 'up_pt');
-       
+           params, A, b, i, j, c_new, dirich_s,...
+           dirich_w, 'right_pt', 'up_pt');
+       return 
    elseif (ceq(condition, {'W', 1, 'N', 1, 'std'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_std, params.dirichlet.W,...
-           params.dirichlet.N, 'right_pt', 'down_pt');
-       
+           params, A, b, i, j, c_std, dirich_w,...
+           dirich_n, 'right_pt', 'down_pt');
+       return 
    elseif (ceq(condition, {'W', 1, 'N', 1, 'new'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
-           params, A, b, i, j, c_new, params.dirichlet.W,...
-           params.dirichlet.N, 'right_pt', 'down_pt');
-   
+           params, A, b, i, j, c_new, dirich_w,...
+           dirich_n, 'right_pt', 'down_pt');
+       return
    end
     
     % define an equal operator for sommerfeld choice
     condition = key([1,2,3,4,6]) ;
    
     % sommerfeld on both sides
-    if(ceq(condition, {'N', 1, 'E', 1, 'std'}))
+    if(ceq(condition, {'N', 0, 'E', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
             params, A, b, i, j, 'down_pt','left_pt');
-        
-    elseif (ceq(condition, {'N', 1, 'E', 1, 'new'}))
+        return
+    elseif (ceq(condition, {'N', 0, 'E', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
             params, A, b, i, j, -1, 1, 'down_pt', 'left_pt');
-        
-    elseif (ceq(condition, {'E', 1, 'S', 1, 'std'}))
+        return
+    elseif (ceq(condition, {'E', 0, 'S', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
             params, A, b, i, j, 'up_pt','left_pt');
-        
-    elseif (ceq(condition, {'E', 1, 'S', 1, 'new'}))
+        return
+    elseif (ceq(condition, {'E', 0, 'S', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
             params, A, b, i, j, -1, -1, 'up_pt', 'left_pt');
-        
-    elseif (ceq(condition, {'S', 1, 'W', 1, 'std'}))
+        return
+    elseif (ceq(condition, {'S', 0, 'W', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
             params, A, b, i, j, 'up_pt','right_pt');
-        
-    elseif (ceq(condition, {'S', 1, 'W', 1, 'new'}))
+        return
+    elseif (ceq(condition, {'S', 0, 'W', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
             params, A, b, i, j, 1, 1, 'up_pt', 'right_pt');
-        
-    elseif (ceq(condition, {'W', 1, 'N', 1, 'std'}))
+        return
+    elseif (ceq(condition, {'W', 0, 'N', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
             params, A, b, i, j, 'down_pt','right_pt');
-        
-    elseif (ceq(condition, {'W', 1, 'N', 1, 'new'}))
+        return
+    elseif (ceq(condition, {'W', 0, 'N', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
             params, A, b, i, j, 1, -1, 'down_pt', 'right_pt');
-      
+        return
     end
   
    
@@ -179,39 +189,40 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
     
     if(ceq(condition, {'N', 1, 'E', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, -1, 'left_pt', params.dirichlet.N, 'down_pt');
-        
+            params, A, b, i, j, -1, 'left_pt', dirich_n, 'down_pt');
+        return
     elseif (ceq(condition, {'N', 1, 'E', 0, 'new'}))
         k1h = params.k * cos(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k1h, 'left_pt', params.dirichlet.N, 'down_pt');
-        
+            params, A, b, i, j, -1, k1h, 'left_pt', dirich_n, 'down_pt');
+        return
     elseif (ceq(condition, {'E', 1, 'S', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, 1, 'up_pt', params.dirichlet.E, 'left_pt');
-        
+            params, A, b, i, j, 1, 'up_pt', dirich_e, 'left_pt');
+        return
     elseif (ceq(condition, {'E', 1, 'S', 0, 'new'}))
         k2h = params.k * sin(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k2h, 'up_pt', params.dirichlet.E, 'left_pt');
-        
+            params, A, b, i, j, 1, k2h, 'up_pt', dirich_e, 'left_pt');
+        return
     elseif (ceq(condition, {'S', 1, 'W', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, 1, 'right_pt', params.dirichlet.S, 'up_pt');
-        
+            params, A, b, i, j, 1, 'right_pt', dirich_s, 'up_pt');
+        return
     elseif (ceq(condition, {'S', 1, 'W', 0, 'new'}))
         k1h = params.k * cos(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k1h, 'right_pt', params.dirichlet.S, 'up_pt');
-        
+            params, A, b, i, j, 1, k1h, 'right_pt', dirich_s, 'up_pt');
+        return
     elseif (ceq(condition, {'W', 1, 'N', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, -1, 'down_pt', params.dirichlet.W, 'right_pt');
-        
+            params, A, b, i, j, -1, 'down_pt', dirich_w, 'right_pt');
+        return
     elseif (ceq(condition, {'W', 1, 'N', 0, 'new'}))
         k2h = params.k * sin(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k2h, 'down_pt', params.dirichlet.W, 'right_pt');
+            params, A, b, i, j, -1, k2h, 'down_pt', dirich_w, 'right_pt');
+        return
     end
    
     % define an equal operator for SOMMERFELD-DIRICHLET choice
@@ -219,45 +230,55 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
     
     if(ceq(condition, {'N', 0, 'E', 1, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, -1, 'down_pt', params.dirichlet.E, 'left_pt');
-        
+            params, A, b, i, j, -1, 'down_pt', dirich_e, 'left_pt');
+        return
     elseif (ceq(condition, {'N', 0, 'E', 1, 'new'}))
         k2h = params.k * sin(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k2h, 'down_pt', params.dirichlet.E, 'left_pt');
-        
+            params, A, b, i, j, -1, k2h, 'down_pt', dirich_e, 'left_pt');
+        return
     elseif (ceq(condition, {'E', 0, 'S', 1, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, -1, 'left_pt', params.dirichlet.S, 'up_pt');
-        
+            params, A, b, i, j, -1, 'left_pt', dirich_s, 'up_pt');
+        return
     elseif (ceq(condition, {'E', 0, 'S', 1, 'new'}))
         k1h = params.k * cos(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k1h, 'left_pt', params.dirichlet.S, 'up_pt');
-        
+            params, A, b, i, j, -1, k1h, 'left_pt', dirich_s, 'up_pt');
+        return
     elseif (ceq(condition, {'S', 0, 'W', 1, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, 1, 'up_pt', params.dirichlet.W, 'right_pt');
-        
+            params, A, b, i, j, 1, 'up_pt', dirich_w, 'right_pt');
+        return
     elseif (ceq(condition, {'S', 0, 'W', 1, 'new'}))
         k2h = params.k * sin(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k2h, 'up_pt', params.dirichlet.W, 'right_pt');
-        
+            params, A, b, i, j, 1, k2h, 'up_pt', dirich_w, 'right_pt');
+        return
     elseif (ceq(condition, {'W', 0, 'N', 1, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
-            params, A, b, i, j, 1, 'right_pt', params.dirichlet.N, 'down_pt');
-        
+            params, A, b, i, j, 1, 'right_pt', dirich_n, 'down_pt');
+        return
     elseif (ceq(condition, {'W', 0, 'N', 1, 'new'}))
         k1h = params.k * cos(params.theta);
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k1h, 'right_pt', params.dirichlet.N, 'down_pt');
+            params, A, b, i, j, 1, k1h, 'right_pt', dirich_n, 'down_pt');
+        return
     end
     
 end
 
 function [f_ctrl_pt] = factory_side_scheme(key, params)
     % define small function handle that are valids for all the function
+    dirich_s = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.S);
+    dirich_w = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.W);
+    dirich_n = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.N);
+    dirich_e = @(params, A, b, i, j) dirichlet_wrapper(params,...
+        A, b, i, j, params.dirichlet.E);
+    
     c_std = @(params, A, b, i, j)ctrl_pt_std(params, A, b, i, j);
     c_new = @(params, A, b, i, j)ctrl_pt_new(params, A, b, i, j);
     %dirichlet    
@@ -266,42 +287,42 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     ceq = @(x,y) strcmp(x{1}, y{1}) && (x{2} == y{2}) && strcmp(x{3},y{3});
     if (ceq(condition, {'S', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j) dirichlet_side_generic(...
-            params, A, b, i, j, c_std, params.dirichlet.S,...
+            params, A, b, i, j, c_std, dirich_s,...
             'up_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'S', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_new, params.dirichlet.S,...
+            params, A, b, i, j, c_new, dirich_s,...
             'up_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'W', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_std, params.dirichlet.W,...
+            params, A, b, i, j, c_std, dirich_w,...
             'down_pt', 'up_pt', 'right_pt');
         
     elseif (ceq(condition, {'W', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_new, params.dirichlet.W,...
+            params, A, b, i, j, c_new, dirich_w,...
             'down_pt', 'up_pt', 'right_pt');
         
     elseif (ceq(condition, {'N', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_std, params.dirichlet.N,...
+            params, A, b, i, j, c_std, dirich_n,...
             'down_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'N', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_new, params.dirichlet.N,...
+            params, A, b, i, j, c_new, dirich_n,...
             'down_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'E', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_std, params.dirichlet.E,...
+            params, A, b, i, j, c_std, dirich_e,...
             'down_pt', 'left_pt', 'up_pt');
         
     elseif (ceq(condition, {'E', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i, j)dirichlet_side_generic(...
-            params, A, b, i, j, c_new, params.dirichlet.E,...
+            params, A, b, i, j, c_new, dirich_e,...
             'down_pt', 'left_pt', 'up_pt');
     end
     
@@ -316,7 +337,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     elseif (ceq(condition, {'S', 0, 'new'}))
         k2h = params.k * sin(params.theta);
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k2h, 'up_pt', 'left_pt', 'right_pt');
+            params, A, b, i, j, 1, k2h, 'up_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'W', 0, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_std(...
@@ -325,7 +346,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     elseif (ceq(condition, {'W', 0, 'new'}))    
         k1h = params.k * cos(params.theta);
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, 1, k1h, 'right_pt', 'up_pt', 'down_pt');
+            params, A, b, i, j, 1, k1h, 'right_pt', 'up_pt', 'down_pt');
         
     elseif (ceq(condition, {'N', 0, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_std(...
@@ -334,7 +355,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     elseif (ceq(condition, {'N', 0, 'new'}))
         k2h = params.k * sin(params.theta);
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k2h, 'down_pt', 'left_pt', 'right_pt');
+            params, A, b, i, j, -1, k2h, 'down_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'E', 0, 'std'}))
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_std(...
@@ -343,7 +364,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     elseif (ceq(condition, {'E', 0, 'new'}))
         k1h = params.k * cos(params.theta);
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
-            params, A, i, j, -1, k1h, 'left_pt', 'up_pt', 'down_pt');
+            params, A, b, i, j, -1, k1h, 'left_pt', 'up_pt', 'down_pt');
     end   
     
 end
@@ -474,7 +495,7 @@ function [A,b] = ctrl_pt(params, A, b, i, j, central_point)
     [A, b] = down_pt(params, A, b, i, j);    
 end
 
-function sommerfeld_side_generic_std(params, A, b, i, j, sgn, int_pt,...
+function [A,b] = sommerfeld_side_generic_std(params, A, b, i, j, sgn, int_pt,...
     l_pt, r_pt)
     l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;
@@ -485,7 +506,7 @@ function sommerfeld_side_generic_std(params, A, b, i, j, sgn, int_pt,...
     [A, b] = feval(r_pt, params, A, b, i, j);
 end
 
-function [ A ] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
+function [A,b] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
     int_pt, l_pt, r_pt)
     l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;
@@ -496,8 +517,9 @@ function [ A ] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
     [A, b] = feval(r_pt, params, A, b, i, j);
 end
 
-function [A] = sommerfeld_generic_corner_new(params, A, b, i, j,...
+function [A,b] = sommerfeld_generic_corner_new(params, A, b, i, j,...
     sgn1, sgn2, int_pt, ext_pt)
+    l = get_scheme_label(params.m, params.n, i, j);
     kh = params.k * params.h;
     k1h = params.k * cos(params.theta);
     k2h = params.k * sin(params.theta);
@@ -509,38 +531,29 @@ function [A] = sommerfeld_generic_corner_new(params, A, b, i, j,...
     [A, b] = feval(ext_pt, params, A, b, i, j);
 end
 
-function [A] = sommerfeld_generic_corner_std(params, A, b, i, j,...
+function [A,b] = sommerfeld_generic_corner_std(params, A, b, i, j,...
     int_pt, ext_pt)
+    l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;
     A(l,l) = 2 - 1i * sqrt(2) * kh - 0.5 * kh.^2;
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(ext_pt, params, A, b, i, j);
 end
 
-function [A, b] = dirichlet_side_generic(params, A, b, i, j,...
+function [A,b] = dirichlet_side_generic(params, A, b, i, j,...
     ctrl_pt, dirich_f, int_pt, l_pt, r_pt)
-    
-    dirich = @(params,A,b,i,j) dirichlet_wrapper(params,...
-        A, b, i, j, dirich_f);
-
-    [A, b] = feval(dirich, params, A, b, i, j);    
+    [A, b] = feval(dirich_f, params, A, b, i, j);    
     [A, b] = feval(ctrl_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);    
     [A, b] = feval(l_pt, params, A, b, i, j);
     [A, b] = feval(r_pt, params, A, b, i, j);    
 end
 
-function [A, b] = dirichlet_corner_generic(params, A, b, i, j,...
+function [A,b] = dirichlet_corner_generic(params, A, b, i, j,...
     ctrl_pt, dirich_f1, dirich_f2, int_pt1, int_pt2)    
-    
-    dirich1 = @(params,A,b,i,j) dirichlet_wrapper(params,...
-        A, b, i, j, dirich_f1);
-    dirich2 = @(params,A,b,i,j) dirichlet_wrapper(params,...
-        A, b, i, j, dirich_f2);
-    
     [A, b] = feval(ctrl_pt, params, A, b, i, j);    
-    [A, b] = feval(dirich1, params, A, b, i, j);        
-    [A, b] = feval(dirich2, params, A, b, i, j);    
+    [A, b] = feval(dirich_f1, params, A, b, i, j);        
+    [A, b] = feval(dirich_f2, params, A, b, i, j);    
     [A, b] = feval(int_pt1, params, A, b, i, j);
     [A, b] = feval(int_pt2, params, A, b, i, j);    
 end
