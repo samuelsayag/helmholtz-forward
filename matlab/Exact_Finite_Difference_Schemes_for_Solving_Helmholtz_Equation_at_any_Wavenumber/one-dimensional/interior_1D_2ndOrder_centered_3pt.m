@@ -5,12 +5,14 @@ function [ A ] = interior_1D_2ndOrder_centered_3pt(A, i, k, h)
 % return: 
 %   A: the finiter difference matrix that represent the sytem we determine
 % parameter:
-%   A: the finiter difference matrix that represent the sytem we determine
+%   A: the finite difference matrix that represent the sytem we determine
 %   i: the indice of the line we wish to compute
 %   k: [k = omega/c] (omega = 2 * pi * freq, c = speed of sound)
 %   h: the step size of our system
 
 m = size(A,2);
+
+
 
 % A(i, i) = (k * h).^2 - 2;
 A(i, i) = 2 - (k * h).^2;
