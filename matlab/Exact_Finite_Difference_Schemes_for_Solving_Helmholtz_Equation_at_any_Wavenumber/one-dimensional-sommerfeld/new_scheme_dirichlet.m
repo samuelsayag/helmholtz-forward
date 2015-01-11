@@ -3,7 +3,7 @@ function [A, b, x] = new_scheme_dirichlet()
 %   Detailed explanation goes here
 
 % parameters necessary to compute interior points
-k = 5;
+k = 10;
 h = 0.5./k;
 a = 0;
 b = 1;
@@ -12,19 +12,19 @@ alpha = 1;
 
 [k, h, m, alpha]
 
-func_scheme = @(A, b, i) dirichlet_sommerfeld_boundary(A, b, i, k, h,...
+func_scheme = @(A, b, i) new_dirichlet_sommerfeld_boundary(A, b, i, k, h,...
     alpha, false);
 
 % create the matrix of finite difference
 [A, b] = build_one_dimensional_problem2(m, func_scheme);
 
 % debug
-full(A)
-b
+% full(A)
+% b
 
 % solve the system
 tstart = tic;
-numIter = 1e6;
+numIter = 1e5;
 options.nonneg = true;
 [x info restart] = sart(A, b', numIter, [], options);        
 telapsed = toc(tstart);

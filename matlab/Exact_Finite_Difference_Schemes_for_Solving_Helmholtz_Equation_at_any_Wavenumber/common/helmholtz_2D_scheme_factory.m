@@ -406,7 +406,7 @@ function [A,b] = generic_scheme_creation(params, A, b, i, j, schemes)
     m = params.m; 
     n = params.n;
     
-    [i,j]
+%     [i,j]
     
     % south boundary case (without corner)
     if i == 1

@@ -10,7 +10,7 @@ b = [];
 x = [];
 
 % parameters necessary to compute interior points
-param.k = 5;          
+param.k = 20;          
 param.h = 0.5./param.k;
 % parameters of the region
 a = 0; 
@@ -19,21 +19,21 @@ param.n = (b-a)./param.h;
 param.m = param.n;
 % parameters necessary to compute boundary points
 param.dirichlet.S = @(param, A, b, i, j) 1;
-% param.dirichlet.W = @(param, A, b, i, j) 1;
-% param.dirichlet.N = @(param, A, b, i, j) 1;
-% param.dirichlet.E = @(param, A, b, i, j) 1;
+param.dirichlet.W = @(param, A, b, i, j) 1;
+param.dirichlet.N = @(param, A, b, i, j) 1;
+param.dirichlet.E = @(param, A, b, i, j) 1;
 % type of scheme we want to use
 param.interior = 'new';
-param.boundary = 'new';
-param.theta = pi/4;
+% param.boundary = 'new';
+% param.theta = pi/4;
 func_scheme = helmholtz_2D_scheme_factory( param );
 
 % create the matrix of finite difference
 [A, b] = build_two_dimensional_problem2(param, func_scheme);
 
-%debug
-full(A)
-b
+% %debug
+% full(A)
+% b
 
 % solve the system
 tstart = tic;

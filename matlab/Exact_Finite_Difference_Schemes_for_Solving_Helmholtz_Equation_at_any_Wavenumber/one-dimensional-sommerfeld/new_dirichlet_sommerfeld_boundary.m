@@ -17,8 +17,9 @@ m = size(A,2);
 % INTERIOR POINTS
 %-----------------------------------------
 if i > 1 && i < m 
-    A(i, i) = 2 - (k * h).^2;
-
+%     A(i, i) = 2 - (k * h).^2;    
+    A(i, i) = 2 * cos(k * h);
+    
     if i-1 > 0
         A(i, i-1) = -1;
     end
@@ -40,27 +41,52 @@ else
     s = size(b,2);
 end 
 
+% % left dirichlet and right sommerfeld
+% if left_dirichlet        
+%     if i == 1
+%         A(i, i) = 2 - (k * h).^2;
+%         A(i, i+1) = -1;
+%         b(i) = alpha;
+%     end
+%     if i == s
+%         A(i, i) = 2 - (k * h).^2 - 1i * 2 * sin(k*h);
+%         A(i, i-1) = -2;        
+%     end
+% else % right dirichlet and left sommerfeld       
+%     if i == s
+%         A(i, i) = 2 - (k * h).^2;
+%         A(i, i-1) = -1;
+%         b(i) = alpha;
+%     end
+%     if i == 1
+%         A(i, i) = 2 - (k * h).^2 + 1i * 2 * sin(k*h);
+%         A(i, i+1) = -2;        
+%     end
+% end 
+
+
 % left dirichlet and right sommerfeld
 if left_dirichlet        
     if i == 1
-        A(i, i) = 2 - (k * h).^2;
+        A(i, i) = 2 * cos(k * h);
         A(i, i+1) = -1;
         b(i) = alpha;
     end
     if i == s
-        A(i, i) = 2 - (k * h).^2 - 1i * 2 * sin(k*h);
+        A(i, i) = 2 * cos(k * h).^2 - 1i * 2 * sin(k*h);
         A(i, i-1) = -2;        
     end
 else % right dirichlet and left sommerfeld       
     if i == s
-        A(i, i) = 2 - (k * h).^2;
+        A(i, i) = 2 * cos(k * h);
         A(i, i-1) = -1;
         b(i) = alpha;
     end
     if i == 1
-        A(i, i) = 2 - (k * h).^2 + 1i * 2 * sin(k*h);
+        A(i, i) = 2 * cos(k * h).^2 + 1i * 2 * sin(k*h);
         A(i, i+1) = -2;        
     end
 end 
+
 
 end
