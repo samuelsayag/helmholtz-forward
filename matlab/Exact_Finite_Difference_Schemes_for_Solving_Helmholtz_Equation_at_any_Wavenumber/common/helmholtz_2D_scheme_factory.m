@@ -1,5 +1,5 @@
 function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
-%SCHEME_FACTORY 
+%HELMHOLTZ_2D_SCHEME_FACTORY 
 % The purpose of this function is to offer a flexible way of creating a
 % scheme of the Helmholtz equation. The scheme is computed by considering a
 % rectangular region. One side is a source (the computation of the matrix
@@ -18,7 +18,7 @@ function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
 %       h: step choosen for the scheme
 %       theta: angle (rd) to compute Sommerfeld boundary
 %       interior: 'new', 'std'
-%       boundary: 'new', 'std'
+%       boundary: 'new', 'std' (IF SOMMERFELD BOUNDARY)
 %       dirichlet.W: (optional) function handle
 %       dirichlet.N: (optional) function handle   
 %       dirichlet.E: (optional) function handle
@@ -35,7 +35,7 @@ function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
 check_params(params)
 
 % preserve not implemented mechanism (for the moment)
-params.n = params.n;
+params.m = params.n;
 % dummy value to sommerfeld boundary in case all is dirichlet. The value
 % is tested later and may cause "null pointer".
 if ~isfield(params , 'boundary')
