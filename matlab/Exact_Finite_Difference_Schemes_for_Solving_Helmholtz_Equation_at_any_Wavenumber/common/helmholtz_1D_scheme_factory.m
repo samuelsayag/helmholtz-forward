@@ -214,37 +214,37 @@ function check_params(params)
 
     classes = {'struct'};
     attributes = {'nonempty'};
-    validateattributes(params, classes, attributes)
+    validateattributes(params, classes, attributes);
         
     classes = {'single', 'double'};
     attributes = {'nonempty', '>', 0};
-    validateattributes(params.m, classes, attributes, 'params.m')
+    validateattributes(params.m, classes, attributes, 'params.m');
         
     classes = {'numeric'};
     attributes = {'nonempty', 'nonnegative'};
-    validateattributes(params.k, classes, attributes, 'params.k')
+    validateattributes(params.k, classes, attributes, 'params.k');
             
     classes = {'numeric'};
     attributes = {'nonempty', 'nonnegative'};
-    validateattributes(params.k, classes, attributes, 'params.k')
+    validateattributes(params.k, classes, attributes, 'params.k');
     
     classes = {'char'};
     attributes = {'nonempty'};
-    validateattributes(params.interior, classes, attributes, 'params.interior')    
+    validateattributes(params.interior, classes, attributes, 'params.interior');    
     
     validStrings = {'std', 'new'};
-    validatestring(params.interior,validStrings, 'params.interior')   
+    validatestring(params.interior,validStrings, 'params.interior');   
     
     classes = {'char'};
     attributes = {'nonempty'};
-    validateattributes(params.boundary, classes, attributes, 'params.boundary')    
+    validateattributes(params.boundary, classes, attributes, 'params.boundary');    
     
     validStrings = {'sommerfeld_new', 'sommerfeld_std', 'dirichlet'};
-    validatestring(params.boundary, validStrings, 'params.boundary')   
+    validatestring(params.boundary, validStrings, 'params.boundary');   
     
     if ~isfield(params, 'dirichlet')
         error('helmoltz_1d_scheme:argChk',...
-            'At least one source must be set (as Dirichlet).')
+            'At least one source must be set (as Dirichlet).');
     end
         
     total_sommerfeld = ...
@@ -258,7 +258,7 @@ function check_params(params)
        isfield(params.dirichlet, 'W') && isfield(params.dirichlet, 'E');        
     if ~isfield(params, 'boundary') && ~total_dirichlet
         error('helmoltz_1d_scheme:argChk',...
-            'parameter "params.boundary" must be set if not all the border are Dirichlet.')
+            'parameter "params.boundary" must be set if not all the border are Dirichlet.');
     end
         
     if ~total_dirichlet && strcmp(params.boundary, 'dirichlet')

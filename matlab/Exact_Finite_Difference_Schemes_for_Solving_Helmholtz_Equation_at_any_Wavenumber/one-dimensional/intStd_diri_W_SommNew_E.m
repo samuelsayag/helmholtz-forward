@@ -33,8 +33,9 @@ params.dirichlet.W = @(params, A, b, i) 1;
 tstart = tic;
 
 tol = 1e-6;
-% [x,flag,relres] = gmres(A, b', [], tol);        
-x = A \ b';
+% [x,flag,relres] = gmres(A, b, [], tol);        
+% [x,flag,relres] = gmres(A, b);
+x = A \ b;  
 x = [1;x];
 telapsed = toc(tstart);
 %------------------- display some result -----------------------------

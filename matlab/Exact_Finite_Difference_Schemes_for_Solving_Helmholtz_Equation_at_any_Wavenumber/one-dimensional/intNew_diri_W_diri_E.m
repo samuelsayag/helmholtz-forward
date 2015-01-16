@@ -12,7 +12,7 @@ params.k = 20;
 params.h = 0.5./params.k;
 a = 0;
 b = 1;
-params.m = (b-a)./params.h;
+params.m = ((b-a)./params.h) - 1;
 params.interior = 'new';
 params.boundary = 'dirichlet';
 params.dirichlet.W = @(params, A, b, i) 1;
@@ -32,9 +32,10 @@ params.dirichlet.E = @(params, A, b, i) 1;
 %------------------- solve the system -----------------------------
 tstart = tic;
 
-tol = 1e-6;
-[x,flag,relres] = gmres(A, b', [], tol);        
-
+% [x,flag,relres] = gmres(A, b, [], tol);        
+% [x,flag,relres] = gmres(A, b);
+x = A \ b;       
+x = [1,x];
 telapsed = toc(tstart);
 %------------------- display some result -----------------------------
 

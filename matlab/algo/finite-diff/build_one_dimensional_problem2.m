@@ -9,4 +9,6 @@ for i = 1: params.m
     [ A , b ] = feval(func_scheme, params, A, b, i);
 end
 
+b = b';
+
 end
