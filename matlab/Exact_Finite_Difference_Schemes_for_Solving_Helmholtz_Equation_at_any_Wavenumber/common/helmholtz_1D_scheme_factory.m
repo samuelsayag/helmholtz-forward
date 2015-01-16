@@ -65,39 +65,41 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
     if (ceq(condition, {'W', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i)dirichlet_side_generic(...
             params, A, b, i, c_std, dirich_w, 'right_pt');
-        
+        return
     elseif (ceq(condition, {'W', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i)dirichlet_side_generic(...
             params, A, b, i, c_new, dirich_w, 'right_pt');
-        
+        return
     elseif (ceq(condition, {'E', 1, 'std'}))
         f_ctrl_pt = @(params, A, b, i)dirichlet_side_generic(...
             params, A, b, i, c_std, dirich_e, 'left_pt');
-        
+        return
     elseif (ceq(condition, {'E', 1, 'new'}))
         f_ctrl_pt = @(params, A, b, i)dirichlet_side_generic(...
             params, A, b, i, c_new, dirich_e, 'left_pt');
+        return
     end
     
     % sommerfeld       
     % re-define an equal operator for sommerfeld choice
     condition = key([1,2,4]);
     
-    if (ceq(condition, {'W', 0, 'std'}))
+    if (ceq(condition, {'W', 0, 'sommerfeld_std'}))
         f_ctrl_pt = @(params, A, b, i)sommerfeld_side_generic_std(...
             params, A, b, i, 1, 'right_pt');
-        
-    elseif (ceq(condition, {'W', 0, 'new'}))    
+        return
+    elseif (ceq(condition, {'W', 0, 'sommerfeld_new'}))    
         f_ctrl_pt = @(params, A, b, i)sommerfeld_side_generic_new(...
             params, A, b, i, 1, 'right_pt');
-  
-    elseif (ceq(condition, {'E', 0, 'std'}))
+        return
+    elseif (ceq(condition, {'E', 0, 'sommerfeld_std'}))
         f_ctrl_pt = @(params, A, b, i)sommerfeld_side_generic_std(...
             params, A, b, i, -1, 'left_pt');
-        
-    elseif (ceq(condition, {'E', 0, 'new'}))
+        return
+    elseif (ceq(condition, {'E', 0, 'sommerfeld_new'}))
         f_ctrl_pt = @(params, A, b, i)sommerfeld_side_generic_new(...
             params, A, b, i, -1, 'left_pt');
+        return
     end   
     
 end
@@ -178,20 +180,20 @@ function [A,b] = ctrl_pt(params, A, b, i, central_point)
     [A, b] = right_pt(params, A, b, i);        
 end
 
-function [A,b] = sommerfeld_side_generic_std(params, A, b, i, sgn,... 
+function [A,b] = sommerfeld_side_generic_std(params, A, b, j, sgn,... 
     int_pt)
     kh = params.k * params.h;
-    A(i,i) = 2 + sgn * 1i * 2 * kh - (kh).^2;
-    [A, b] = feval(int_pt, params, A, b, i);
-    [A, b] = feval(int_pt, params, A, b, i);
+    A(j,j) = 2 + sgn * 1i * 2 * kh - (kh).^2;
+    [A, b] = feval(int_pt, params, A, b, j);
+    [A, b] = feval(int_pt, params, A, b, j);
 end
 
-function [A,b] = sommerfeld_side_generic_new(params, A, b, i, sgn, ...
+function [A,b] = sommerfeld_side_generic_new(params, A, b, j, sgn, ...
     int_pt)
     kh = params.k * params.h;
-    A(l,l) = 2 * (cos(0,kh) + sgn * 1i * sin(kh));
-    [A, b] = feval(int_pt, params, A, b, i);
-    [A, b] = feval(int_pt, params, A, b, i);
+    A(j,j) = cos(kh) + sgn * 1i * sin(kh);
+%     A(j,j) =  sgn * 1i * sin(kh);
+    [A, b] = feval(int_pt, params, A, b, j);
 end
 
 
