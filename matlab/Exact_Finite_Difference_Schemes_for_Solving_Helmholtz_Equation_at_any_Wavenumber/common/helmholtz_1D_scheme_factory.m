@@ -191,8 +191,8 @@ end
 function [A,b] = sommerfeld_side_generic_new(params, A, b, j, sgn, ...
     int_pt)
     kh = params.k * params.h;
-    A(j,j) = cos(kh) + sgn * 1i * sin(kh);
-%     A(j,j) =  sgn * 1i * sin(kh);
+    A(j,j) = 2*(cos(kh) + sgn * 1i * sin(kh));
+    [A, b] = feval(int_pt, params, A, b, j);
     [A, b] = feval(int_pt, params, A, b, j);
 end
 

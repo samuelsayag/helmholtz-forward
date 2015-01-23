@@ -1,4 +1,4 @@
-function [A, b, x, params] = intStd_diri_W_SommStd_E()
+function [A, b, x, params] = intNew_diri_W_SommStd_E()
 % std_diriW_diriE
 % Summary of this function goes here
 %   Detailed explanation goes here
