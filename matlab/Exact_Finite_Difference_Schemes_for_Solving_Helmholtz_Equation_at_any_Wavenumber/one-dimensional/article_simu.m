@@ -4,9 +4,6 @@
 % These simulation are for the 1D problem
 %==========================================================================
 close all; clear all; clc;
-pwd
-addpath('../common');
-addpath('../../algo/finite-diff');
 
 h = [1e-2];
 k = [1e1, 3e1, 5e1, 7e1, 1e2, 1.5e2];
