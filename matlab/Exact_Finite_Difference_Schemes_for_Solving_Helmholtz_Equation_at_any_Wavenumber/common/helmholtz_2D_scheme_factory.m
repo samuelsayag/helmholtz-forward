@@ -14,7 +14,7 @@ function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
 %   param: a struct that contains
 %       m: number of line 
 %       n: number of column
-%       k: 
+%       k: coefficient of Helmholtz equatin (d²u/dx² + k² * u = 0)
 %       h: step choosen for the scheme
 %       theta: angle (rd) to compute Sommerfeld boundary
 %       interior: 'new', 'std'
