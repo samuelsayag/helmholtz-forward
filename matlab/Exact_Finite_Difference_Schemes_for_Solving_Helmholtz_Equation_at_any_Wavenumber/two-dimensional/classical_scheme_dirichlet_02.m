@@ -2,8 +2,7 @@ function [A, b, x, param] = classical_scheme_dirichlet_02()
 %CLASSICAL_SCHEME_DIRICHLET Summary of this function goes here
 %   Detailed explanation goes here
 
-clear;
-clc;
+close all; clear all; clc;
 
 A = []; 
 b = [];
