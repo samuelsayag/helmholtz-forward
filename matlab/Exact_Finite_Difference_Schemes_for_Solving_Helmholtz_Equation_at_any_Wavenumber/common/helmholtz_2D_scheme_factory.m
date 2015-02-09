@@ -34,8 +34,6 @@ function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
 % test if the south_source parameter is a well defined function
 check_params(params)
 
-% preserve not implemented mechanism (for the moment)
-params.m = params.n;
 % dummy value to sommerfeld boundary in case all is dirichlet. The value
 % is tested later and may cause "null pointer".
 if ~isfield(params , 'boundary')
@@ -96,13 +94,13 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
     c_std = @(params, A, b, i, j)ctrl_pt_std(params, A, b, i, j);
     c_new = @(params, A, b, i, j)ctrl_pt_new(params, A, b, i, j);    
     
-    % define an equal operator for dirichlet choice    
+    % define an equal operator for corner type choice    
     ceq = @(x,y) strcmp(x{1},y{1}) && x{2} == y{2} && strcmp(x{3},y{3})...
         && x{4} == y{4} && strcmp(x{5},y{5});
     
     
     condition = key(1:5);
-   % dirichlet on both sides
+   % dirichlet on both sides of the corner
    if(ceq(condition, {'N', 1, 'E', 1, 'std'}))
        f_corn_pt = @(params, A, b, i, j) dirichlet_corner_generic(...
            params, A, b, i, j, c_std, dirich_n,...
@@ -148,7 +146,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
     % define an equal operator for sommerfeld choice
     condition = key([1,2,3,4,6]) ;
    
-    % sommerfeld on both sides
+    % sommerfeld on both sides of the corner
     if(ceq(condition, {'N', 0, 'E', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
             params, A, b, i, j, 'down_pt','left_pt');
@@ -186,7 +184,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
    
     % define an equal operator for DIRICHLET-SOMMERFELD (repectively) choice
     condition = key([1,2,3,4,6]);
-    
+    % corner of type Dirichlet-Sommerfeld (clockwise)
     if(ceq(condition, {'N', 1, 'E', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
             params, A, b, i, j, -1, 'left_pt', dirich_n, 'down_pt');
@@ -227,7 +225,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
    
     % define an equal operator for SOMMERFELD-DIRICHLET choice
     condition = key([1,2,3,4,6]);
-    
+    % corner of type Sommerfeld-Dirichlet (clockwise)
     if(ceq(condition, {'N', 0, 'E', 1, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_side_generic_std(...
             params, A, b, i, j, -1, 'down_pt', dirich_e, 'left_pt');
@@ -408,23 +406,23 @@ function [A,b] = generic_scheme_creation(params, A, b, i, j, schemes)
     
 %     [i,j]
     
-    % south boundary case (without corner)
+    % west boundary case
     if i == 1
         if j==1
             [A,b] = schemes.sw_corner(params, A, b, i, j);
             return
         end
         if j==n
-            [A,b] = schemes.se_corner(params, A, b, i, j);
+            [A,b] = schemes.nw_corner(params, A, b, i, j);
             return
         end
-        [A,b] = schemes.south_bound(params, A, b, i, j);
+        [A,b] = schemes.west_bound(params, A, b, i, j);
         return
     end
-    
+    % east boundary case
     if i == m
        if j==1
-           [A,b] = schemes.nw_corner(params, A, b, i, j);
+           [A,b] = schemes.se_corner(params, A, b, i, j);
            return
        end
        
@@ -433,42 +431,42 @@ function [A,b] = generic_scheme_creation(params, A, b, i, j, schemes)
             return
        end
        
-       [A,b] = schemes.north_bound(params, A, b, i, j);
+       [A,b] = schemes.east_bound(params, A, b, i, j);
        return
     end
-    
+    % south boundary case
     if j == 1
-        [A,b] = schemes.west_bound(params, A, b, i, j);
+        [A,b] = schemes.south_bound(params, A, b, i, j);
         return
     end
-    
+    % north boundary case
     if j == m
-        [A,b] = schemes.east_bound(params, A, b, i, j);
+        [A,b] = schemes.north_bound(params, A, b, i, j);
         return
     end
-    
+    % interior point case
     [A,b] = schemes.interior_func(params, A, b, i, j);
     
 end
 
 function [label] = get_scheme_label(m, n, i, j)
-    label = j + (m - i) * n;
+    label = i + (n - j) * m;
 end
 
 function [A,b] = left_pt(params, A, b, i, j)
-    [A,b] = generic_pt(params, A, b, i, j, i, j-1);
+    [A,b] = generic_pt(params, A, b, i, j, i-1, j);
 end
 
 function [A,b] = right_pt(params, A, b, i, j)
-    [A,b] = generic_pt(params, A, b, i, j, i, j+1);
-end
-
-function [A,b] = up_pt(params, A, b, i, j)
     [A,b] = generic_pt(params, A, b, i, j, i+1, j);
 end
 
+function [A,b] = up_pt(params, A, b, i, j)
+    [A,b] = generic_pt(params, A, b, i, j, i, j+1);
+end
+
 function [A,b] = down_pt(params, A, b, i, j)
-    [A,b] = generic_pt(params, A, b, i, j, i-1, j);
+    [A,b] = generic_pt(params, A, b, i, j, i, j-1);
 end
 
 function [A,b] = generic_pt(params, A, b, i, j, x, y)

@@ -8,7 +8,7 @@ function [ sol ] = analytic_sol_2D( k, theta, X, Y )
 
     k1 = k * cos(theta);
     k2 = k * sin(theta);
-    sol = transpose( exp(1i * (k1 * X + k2 * Y)) );
+    sol = exp(1i * (k1 * X + k2 * Y));
     
 end
 
