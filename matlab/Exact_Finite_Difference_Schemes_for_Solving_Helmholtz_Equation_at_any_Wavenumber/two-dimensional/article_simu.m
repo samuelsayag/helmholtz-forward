@@ -1,75 +1,98 @@
 %==========================================================================
 % replay the simulation of the article that originated the new schemes for
 % 1D and 2D problem.
-% These simulation are for the 1D problem
+% These simulations are for the 2D problem
 %==========================================================================
-close all; clear all; clc;
+%close all; clear all; clc;
+pause on;
 
-h = [1e-2];
-k = [1e1, 3e1, 5e1, 7e1, 1e2, 1.5e2];
-kk = k;
+% generic parameters of the simulations
+h = [2e-2];
+k = sqrt(2)* [30, 25, 20, 15, 10, 5];
 sim_param.a = 0;
 sim_param.b = 1;
-sim_param.dirichlet.W = @(params, A, b, i) 1;
+sim_param.d = 1;
+sim_param.c = 0;
+sim_param.theta = pi/4;
 
-% simu SBC - SFD
-sim_param.interior = 'new';
-sim_param.boundary = 'sommerfeld_new';
+% declaration of solution structures
+sols = {};
+params = {};
+
+% simu interior NEW, Sommerfeld boundary NEW
+sim_param.interior = 'std';
+sim_param.boundary = 'new';
 [ sol, param ] = simulation_k_h( k, h, sim_param );
-sols = sol;
-params = param;
+sols = [sols, sol];
+params = [params, param];
+
+% simu interior NEW, Sommerfeld boundary NEW
+sim_param.interior = 'std';
+sim_param.boundary = 'new';
+[ sol, param ] = simulation_k_h( k, h, sim_param );
+sols = [sols, sol];
+params = [params, param];
 
 
-error = cell(size(sols));
-analytic = cell(size(sols));
+figure(1)
+a = sim_param.a;
+b = sim_param.b;
+d = sim_param.d;
+c = sim_param.c;
+h = h(1);
+x = linspace(a,b, (b-a)/h + 1);
+y = linspace(d,c, (d-c)/h + 1);
+[X,Y] = meshgrid(x,y);
 
-for i = 1:size(error,1)
-    for j = 1:size(error,2)
-        k = params{i,j}.k;
-        x = linspace(0,1, size(sols{i,j},1)+1);
-        tmp = analytic_sol_1D(k, x);
-        analytic{i,j} = tmp(2:end);
-        error{i,j} = norm((analytic{i,j} - sols{i,j}), Inf );
-    end    
+cptFigure = 0;
+% real part
+for i = 1:size(sols,2)
+    for j = 1:size(sol,1)
+        if j < 4
+            figure(2 * cptFigure + 1)
+            k = j;
+        else
+            figure(2 * cptFigure + 2)
+            k = j-3;
+        end
+        subplot(2,3, k)
+        plot3(X, Y, real(sols{j,i}));        
+        analytic = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
+        subplot(2,3, 3+k)
+        plot3(X, Y, real(analytic));        
+    end
+    cptFigure = cptFigure + 1;
 end
 
-i = 2;
-figure % create new figure
-subplot(2,3,1) % first subplot
-plot(analytic{i,1});
-title('Analytic sol')
-axis equal
+% pause
+% close all;
 
-subplot(2,3,2) % first subplot
-plot(sols{i,1});
-title('SBC-SFD')
-axis equal
+% error = cell(size(sols));
+% analytic = cell(size(sols));
+% 
+% for i = 1:size(error,1)
+%     for j = 1:size(error,2)
+%         k = params{i,j}.k;
+%         tmp = analytic_sol_2D(k, params.theta, X, Y);
+%         analytic{i,j} = tmp(2:end);
+%         error{i,j} = norm((analytic{i,j} - sols{i,j}), Inf );
+%     end    
+% end
 
-subplot(2,3,3) % first subplot
-plot(sols{i,2});
-title('SBC-NFD')
-axis equal
 
-subplot(2,3,4) % first subplot
-plot(sols{i,3});
-title('NBC-SFD')
-axis equal
 
-subplot(2,3,5) % first subplot
-plot(sols{i,4});
-title('NBC-NFD')
-axis equal
-
-close all;
-
-mt = sprintf('\t');
-kkk = cell(size(kk));
-for index = 1:length(kk)
-    kkk{index} = kk(index);
-end
-disp (['h = ' num2str(h)])
-% str_vec = {'kh' 'k' 'SFD' 'NFD' 'SFD' 'NFD'};
-str_vec = {'k' 'SFD' 'NFD' 'SFD' 'NFD'};
-error1 = [str_vec; kkk' error]
+% close all;
+% 
+% mt = sprintf('\t');
+% kkk = cell(size(kk));
+% for index = 1:length(kk)
+%     kkk{index} = kk(index);
+% end
+% disp (['h = ' num2str(h)])
+% % str_vec = {'kh' 'k' 'SFD' 'NFD' 'SFD' 'NFD'};
+% str_vec = {'k' 'SFD' 'NFD' 'SFD' 'NFD'};
+% error1 = [str_vec; kkk' error]
 
 % tmp = [cell2mat(analytic(1,1)) cell2mat(sols(1,1)) cell2mat(sols(1,4))]
+
+pause off;

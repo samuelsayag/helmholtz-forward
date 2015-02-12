@@ -6,7 +6,7 @@
 close all; clear all; clc;
 
 params.k = 30 * sqrt(2);
-params.h = 0.25;
+params.h = 0.02;
 % parameters of the region
 a = 0; 
 b = 1;
@@ -28,10 +28,11 @@ func_scheme = helmholtz_2D_scheme_factory( params );
 % create the matrix of finite difference
 [A, b] = build_two_dimensional_problem2(params, func_scheme);
 
-full(A)
-full(b)
+% full(A)
+% full(b)
 
-x = gmres(A,b');
+% x = gmres(A,b');
+x = A\b';
 x_sol_partial = reshape(x, params.m, params.n)';
 
 % analytic solution
@@ -49,7 +50,7 @@ subplot(1, 2, 1);
 mesh(X, Y, real(Z));
 title('analytic solution')
 subplot(1, 2, 2);
-mesh(X, Y, imag(x_sol));
+mesh(X, Y, real(x_sol));
 title('computed solution')
 
 display('norm inf = max(sum(abs( Z - ))) : ');

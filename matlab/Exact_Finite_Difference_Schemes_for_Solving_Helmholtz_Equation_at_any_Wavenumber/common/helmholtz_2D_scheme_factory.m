@@ -1,4 +1,4 @@
-function [ func_scheme ] = helmholtz_2D_scheme_factory( params )
+function [ func_scheme, params ] = helmholtz_2D_scheme_factory( params )
 %HELMHOLTZ_2D_SCHEME_FACTORY 
 % The purpose of this function is to offer a flexible way of creating a
 % scheme of the Helmholtz equation. The scheme is computed by considering a
@@ -482,7 +482,10 @@ end
 
 function [A,b] = ctrl_pt_new(params, A, b, i, j)
     l = get_scheme_label(params.m, params.n, i, j);    
-    A(l,l) = 4 * besselj(0, params.k * params.h);    
+    kh = params.k * params.h;    
+    J0kh = besselj(0,kh);
+%     J0kh = 3.648019;    
+    A(l,l) = 4 * J0kh;    
 end
 
 function [A,b] = ctrl_pt(params, A, b, i, j, central_point)
@@ -508,7 +511,11 @@ function [A,b] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
     int_pt, l_pt, r_pt)
     l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;
-    A(l,l) = 4 * besselj(0,kh) + sgn * 2 * 1i * sin(kxh);
+    
+    J0kh = besselj(0,kh);
+%     J0kh = 3.648019;
+    
+    A(l,l) = 4 * J0kh + sgn * 2 * 1i * sin(kxh);
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(l_pt, params, A, b, i, j);
@@ -521,7 +528,11 @@ function [A,b] = sommerfeld_generic_corner_new(params, A, b, i, j,...
     kh = params.k * params.h;
     k1h = params.k * cos(params.theta);
     k2h = params.k * sin(params.theta);
-    A(l,l) = 4 * besselj(0,kh)...
+    
+    J0kh = besselj(0,kh);
+%     J0kh = 3.648019;
+    
+    A(l,l) = 4 * J0kh ...
         + sgn1 *  2 * 1i * ( sin(k1h) +  sgn2 * sin(k2h) );
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);
