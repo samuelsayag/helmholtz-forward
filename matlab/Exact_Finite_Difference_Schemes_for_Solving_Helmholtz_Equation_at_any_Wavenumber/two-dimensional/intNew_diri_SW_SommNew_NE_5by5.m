@@ -6,7 +6,7 @@
 close all; clear all; clc;
 
 params.k = 30 * sqrt(2);
-params.h = 0.02;
+params.h = 0.25;
 % parameters of the region
 a = 0; 
 b = 1;

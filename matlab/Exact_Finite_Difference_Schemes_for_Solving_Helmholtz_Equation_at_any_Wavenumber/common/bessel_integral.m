@@ -11,6 +11,7 @@ function [ area ] = bessel_integral( x )
 
 fun = @(theta) bessel_exact_theta(x, theta);
 area = (1/pi) * integral(fun, 0, pi);
+% area = integral(fun, 0, pi);
 
 end
 

@@ -13,16 +13,27 @@ r = cell(8, 5);
 r(1,:) = {'', '', 'J0(kh)', 'J0(kh)', 'J0(kh)'};
 r(2,:) = {'kh', 'k', 'sum [0,pi]', 'exact theta', 'matlab'};
 
-coef = 1;
+% coef = 1;
+% exact_theta = @(x) 4 * bessel_exact_theta(x, theta) ;
+% m_bessel = @(x) 4 * besselj(0, x) ; 
+% omega = @(x, func) 4 * feval(func,x) ;
+
 
 for j=1:size(k,2)
     i = j + 2;
     kh = k(j) * h;
     r{i, 1} = kh;
     r{i, 2} = k(j);
-    r{i, 3} = coef * bessel_integral(kh);
-    r{i, 4} = coef * bessel_exact_theta(kh, theta);
-    r{i, 5} = coef * besselj(0, kh);       
+    r{i, 3} = bessel_integral(kh);
+    r{i, 4} = bessel_exact_theta(kh, theta);
+    r{i, 5} = besselj(0, kh);       
+
+%     r{i, 3} = coef * bessel_integral(kh);
+%     r{i, 4} = coef * bessel_exact_theta(kh, theta);
+%     r{i, 5} = coef * besselj(0, kh);       
+%     r{i, 3} = omega(kh, 'bessel_integral' );
+%     r{i, 4} = exact_theta(kh); 
+%     r{i, 5} = m_bessel(kh);  
 end
 
 r
