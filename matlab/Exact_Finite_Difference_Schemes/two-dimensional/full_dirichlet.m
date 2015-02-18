@@ -8,22 +8,26 @@ addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
-sim_param.h = 2e-2;
-% k = sqrt(2)* [30, 25, 20, 15, 10, 5];
-k = sqrt(2)* [5];
+sim_param.h = [0.01];
+% k = sqrt(2)* [5];
+k = sqrt(2)* [30, 25, 20, 15, 10, 5];
 sim_param.a = 0;
-sim_param.b = 1;
-sim_param.d = 1;
+sim_param.b = 0.8;
+sim_param.d = 0.8;
 sim_param.c = 0;
+sim_param.theta = pi/4;
 sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
 sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
-sim_param.theta = pi/4;
 % dirichlet boundary
 % parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, i * params.h, (j-1) * params.h);
 sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, (i-1) * params.h, j * params.h);
+% sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, i * params.h, (j+1) * params.h);
+% sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, (i+1) * params.h, j * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -31,34 +35,21 @@ params = {};
 
 % simu interior NEW, Sommerfeld boundary NEW
 sim_param.interior = 'std';
-sim_param.boundary = 'std';
+sim_param.boundary = 'new';
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
 params = [params, param];
 
 % % simu interior NEW, Sommerfeld boundary NEW
-% sim_param.interior = 'std';
-% sim_param.boundary = 'new';
+% sim_param.interior = 'new';
 % [ sol, param ] = simulation_k_2D( k, sim_param );
 % sols = [sols, sol];
 % params = [params, param];
 
-% add boundaries to the solution 
-for i = 1:size(sols,1)
-    for j = 1:size(sols,2)
-        sols{i,j} = insert_boundaries(sols{i,j}, params{i,j});
-    end    
-end
-
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
-a = sim_param.a;
-b = sim_param.b;
-d = sim_param.d;
-c = sim_param.c;
-h = sim_param.h
-x = linspace(a,b, (b-a)/h + 1);
-y = linspace(d,c, (d-c)/h + 1);
+x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
+y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 [X,Y] = meshgrid(x,y);
 
 % calculate the error for each simulation
@@ -78,20 +69,23 @@ J0_kh = cell(size(k,2),1);
 exact_theta = cell(size(k,2),1);
 res_kh = cell(size(k,2),1);
 res_k = cell(size(k,2),1);
+h = sim_param.h;
 for i = 1:size(k,2)
-    res_kh{i} = h(1) * k(i);
+    res_kh{i} = h * k(i);
     res_k{i} = k(i);
     exact_theta{i}  = bessel_exact_theta(res_kh{i}, sim_param.theta);
     J0_kh{i} = besselj(0, res_kh{i});       
 end
 
-% RESULT FOR JUST STANDARD ('std,'std')
+% RESULT FOR JUST STANDARD ('std')
 title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
 title2 = {'kh' 'k' 'SFD' '[0,pi]' 'Exact Theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 res_tab
 
+% % RESULT FOR STANDARD AND NEW ('std', 'new')
+% % just the central scheme
 % title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
 % title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
 % res_tab = [title1;title2];
@@ -100,13 +94,8 @@ res_tab
 
 
 figure(1)
-a = sim_param.a;
-b = sim_param.b;
-d = sim_param.d;
-c = sim_param.c;
-h = h(1);
-x = linspace(a,b, (b-a)/h + 1);
-y = linspace(d,c, (d-c)/h + 1);
+x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
+y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 [X,Y] = meshgrid(x,y);
 
 cptFigure = 0;
@@ -121,10 +110,12 @@ for i = 1:size(sols,2)
             k = j-3;
         end
         subplot(2,3, k)
-        plot3(X, Y, real(sols{j,i}));        
-        analytic = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
+        plot3(X, Y, real(sols{j,i}));
+        title 'computed'
+        analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
         subplot(2,3, 3+k)
-        plot3(X, Y, real(analytic));        
+        plot3(X, Y, real(analytic_tmp));        
+        title 'analytic'
     end
     cptFigure = cptFigure + 1;
 end
