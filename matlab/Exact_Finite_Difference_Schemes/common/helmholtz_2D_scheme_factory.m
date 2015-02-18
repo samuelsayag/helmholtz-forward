@@ -153,7 +153,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
         return
     elseif (ceq(condition, {'N', 0, 'E', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
-            params, A, b, i, j, -1, 1, 'down_pt', 'left_pt');
+            params, A, b, i, j, -1, -1, 'down_pt', 'left_pt');
         return
     elseif (ceq(condition, {'E', 0, 'S', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
@@ -161,7 +161,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
         return
     elseif (ceq(condition, {'E', 0, 'S', 0, 'new'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_new(...
-            params, A, b, i, j, -1, -1, 'up_pt', 'left_pt');
+            params, A, b, i, j, -1, 1, 'up_pt', 'left_pt');
         return
     elseif (ceq(condition, {'S', 0, 'W', 0, 'std'}))
         f_corn_pt = @(params, A, b, i, j) sommerfeld_generic_corner_std(...
@@ -533,7 +533,7 @@ function [A,b] = sommerfeld_generic_corner_new(params, A, b, i, j,...
 %     J0kh = 3.648019;
     
     A(l,l) = 4 * J0kh ...
-        + sgn1 *  2 * 1i * ( sin(k1h) +  sgn2 * sin(k2h) );
+        + sgn1 *  2 * 1i * sin(k1h) +  sgn2 * 2 * 1i * sin(k2h) ;
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(ext_pt, params, A, b, i, j);
