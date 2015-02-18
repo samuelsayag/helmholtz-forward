@@ -3,7 +3,8 @@
 % 1D and 2D problem.
 % These simulations are for the 2D problem
 %==========================================================================
-%close all; clear all; clc;
+close all; clear all; clc;
+addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
@@ -21,17 +22,17 @@ params = {};
 
 % simu interior NEW, Sommerfeld boundary NEW
 sim_param.interior = 'std';
-sim_param.boundary = 'new';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
+sim_param.boundary = 'std';
+[ sol, param ] = simulation_k_h_2D( k, h, sim_param );
 sols = [sols, sol];
 params = [params, param];
 
-% simu interior NEW, Sommerfeld boundary NEW
-sim_param.interior = 'std';
-sim_param.boundary = 'new';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
-sols = [sols, sol];
-params = [params, param];
+% % simu interior NEW, Sommerfeld boundary NEW
+% sim_param.interior = 'std';
+% sim_param.boundary = 'new';
+% [ sol, param ] = simulation_k_h_2D( k, h, sim_param );
+% sols = [sols, sol];
+% params = [params, param];
 
 
 % prepare the meshgrid to calculate the analytic solution or to propose
@@ -68,55 +69,50 @@ for i = 1:size(k,2)
     exact_theta{i}  = bessel_exact_theta(res_kh{i}, sim_param.theta);
     J0_kh{i} = besselj(0, res_kh{i});       
 end
-    
-title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
-title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+
+% RESULT FOR JUST STANDARD ('std,'std')
+title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
+title2 = {'kh' 'k' 'SFD' '[0,pi]' 'Exact Theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 res_tab
-% close all;
-% 
-% mt = sprintf('\t');
-% kkk = cell(size(kk));
-% for index = 1:length(kk)
-%     kkk{index} = kk(index);
-% end
-% disp (['h = ' num2str(h)])
-% % str_vec = {'kh' 'k' 'SFD' 'NFD' 'SFD' 'NFD'};
-% str_vec = {'k' 'SFD' 'NFD' 'SFD' 'NFD'};
-% error1 = [str_vec; kkk' error]
 
-% tmp = [cell2mat(analytic(1,1)) cell2mat(sols(1,1)) cell2mat(sols(1,4))]
+% title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
+% title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+% res_tab = [title1;title2];
+% res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
+% res_tab
 
-% figure(1)
-% a = sim_param.a;
-% b = sim_param.b;
-% d = sim_param.d;
-% c = sim_param.c;
-% h = h(1);
-% x = linspace(a,b, (b-a)/h + 1);
-% y = linspace(d,c, (d-c)/h + 1);
-% [X,Y] = meshgrid(x,y);
-% 
-% cptFigure = 0;
-% % real part
-% for i = 1:size(sols,2)
-%     for j = 1:size(sol,1)
-%         if j < 4
-%             figure(2 * cptFigure + 1)
-%             k = j;
-%         else
-%             figure(2 * cptFigure + 2)
-%             k = j-3;
-%         end
-%         subplot(2,3, k)
-%         plot3(X, Y, real(sols{j,i}));        
-%         analytic = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
-%         subplot(2,3, 3+k)
-%         plot3(X, Y, real(analytic));        
-%     end
-%     cptFigure = cptFigure + 1;
-% end
+
+figure(1)
+a = sim_param.a;
+b = sim_param.b;
+d = sim_param.d;
+c = sim_param.c;
+h = h(1);
+x = linspace(a,b, (b-a)/h + 1);
+y = linspace(d,c, (d-c)/h + 1);
+[X,Y] = meshgrid(x,y);
+
+cptFigure = 0;
+% real part
+for i = 1:size(sols,2)
+    for j = 1:size(sol,1)
+        if j < 4
+            figure(2 * cptFigure + 1)
+            k = j;
+        else
+            figure(2 * cptFigure + 2)
+            k = j-3;
+        end
+        subplot(2,3, k)
+        plot3(X, Y, real(sols{j,i}));        
+        analytic = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
+        subplot(2,3, 3+k)
+        plot3(X, Y, real(analytic));        
+    end
+    cptFigure = cptFigure + 1;
+end
 
 % pause
 % close all;

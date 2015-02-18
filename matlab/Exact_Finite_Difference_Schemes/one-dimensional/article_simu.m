@@ -4,7 +4,7 @@
 % These simulation are for the 1D problem
 %==========================================================================
 close all; clear all; clc;
-
+addpath(genpath('..\..\..\matlab'));
 h = [1e-2];
 k = [1e1, 3e1, 5e1, 7e1, 1e2, 1.5e2];
 kk = k;
@@ -15,28 +15,28 @@ sim_param.dirichlet.W = @(params, A, b, i) 1;
 % simu SBC - SFD
 sim_param.interior = 'std';
 sim_param.boundary = 'sommerfeld_std';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
+[ sol, param ] = simulation_k_h_1D( k, h, sim_param );
 sols = sol;
 params = param;
 
 % simu SBC - NFD
 sim_param.interior = 'new';
 sim_param.boundary = 'sommerfeld_std';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
+[ sol, param ] = simulation_k_h_1D( k, h, sim_param );
 sols = [sols,sol];
 params = [params, param];
 
 % simu NBC - SFD
 sim_param.interior = 'std';
 sim_param.boundary = 'sommerfeld_new';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
+[ sol, param ] = simulation_k_h_1D( k, h, sim_param );
 sols = [sols,sol];
 params = [params, param];
 
 % simu NBC - NFD
 sim_param.interior = 'new';
 sim_param.boundary = 'sommerfeld_new';
-[ sol, param ] = simulation_k_h( k, h, sim_param );
+[ sol, param ] = simulation_k_h_1D( k, h, sim_param );
 sols = [sols,sol];
 params = [params, param];
 

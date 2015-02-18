@@ -10,8 +10,10 @@ function [ area ] = bessel_integral( x )
 %   area: the integral
 
 fun = @(theta) bessel_exact_theta(x, theta);
-area = (1/pi) * integral(fun, 0, pi);
-% area = integral(fun, 0, pi);
+% area = (1/pi) * integral(fun, 0, pi);
+X = linspace(0,pi,10000);
+Y = fun(X);
+area = (1/pi) * trapz(X,Y);
 
 end
 

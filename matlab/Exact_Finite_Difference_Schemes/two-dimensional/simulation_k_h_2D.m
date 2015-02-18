@@ -1,4 +1,4 @@
-function [ sols, params ] = simulation_k_h( k, h, sim_param )
+function [ sols, params ] = simulation_k_h_2D( k, h, sim_param )
 %SIMULATION_K_H
 % perform a simulation for a vector k and h and some fixed parameters
 % given by sim_param
@@ -29,7 +29,9 @@ for i = 1:size(h,2)
         % generate the matrix and vector of the problem
         [A, b] = build_two_dimensional_problem2(sim_param, func_scheme);
         % compute the solution of the equation
-        tmp_sol = gmres(A, b');
+%         tmp_sol = gmres(A, b');
+        tmp_sol = bicgstab(A,b', 1e-12, 1e7);
+%         tmp_sol = gmres(A,b, 50, 1e-12, 200);
         %build the solution of the 2D problem with boundary
         sols{cpt_sol, 1} = get_solution_with_boundaries(tmp_sol, sim_param);
         params{cpt_sol, 1} = sim_param;
