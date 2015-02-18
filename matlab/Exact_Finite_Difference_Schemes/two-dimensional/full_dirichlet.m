@@ -24,10 +24,10 @@ sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,...
     params.theta, i * params.h, (j-1) * params.h);
 sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, (i-1) * params.h, j * params.h);
-% sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, i * params.h, (j+1) * params.h);
-% sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, (i+1) * params.h, j * params.h);
+sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, i * params.h, (j+1) * params.h);
+sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, (i+1) * params.h, j * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -35,16 +35,15 @@ params = {};
 
 % simu interior NEW, Sommerfeld boundary NEW
 sim_param.interior = 'std';
-sim_param.boundary = 'new';
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
 params = [params, param];
 
-% % simu interior NEW, Sommerfeld boundary NEW
-% sim_param.interior = 'new';
-% [ sol, param ] = simulation_k_2D( k, sim_param );
-% sols = [sols, sol];
-% params = [params, param];
+% simu interior NEW, Sommerfeld boundary NEW
+sim_param.interior = 'new';
+[ sol, param ] = simulation_k_2D( k, sim_param );
+sols = [sols, sol];
+params = [params, param];
 
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
@@ -77,20 +76,20 @@ for i = 1:size(k,2)
     J0_kh{i} = besselj(0, res_kh{i});       
 end
 
-% RESULT FOR JUST STANDARD ('std')
-title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
-title2 = {'kh' 'k' 'SFD' '[0,pi]' 'Exact Theta'};
-res_tab = [title1;title2];
-res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
-res_tab
-
-% % RESULT FOR STANDARD AND NEW ('std', 'new')
-% % just the central scheme
-% title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
-% title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+% % RESULT FOR JUST STANDARD ('std')
+% title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
+% title2 = {'kh' 'k' 'SFD' '[0,pi]' 'Exact Theta'};
 % res_tab = [title1;title2];
 % res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 % res_tab
+
+% RESULT FOR STANDARD AND NEW ('std', 'new')
+% just the central scheme
+title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
+title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+res_tab = [title1;title2];
+res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
+res_tab
 
 
 figure(1)

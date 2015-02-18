@@ -21,7 +21,7 @@ for j = 1:size(k,2)
     [A, b] = build_two_dimensional_problem2(sim_param, func_scheme);
     % compute the solution of the equation
 %         tmp_sol = gmres(A, b');
-    tmp_sol = bicgstab(A, b', 1e-10, 1e6);
+    tmp_sol = bicgstab(A, b', 1e-12, 1e6);
 %     tmp_sol = gmres(A, b', 50, 1e-12, 200);
     tmp_sol = reshape(tmp_sol, sim_param.m, sim_param.n)';
     sols{cpt_sol, 1} = tmp_sol;
