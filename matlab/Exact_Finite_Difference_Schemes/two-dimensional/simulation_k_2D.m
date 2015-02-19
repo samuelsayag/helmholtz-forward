@@ -11,7 +11,7 @@ sols = cell(dh * dk, 1);
 params = cell(dh * dk, 1);
 
 cpt_sol = 1;
-
+sim_param
 for j = 1:size(k,2)
     % prepare temporary parameters
     sim_param.k = k(1,j);        
@@ -20,8 +20,8 @@ for j = 1:size(k,2)
     % generate the matrix and vector of the problem
     [A, b] = build_two_dimensional_problem2(sim_param, func_scheme);
     % compute the solution of the equation
-      tmp_sol = A\transpose(b);
-%     tmp_sol = bicgstab(A, transpose(b), 1e-12, 1e6);
+%     tmp_sol = A\transpose(b);
+    tmp_sol = bicgstab(A, transpose(b), 1e-4, 1e9);
 %     tmp_sol = gmres(A, transpose(b), 50, 1e-12, 500);
     tmp_sol = transpose(reshape(tmp_sol, sim_param.m, sim_param.n));
     sols{cpt_sol, 1} = tmp_sol;

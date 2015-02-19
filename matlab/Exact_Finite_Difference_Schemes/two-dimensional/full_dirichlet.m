@@ -3,17 +3,18 @@
 % 1D and 2D problem.
 % These simulations are for the 2D problem
 %==========================================================================
-% close all; clear all; clc;
+close all; clear all; clc;
 addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
 % k = [5];
-k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+k = sqrt(2)* [30, 25, 20];
+% k = sqrt(2)* [30, 25, 20, 15, 10, 5];
 sim_param.a = 0;
-sim_param.b = 0.8;
-sim_param.d = 0.8;
+sim_param.b = 1;
+sim_param.d = 1;
 sim_param.c = 0;
 sim_param.theta = pi/4;
 sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
@@ -33,11 +34,11 @@ sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,...
 sols = {};
 params = {};
 
-% simu interior NEW, Sommerfeld boundary NEW
-sim_param.interior = 'std';
-[ sol, param ] = simulation_k_2D( k, sim_param );
-sols = [sols, sol];
-params = [params, param];
+% % simu interior NEW, Sommerfeld boundary NEW
+% sim_param.interior = 'std';
+% [ sol, param ] = simulation_k_2D( k, sim_param );
+% sols = [sols, sol];
+% params = [params, param];
 
 % simu interior NEW, Sommerfeld boundary NEW
 sim_param.interior = 'new';
@@ -52,8 +53,8 @@ params = [params, param];
 % [ sol, param ] = simulation_k_2D( k, sim_param );
 % sols = [sols, sol];
 % params = [params, param];
-
-% simu interior NEW, Sommerfeld boundary NEW
+% 
+% % simu interior NEW, Sommerfeld boundary NEW
 % sim_param.interior = 'new';
 % sim_param.boundary = 'new';
 % [ sol, param ] = simulation_k_2D( k, sim_param );
@@ -99,48 +100,48 @@ end
 % res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 % res_tab
 
-% % RESULT FOR JUST STANDARD ('new')
-% title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
-% title2 = {'kh' 'k' 'NFD' '[0,pi]' 'Exact Theta'};
-% res_tab = [title1;title2];
-% res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
-% res_tab
-
-% RESULT FOR STANDARD AND NEW ('std', 'new')
-% just the central scheme
-title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
-title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+% RESULT FOR JUST STANDARD ('new')
+title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
+title2 = {'kh' 'k' 'NFD' '[0,pi]' 'Exact Theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 res_tab
 
+% % RESULT FOR STANDARD AND NEW ('std', 'new')
+% % just the central scheme
+% title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
+% title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+% res_tab = [title1;title2];
+% res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
+% res_tab
 
-figure(1)
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
-[X,Y] = meshgrid(x,y);
 
-cptFigure = 0;
-% real part
-for i = 1:size(sols,2)
-    for j = 1:size(sol,1)
-        if j < 4
-            figure(2 * cptFigure + 1)
-            k = j;
-        else
-            figure(2 * cptFigure + 2)
-            k = j-3;
-        end
-        subplot(2,3, k)
-        plot3(X, Y, real(sols{j,i}));
-        title 'computed'
-        analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
-        subplot(2,3, 3+k)
-        plot3(X, Y, real(analytic_tmp));        
-        title 'analytic'
-    end
-    cptFigure = cptFigure + 1;
-end
+% figure(1)
+% x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
+% y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+% [X,Y] = meshgrid(x,y);
+% 
+% cptFigure = 0;
+% % real part
+% for i = 1:size(sols,2)
+%     for j = 1:size(sol,1)
+%         if j < 4
+%             figure(2 * cptFigure + 1)
+%             k = j;
+%         else
+%             figure(2 * cptFigure + 2)
+%             k = j-3;
+%         end
+%         subplot(2,3, k)
+%         plot3(X, Y, real(sols{j,i}));
+%         title 'computed'
+%         analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
+%         subplot(2,3, 3+k)
+%         plot3(X, Y, real(analytic_tmp));        
+%         title 'analytic'
+%     end
+%     cptFigure = cptFigure + 1;
+% end
 
 % pause
 % close all;
