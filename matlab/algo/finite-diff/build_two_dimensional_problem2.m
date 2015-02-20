@@ -3,7 +3,7 @@ function [ A, b ] = build_two_dimensional_problem2( params, func_scheme )
 %   Detailed explanation goes here
 
 L = params.n * params.m;
-b = sparse(1, L);
+b = sparse(L, 1);
 A = sparse(L, L);
 
 for i = 1: params.m    

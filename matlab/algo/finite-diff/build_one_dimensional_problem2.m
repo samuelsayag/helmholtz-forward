@@ -2,7 +2,7 @@ function [ A, b ] = build_one_dimensional_problem2( params, func_scheme)
 %BUILD_SQUARE_GRID Summary of this function goes here
 %   Detailed explanation goes here
 
-b = zeros(1, params.m);
+b = zeros(params.m,1);
 A = sparse(params.m, params.m);
  
 for i = 1: params.m
