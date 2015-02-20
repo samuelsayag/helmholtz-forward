@@ -4,7 +4,7 @@
 % These simulations are for the 2D problem
 %==========================================================================
 close all; clear all; clc;
-addpath(genpath('..\..\..\..\matlab'));
+addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
