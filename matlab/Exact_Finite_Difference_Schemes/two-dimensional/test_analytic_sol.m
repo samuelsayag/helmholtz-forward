@@ -9,7 +9,7 @@
 k = 30 * sqrt(2);
 theta = pi/4;
 % define the region we want to have the solution on
-h = 0.25;
+h = 0.01;
 a = 0;
 b = 1;
 c = 1;
@@ -24,5 +24,7 @@ Z = analytic_sol_2D(k, theta, X, Y);
 figure(1)
 subplot(1, 2, 1);
 mesh(X, Y, real(Z));
+title 'Real part'
 subplot(1, 2, 2);
 mesh(X, Y, imag(Z));
+title 'Img part'

@@ -9,9 +9,11 @@ pause on;
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
-% k = [5];
-k = sqrt(2)* [30, 25, 20];
-% k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+% k = [25];
+% k = [150, 100, 70];
+% k = sqrt(2)* [30, 25, 20];
+k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+% k = sqrt(2)* [30, 25, 20];
 sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
@@ -34,13 +36,13 @@ sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,...
 sols = {};
 params = {};
 
-% % simu interior NEW, Sommerfeld boundary NEW
-% sim_param.interior = 'std';
-% [ sol, param ] = simulation_k_2D( k, sim_param );
-% sols = [sols, sol];
-% params = [params, param];
+% simu interior std
+sim_param.interior = 'std';
+[ sol, param ] = simulation_k_2D( k, sim_param );
+sols = [sols, sol];
+params = [params, param];
 
-% simu interior NEW, Sommerfeld boundary NEW
+% simu interior NEW
 sim_param.interior = 'new';
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
@@ -60,7 +62,6 @@ params = [params, param];
 % [ sol, param ] = simulation_k_2D( k, sim_param );
 % sols = [sols, sol];
 % params = [params, param];
-
 
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
@@ -100,20 +101,20 @@ end
 % res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 % res_tab
 
-% RESULT FOR JUST STANDARD ('new')
-title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
-title2 = {'kh' 'k' 'NFD' '[0,pi]' 'Exact Theta'};
-res_tab = [title1;title2];
-res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
-res_tab
-
-% % RESULT FOR STANDARD AND NEW ('std', 'new')
-% % just the central scheme
-% title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
-% title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+% % RESULT FOR JUST STANDARD ('new')
+% title1 = {'' '' 'E inf'  'J0(kh)' 'J0(kh)'};
+% title2 = {'kh' 'k' 'NFD' '[0,pi]' 'Exact Theta'};
 % res_tab = [title1;title2];
 % res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
 % res_tab
+
+% RESULT FOR STANDARD AND NEW ('std', 'new')
+% just the central scheme
+title1 = {'' '' 'E inf' 'E inf' 'J0(kh)' 'J0(kh)'};
+title2 = {'kh' 'k' 'SFD' 'NFD' '[0,pi]' 'Exact Theta'};
+res_tab = [title1;title2];
+res_tab = [res_tab; res_kh res_k error J0_kh exact_theta];
+res_tab
 
 
 % figure(1)
