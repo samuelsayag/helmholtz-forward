@@ -4,11 +4,11 @@
 % These simulations are for the 2D problem
 %==========================================================================
 close all; clear all; clc;
-addpath(genpath('..\..\..\..\matlab'));
+addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
-sim_param.h = [0.01];
+sim_param.h = [0.02];
 % k = [5];
 % k = [150, 100, 70];
 % k = sqrt(2)* [30, 25, 20];
@@ -25,10 +25,10 @@ sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
 % parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, i * params.h, (j-1) * params.h);
-sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
 sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, i * params.h, (j+1) * params.h);
+sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, (i+1) * params.h, j * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -118,6 +118,9 @@ res_tab = [title1;title2];
 res_tab = [res_tab; res_kh res_k error ];
 res_tab
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICAL REPRESENTATION - BEGIN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % figure(1)
 % x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
 % y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
@@ -144,6 +147,10 @@ res_tab
 %     end
 %     cptFigure = cptFigure + 1;
 % end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICAL REPRESENTATION - END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % pause
 % close all;

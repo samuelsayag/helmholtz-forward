@@ -8,7 +8,7 @@ addpath(genpath('..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
-sim_param.h = [0.01];
+sim_param.h = [0.02];
 % k = [5];
 % k = [150, 100, 70];
 % k = sqrt(2)* [30, 25, 20];
@@ -118,33 +118,40 @@ res_tab = [title1;title2];
 res_tab = [res_tab; res_kh res_k error ];
 res_tab
 
-figure(1)
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
-[X,Y] = meshgrid(x,y);
 
-cptFigure = 0;
-% real part
-for i = 1:size(sols,2)
-    for j = 1:size(sol,1)
-        if j < 4
-            figure(2 * cptFigure + 1)
-            k = j;
-        else
-            figure(2 * cptFigure + 2)
-            k = j-3;
-        end
-        subplot(2,3, k)
-        plot3(X, Y, real(sols{j,i}));
-        title 'computed'
-        analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
-        subplot(2,3, 3+k)
-        plot3(X, Y, real(analytic_tmp));        
-        title 'analytic'
-    end
-    cptFigure = cptFigure + 1;
-end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICAL REPRESENTATION - BEGIN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% figure(1)
+% x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
+% y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+% [X,Y] = meshgrid(x,y);
+% 
+% cptFigure = 0;
+% % real part
+% for i = 1:size(sols,2)
+%     for j = 1:size(sol,1)
+%         if j < 4
+%             figure(2 * cptFigure + 1)
+%             k = j;
+%         else
+%             figure(2 * cptFigure + 2)
+%             k = j-3;
+%         end
+%         subplot(2,3, k)
+%         plot3(X, Y, real(sols{j,i}));
+%         title 'computed'
+%         analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
+%         subplot(2,3, 3+k)
+%         plot3(X, Y, real(analytic_tmp));        
+%         title 'analytic'
+%     end
+%     cptFigure = cptFigure + 1;
+% end
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICAL REPRESENTATION - END
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pause
 % close all;
 

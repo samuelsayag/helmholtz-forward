@@ -514,7 +514,7 @@ function [A,b] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
     
     J0kh = besselj(0,kh);
 %     J0kh = 3.648019;
-    
+%     kxh = kh;
     A(l,l) = 4 * J0kh + sgn * 2 * 1i * sin(kxh);
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);
