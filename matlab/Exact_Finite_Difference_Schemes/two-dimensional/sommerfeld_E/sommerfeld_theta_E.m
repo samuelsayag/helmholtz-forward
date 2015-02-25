@@ -9,8 +9,8 @@ pause on;
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
-angle_div = 20;
-theta = pi/2 * 1/angle_div * linspace(1, angle_div, angle_div);
+angle_div = 40;
+theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
 
 sim_param.k = 30;
 sim_param.a = 0;

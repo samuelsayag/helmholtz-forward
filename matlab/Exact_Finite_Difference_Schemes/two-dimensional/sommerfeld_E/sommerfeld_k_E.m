@@ -18,7 +18,8 @@ sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
 sim_param.c = 0;
-sim_param.theta = pi/4;
+% sim_param.theta = pi/4;
+sim_param.theta = 0.3927;
 sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
 sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
 % dirichlet boundary

@@ -1,19 +1,19 @@
-function [ sols, params ] = simulation_pi_2D( pi, sim_param )
+function [ sols, params ] = simulation_theta_2D( theta, sim_param )
 %SIMULATION_K_H
 % perform a simulation for a vector k and h and some fixed parameters
 % given by sim_param
 % return solution cell vector
 
 % simultation output structures declaration
-dpi = size(pi,2);
+dtheta = size(theta,2);
 sols = cell(dpi, 1);
 params = cell(dpi, 1);
 
 cpt_sol = 1;
 sim_param
-for j = 1:dpi
+for j = 1:dtheta
     % prepare temporary parameters
-    sim_param.theta = pi(1,j);        
+    sim_param.theta = theta(1,j);        
     % build the simulation function
     [ func_scheme, sim_param ] = helmholtz_2D_scheme_factory( sim_param );
     % generate the matrix and vector of the problem
