@@ -8,7 +8,7 @@ addpath(genpath('..\..\..\..\matlab'));
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
-angle_div = 11;
+angle_div = 119;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
 
 sim_param.k = 15 * sqrt(2);
@@ -39,44 +39,23 @@ params = {};
 graph_titles = {};
 
 tic
-% simu interior, Sommerfeld North
-sim_param.dirichlet.S = S;
-sim_param.dirichlet.W = W;
+% simu interior, Sommerfeld East-North
 sim_param.dirichlet.E = E;
+sim_param.dirichlet.N = N;
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'North')];
+graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'N-E')];
 
-% simu interior, Sommerfeld East
+% simu interior, Sommerfeld East-North
 sim_param.dirichlet.S = S;
 sim_param.dirichlet.W = W;
-sim_param.dirichlet.N = N;
 sim_param.dirichlet = rmfield(sim_param.dirichlet, 'E');
+sim_param.dirichlet = rmfield(sim_param.dirichlet, 'N');
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'East')];
-
-% simu interior, Sommerfeld South
-sim_param.dirichlet.E = E;
-sim_param.dirichlet.W = W;
-sim_param.dirichlet.N = N;
-sim_param.dirichlet = rmfield(sim_param.dirichlet, 'S');
-[ sol, param ] = simulation_theta_2D( theta, sim_param );
-sols = [sols, sol];
-params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'South')];
-
-% simu interior, Sommerfeld West
-sim_param.dirichlet.E = E;
-sim_param.dirichlet.S = S;
-sim_param.dirichlet.N = N;
-sim_param.dirichlet = rmfield(sim_param.dirichlet, 'W');
-[ sol, param ] = simulation_theta_2D( theta, sim_param );
-sols = [sols, sol];
-params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'West')];
+graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'S-W')];
 
 % time elapsed
 elapsed = toc;
@@ -108,7 +87,7 @@ end
 
 % % FOUR COLUMN RESULT
 % just the central scheme
-title1 = {'theta' 'N' 'E' 'S' 'W' };
+title1 = {'theta' 'N-E' 'S-W' };
 res_tab = [title1; res_theta error ];
 res_tab
 
@@ -125,7 +104,7 @@ cosTheta = zeros(size(theta,2),1);
         errorY(j) = error{j, i};      
         cosTheta(j)=cos(theta(j));        
     end
-   subplot(2,2, i);
+   subplot(1,2, i);
    plot(cosTheta, errorY);
    title(graph_titles{i});
    xlabel 'cos(theta)'
