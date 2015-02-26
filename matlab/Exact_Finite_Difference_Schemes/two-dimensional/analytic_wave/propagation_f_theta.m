@@ -8,7 +8,7 @@ addpath(genpath('..\..\..\..\matlab'));
 
 % generic parameters of the simulations
 h = [0.02];
-angle_div = 50;
+angle_div = 6;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
 k = 15 * sqrt(2);
 a = 0;
