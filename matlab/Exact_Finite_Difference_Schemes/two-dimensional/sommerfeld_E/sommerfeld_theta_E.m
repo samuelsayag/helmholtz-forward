@@ -4,15 +4,17 @@
 % These simulations are for the 2D problem
 %==========================================================================
 close all; clear all; clc;
-addpath(genpath('..\..\..\..\matlab'));
+addpath(genpath('matlab'));
 pause on;
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
-angle_div = 50;
+angle_div = 11;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
+% theta =   0.2732 + abs(0.4098 - 0.2732) * 1/angle_div * linspace(0, angle_div, angle_div + 1);
+d_theta =size(theta,2);
 
-sim_param.k = 15 * sqrt(2);
+sim_param.k = 30 * sqrt(2);
 sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
@@ -33,26 +35,27 @@ sols = {};
 params = {};
 
 tic
-% % simu interior std
-% sim_param.interior = 'std';
-% sim_param.boundary = 'std';
-% [ sol, param, As, Bs ] = simulation_theta_2D( theta, sim_param );
-% sols = [sols, sol];
-% params = [params, param];
-% 
-% % simu interior NEW
-% sim_param.interior = 'new';
-% sim_param.boundary = 'std';
-% [ sol, param ] = simulation_theta_2D( theta, sim_param );
-% sols = [sols, sol];
-% params = [params, param];
-% 
-% % simu interior std
-% sim_param.interior = 'std';
-% sim_param.boundary = 'new';
-% [ sol, param ] = simulation_theta_2D( theta, sim_param );
-% sols = [sols, sol];
-% params = [params, param];
+
+% simu interior NEW
+sim_param.interior = 'std';
+sim_param.boundary = 'std';
+[ sol, param ] = simulation_theta_2D( theta, sim_param );
+sols = [sols, sol];
+params = [params, param];
+
+% simu interior NEW
+sim_param.interior = 'std';
+sim_param.boundary = 'new';
+[ sol, param ] = simulation_theta_2D( theta, sim_param );
+sols = [sols, sol];
+params = [params, param];
+
+% simu interior NEW
+sim_param.interior = 'new';
+sim_param.boundary = 'std';
+[ sol, param ] = simulation_theta_2D( theta, sim_param );
+sols = [sols, sol];
+params = [params, param];
 
 % simu interior NEW
 sim_param.interior = 'new';
@@ -67,6 +70,7 @@ elapsed
 
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
+res_theta = mat2cell(theta', ones(1, d_theta));
 x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
 y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 [X,Y] = meshgrid(x,y);
@@ -74,83 +78,74 @@ y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 % calculate the error for each simulation
 error = cell(size(sols));
 analytic = cell(size(sols));
-for i = 1:size(error,1)
-    for j = 1:size(error,2)
-        theta_temp = params{i,j}.theta;
-        analytic{i,j} = analytic_sol_2D(sim_param.k, theta_temp, X, Y);
-        error{i,j} = norm((analytic{i,j} - sols{i,j}), Inf );
-    end    
+fa = @(t) analytic_sol_2D(sim_param.k, t, X, Y);
+fe = @(a, s) norm((a - s), Inf );
+for j = 1:size(error,2)
+    analytic(:,j) = cellfun(fa, res_theta, 'UniformOutput', false);
+    error(:,j) = cellfun( fe, analytic(:,j), sols(:,j), 'UniformOutput', false );
 end
-
-% preparation of the results
-res_theta = cell(size(theta,2),1);
-h = sim_param.h;
-for i = 1:size(theta,2)
-    res_theta{i} = theta(i);      
-end
-
-% % preparation of the results
-% errorY = zeros(size(theta,2),1);
-% cosTheta = zeros(size(theta,2),1);
-% for i = 1:size(theta,2)
-%     errorY(i) = error{i};      
-%     cosTheta(i)=cos(theta(i));
-% end
-% % plot(theta, errorY);
-% plot(cosTheta, errorY);
-
-% % % FOUR COLUMN RESULT
-% % just the central scheme
-% title1 = {'' 'SBC' 'SBC' 'NBC' 'NBC'};
-% title2 = {'theta' 'SFD' 'NFD' 'SFD' 'NFD' };
-% res_tab = [title1;title2];
-% res_tab = [res_tab; res_theta error ];
-% res_tab
 
 % % ONE COLUMN RESULT
 % % just the central scheme
-title1 = {'' 'SBC' };
-title2 = {'theta' 'SFD'};
-res_tab = [title1;title2];
-res_tab = [res_tab; res_theta error ];
+title1 = {'' '' 'error' 'error' 'error' 'error'};
+title2 = {'theta' 'cos(theta)' 'SFD - SBC' 'SFD - NBC' 'NFD - SBC' 'NFD - NBC'};
+res_tab = [title1; title2];
+res_cos_theta = mat2cell(cos(theta'), ones(1, d_theta));
+res_tab = [res_tab; res_theta res_cos_theta error ];
 res_tab
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GRAPHICAL REPRESENTATION - BEGIN
+% BEGIN - GRAPHICAL REPRESENTATION  OF THE CURVES error = f(cos theta) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure(1)
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
-[X,Y] = meshgrid(x,y);
+cptFigure = 1;
 
-cptFigure = 0;
-% real part
-for i = 1:size(sols,2)
-    for j = 1:size(sol,1)
-        if j < 4
-            figure(2 * cptFigure + 1)
-            k = j;
-        else
-            figure(2 * cptFigure + 2)
-            k = j-3;
-        end
-        subplot(2,3, k)
-        plot3(X, Y, real(sols{j,i}));
-        title 'computed'
-        analytic_tmp = analytic_sol_2D(params{j,i}.k, params{j,i}.theta, X, Y);
-        subplot(2,3, 3+k)
-        plot3(X, Y, real(analytic_tmp));        
-        title 'analytic'
-    end
-    cptFigure = cptFigure + 1;
+% preparation of the results
+cptFigure = cptFigure + 1;
+figure(cptFigure);
+
+nb_col = 2;
+for i = 1:size(error,2)
+    cpt_graph = mod(i-1, nb_col * 2) + 1;
+    subplot(2,2,cpt_graph);    
+    plot(cos(theta), cell2mat(error(:,i)));
+    title (sprintf('%s', title2{2+i}));
+    xlabel 'cos(theta)';
+    ylabel 'error';    
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GRAPHICAL REPRESENTATION - END
+% END - GRAPHICAL REPRESENTATION  OF THE CURVES error = f(cos theta) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% pause
-% close all;
 
-pause off;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN - GRAPHICAL REPRESENTATION  OF THE CURVES real(Z) = f(X,Y) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% figure(cptFigure)
+% x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
+% y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+% [X,Y] = meshgrid(x,y);
+% 
+% nb_col = 3;
+% cptFigure = 1;
+% for i = 1:d_theta
+%     figure(cptFigure); % index of figure    
+%     k = mod(i-1, nb_col) + 1; % index of graph in the figure
+%     
+%     subplot(2, nb_col, k)
+%     plot3(X, Y, real(analytic{i}));        
+%     title (sprintf('analytic theta: %0.4f',theta(i)));
+% 
+%     subplot(2, nb_col, nb_col + k)
+%     plot3(X, Y, real(sols{i}));        
+%     title (sprintf('computed theta: %0.4f, error: %0.4f',theta(i), error{i}));    
+%     
+%     if k == nb_col && i < d_theta
+%         cptFigure = cptFigure + 1;
+%     end
+% end
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END - GRAPHICAL REPRESENTATION  OF THE CURVES real(Z) = f(X,Y) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

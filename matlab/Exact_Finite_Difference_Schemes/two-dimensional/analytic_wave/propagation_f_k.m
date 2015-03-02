@@ -8,9 +8,8 @@ addpath(genpath('..\matlab'));
 
 % generic parameters of the simulations
 h = [0.02];
-angle_div = 5;
-theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
-k = 15 * sqrt(2);
+k = sqrt(2) * [5 10 15 20 25 30];
+theta = pi/3;
 a = 0;
 b = 1;
 d = 1;
@@ -26,9 +25,9 @@ x = linspace(1, m, m) * h;
 y = linspace(n, 1, n) * h;
 [X,Y] = meshgrid(x,y);
 
-c_theta = mat2cell(theta', ones(size(theta)));
-f = @(t) analytic_sol_2D(k, t, X, Y);
-analytic = cellfun(f, c_theta,...
+c_k = mat2cell(k', ones(size(k)));
+f = @(t) analytic_sol_2D(t, theta, X, Y);
+analytic = cellfun(f, c_k,...
     'UniformOutput', false);
 
 % time elapsed
@@ -39,14 +38,15 @@ elapsed
 % GRAPHICAL REPRESENTATION - BEGIN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 cptFigure = 1;
-
-for i = 1:size(theta,2)
+for i = 1:size(k, 2)
     figure(cptFigure);        
-    k = mod(i-1, 6) + 1;
-    subplot(2, 3, k)
+    cpt_grph = mod(i-1, 6) + 1;
+    
+    subplot(2, 3, cpt_grph)
     plot3(X, Y, real(analytic{i}));        
-    title (sprintf('theta: %0.4f',theta(i)));
-    if k == 6
+    title (sprintf('k: %0.4f',k(i)));
+    
+    if cpt_grph == 6
         cptFigure = cptFigure + 1;
     end
 end

@@ -11,12 +11,14 @@ function [ func_scheme, params ] = helmholtz_2D_scheme_factory( params )
 %   func_scheme: a function that may directly be used as a scheme to create 
 % the matrix.n
 % parameters:
-%   param: a struct that contains
+%   param: A struct that contains
 %       m: number of line 
 %       n: number of column
 %       k: coefficient of Helmholtz equatin (d²u/dx² + k² * u = 0)
 %       h: step choosen for the scheme
 %       theta: angle (rd) to compute Sommerfeld boundary
+%       bessel: the type of Bessel function of similar that will be used 
+% calcultate the coefficient.
 %       interior: 'new', 'std'
 %       boundary: 'new', 'std' (IF SOMMERFELD BOUNDARY)
 %       dirichlet.W: (optional) function handle
@@ -32,7 +34,7 @@ function [ func_scheme, params ] = helmholtz_2D_scheme_factory( params )
 % under a Sommerfeld Boundary.
 
 % test if the south_source parameter is a well defined function
-check_params(params)
+params = check_params(params);
 
 % dummy value to sommerfeld boundary in case all is dirichlet. The value
 % is tested later and may cause "null pointer".
@@ -483,8 +485,10 @@ end
 function [A,b] = ctrl_pt_new(params, A, b, i, j)
     l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;    
-    J0kh = besselj(0,kh);
-%     J0kh = 3.648019;    
+    
+    % J0kh = besselj(0,kh);
+    J0kh = params.bessel(kh);
+    
     A(l,l) = 4 * J0kh;    
 end
 
@@ -512,9 +516,9 @@ function [A,b] = sommerfeld_side_generic_new(params, A, b, i, j, sgn, kxh,...
     l = get_scheme_label(params.m, params.n, i, j);    
     kh = params.k * params.h;
     
-    J0kh = besselj(0,kh);
-%     J0kh = 3.648019;
-%     kxh = kh;
+    % J0kh = besselj(0,kh);
+    J0kh = params.bessel(kh);
+    
     A(l,l) = 4 * J0kh + sgn * 2 * 1i * sin(kxh);
     [A, b] = feval(int_pt, params, A, b, i, j);
     [A, b] = feval(int_pt, params, A, b, i, j);
@@ -529,8 +533,8 @@ function [A,b] = sommerfeld_generic_corner_new(params, A, b, i, j,...
     k1h = params.k * cos(params.theta);
     k2h = params.k * sin(params.theta);
     
-    J0kh = besselj(0,kh);
-%     J0kh = 3.648019;
+    % J0kh = besselj(0,kh);
+    J0kh = params.bessel(kh);
     
     A(l,l) = 4 * J0kh ...
         + sgn1 *  2 * 1i * sin(k1h) +  sgn2 * 2 * 1i * sin(k2h) ;
@@ -572,7 +576,7 @@ function [A,b] = dirichlet_wrapper(params, A, b, i, j, func)
     b(l) = b(l) + feval(func, params, A, b, i, j);
 end
 
-function check_params(params)
+function params = check_params(params)
     if nargin ~= 1
         error('helmoltz_two_2d_scheme:argChk',...
             'Need a struct as param (see documentation).')
@@ -659,7 +663,9 @@ function check_params(params)
         'Either all bounds are Dirichlet either specify theta for Sommerfeld computation.');                
     end
     
-
+    if ~isfield(params, 'bessel')
+        params.bessel = @(x) besselj(0,x);
+    end
  
 end
 

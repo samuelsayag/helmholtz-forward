@@ -10,8 +10,9 @@ addpath(genpath('..\..\..\..\matlab'));
 sim_param.h = [0.02];
 angle_div = 11;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
+d_theta = size(theta, 2);
 
-sim_param.k = 15 * sqrt(2);
+sim_param.k = 30 * sqrt(2);
 sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
@@ -46,7 +47,7 @@ sim_param.dirichlet.E = E;
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'North')];
+graph_titles = [graph_titles, sprintf('Sommerfeld on %s side', 'North')];
 
 % simu interior, Sommerfeld East
 sim_param.dirichlet.S = S;
@@ -56,7 +57,7 @@ sim_param.dirichlet = rmfield(sim_param.dirichlet, 'E');
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'East')];
+graph_titles = [graph_titles, sprintf('Sommerfeld on %s side', 'East')];
 
 % simu interior, Sommerfeld South
 sim_param.dirichlet.E = E;
@@ -66,7 +67,7 @@ sim_param.dirichlet = rmfield(sim_param.dirichlet, 'S');
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'South')];
+graph_titles = [graph_titles, sprintf('Sommerfeld on %s side', 'South')];
 
 % simu interior, Sommerfeld West
 sim_param.dirichlet.E = E;
@@ -76,7 +77,7 @@ sim_param.dirichlet = rmfield(sim_param.dirichlet, 'W');
 [ sol, param ] = simulation_theta_2D( theta, sim_param );
 sols = [sols, sol];
 params = [params, param];
-graph_titles = [graph_titles, sprintf('Error = f(cos(theta)),  Sommerfeld on %s side', 'West')];
+graph_titles = [graph_titles, sprintf('Sommerfeld on %s side', 'West')];
 
 % time elapsed
 elapsed = toc;
@@ -84,6 +85,7 @@ elapsed
 
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
+res_theta = mat2cell(theta', ones(1, d_theta));
 x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
 y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 [X,Y] = meshgrid(x,y);
@@ -91,24 +93,17 @@ y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
 % calculate the error for each simulation
 error = cell(size(sols));
 analytic = cell(size(sols));
-for i = 1:size(error,1)
-    for j = 1:size(error,2)
-        theta_temp = params{i,j}.theta;
-        analytic{i,j} = analytic_sol_2D(sim_param.k, theta_temp, X, Y);
-        error{i,j} = norm((analytic{i,j} - sols{i,j}), Inf );
-    end    
-end
-
-% preparation of the results
-res_theta = cell(size(theta,2),1);
-h = sim_param.h;
-for i = 1:size(theta,2)
-    res_theta{i} = theta(i);      
+fa = @(t) analytic_sol_2D(sim_param.k, t, X, Y);
+fe = @(a, s) norm((a - s), Inf );
+for j = 1:size(error,2)
+    analytic(:,j) = cellfun(fa, res_theta, 'UniformOutput', false);
+    error(:,j) = cellfun( fe, analytic(:,j), sols(:,j), 'UniformOutput', false );
 end
 
 % % FOUR COLUMN RESULT
 % just the central scheme
 title1 = {'theta' 'N' 'E' 'S' 'W' };
+res_cos_theta = mat2cell(cos(theta'), ones(1, d_theta));
 res_tab = [title1; res_theta error ];
 res_tab
 
