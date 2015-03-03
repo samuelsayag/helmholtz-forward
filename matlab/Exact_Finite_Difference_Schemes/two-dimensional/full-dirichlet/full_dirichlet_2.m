@@ -86,7 +86,7 @@ end
 % RESULT FOR STANDARD AND NEW ('std', 'new')
 % just the central scheme
 title1 = {'' 'error' 'error' 'error' 'error'};
-title2 = { 'k' 'SFD' 'NFD - J0 [0,pi/2]' 'NFD - J0 [pi/8,3pi/8]'  'NFD - exact theta'};
+title2 = { 'k' 'SFD' 'NFD-J0[0,pi/2]' 'NFD-J0[pi/8,3pi/8]'  'NFD - exact theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; c_k error ];
 res_tab
