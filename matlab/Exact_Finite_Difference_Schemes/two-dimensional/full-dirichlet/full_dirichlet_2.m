@@ -54,6 +54,13 @@ params = [params, param];
 
 % simu interior NEW
 sim_param.interior = 'new';
+sim_param.bessel = @(x) bessel_integral(x, pi/8, 3 * pi/8);
+[ sol, param ] = simulation_k_2D( k, sim_param );
+sols = [sols, sol];
+params = [params, param];
+
+% simu interior NEW
+sim_param.interior = 'new';
 sim_param.bessel = @(x) bessel_exact_theta(x, sim_param.theta);
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
@@ -78,8 +85,8 @@ end
 
 % RESULT FOR STANDARD AND NEW ('std', 'new')
 % just the central scheme
-title1 = {'' 'error' 'error' 'error'};
-title2 = { 'k' 'SFD' 'NFD - J0(kh)' 'NFD - exact theta'};
+title1 = {'' 'error' 'error' 'error' 'error'};
+title2 = { 'k' 'SFD' 'NFD - J0 [0,pi/2]' 'NFD - J0 [pi/8,3pi/8]'  'NFD - exact theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; c_k error ];
 res_tab
