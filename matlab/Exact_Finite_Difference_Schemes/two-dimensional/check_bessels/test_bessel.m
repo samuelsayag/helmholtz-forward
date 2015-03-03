@@ -4,7 +4,7 @@
 % WAVENUMBER, YAU SHU WONG AND GUANGRUI LI, 2011.
 %--------------------------------------------------------------------------
 close all; clear all; clc;
-addpath(genpath('..\..\..\matlab'));
+addpath(genpath('..\..\..\..\matlab'));
 
 h = 0.02;
 k = sqrt(2) * [30 25 20 15 10 5];
@@ -32,17 +32,17 @@ r
 
 % we build an expression for omega = 4 * J0(kh) + (kh)²
 
-omega = @(x, func) 4 * feval(func, x);
-exact_theta = @(x) 4 * bessel_exact_theta(x, theta);
-m_bessel = @(x) 4 * besselj(0, x); 
-for j=1:size(k,2)
-    i = j + 2;
-    kh = k(j) * h;
-    r{i, 1} = kh;
-    r{i, 2} = k(j);
-    r{i, 3} = omega(kh, 'bessel_integral' );
-    r{i, 4} = exact_theta(kh); 
-    r{i, 5} = m_bessel(kh);  
-end
+% omega = @(x, func) 4 * feval(func, x);
+% exact_theta = @(x) 4 * bessel_exact_theta(x, theta);
+% m_bessel = @(x) 4 * besselj(0, x); 
+% for j=1:size(k,2)
+%     i = j + 2;
+%     kh = k(j) * h;
+%     r{i, 1} = kh;
+%     r{i, 2} = k(j);
+%     r{i, 3} = omega(kh, 'bessel_integral' );
+%     r{i, 4} = exact_theta(kh); 
+%     r{i, 5} = m_bessel(kh);  
+% end
 
-r
+% r
