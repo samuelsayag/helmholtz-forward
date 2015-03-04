@@ -192,7 +192,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, -1, 'left_pt', dirich_n, 'down_pt');
         return
     elseif (ceq(condition, {'N', 1, 'E', 0, 'new'}))
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k1h, 'left_pt', dirich_n, 'down_pt');
         return
@@ -201,7 +201,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, 1, 'up_pt', dirich_e, 'left_pt');
         return
     elseif (ceq(condition, {'E', 1, 'S', 0, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k2h, 'up_pt', dirich_e, 'left_pt');
         return
@@ -210,7 +210,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, 1, 'right_pt', dirich_s, 'up_pt');
         return
     elseif (ceq(condition, {'S', 1, 'W', 0, 'new'}))
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k1h, 'right_pt', dirich_s, 'up_pt');
         return
@@ -219,7 +219,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, -1, 'down_pt', dirich_w, 'right_pt');
         return
     elseif (ceq(condition, {'W', 1, 'N', 0, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k2h, 'down_pt', dirich_w, 'right_pt');
         return
@@ -233,7 +233,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, -1, 'down_pt', dirich_e, 'left_pt');
         return
     elseif (ceq(condition, {'N', 0, 'E', 1, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k2h, 'down_pt', dirich_e, 'left_pt');
         return
@@ -242,7 +242,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, -1, 'left_pt', dirich_s, 'up_pt');
         return
     elseif (ceq(condition, {'E', 0, 'S', 1, 'new'}))
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k1h, 'left_pt', dirich_s, 'up_pt');
         return
@@ -251,7 +251,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, 1, 'up_pt', dirich_w, 'right_pt');
         return
     elseif (ceq(condition, {'S', 0, 'W', 1, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k2h, 'up_pt', dirich_w, 'right_pt');
         return
@@ -260,7 +260,7 @@ function [f_corn_pt] = factory_corner_scheme(key, params)
             params, A, b, i, j, 1, 'right_pt', dirich_n, 'down_pt');
         return
     elseif (ceq(condition, {'W', 0, 'N', 1, 'new'}))
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_corn_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k1h, 'right_pt', dirich_n, 'down_pt');
         return
@@ -335,7 +335,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
             params, A, b, i, j, 1, 'up_pt', 'right_pt', 'left_pt');
         
     elseif (ceq(condition, {'S', 0, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k2h, 'up_pt', 'left_pt', 'right_pt');
         
@@ -344,7 +344,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
             params, A, b, i, j, 1, 'right_pt', 'down_pt', 'up_pt');
         
     elseif (ceq(condition, {'W', 0, 'new'}))    
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, 1, k1h, 'right_pt', 'up_pt', 'down_pt');
         
@@ -353,7 +353,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
             params, A, b, i, j, -1, 'down_pt', 'left_pt', 'right_pt');
         
     elseif (ceq(condition, {'N', 0, 'new'}))
-        k2h = params.k * sin(params.theta);
+        k2h = params.k * sin(params.theta) * params.h;
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k2h, 'down_pt', 'left_pt', 'right_pt');
         
@@ -362,7 +362,7 @@ function [f_ctrl_pt] = factory_side_scheme(key, params)
             params, A, b, i, j, -1, 'left_pt', 'up_pt', 'down_pt');
         
     elseif (ceq(condition, {'E', 0, 'new'}))
-        k1h = params.k * cos(params.theta);
+        k1h = params.k * cos(params.theta) * params.h;
         f_ctrl_pt = @(params, A, b, i, j)sommerfeld_side_generic_new(...
             params, A, b, i, j, -1, k1h, 'left_pt', 'up_pt', 'down_pt');
     end   
@@ -530,8 +530,8 @@ function [A,b] = sommerfeld_generic_corner_new(params, A, b, i, j,...
     sgn1, sgn2, int_pt, ext_pt)
     l = get_scheme_label(params.m, params.n, i, j);
     kh = params.k * params.h;
-    k1h = params.k * cos(params.theta);
-    k2h = params.k * sin(params.theta);
+    k1h = params.k * cos(params.theta) * params.h;
+    k2h = params.k * sin(params.theta) * params.h;
     
     % J0kh = besselj(0,kh);
     J0kh = params.bessel(kh);

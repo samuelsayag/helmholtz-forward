@@ -15,19 +15,19 @@ d = 1;
 params.m = (b-a)/params.h;
 params.n = (d-c)/params.h;
 % parameters necessary to compute boundary points
-params.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j-1) * params.h);
+% params.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, i * params.h, (j-1) * params.h);
 params.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, (i-1) * params.h, j * params.h);
 params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, i * params.h, (j+1) * params.h);
-params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i+1) * params.h, j * params.h);
+% params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, (i+1) * params.h, j * params.h);
 
 params.interior = 'new';
 params.theta = pi/4;
-% params.boundary = 'new';
-params.bessel = @(x) bessel_exact_theta(x, params.theta);
+params.boundary = 'new';
+% params.bessel = @(x) bessel_exact_theta(x, params.theta);
 % params.bessel = @(x) besselj(0, x);
 
 % create the scheme function

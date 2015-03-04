@@ -28,10 +28,10 @@ sim_param.theta = pi/4;
 % parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, i * params.h, (j-1) * params.h);
-sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
-% sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, i * params.h, (j+1) * params.h);
+% sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, (i-1) * params.h, j * params.h);
+sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, i * params.h, (j+1) * params.h);
 % sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
 %     params.theta, (i+1) * params.h, j * params.h);
 
@@ -41,22 +41,22 @@ params = {};
 
 % simu interior std
 sim_param.interior = 'std';
-sim_param.boundary = 'std';
+sim_param.boundary = 'new';
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
 params = [params, param];
 
 % simu interior NEW
 sim_param.interior = 'new';
-sim_param.boundary = 'std';
-sim_param.bessel = @(x) bessel_integral(x, 0, pi/2);
+sim_param.boundary = 'new';
+sim_param.bessel = @(x) bessel_integral(x, 0, pi);
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
 params = [params, param];
 
 % simu interior NEW
 sim_param.interior = 'new';
-sim_param.boundary = 'std';
+sim_param.boundary = 'new';
 sim_param.bessel = @(x) bessel_integral(x, pi/8, 3 * pi/8);
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
@@ -64,7 +64,7 @@ params = [params, param];
 
 % simu interior NEW
 sim_param.interior = 'new';
-sim_param.boundary = 'std';
+sim_param.boundary = 'new';
 sim_param.bessel = @(x) bessel_exact_theta(x, sim_param.theta);
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
@@ -90,7 +90,7 @@ end
 % RESULT FOR STANDARD AND NEW ('std', 'new')
 % just the central scheme
 title1 = {'' 'error' 'error' 'error' 'error'};
-title2 = { 'k' 'SFD' 'NFD-J0[0,pi/2]' 'NFD-J0[pi/8,3pi/8]'  'NFD - exact theta'};
+title2 = { 'k' 'SFD' 'NFD-J0[0,pi]' 'NFD-J0[pi/8,3pi/8]'  'NFD - exact theta'};
 res_tab = [title1;title2];
 res_tab = [res_tab; c_k error ];
 res_tab
