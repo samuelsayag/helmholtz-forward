@@ -402,11 +402,11 @@ function [A,b] = generic_scheme_creation(params, A, b, i, j, schemes)
 %   interior_func,...
 %     south_bound, west_bound, north_bound, east_bound,... 
 %     sw_corner, nw_corner, ne_corner, se_corner
-
+    if ~isfield(params, 'bessel')
+        params.bessel = @(x) besselj(0,x);
+    end
     m = params.m; 
     n = params.n;
-    
-%     [i,j]
     
     % west boundary case
     if i == 1
