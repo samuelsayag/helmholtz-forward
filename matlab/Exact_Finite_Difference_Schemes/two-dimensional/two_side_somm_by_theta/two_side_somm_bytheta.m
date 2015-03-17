@@ -7,7 +7,7 @@ close all; clear all; clc;
 addpath(genpath('..\..\..\..\matlab'));
 
 % generic parameters of the simulations
-sim_param.h = [0.02];
+sim_param.h = [0.2];
 angle_div = 20;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
 d_theta =size(theta,2);

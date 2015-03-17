@@ -5,8 +5,8 @@
 
 %close all; clear all; clc;
 
-params.k = 10;
-params.h = 0.25;
+params.k = 15 * sqrt(2);
+params.h = 0.20;
 % parameters of the region
 a = 0; 
 b = 1;
@@ -15,12 +15,12 @@ d = 1;
 params.m = (b-a)/params.h;
 params.n = (d-c)/params.h;
 % parameters necessary to compute boundary points
-% params.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, i * params.h, (j-1) * params.h);
+params.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, i * params.h, (j-1) * params.h);
 params.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, (i-1) * params.h, j * params.h);
-params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j+1) * params.h);
+% params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, i * params.h, (j+1) * params.h);
 % params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
 %     params.theta, (i+1) * params.h, j * params.h);
 
