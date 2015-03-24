@@ -23,21 +23,19 @@ t2 = max([lsp.theta1 lsp.theta2]);
 t_max = t2;
 converge = lsp.pr + 1;
 
-% STEP 2.0 - ????? how to take the initial value of theta that we want to use for
-% sommerfeld. in the doubt 
-p.theta = abs(t1 - t2)/2;
-
 while converge > lsp.pr 
     % STEP 1 - Build the system Ax=b and solve it => x_t (temporary solution)
     p.bessel = @(x) bessel_integral(x, t1, t2);
     [ A, b, x_t ] = solve( p );    
     
     % STEP 2.1 - Compute the angles between theta1 and theta2 => ra
-    ra = (linspace( 0, lsp.na, lsp.na+1 ) * (t2 - t1)/lsp.na + t1)';
-    c_ra = mat2cell( ra , ones(size(ra)));
+    ra = linspace( 0, lsp.na, lsp.na+1 ) * (t_max - t_min)/lsp.na + t_min;
+%     ra = linspace( 0, lsp.na, lsp.na+1 ) * (t2 - t1)/lsp.na + t1;
+    c_ra = mat2cell( ra' , ones(size(ra)));
 
     % STEP 2.2 - Compute F matrix of all f such that: f = x_t(j) - x(theta,j)
     sample_f = @(a) [a(:,1); a(end, 2:end)'; a(1:size(a,1)-1, 2); a(size(a,1)-1, 3:end)'];
+%     sample_f = @(a) [a(:,1); a(end, 2:end)'];
     fn = @(th) norm(sample_f(x_t) - sample_f(af(th))) ; % the error function to minimize ( = f )
     ln = @(x0) lsqnonlin(fn, x0); % lsq algo we wish to apply for all theta    
 
@@ -50,7 +48,8 @@ while converge > lsp.pr
     % STEP 2.4 - Extract the angles for them solution is between the set
     % theta1 and theta2. Get the new theta1 and theta2 (min, max)(ag_ext)
     x = cell2mat(x);
-    in_range = x(and(x < t_max,  x > t_min));
+    x'
+    in_range = x(and(x <= t2,  x >= t1));
     t1 = min(in_range); t2 = max(in_range);
     [t1, t2]
     % STEP 2.3 - Compute the distance between theta1 and theta2. If the
