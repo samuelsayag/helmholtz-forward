@@ -1,0 +1,247 @@
+
+This README file refers to the programs and examples of references 
+[A] to [D] below.  The package contains both the program files and 
+sample input data files.  The user may have to download the AZTEC 
+software, as detailed below.  
+
+AUTHORS: 
+	 Dan Gordon 
+	 Dept. of Computer Science, University of Haifa. 
+         Email: gordon@cs.haifa.ac.il                                
+    and
+         Rachel Gordon 
+	 Dept. of Aerospace Engineering,              
+         The Technion-Israel Institute of Technology. 
+         Email: rgordon@tx.technion.ac.il      
+
+REFERENCES
+
+[A] D. Gordon and R. Gordon.  CARP-CG: a robust and efficient parallel 
+    solver for linear systems, applied to strongly convection dominated 
+    PDEs.  Parallel Computing 36:9, Sept. 2010, 495-515.
+
+[B] D. Gordon and R. Gordon.  Solution methods for nonsymmetric linear 
+    systems with large off-diagonal elements and discontinuous coefficients.
+    Computer Modeling in Engineering & Sciences 53:1, Nov. 2009, 23-45.
+
+[C] D. Gordon and R. Gordon.  Robust and highly scalable parallel 
+    solution of the Helmholtz equation with large wave numbers.
+    Technical Report, Jan. 2011.
+    http://cs.haifa.ac.il/~gordon/helm.pdf
+
+[D] D. Gordon and R. Gordon.  Parallel solution of high-frequency 
+    Helmholtz equations using high-order finite difference schemes.
+    Technical Report, Feb. 2011.
+    http://cs.haifa.ac.il/~gordon/helm-hi-order.pdf
+
+-----------------------------------------------------------------------
+
+PROGRAM FILES IN PACKAGE 
+
+=> carpcg.c: the CARP-CG algorithm, as described in [A]. 
+=> A makefile: 'Makefile'
+=> AZTEC include files: az_aztecf.h and az_aztec_defs.h
+
+------------------------------------------------------------------------
+
+INPUT DATA FILES 
+
+Sample input data files for the problems in [A] - [D]: 
+
+=> input_A.dat for the problems in [A].
+
+=> input_B.dat for the problems in [B].
+
+=> input_C_1_2.dat for Problems 1 and 2 of [C].
+=> input_C_3.1.dat, input_C_3.2.dat, and input_C_3.3.dat for Problem 
+   3 of [C], for the three Marmousi models (see Table 1 on p. 14 of [C]).
+   (See also explanation in the next section.)
+=> input_C_4.dat for Problem 4 of [C].
+
+=> input_D_1.dat for Problem 1 of [D].
+=> input_D_2.dat for Problem 2 of [D].
+=> input_D_3.dat for Problem 3 of [D].
+
+-----------------------------------------------------------------------
+
+CORRESPONDENCE BETWEEN THE PROBLEMS OF [A]-[D] TO FUNCTIONS IN THE CODE
+
+carpcg.c includes the setup functions for the problems in [A]-[D].
+These C functions are called 'create_matrix...example<number>',
+where <number> is between 1 and 28.  These functions create the
+required system matrix, and the right-hand-side vector.  Where 
+specified by the problem, they also create the analytic solution 
+of the relevant PDE.  For convenience, these functions will be 
+referred to below as example1, example2, etc.
+
+Ref. [A]: Problems 1 to 8 correspond to the functions example1 
+          to example8, respectivly. Problem 9 corresponds to the 
+	  function example14 in carpcg.c
+
+Ref. [B]: Problem 1 -- example19 in carpcg.c
+	  Problem 2 -- example22 in carpcg.c
+	  Problem 3 -- example18 in carpcg.c
+
+Ref. [C]: Problems 1 and 2 correspond to example21 in carpcg.c
+	  These two problems differ only in the choice of the wavenumber k. 
+	  Problem 3 -- example24 in carpcg.c (see explanations below).
+	  Problem 4 -- example25 in carpcg.c
+
+Additional explanations for problem 3 of Ref. [C]:
+
+This is the Marmousi problem, which consists of three different cases, 
+specified by the variable 'model_no' in carpcg.c.  The value of model_no 
+is 1, 2, or 3, and it is read in from the corresponding input data file:
+input_C_3.1.dat, input_C_3.2.dat and input_C_3.3.dat.  
+
+When running problem 3, the program uses model_no to read one of three 
+large data sets in subdirectory marm2D/data: marm_1.dat, marm_2.dat and 
+marm_3.dat. 
+
+Ref. [D]: Problem 1 -- example27 in carpcg.c
+	  Problem 2 -- example28 in carpcg.c
+	  Problem 3 -- example23 in carpcg.c
+
+--------------------------------------------------------------------------
+
+ADDITIONAL REQUIRED SOFTWARE
+
+  carpcg.c requires several functions from the AZTEC software library, 
+  which should be installed on your machine.  These functions are used
+  by carpcg.c for handling the distributed sparse matrix and vectors.
+  AZTEC can can be downloaded from:
+
+  http://www.cs.sandia.gov/CRF/aztec1.html
+
+  carpcg.c uses MPI for inter-processor communications, so MPI should
+  be installed on your machine.  MPI can be downloaded from:
+
+  http://www-unix.mcs.anl.gov/mpi/mpich1/download.html
+
+  Once you have installed AZTEC, change the Makefile as follows:
+  1. The current Makefile is set for a Linux cluster running under gcc
+     and g77 compilers.  Change these parameters as required.   
+
+  2. Set the MPI/lib and MPI/include subdirectories. 
+     Currently these are set to:
+     /opt/mpich-1.2.4/include
+     /opt/mpich-1.2.4/lib
+
+  3. Set the name of the subdirectory where AZTEC is installed. 
+     Currently it is: /home/Aztec/
+
+  4. Set the executable name that will be generated. 
+
+------------------------------------------------------------------------
+
+INSTRUCTIONS FOR RUNNING CARP-CG
+
+  a.  Compile the code:
+      
+      make Makefile 
+
+  b.  Copy one of the input*.dat files to a file called 'input.dat'
+      (this is the input file that will be read by the executable).
+      Modify input.dat according to the parameters you choose, as follows:
+
+      The input.dat file for the problems of [A] and [B] contains 
+      three lines, and that of the problems of [C] and [D] contains 
+      an additional 4th line:
+
+      Line 1 has 3 parameters:
+          1. The example number.
+          2. The grid size NX. (In examples that assume NX=NY=NZ; if 
+	     you set NX to 80 the problem size is 80x80x80=512000).
+          3. The 3rd parameter defines how the equations are distributed 
+	     among the processors: Set it to be 1 in case that 1*1*NZproc 
+	     topology of processors is used.  This is the topology that was
+	     used in the paper.  If this parameter is set to 3, then a
+	     NXproc*NYproc*NZproc processors topology is used,  where 
+             NXproc,NYproc >= 1. In this case the indices of the 
+	     equations of each processor must be read from an additional
+	     external file.
+
+       Line 2 has 5 parameters:
+          1. The no. of processors NXproc (no. of blocks in X-direction).  
+          2. The no. of processors NYproc (no. of blocks in Y-direction). 
+          3. The no. of processors NZproc (no. of blocks in Z-direction).  
+          4. The maximum number of iterations.
+          5. The parameter ierr for error calculation: 
+             ierr = 0: no error calculation (for problems that do not 
+		    have a known analytic error).
+                  = 1: calculate the error along with the iterative 
+		    procedure (when there is an analytic solution). 
+		    The error log is written to file 'error.out'. 
+
+       Line 3 has 2 parameters:
+          1. The required residual (L2 norm of the residual).
+          2. The relaxation parameter OMEGA.
+      
+       line 4 (for the problems in [C] and [D] only) is problem dependent.
+          For Problems 1 and 2 of [C] (2D Helmholtz eq., example21 in the code):
+              1. K1 = K in layer I
+              2. K2 = K in layer II
+              3. K3 = K in layer III
+              For the homogeneous case, just set K1=K2=K3. 
+
+          For Problem 3 of [C] (2D Marmousi problem, example24 in the code):
+              1. Xmin = minimal value of X of the computational domain.
+              2. Xmax = maximal value of X of the computational domain.
+              3. Ymin = minimal value of Y of the computational domain.
+              4. Ymax = maximal value of Y of the computational domain.
+              5. freq = the frequency 
+              6. model_no = Marmousi model number = 1, 2, or 3
+              7. NX = grid size in X direction
+              8. NY = grid size in Y direcion
+              9. order = the scheme order: 2/4/6 for 2nd/4th/6th order scheme.
+
+          For Problem 4 of [C] (3D Helmholtz eq., example25 in the code):
+              1. Xmin = minimal value of X of the computational domain.
+              2. Xmax = maximal value of X of the computational domain.
+              3. Ymin = minimal value of Y of the computational domain.
+              4. Ymax = maximal value of Y of the computational domain.
+              5. Zmin = minimal value of Z of the computational domain.
+              6. Zmax = maximal value of Z of the computational domain.
+              7. K1 = K in layer I
+              8. K2 = K in layer II
+              9. K3 = K in layer III
+             10. NX = grid size in X direction
+             11. NY = grid size in Y direction
+             12. NZ = grid size in Z direction
+
+          For Problem 1 of [D] (2D Helmholtz eq., example27 in the code):
+              1. K1 = K in layer I
+              2. K2 = K in layer II
+              3. K3 = K in layer III
+              4. order = the scheme order: 2/4/6 for 2nd/4th/6th order schemes.
+
+          For Problem 2 of [D] (2D Helmholtz eq., example28 in the code):
+              1. K1 = K in layer I
+              2. order = the scheme order: 2/4/6 for 2nd/4th/6th order scheme.
+
+          For Problem 3 of [D] (2D Helmholtz eq., example23 in the code):
+              1. K1 = K in layer I
+              2. K2 = K in layer II
+              3. K3 = K in layer III
+              4. order = the scheme order: 2/4/6 for 2nd/4th/6th order scheme.
+
+
+  c.  Run the code:
+       
+      For example, to run it on 16 processors:
+
+      mpirun -np 16 ./CARP_CG > file1 &
+
+      where 'CARP_CG' is the name of the executable that was generated
+      in step a.  The output will be in file1.
+
+      Note: if you don't have a multi processor machine you can still 
+      simulate it by running:
+            
+            mpirun -machinefile machine_file -np 16 ./CARP_CG  > file1 &
+            
+            where machine_file is a file that contains the names of the  
+            processors that are available. In this case you will not get 
+	    the real runtime. 
+=============================================================================
+
