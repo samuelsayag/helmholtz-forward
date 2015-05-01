@@ -14,28 +14,16 @@ classdef Ord4thHelmholtz2D
     
     methods (Access = public)
         
-        function obj = Ord2ndHelmholtz(k, h, g)
+        function obj = Ord4thHelmholtz2D(k, h, g)
         % Ord2ndHelmholtz
         % k: the k of an Helmholtz equation 
         % h: the step length (basic division of the grid)
-        % gamma: a parameter of the scheme 
-            if nargin == 0
-                obj.k = 0;
-                obj.h = 0;
-                obj.gamma = 0;
-            elseif nargin == 1
-                obj.k = k;
-                obj.h = 0;
-                obj.gamma = 0;
-            elseif nargin == 2
-                obj.k = k;
-                obj.h = h;
-                obj.gamma = 0;
-            else
-                obj.k = k;
-                obj.h = h;
-                obj.gamma = g;                
+        % gamma: a parameter of the scheme
+            narginchk(2, 3)
+            if nargin == 2
+                g = 0;
             end
+            obj = obj.check_param(k, h, g);
         end
         
         function a0 = a0(obj)
@@ -53,6 +41,16 @@ classdef Ord4thHelmholtz2D
            ac = 1/6 + (obj.k * obj.h)^2 * (obj.gamma/144); 
         end
         
+        function obj = check_param(obj, k, h, g)            
+            p = inputParser;
+            addRequired(p, 'k', @isnumeric);
+            addRequired(p, 'h', @isnumeric);
+            addRequired(p, 'g', @isnumeric);
+            parse(p, k, h, g);            
+            obj.k = k;
+            obj.h = h;
+            obj.gamma = g;                                          
+        end
     end    
 end
 

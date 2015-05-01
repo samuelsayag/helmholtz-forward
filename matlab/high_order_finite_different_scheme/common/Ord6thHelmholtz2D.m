@@ -14,28 +14,16 @@ classdef Ord6thHelmholtz2D
     
     methods (Access = public)
         
-        function obj = Ord2ndHelmholtz(k, h, d)
+        function obj = Ord6thHelmholtz2D(k, h, d)
         % Ord2ndHelmholtz
         % k: the k of an Helmholtz equation 
         % h: the step length (basic division of the grid)
-        % delta: a parameter of the scheme 
-            if nargin == 0
-                obj.k = 0;
-                obj.h = 0;
-                obj.delta = 0;
-            elseif nargin == 1
-                obj.k = k;
-                obj.h = 0;
-                obj.delta = 0;
-            elseif nargin == 2
-                obj.k = k;
-                obj.h = h;
-                obj.delta = 0;
-            else
-                obj.k = k;
-                obj.h = h;
-                obj.delta = d;                
+        % delta: a parameter of the scheme
+            narginchk(2, 3)
+            if nargin == 2
+                d = 0;
             end
+            obj = obj.check_param(k, h, d);
         end
         
         function a0 = a0(obj)
@@ -54,6 +42,17 @@ classdef Ord6thHelmholtz2D
         % return the Ac coefficient
             kh = obj.k * obj.h;
             ac = 1/6 + kh^2 * 7/360 + kh^4 * obj.delta/144; 
+        end
+
+        function obj = check_param(obj, k, h, d)            
+            p = inputParser;
+            addRequired(p, 'k', @isnumeric);
+            addRequired(p, 'h', @isnumeric);
+            addRequired(p, 'd', @isnumeric);
+            parse(p, k, h, d);            
+            obj.k = k;
+            obj.h = h;
+            obj.delta = d;                                          
         end
     end    
 end

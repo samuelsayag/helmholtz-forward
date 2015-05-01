@@ -4,17 +4,46 @@ classdef BasicScheme
     %scheme).
     
     properties (SetAccess = public)
-        % an instance of a scheme object that expose parameter of the
+        % An instance of a scheme object that expose parameter of the
         % scheme in the form : A0 u_ij + As sig_s + Ac sig_c = 0
         % 2012 Erlangga, Turkel - ITERATIVE SCHEMES FOR HIGH ORDER COMPACT 
         % DISCRETIZATIONS
-        scheme; 
+        % schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
+        % 'Ord6thHelmholtz2D'};
+        scheme;
+        % A struct that fields are as follow:
+        % param.h: length of the step in the unit chosen ex: 0.002 = 2mm if
+        %   the meter is chosen as a unit.
+        % param.k: the wave number k = 2 * pi * f / c (f = frequency,
+        %   c = celerity of the wave)
+        % param.m: the number of point along the y axis (number of line)
+        % param.n: the number of point along the x axis (number of column)
+        % param.dirichlet: the dirichlet function as pointer of function
+        %   that give a value by passing it the line and column index. Ex:
+        %   dirichlet = @(i,j) some_function....
+        % param.north = {'dirichlet', 'sommerfeld'} type of the boundary on
+        %   the north side of the area.
+        % param.east = {'dirichlet', 'sommerfeld'} type of the boundary on
+        %   the east side of the area.
+        % param.south = {'dirichlet', 'sommerfeld'} type of the boundary on
+        %   the south side of the area.
+        % param.west = {'dirichlet', 'sommerfeld'} type of the boundary on
+        %   the west side of the area.
+        % 
+        % Note: it will not be possible to choose Sommerfeld type
+        % boundaries along all the side. At least one must be of Dirichlet
+        % type.
         param;
+        % An alias short-cut that give more direct access to the dirichlet
+        % function.
         dirichlet;
     end
     
     methods (Access = public)
         function obj = BasicScheme(param, scheme)
+            narginchk(2, 2)
+            obj = obj.check_param(param, scheme);
+            
             obj.param = param;
             obj.scheme = scheme;
             obj.dirichlet = param.dirichlet;
@@ -554,5 +583,15 @@ classdef BasicScheme
                     obj.dir_n(i,j) + obj.dir_ne(ij) );             
         end
         
+        function obj = check_param(obj, param, scheme)
+            p = inputParser;
+            schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
+                'Ord6thHelmholtz2D'};
+            addRequired(p, 'param', ...
+                @(x)validateattributes( x, 'struct', 'nonempty'));
+            addRequired(p, 'scheme', ...
+                @(x)validateattributes( x, schemes, 'nonempty'));
+            parse(p, param, scheme);            
+        end
     end    
 end

@@ -13,20 +13,11 @@ classdef Ord2ndHelmholtz2D
     
     methods (Access = public)
         
-        function obj = Ord2ndHelmholtz(k, h)
+        function obj = Ord2ndHelmholtz2D(k, h)
         % Ord2ndHelmholtz
         % k = the k of an Helmholtz equation 
-        % h = the step length (basic division of the grid)
-            if nargin == 0
-                obj.k = 0;
-                obj.h = 0;
-            elseif nargin == 1
-                obj.k = k;
-                obj.h = 0;
-            else
-                obj.k = k;
-                obj.h = h;
-            end
+        % h = the step length (basic division of the grid)            
+            obj = obj.check_param(k, h);
         end        
         
         function a0 = a0(obj)
@@ -36,7 +27,8 @@ classdef Ord2ndHelmholtz2D
         
         function as = as(obj)
         % return the As coefficient
-            as = (obj.k * obj.h)^2 - 4; 
+            obj.h; % dummy instruction    
+            as = 1; 
         end
         
         function ac = ac(obj)
@@ -45,6 +37,15 @@ classdef Ord2ndHelmholtz2D
             ac = 0; 
         end
         
+        function obj = check_param(obj, k, h)
+            narginchk(3, 3)
+            p = inputParser;
+            addRequired(p, 'k', @isnumeric);
+            addRequired(p, 'h', @isnumeric);        
+            parse(p, k, h);
+            obj.k = k;
+            obj.h = h;            
+        end
     end
     
 end
