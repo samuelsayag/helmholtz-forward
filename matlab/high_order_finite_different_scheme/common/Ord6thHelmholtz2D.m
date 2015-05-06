@@ -41,7 +41,7 @@ classdef Ord6thHelmholtz2D
         function ac = ac(obj)
         % return the Ac coefficient
             kh = obj.k * obj.h;
-            ac = 1/6 + kh^2 * 7/360 + kh^4 * obj.delta/144; 
+            ac = 1/6 + kh^2 * 7/360 + kh^4 * obj.delta/720; 
         end
 
         function obj = check_param(obj, k, h, d)            
