@@ -9,3 +9,7 @@ res
 testCase = TestOrd6thHemholtz2D();
 res = run(testCase);
 res
+
+testCase = TestBasicScheme();
+res = run(testCase);
+res

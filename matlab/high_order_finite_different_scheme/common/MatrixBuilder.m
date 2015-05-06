@@ -3,24 +3,26 @@ classdef MatrixBuilder
     %instanciate and is responsible for building the matrix and vector b
     %such that : Ax=b with x the solution of the problem.
     
-    properties (SetAccess = private)
+    properties (SetAccess = public)
         scheme; % the basic scheme object
-        lin; % number of lines of the matrix
-        col; % number of column of the matrix
+    end
+    
+    properties (SetAccess = private)
         A; % the matrix that is built
         b; % the vector b that is built
     end
     
     methods (Access = public)
-        function obj = MatrixBuilder(basicScheme, m, n)
+        function obj = MatrixBuilder(basicScheme)
             obj.scheme = basicScheme;
-            obj.lin = m;
-            obj.col = n;
+            mn = basicScheme.m * basicScheme.n;
+            obj.A = sparse(mn,mn);
+            obj.b = sparse(mn,1);
         end
         
         function [A, b] = build(obj)
-            for i = 1:obj.lin
-                for j = 1:obj.col
+            for i = 1:obj.scheme.m
+                for j = 1:obj.scheme.n
                     obj = obj.get_line(i,j);
                 end
             end

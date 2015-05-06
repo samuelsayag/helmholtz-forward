@@ -42,16 +42,23 @@ classdef BasicScheme
     methods (Access = public)
         function obj = BasicScheme(param, scheme)
             narginchk(2, 2)
-            obj = obj.check_param(param, scheme);
-            
+            obj = obj.check_param(param, scheme);            
             obj.param = param;
             obj.scheme = scheme;
             obj.dirichlet = param.dirichlet;
+        end                
+        
+        function m = m(obj)
+            m = obj.param.m;
+        end
+        
+        function n = n(obj)
+            n = obj.param.n;
         end
         
         function [c_A, v_A, c_b, v_b] = c_pt( obj, i, j )
             [c_A, c_b] = obj.c_pt_coordinate( i, j );
-            [v_A, v_b] = obj.c_pt_coordinate( i, j );
+            [v_A, v_b] = obj.c_pt_value();
         end
         
         function [c_A, v_A, c_b, v_b] = n_pt( obj, i, j )
@@ -93,7 +100,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            [c_A, v_A, c_b, v_b] = obj.ne_pt_dir( i, j );                    
+            [c_A, v_A, c_b, v_b] = obj.se_pt_dir( i, j );                    
         end        
         
         function [c_A, v_A, c_b, v_b] = sw_pt( obj, i, j )
@@ -125,16 +132,16 @@ classdef BasicScheme
             l = (j-1) * d1 + i;
         end
         
-        function l = label(i,j)
+        function l = label(obj, i,j)
             % considering that the area we solve the problem on is a square
             % of m * n points. This formula give the unique label of a
             % point so that the resulting matrix is k-diagonal.
-            l = i + (obj.param.m - j) * obj.param.n;
+            l = j + (obj.param.m - i) * obj.param.n;
         end
         
         function l = lab_n( obj, i, j )
             % give the label of a north point
-            l = obj.label(i,j+1);
+            l = obj.label(i+1,j);
         end
                 
         function l = lab_ne( obj, i, j )
@@ -144,17 +151,17 @@ classdef BasicScheme
                 
         function l = lab_e( obj, i, j )
             % give the label of a north east point
-            l = obj.label(i+1,j);
+            l = obj.label(i,j+1);
         end        
                 
         function l = lab_se( obj, i, j )
             % give the label of a south east point
-            l = obj.label(i+1,j-1);
+            l = obj.label(i-1,j+1);
         end
                 
         function l = lab_s( obj, i, j )
             % give the label of a south point
-            l = obj.label(i,j-1);
+            l = obj.label(i-1,j);
         end
                 
         function l = lab_sw( obj, i, j )
@@ -164,12 +171,12 @@ classdef BasicScheme
                 
         function l = lab_w( obj, i, j )
             % give the label of a west point
-            l = obj.label(i-1,j);
+            l = obj.label(i,j-1);
         end
                         
         function l = lab_nw( obj, i, j )
             % give the label of a north west point
-            l = obj.label(i-1,j+1);
+            l = obj.label(i+1,j-1);
         end
         
         function [c_A, c_b] = c_pt_coordinate( obj, i, j )
@@ -295,7 +302,9 @@ classdef BasicScheme
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.dir_nw(i,j) + obj.dir_n(i,j) + obj.dir_ne(i,j) );
+            v_b = - ( obj.scheme.bc * obj.dir_nw(i,j) ...
+                + obj.scheme.bs * obj.dir_n(i,j) ...
+                + obj.scheme.bc * obj.dir_ne(i,j) );
         end        
         
         function [c_A, v_A, c_b, v_b] = e_pt_dir( obj, i, j )
@@ -338,7 +347,9 @@ classdef BasicScheme
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.dir_ne(i,j) + obj.dir_e(i,j) + obj.dir_se(i,j) );
+            v_b = - ( obj.scheme.bc * obj.dir_ne(i,j)...
+                + obj.scheme.bs * obj.dir_e(i,j)...
+                + obj.scheme.bc * obj.dir_se(i,j) );
         end
     
         function [c_A, v_A, c_b, v_b] = s_pt_dir( obj, i, j )
@@ -381,7 +392,9 @@ classdef BasicScheme
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.dir_se(i,j) + obj.dir_s(i,j) + obj.dir_sw(i,j) );
+            v_b = - ( obj.scheme.bc * obj.dir_se(i,j)...
+                + obj.scheme.bs * obj.dir_s(i,j)...
+                + obj.scheme.bc * obj.dir_sw(i,j) );
         end
             
         function [c_A, v_A, c_b, v_b] = w_pt_dir( obj, i, j )
@@ -423,7 +436,9 @@ classdef BasicScheme
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.dir_sw(i,j) + obj.dir_w(i,j) + obj.dir_nw(i,j) );
+            v_b = - ( obj.scheme.bc * obj.dir_sw(i,j)...
+                + obj.scheme.bs * obj.dir_w(i,j)...
+                + obj.scheme.bc * obj.dir_nw(i,j) );
         end
                     
         function [c_A, v_A, c_b, v_b] = ne_pt_dir( obj, i, j )
@@ -454,7 +469,7 @@ classdef BasicScheme
             %   c_A: the linear coordinate of the different stencil points
             %   in the matrix A
             %   c_b: the linear coordinate in the vector b
-            c_A = zeros(9,1); l = obj.label(i,j);                                    
+            c_A = zeros(4,1); l = obj.label(i,j);                                    
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
             c_A(3) = obj.lin_lab(l, obj.lab_sw(i,j)); % south west point
@@ -472,11 +487,11 @@ classdef BasicScheme
             %   c_A: the linear coordinate of the different stencil points
             %   in the matrix A
             %   c_b: the linear coordinate in the vector b
-            c_A = zeros(9,1); l = obj.label(i,j);                                    
+            c_A = zeros(4,1); l = obj.label(i,j);                                    
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
-            c_A(8) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
-            c_A(9) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
+            c_A(3) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
+            c_A(4) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
             
             c_b = l; % vector b coordinate            
         end
@@ -489,7 +504,7 @@ classdef BasicScheme
             %   c_A: the linear coordinate of the different stencil points
             %   in the matrix A
             %   c_b: the linear coordinate in the vector b
-            c_A = zeros(9,1); l = obj.label(i,j);                                    
+            c_A = zeros(4,1); l = obj.label(i,j);                                    
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
             c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
@@ -506,7 +521,7 @@ classdef BasicScheme
             %   c_A: the linear coordinate of the different stencil points
             %   in the matrix A
             %   c_b: the linear coordinate in the vector b
-            c_A = zeros(9,1); l = obj.label(i,j);                                    
+            c_A = zeros(4,1); l = obj.label(i,j);                                    
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
             c_A(3) = obj.lin_lab(l, obj.lab_se(i,j)); % south east point
@@ -528,8 +543,11 @@ classdef BasicScheme
             v_A(4) = obj.scheme.as; % west point
             
             % value is dirichlet for other point 
-            v_b = -(obj.dir_nw(i,j) + obj.dir_n(i,j) + obj.dir_ne(i,j) + ...
-                    obj.dir_e(i,j) + obj.dir_se(i,j) ); 
+            v_b = -(obj.scheme.bc * obj.dir_nw(i,j)...
+                + obj.scheme.bs * obj.dir_n(i,j) ...
+                + obj.scheme.bc * obj.dir_ne(i,j)....
+                + obj.scheme.bs * obj.dir_e(i,j)....
+                + obj.scheme.bc * obj.dir_se(i,j) ); 
         end
         
         function [v_A, v_b] = se_pt_value_dirichlet( obj, i, j )
@@ -545,8 +563,11 @@ classdef BasicScheme
             v_A(4) = obj.scheme.ac; % north west point
 
             % value is dirichlet for other point 
-            v_b = -(obj.dir_ne(i,j) + obj.dir_e(i,j) + obj.dir_se(i,j) + ...
-                    obj.dir_s(i,j) + obj.dir_sw(i,j) );             
+            v_b = -(obj.scheme.bc * obj.dir_ne(i,j)...
+                + obj.scheme.bs * obj.dir_e(i,j)...
+                + obj.scheme.bc * obj.dir_se(i,j) ...
+                + obj.scheme.bs * obj.dir_s(i,j)...
+                + obj.scheme.bc * obj.dir_sw(i,j) );             
         end
         
         function [v_A, v_b] = sw_pt_value_dirichlet( obj, i, j )
@@ -562,8 +583,11 @@ classdef BasicScheme
             v_A(4) = obj.scheme.as; % east point
 
             % value is dirichlet for other point 
-            v_b = -( obj.dir_nw(i,j) + obj.dir_n(i,j) + obj.dir_ne(i,j) + ...
-                    obj.dir_e(i,j) + obj.dir_se(i,j) );            
+            v_b = -( obj.scheme.bc * obj.dir_nw(i,j)...
+                + obj.scheme.bs * obj.dir_n(i,j)...
+                + obj.scheme.bc * obj.dir_ne(i,j)...
+                + obj.scheme.bs * obj.dir_e(i,j)...
+                + obj.scheme.bc * obj.dir_se(i,j) );            
         end
         
         function [v_A, v_b] = nw_pt_value_dirichlet( obj, i, j )
@@ -572,26 +596,42 @@ classdef BasicScheme
             %   v_A: the coeff value of the different stencil points
             %   in the matrix A
             %   v_b: the coeff value in the vector b        
-            v_A = zeros(9,1);            
+            v_A = zeros(4,1);            
             v_A(1) = obj.scheme.a0; % central point            
-            v_A(4) = obj.scheme.as; % east point
-            v_A(5) = obj.scheme.ac; % south east point
-            v_A(6) = obj.scheme.as; % south point
+            v_A(2) = obj.scheme.as; % east point
+            v_A(3) = obj.scheme.ac; % south east point
+            v_A(4) = obj.scheme.as; % south point
 
             % value is dirichlet for other point 
-            v_b = -(obj.dir_sw(i,j) + obj.dir_w(ij) + obj.dir_nw(ij) + ...
-                    obj.dir_n(i,j) + obj.dir_ne(ij) );             
+            v_b = -( obj.scheme.bc * obj.dir_sw(i,j)...
+                + obj.scheme.bs * obj.dir_w(i,j)...
+                + obj.scheme.bc * obj.dir_nw(i,j)...
+                + obj.scheme.bs * obj.dir_n(i,j)...
+                + obj.scheme.bc * obj.dir_ne(i,j) );             
         end
         
         function obj = check_param(obj, param, scheme)
             p = inputParser;
+
             schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
                 'Ord6thHelmholtz2D'};
-            addRequired(p, 'param', ...
-                @(x)validateattributes( x, 'struct', 'nonempty'));
             addRequired(p, 'scheme', ...
-                @(x)validateattributes( x, schemes, 'nonempty'));
-            parse(p, param, scheme);            
+                @(x)validateattributes( x, schemes, {'nonempty'}));
+            
+            
+            function res = valide_param(x)
+                validateattributes( x, {'struct'}, {'nonempty'});
+                res = isfield(x, 'dirichlet');
+                validateattributes( x.dirichlet, {'function_handle'}, {'nonempty'});
+                res = isfield(x, 'm') && res;
+                validateattributes( x.m, {'double'}, {'nonempty', 'integer'});                
+                res = isfield(x, 'n') && res;
+                validateattributes( x.n, {'double'}, {'nonempty','integer'});
+            end
+            addRequired(p, 'param', @(x)valide_param(x));                 
+            
+            parse(p, scheme, param);            
         end
+      
     end    
 end

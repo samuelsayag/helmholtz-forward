@@ -41,6 +41,18 @@ classdef Ord4thHelmholtz2D
            ac = 1/6 + (obj.k * obj.h)^2 * (obj.gamma/144); 
         end
         
+        function bs = bs(obj)
+            % return the coefficient of the dirichlet point on SIDE
+            obj.h; % dummy instruction< 
+            bs = 1; 
+        end
+                
+        function bc = bc(obj)
+            % return the coefficient of the dirichlet point on CORNER
+            obj.h; % dummy instruction< 
+            bc = 1; 
+        end
+        s
         function obj = check_param(obj, k, h, g)            
             p = inputParser;
             addRequired(p, 'k', @isnumeric);

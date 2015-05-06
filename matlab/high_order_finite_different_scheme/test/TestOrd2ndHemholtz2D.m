@@ -27,15 +27,27 @@ classdef TestOrd2ndHemholtz2D < matlab.unittest.TestCase
                 'Please recheck the class Ord2ndHelmholtz2D'};
             testCase.verifyEqual(scheme.as, 1, strjoin(t));
         end
-        
-        
+                
         function test_ac_coeff(testCase)
             scheme = Ord2ndHelmholtz2D(testCase.k, testCase.h);
             t = {'not expected result for coefficient ac. '...
                 'Please recheck the class Ord2ndHelmholtz2D'};
             testCase.verifyEqual(scheme.ac, 0, strjoin(t));
         end
-        
+                        
+        function test_bs(testCase)
+            scheme = Ord2ndHelmholtz2D(testCase.k, testCase.h);
+            t = {'not expected result for coefficient bs. '...
+                'Please recheck the class Ord2ndHelmholtz2D'};
+            testCase.verifyEqual(scheme.bs, 1, strjoin(t));
+        end        
+                        
+        function test_bc(testCase)
+            scheme = Ord2ndHelmholtz2D(testCase.k, testCase.h);
+            t = {'not expected result for coefficient bc. '...
+                'Please recheck the class Ord2ndHelmholtz2D'};
+            testCase.verifyEqual(scheme.bc, 0, strjoin(t));
+        end                
     end
     
 end

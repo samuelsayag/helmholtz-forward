@@ -43,7 +43,19 @@ classdef Ord6thHelmholtz2D
             kh = obj.k * obj.h;
             ac = 1/6 + kh^2 * 7/360 + kh^4 * obj.delta/720; 
         end
-
+        
+        function bs = bs(obj)
+            % return the coefficient of the dirichlet point on SIDE
+            obj.h; % dummy instruction< 
+            bs = 1; 
+        end
+                
+        function bc = bc(obj)
+            % return the coefficient of the dirichlet point on CORNER
+            obj.h; % dummy instruction< 
+            bc = 1; 
+        end        
+        
         function obj = check_param(obj, k, h, d)            
             p = inputParser;
             addRequired(p, 'k', @isnumeric);
