@@ -13,3 +13,7 @@ res
 testCase = TestBasicScheme();
 res = run(testCase);
 res
+
+testCase = TestMatrixBuilder();
+res = run(testCase);
+res
