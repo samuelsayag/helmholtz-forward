@@ -72,7 +72,7 @@ classdef MatrixBuilder
             schemes = {'BasicScheme'};
             addRequired(p, 'scheme', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));
-
+            
             parse(p, scheme);            
         end 
         
