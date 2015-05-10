@@ -7,8 +7,8 @@
 close all; clear all; clc;
 
 % define the parameter of the solution
-k = 50;
-h = 0.01;
+k = 10;
+h = 0.1;
 
 a = 0; b = 1;
 c = -1/2; d = 1/2;
@@ -16,8 +16,8 @@ c = -1/2; d = 1/2;
 m = (d-c)/h + 1;
 n = (b-a)/h + 1;
 
-x = linspace(0,1, m);
-y = linspace(1/2, -1/2, n);
+x = linspace(0-h,1+h, m+2);
+y = linspace(1/2+h, -1/2-h, n+2);
 [X,Y] = meshgrid(x,y);
 
 Z = helm_sol1(X, Y, k);

@@ -16,7 +16,8 @@ classdef TestProblemSolver  < matlab.unittest.TestCase
 %             full(b)
 %             full(x)            
             
-            exp_A = [-3     1     0     1     0     0     0     0     0;
+            exp_A = [
+                -3     1     0     1     0     0     0     0     0;
                  1    -3     1     0     1     0     0     0     0;
                  0     1    -3     0     0     1     0     0     0;
                  1     0     0    -3     1     0     1     0     0;
