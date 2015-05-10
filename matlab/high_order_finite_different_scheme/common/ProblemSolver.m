@@ -37,14 +37,14 @@ classdef ProblemSolver
     methods (Access = public)
         
         function obj = ProblemSolver(param, scheme, solver)            
-            obj = check_param(param, scheme);            
+            obj = obj.check_param(param, scheme);            
             obj.scheme = scheme;
             obj.param = param;
-            obj = set_solver(solver);
+            obj = obj.set_solver(solver);
         end
         
         function obj = set_solver(obj, solver)
-           obj = check_solver(solver);
+           obj = obj.check_solver(solver);
            obj.solver = solver; 
         end
         
