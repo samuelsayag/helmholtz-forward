@@ -17,19 +17,23 @@ param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
-x_val = @(x) param.a + (x-1) * param.h;
-y_val = @(x) param.c + (x-1) * param.h;
-param.dirichlet = @(i,j) helm_sol1( x_val(j), y_val(i), param.k );
-
+param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
 solver = @(A, b) A\b;
+
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, x ] = ps.solve();
             
-full(A)
-full(b)
-full(x)            
+% full(A)
+% full(b)
+% full(x)            
 
+[err, err_r, err_i] = ErrorHandler( param, x );
+err
+err_r
+err_i
+
+% graphical representation
 x_sol = linspace(param.a,param.b, param.m);
 y_sol = linspace(param.d, param.c, param.n);
 [X,Y] = meshgrid(x_sol,y_sol);

@@ -8,7 +8,7 @@
 
 % define the parameter of the solution
 k = 10;
-h = 0.1;
+h = 0.01;
 
 a = 0; b = 1;
 c = -1/2; d = 1/2;

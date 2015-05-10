@@ -40,6 +40,7 @@ classdef ProblemSolver
             obj = obj.check_param(param, scheme);            
             obj.scheme = scheme;
             obj.param = param;
+            obj.param.dirichlet = DirichletBuilder( param ); 
             obj = obj.set_solver(solver);
         end
         
