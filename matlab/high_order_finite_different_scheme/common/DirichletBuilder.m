@@ -13,7 +13,7 @@ x_val = @(x) param.a + (x-1) * param.h;
 y_val = @(x) param.c + (x-1) * param.h;
 
 discrete_dirichlet = ...
-    @(i,j) param.dirichlet( x_val(j), y_val(i) );
+    @(i,j) param.dirichlet( x_val(i), y_val(j) );
 
 end
 

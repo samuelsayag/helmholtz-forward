@@ -222,44 +222,44 @@ classdef BasicScheme
         end
 
         
-        function l = dir_n( obj, i, j )
+        function d = dir_n( obj, i, j )
             % give the dirichlet value of a north point
-            l = obj.dirichlet(i,j+1);
+            d = obj.dirichlet(j,i+1);
         end
                 
-        function l = dir_ne( obj, i, j )
+        function d = dir_ne( obj, i, j )
             % give the dirichlet value of a north east point
-            l = obj.dirichlet(i+1,j+1);
+            d = obj.dirichlet(j+1,i+1);
         end        
                 
-        function l = dir_e( obj, i, j )
+        function d = dir_e( obj, i, j )
             % give the dirichlet value of a north east point
-            l = obj.dirichlet(i+1,j);
+            d = obj.dirichlet(j+1,i);
         end        
                 
-        function l = dir_se( obj, i, j )
+        function d = dir_se( obj, i, j )
             % give the dirichlet value of a south east point
-            l = obj.dirichlet(i+1,j-1);
+            d = obj.dirichlet(j+1,i-1);
         end
                 
-        function l = dir_s( obj, i, j )
+        function d = dir_s( obj, i, j )
             % give the dirichlet value of a south point
-            l = obj.dirichlet(i,j-1);
+            d = obj.dirichlet(j,i-1);
         end
                 
-        function l = dir_sw( obj, i, j )
+        function d = dir_sw( obj, i, j )
             % give the dirichlet value of a south west point
-            l = obj.dirichlet(i-1,j-1);
+            d = obj.dirichlet(j-1,i-1);
         end
                 
-        function l = dir_w( obj, i, j )
+        function d = dir_w( obj, i, j )
             % give the dirichlet value of a west point
-            l = obj.dirichlet(i-1,j);
+            d = obj.dirichlet(j-1,i);
         end
                         
-        function l = dir_nw( obj, i, j )
+        function d = dir_nw( obj, i, j )
             % give the dirichlet value of a north west point
-            l = obj.dirichlet(i-1,j+1);
+            d = obj.dirichlet(j-1,i+1);
         end        
         
         function [c_A, v_A, c_b, v_b] = n_pt_dir( obj, i, j )
@@ -584,9 +584,9 @@ classdef BasicScheme
 
             % value is dirichlet for other point 
             v_b = -( obj.scheme.bc * obj.dir_nw(i,j)...
-                + obj.scheme.bs * obj.dir_n(i,j)...
-                + obj.scheme.bc * obj.dir_ne(i,j)...
-                + obj.scheme.bs * obj.dir_e(i,j)...
+                + obj.scheme.bs * obj.dir_w(i,j)...
+                + obj.scheme.bc * obj.dir_sw(i,j)...
+                + obj.scheme.bs * obj.dir_s(i,j)...
                 + obj.scheme.bc * obj.dir_se(i,j) );            
         end
         

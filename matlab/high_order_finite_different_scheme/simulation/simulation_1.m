@@ -2,11 +2,12 @@
 % ITERATIVE SCHEMES FOR HIGH ORDER COMPACT DISCRETIZATIONS
 % TO THE EXTERIOR HELMHOLTZ EQUATION
 
-clear;clc;
+clear all;
+close all; clc;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.1;
+param.h = 0.01;
 
 % definition of the place
 param.a = 0; 
@@ -22,26 +23,26 @@ scheme = Ord2ndHelmholtz2D(param.k, param.h);
 solver = @(A, b) A\b;
 
 ps = ProblemSolver(param, scheme, solver);
-[ A, b, x ] = ps.solve();
+[ A, b, sol ] = ps.solve();
             
 % full(A)
 % full(b)
 % full(x)            
 
-[err, err_r, err_i] = ErrorHandler( param, x );
+[err, err_r, err_i] = ErrorHandler( param, sol );
 err
 err_r
 err_i
 
 % graphical representation
-x_sol = linspace(param.a,param.b, param.m);
-y_sol = linspace(param.d, param.c, param.n);
-[X,Y] = meshgrid(x_sol,y_sol);
+x = linspace(param.a,param.b, param.m);
+y = linspace(param.d, param.c, param.n);
+[X,Y] = meshgrid( x, y );
 
 figure(1)
 subplot(1, 2, 1);
-mesh(X, Y, real(x));
+mesh(X, Y, real(sol));
 title 'Real part'
 subplot(1, 2, 2);
-mesh(X, Y, imag(x));
+mesh(X, Y, imag(sol));
 title 'Img part'
