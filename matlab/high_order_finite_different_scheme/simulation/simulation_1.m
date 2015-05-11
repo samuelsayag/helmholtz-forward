@@ -6,8 +6,8 @@ clear all;
 close all; clc;
 
 % basic parameter of the simulation
-param.k = 5;
-param.h = 0.1;
+param.k = 50;
+param.h = 0.01;
 
 % definition of the place
 param.a = 0; 
