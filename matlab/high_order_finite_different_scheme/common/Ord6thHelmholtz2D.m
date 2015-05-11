@@ -53,7 +53,7 @@ classdef Ord6thHelmholtz2D
         function bc = bc(obj)
             % return the coefficient of the dirichlet point on CORNER
             obj.h; % dummy instruction< 
-            bc = 1; 
+            bc = 0; 
         end        
         
         function obj = check_param(obj, k, h, d)            

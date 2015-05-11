@@ -19,7 +19,7 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-scheme = Ord4thHelmholtz2D(param.k, param.h, 0);
+scheme = Ord6thHelmholtz2D(param.k, param.h);
 solver = @(A, b) A\b;
 
 ps = ProblemSolver(param, scheme, solver);

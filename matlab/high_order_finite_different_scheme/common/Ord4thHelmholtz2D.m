@@ -27,32 +27,32 @@ classdef Ord4thHelmholtz2D
         end
         
         function a0 = a0(obj)
-        % return A0 coefficient
+            % return A0 coefficient
             a0 = -10/3 + (obj.k * obj.h)^2 * (2/3 + obj.gamma/36); 
         end
         
         function as = as(obj)
-        % return the As coefficient
-            as = 2/3+ (obj.k * obj.h)^2 * (1/12 - obj.gamma/72); 
+            % return the As coefficient
+            as = 2/3 + (obj.k * obj.h)^2 * (1/12 - obj.gamma/72); 
         end
         
         function ac = ac(obj)
-        % return the Ac coefficient
+           % return the Ac coefficient
            ac = 1/6 + (obj.k * obj.h)^2 * (obj.gamma/144); 
         end
         
         function bs = bs(obj)
             % return the coefficient of the dirichlet point on SIDE
-            obj.h; % dummy instruction< 
+            obj.h; % dummy instruction 
             bs = 1; 
         end
                 
         function bc = bc(obj)
             % return the coefficient of the dirichlet point on CORNER
-            obj.h; % dummy instruction< 
-            bc = 1; 
+            obj.h; % dummy instruction
+            bc = 0; 
         end
-        s
+        
         function obj = check_param(obj, k, h, g)            
             p = inputParser;
             addRequired(p, 'k', @isnumeric);
