@@ -75,21 +75,13 @@ classdef Ord6thSommerfeld2D
         
     end
     
-    methods (Access = private)
+    methods (Access = private)     
         
-        function out = out(obj)
+        function s0 = s0(obj)
             obj.h; % dummy instruction
-            out = 1;
-        end
-        
-        function in = in(obj)
-            obj.h; % dummy instruction
-            in = 1;            
-        end        
-        
-        function ctr = s0(obj)
-            obj.h; % dummy instruction
-            ctr = 1;            
+            s0 = 2 * 1i * obj.beta * obj.h * ( 1 ...
+                - (obj.beta.^2 * obj.h.^2)/6 ...
+                + (obj.beta.^4 * obj.h.^4)/120 );            
         end        
         
         function obj = check_param(obj, h, beta, scheme)                                 

@@ -5,7 +5,9 @@ classdef ProblemSolver
     properties (SetAccess = public)
         % A scheme of the type:
         % {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D', 'Ord6thHelmholtz2D'}
-        scheme
+        scheme = [];
+        % A scheme for the sommerfeld boundary {'Ord6thSommerfeld2D'}
+        sommerfeld = [];
         % A struct that fields are as follow:
         % param.h: length of the step in the unit chosen ex: 0.002 = 2mm if
         %   the meter is chosen as a unit.
@@ -28,22 +30,24 @@ classdef ProblemSolver
         % Note: it will not be possible to choose Sommerfeld type
         % boundaries along all the side. At least one must be of Dirichlet
         % type.
-        param;        
+        param = [];        
         % A solver for the equation A x = b. With A being a matrice and b a
         % vector. It is given as a function handle.
-        solver
-        
-        % profile the code
+        solver = [];
     end
     
     methods (Access = public)
         
-        function obj = ProblemSolver(param, scheme, solver)            
+        function obj = ProblemSolver(param, scheme, solver, sommerfeld)            
+            narginchk(3, 4);
             obj = obj.check_param(param, scheme);            
             obj.scheme = scheme;
             obj.param = param;
             obj.param.dirichlet = DirichletBuilder( param ); 
             obj = obj.set_solver(solver);
+            if nargin == 4
+                obj.check_sommerfeld(sommerfeld);
+            end
         end
         
         function obj = set_solver(obj, solver)
@@ -57,8 +61,11 @@ classdef ProblemSolver
             % proposed under the form of a param struct that is described
             % in the properties and the given scheme also described in the
             % properties of this class.
-            
-            bs = BasicScheme(obj.param, obj.scheme);
+            if ~isempty(obj.sommerfeld)
+                bs = BasicScheme(obj.param, obj.scheme, obj.sommerfeld);
+            else
+                bs = BasicScheme(obj.param, obj.scheme);
+            end
             mb = MatrixBuilder(bs);
             [ A, b ] = mb.build();
             x = obj.solver(A, b);
@@ -87,6 +94,15 @@ classdef ProblemSolver
             addRequired(p, 'param', @(x)valide_param(x));                 
             
             parse(p, scheme, param);            
+        end
+      
+        function obj = check_sommerfeld(obj, sommerfeld)
+            p = inputParser;
+            schemes = {'Ord6thSommerfeld2D'};
+            addRequired(p, 'sommerfeld', ...
+                @(x)validateattributes( x, schemes, {'nonempty'}));            
+            parse(p, sommerfeld);
+            obj.sommerfeld = sommerfeld;
         end
         
         function obj = check_solver(obj, solver)

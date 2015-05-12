@@ -10,10 +10,10 @@ classdef BasicScheme
         % DISCRETIZATIONS
         % schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
         % 'Ord6thHelmholtz2D'};
-        scheme;
+        scheme = [];
         % Sommerfeld constraint under the form of a scheme with coefficient
         % just as for the central scheme.
-        sommerfeld;
+        sommerfeld  = [];
         % A struct that fields are as follow:
         % param.h: length of the step in the unit chosen ex: 0.002 = 2mm if
         %   the meter is chosen as a unit.
@@ -36,19 +36,23 @@ classdef BasicScheme
         % Note: it will not be possible to choose Sommerfeld type
         % boundaries along all the side. At least one must be of Dirichlet
         % type.
-        param;
+        param  = [];
         % An alias short-cut that give more direct access to the dirichlet
         % function.
-        dirichlet;
+        dirichlet  = [];
     end
     
     methods (Access = public)
-        function obj = BasicScheme(param, scheme)
-            narginchk(2, 2)
+        function obj = BasicScheme(param, scheme, sommerfeld)
+            narginchk(2, 3);
             obj = obj.check_param(param, scheme);            
             obj.param = param;
             obj.scheme = scheme;
             obj.dirichlet = param.dirichlet;
+            if nargin == 3
+                obj.check_sommerfeld(sommerfeld);
+            end
+            obj.check_boundary();
         end                
         
         function m = m(obj)
@@ -704,8 +708,55 @@ classdef BasicScheme
             end
             addRequired(p, 'param', @(x)valide_param(x));                 
             
-            parse(p, scheme, param);            
+            parse(p, scheme, param);                        
         end
       
+        function obj = check_sommerfeld(obj, sommerfeld)
+            p = inputParser;
+            schemes = {'Ord6thSommerfeld2D'};
+            addRequired(p, 'sommerfeld', ...
+                @(x)validateattributes( x, schemes, {'nonempty'}));            
+            parse(p, sommerfeld);
+            obj.sommerfeld = sommerfeld;
+        end
+        
+        function obj = check_boundary( obj )
+            if ~ isfield(obj.param, 'north')
+                obj.param.north = 'dirichlet';
+            end
+            if ~ isfield(obj.param, 'east')
+                obj.param.east = 'dirichlet';
+            end
+            if ~ isfield(obj.param, 'south')
+                obj.param.south = 'dirichlet';
+            end
+            if ~ isfield(obj.param, 'west')
+                obj.param.west = 'dirichlet';
+            end
+            
+            valid_bounds = {'dirichlet','sommerfeld'};
+            validatestring( obj.param.north, valid_bounds );
+            validatestring( obj.param.east, valid_bounds );
+            validatestring( obj.param.south, valid_bounds );
+            validatestring( obj.param.west, valid_bounds );
+            
+            cond = strcmp(obj.param.north, 'sommerfeld') ...
+                && strcmp(obj.param.south, 'sommerfeld') ...
+                && strcmp(obj.param.east, 'sommerfeld') ...
+                && strcmp(obj.param.west, 'sommerfeld');
+            if cond
+                error('Not all side may be sommerfeld.');
+            end
+
+            cond = strcmp(obj.param.north, 'sommerfeld') ...
+                || strcmp(obj.param.south, 'sommerfeld') ...
+                || strcmp(obj.param.east, 'sommerfeld') ...
+                || strcmp(obj.param.west, 'sommerfeld') ...
+            && isempty(obj.sommerfeld);            
+            if cond
+                error('A sommerfeld scheme must be set.');
+            end            
+        end
+        
     end    
 end
