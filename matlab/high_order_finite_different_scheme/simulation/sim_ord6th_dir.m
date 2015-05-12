@@ -2,12 +2,12 @@
 % ITERATIVE SCHEMES FOR HIGH ORDER COMPACT DISCRETIZATIONS
 % TO THE EXTERIOR HELMHOLTZ EQUATION
 
-clear all;
+% clear all;
 close all; clc;
 
 % basic parameter of the simulation
 param.k = 50;
-param.h = 0.01;
+param.h = 0.005;
 
 % definition of the place
 param.a = 0; 
@@ -19,7 +19,7 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
+scheme = Ord6thHelmholtz2D(param.k, param.h);
 solver = @(A, b) A\b;
 
 ps = ProblemSolver(param, scheme, solver);

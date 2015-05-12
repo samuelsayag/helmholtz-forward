@@ -5,8 +5,9 @@ classdef TestProblemSolver  < matlab.unittest.TestCase
     methods  (Test)
         function test_build_matrix(testCase)
             param.m = 3;
-            param.n = 3;            
-            param.dirichlet = @(i,j) 5;
+            param.n = 3;
+            param.dirichlet = @(i,j) 5;            
+            
             scheme = Ord2ndHelmholtz2D(100, 0.01);
             solver = @(A, b) A\b;
             ps = ProblemSolver(param, scheme, solver);

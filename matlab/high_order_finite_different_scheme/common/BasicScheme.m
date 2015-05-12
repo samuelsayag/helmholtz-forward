@@ -11,6 +11,9 @@ classdef BasicScheme
         % schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
         % 'Ord6thHelmholtz2D'};
         scheme;
+        % Sommerfeld constraint under the form of a scheme with coefficient
+        % just as for the central scheme.
+        sommerfeld;
         % A struct that fields are as follow:
         % param.h: length of the step in the unit chosen ex: 0.002 = 2mm if
         %   the meter is chosen as a unit.
@@ -71,7 +74,7 @@ classdef BasicScheme
         function [c_A, v_A, c_b, v_b] = e_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
-            % Neumann, Robin...).
+            % Neumann, Robin...).            
             [c_A, v_A, c_b, v_b] = obj.e_pt_dir( i, j );
         end   
         
@@ -206,7 +209,8 @@ classdef BasicScheme
             % return:
             %   v_A: the coeff value of the different stencil points
             %   in the matrix A
-            %   v_b: the coeff value in the vector b 
+            %   v_b: the coeff value in the vector b
+
             v_A = zeros(9,1);            
             v_A(1) = obj.scheme.a0; % central point            
             v_A(2) = obj.scheme.as; % north point
@@ -217,7 +221,7 @@ classdef BasicScheme
             v_A(7) = obj.scheme.ac; % south west point
             v_A(8) = obj.scheme.as; % west point
             v_A(9) = obj.scheme.ac; % north west point
-            
+
             v_b = 0; % value is null in vector b for a central point
         end
 
@@ -262,12 +266,12 @@ classdef BasicScheme
             d = obj.dirichlet(j-1,i+1);
         end        
         
-        function [c_A, v_A, c_b, v_b] = n_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.n_pt_coordinate( i, j );
-            [v_A, v_b] = obj.n_pt_value_dirichlet( i, j );
-        end        
         
-        function [c_A, c_b] = n_pt_coordinate( obj, i, j )
+        function l = dirichlet_coordinate(obj, i, j )
+            l = obj.label(i,j);
+        end       
+        
+        function c_A = n_pt_coordinate( obj, i, j )
             % provide the north side stencil points coordinate as matlab 
             % compliant linear labelling in the matrix A and vector b for
             % the equation Ax=b
@@ -282,9 +286,84 @@ classdef BasicScheme
             c_A(4) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
             c_A(5) = obj.lin_lab(l, obj.lab_sw(i,j)); % south west point
             c_A(6) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
-            
-            c_b = l; % vector b coordinate            
         end
+                       
+        function c_A = e_pt_coordinate( obj, i, j )
+            % provide the east side stencil points coordinate as matlab 
+            % compliant linear labelling in the matrix A and vector b for
+            % the equation Ax=b
+            % return:
+            %   c_A: the linear coordinate of the different stencil points
+            %   in the matrix A
+            %   c_b: the linear coordinate in the vector b            
+            c_A = zeros(6,1); l = obj.label(i,j);
+            c_A(1) = obj.lin_lab(l,l); % central point            
+            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
+            c_A(3) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
+            c_A(4) = obj.lin_lab(l, obj.lab_sw(i,j)); % south west point
+            c_A(5) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
+            c_A(6) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point                   
+        end                
+        
+        function c_A = s_pt_coordinate( obj, i, j )
+            % provide the south side stencil points coordinate as matlab 
+            % compliant linear labelling in the matrix A and vector b for
+            % the equation Ax=b
+            % return:
+            %   c_A: the linear coordinate of the different stencil points
+            %   in the matrix A
+            %   c_b: the linear coordinate in the vector b            
+            c_A = zeros(6,1); l = obj.label(i,j);
+            c_A(1) = obj.lin_lab(l,l); % central point            
+            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
+            c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
+            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
+            c_A(5) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
+            c_A(6) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
+            
+        end                
+        
+        function c_A = w_pt_coordinate( obj, i, j )
+            % provide the south side stencil points coordinate as matlab 
+            % compliant linear labelling in the matrix A and vector b for
+            % the equation Ax=b
+            % return:
+            %   c_A: the linear coordinate of the different stencil points
+            %   in the matrix A
+            %   c_b: the linear coordinate in the vector b            
+            c_A = zeros(6,1); l = obj.label(i,j);
+            c_A(1) = obj.lin_lab(l,l); % central point            
+            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
+            c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
+            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
+            c_A(5) = obj.lin_lab(l, obj.lab_se(i,j)); % south east point
+            c_A(6) = obj.lin_lab(l, obj.lab_s(i,j)); % south point            
+            
+        end        
+        
+        function [c_A, v_A, c_b, v_b] = n_pt_dir( obj, i, j )
+            c_A = obj.n_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.n_pt_value_dirichlet( i, j );
+        end         
+                
+        function [c_A, v_A, c_b, v_b] = e_pt_dir( obj, i, j )
+            c_A = obj.e_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.e_pt_value_dirichlet( i, j );
+        end           
+    
+        function [c_A, v_A, c_b, v_b] = s_pt_dir( obj, i, j )
+            c_A = obj.s_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.s_pt_value_dirichlet( i, j );
+        end        
+            
+        function [c_A, v_A, c_b, v_b] = w_pt_dir( obj, i, j )
+            c_A = obj.w_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.w_pt_value_dirichlet( i, j );
+        end                
         
         function [v_A, v_b] = n_pt_value_dirichlet( obj, i, j )
             % provide the north side stencil points value + dirichlet
@@ -305,31 +384,7 @@ classdef BasicScheme
             v_b = - ( obj.scheme.bc * obj.dir_nw(i,j) ...
                 + obj.scheme.bs * obj.dir_n(i,j) ...
                 + obj.scheme.bc * obj.dir_ne(i,j) );
-        end        
-        
-        function [c_A, v_A, c_b, v_b] = e_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.e_pt_coordinate( i, j );
-            [v_A, v_b] = obj.e_pt_value_dirichlet( i, j );
-        end        
-        
-        function [c_A, c_b] = e_pt_coordinate( obj, i, j )
-            % provide the east side stencil points coordinate as matlab 
-            % compliant linear labelling in the matrix A and vector b for
-            % the equation Ax=b
-            % return:
-            %   c_A: the linear coordinate of the different stencil points
-            %   in the matrix A
-            %   c_b: the linear coordinate in the vector b            
-            c_A = zeros(6,1); l = obj.label(i,j);
-            c_A(1) = obj.lin_lab(l,l); % central point            
-            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
-            c_A(3) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
-            c_A(4) = obj.lin_lab(l, obj.lab_sw(i,j)); % south west point
-            c_A(5) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
-            c_A(6) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
-            
-            c_b = l; % vector b coordinate            
-        end
+        end             
         
         function [v_A, v_b] = e_pt_value_dirichlet( obj, i, j )
             % provide the east side stencil points value + dirichlet
@@ -351,30 +406,6 @@ classdef BasicScheme
                 + obj.scheme.bs * obj.dir_e(i,j)...
                 + obj.scheme.bc * obj.dir_se(i,j) );
         end
-    
-        function [c_A, v_A, c_b, v_b] = s_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.s_pt_coordinate( i, j );
-            [v_A, v_b] = obj.s_pt_value_dirichlet( i, j );
-        end        
-        
-        function [c_A, c_b] = s_pt_coordinate( obj, i, j )
-            % provide the south side stencil points coordinate as matlab 
-            % compliant linear labelling in the matrix A and vector b for
-            % the equation Ax=b
-            % return:
-            %   c_A: the linear coordinate of the different stencil points
-            %   in the matrix A
-            %   c_b: the linear coordinate in the vector b            
-            c_A = zeros(6,1); l = obj.label(i,j);
-            c_A(1) = obj.lin_lab(l,l); % central point            
-            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
-            c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
-            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
-            c_A(5) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
-            c_A(6) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
-            
-            c_b = l; % vector b coordinate            
-        end
         
         function [v_A, v_b] = s_pt_value_dirichlet( obj, i, j )
             % provide the south side stencil points value + dirichlet
@@ -395,29 +426,6 @@ classdef BasicScheme
             v_b = - ( obj.scheme.bc * obj.dir_se(i,j)...
                 + obj.scheme.bs * obj.dir_s(i,j)...
                 + obj.scheme.bc * obj.dir_sw(i,j) );
-        end
-            
-        function [c_A, v_A, c_b, v_b] = w_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.w_pt_coordinate( i, j );
-            [v_A, v_b] = obj.w_pt_value_dirichlet( i, j );
-        end        
-        
-        function [c_A, c_b] = w_pt_coordinate( obj, i, j )
-            % provide the south side stencil points coordinate as matlab 
-            % compliant linear labelling in the matrix A and vector b for
-            % the equation Ax=b
-            % return:
-            %   c_A: the linear coordinate of the different stencil points
-            %   in the matrix A
-            %   c_b: the linear coordinate in the vector b            
-            c_A = zeros(6,1); l = obj.label(i,j);
-            c_A(1) = obj.lin_lab(l,l); % central point            
-            c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
-            c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
-            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
-            c_A(5) = obj.lin_lab(l, obj.lab_se(i,j)); % south east point
-            c_A(6) = obj.lin_lab(l, obj.lab_s(i,j)); % south point            
-            c_b = l; % vector b coordinate            
         end
         
         function [v_A, v_b] = w_pt_value_dirichlet( obj, i, j )
@@ -442,22 +450,26 @@ classdef BasicScheme
         end
                     
         function [c_A, v_A, c_b, v_b] = ne_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.ne_pt_coordinate( i, j );
+            c_A = obj.ne_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
             [v_A, v_b] = obj.ne_pt_value_dirichlet( i, j );
         end        
             
         function [c_A, v_A, c_b, v_b] = se_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.se_pt_coordinate( i, j );
+            c_A = obj.se_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
             [v_A, v_b] = obj.se_pt_value_dirichlet( i, j );
         end        
                     
         function [c_A, v_A, c_b, v_b] = sw_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.sw_pt_coordinate( i, j );
+            c_A = obj.sw_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
             [v_A, v_b] = obj.sw_pt_value_dirichlet( i, j );
         end        
             
         function [c_A, v_A, c_b, v_b] = nw_pt_dir( obj, i, j )
-            [c_A, c_b] = obj.nw_pt_coordinate( i, j );
+            c_A = obj.nw_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
             [v_A, v_b] = obj.nw_pt_value_dirichlet( i, j );
         end        
         
@@ -475,8 +487,6 @@ classdef BasicScheme
             c_A(3) = obj.lin_lab(l, obj.lab_sw(i,j)); % south west point
             c_A(4) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
             
-            c_b = l; % vector b coordinate
-            
         end
         
         function [c_A, c_b] = se_pt_coordinate( obj, i, j )
@@ -492,8 +502,7 @@ classdef BasicScheme
             c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
             c_A(3) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
             c_A(4) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
-            
-            c_b = l; % vector b coordinate            
+
         end
         
         function [c_A, c_b] = sw_pt_coordinate( obj, i, j )
@@ -510,7 +519,6 @@ classdef BasicScheme
             c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
             c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
             
-            c_b = l; % vector b coordinate            
         end
         
         function [c_A, c_b] = nw_pt_coordinate( obj, i, j )
@@ -527,7 +535,6 @@ classdef BasicScheme
             c_A(3) = obj.lin_lab(l, obj.lab_se(i,j)); % south east point
             c_A(4) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
             
-            c_b = l; % vector b coordinate            
         end
         
         function [v_A, v_b] = ne_pt_value_dirichlet( obj, i, j )
@@ -608,7 +615,75 @@ classdef BasicScheme
                 + obj.scheme.bc * obj.dir_nw(i,j)...
                 + obj.scheme.bs * obj.dir_n(i,j)...
                 + obj.scheme.bc * obj.dir_ne(i,j) );             
+        end                
+        
+        function [c_A, v_A, c_b, v_b] = n_pt_som( obj, i, j )
+            c_A = obj.n_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.n_pt_value_som();
+        end         
+                
+        function [c_A, v_A, c_b, v_b] = e_pt_som( obj, i, j )
+            c_A = obj.e_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.e_pt_value_som();
+        end           
+    
+        function [c_A, v_A, c_b, v_b] = s_pt_som( obj, i, j )
+            c_A = obj.s_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.s_pt_value_som();
+        end        
+            
+        function [c_A, v_A, c_b, v_b] = w_pt_som( obj, i, j )
+            c_A = obj.w_pt_coordinate( i, j );
+            c_b = obj.dirichlet_coordinate( i, j );
+            [v_A, v_b] = obj.w_pt_value_som();
+        end         
+        
+        function [v_A, v_b] = n_pt_value_som( obj )
+            % provide the north side stencil points value + dirichlet
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.n_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end        
+        
+        function [v_A, v_b] = e_pt_value_som( obj )
+            % provide the east side stencil points value + dirichlet
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.e_pt();                        
+            % No dirichlet the b vector receive 0
+            v_b = 0;
         end
+        
+        function [v_A, v_b] = s_pt_value_som( obj )
+            % provide the south side stencil points value + dirichlet
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.s_pt();                                    
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end
+        
+        function [v_A, v_b] = w_pt_value_som( obj )
+            % provide the west side stencil points value + dirichlet
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.w_pt();                                    
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end        
         
         function obj = check_param(obj, param, scheme)
             p = inputParser;
@@ -616,8 +691,7 @@ classdef BasicScheme
             schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
                 'Ord6thHelmholtz2D'};
             addRequired(p, 'scheme', ...
-                @(x)validateattributes( x, schemes, {'nonempty'}));
-            
+                @(x)validateattributes( x, schemes, {'nonempty'}));            
             
             function res = valide_param(x)
                 validateattributes( x, {'struct'}, {'nonempty'});

@@ -46,16 +46,18 @@ classdef Ord6thHelmholtz2D
         
         function bs = bs(obj)
             % return the coefficient of the dirichlet point on SIDE
-            obj.h; % dummy instruction< 
+            obj.h; % dummy instruction
             bs = 1; 
         end
                 
         function bc = bc(obj)
             % return the coefficient of the dirichlet point on CORNER
-            obj.h; % dummy instruction< 
+            obj.h; % dummy instruction 
             bc = 0; 
-        end        
-        
+        end              
+    end
+    
+    methods (Access = private)
         function obj = check_param(obj, k, h, d)            
             p = inputParser;
             addRequired(p, 'k', @isnumeric);
@@ -65,7 +67,8 @@ classdef Ord6thHelmholtz2D
             obj.k = k;
             obj.h = h;
             obj.delta = d;                                          
-        end
-    end    
+        end    
+    end
+    
 end
 

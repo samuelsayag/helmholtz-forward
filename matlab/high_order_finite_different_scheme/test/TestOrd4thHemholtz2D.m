@@ -61,7 +61,7 @@ classdef TestOrd4thHemholtz2D < matlab.unittest.TestCase
             scheme = Ord4thHelmholtz2D(testCase.k, testCase.h);
             t = {'not expected result for coefficient bc. '...
                 'Please recheck the class Ord2ndHelmholtz2D'};
-            testCase.verifyEqual(scheme.bc, 1, strjoin(t));
+            testCase.verifyEqual(scheme.bc, 0, strjoin(t));
         end                        
     end
     

@@ -32,6 +32,8 @@ classdef ProblemSolver
         % A solver for the equation A x = b. With A being a matrice and b a
         % vector. It is given as a function handle.
         solver
+        
+        % profile the code
     end
     
     methods (Access = public)

@@ -9,11 +9,15 @@ function [ discrete_dirichlet ] = DirichletBuilder( param )
 % belonging to [ a, b ] and y belong to [ c, d ] and h is the step between
 % to successive indices i and i+1.
 
-x_val = @(x) param.a + (x-1) * param.h;
-y_val = @(x) param.c + (x-1) * param.h;
+    if isfield(param, 'a') && isfield(param, 'b') && isfield(param, 'h')
+        x_val = @(x) param.a + (x-1) * param.h;
+        y_val = @(x) param.c + (x-1) * param.h;
 
-discrete_dirichlet = ...
-    @(i,j) param.dirichlet( x_val(i), y_val(j) );
-
+        discrete_dirichlet = ...
+            @(i,j) param.dirichlet( x_val(i), y_val(j) );
+    else
+        discrete_dirichlet = ...
+            @(i,j) param.dirichlet( i, j );        
+    end
 end
 
