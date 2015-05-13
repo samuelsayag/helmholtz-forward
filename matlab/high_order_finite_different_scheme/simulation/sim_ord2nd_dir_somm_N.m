@@ -2,7 +2,7 @@
 % ITERATIVE SCHEMES FOR HIGH ORDER COMPACT DISCRETIZATIONS
 % TO THE EXTERIOR HELMHOLTZ EQUATION
 
-% clear all;
+clear all;
 close all; clc;
 
 % basic parameter of the simulation
