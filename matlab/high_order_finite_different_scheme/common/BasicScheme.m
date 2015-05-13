@@ -50,9 +50,9 @@ classdef BasicScheme
             obj.scheme = scheme;
             obj.dirichlet = param.dirichlet;
             if nargin == 3
-                obj.check_sommerfeld(sommerfeld);
+                obj = obj.check_sommerfeld(sommerfeld);
             end
-            obj.check_boundary();
+            obj = obj.check_boundary();
         end                
         
         function m = m(obj)
@@ -72,28 +72,44 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            [c_A, v_A, c_b, v_b] = obj.n_pt_dir( i, j );
+            if strcmp(obj.param.north, 'sommerfeld')
+                [c_A, v_A, c_b, v_b] = obj.n_pt_som( i, j );                
+            else
+                [c_A, v_A, c_b, v_b] = obj.n_pt_dir( i, j );
+            end
         end
         
         function [c_A, v_A, c_b, v_b] = e_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).            
-            [c_A, v_A, c_b, v_b] = obj.e_pt_dir( i, j );
+            if strcmp(obj.param.east, 'sommerfeld')
+                [c_A, v_A, c_b, v_b] = obj.e_pt_som( i, j );
+            else
+                [c_A, v_A, c_b, v_b] = obj.e_pt_dir( i, j );
+            end
         end   
         
         function [c_A, v_A, c_b, v_b] = s_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            [c_A, v_A, c_b, v_b] = obj.s_pt_dir( i, j );
+            if strcmp(obj.param.south, 'sommerfeld')
+                [c_A, v_A, c_b, v_b] = obj.s_pt_som( i, j );
+            else
+                [c_A, v_A, c_b, v_b] = obj.s_pt_dir( i, j );
+            end
         end   
                 
         function [c_A, v_A, c_b, v_b] = w_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            [c_A, v_A, c_b, v_b] = obj.w_pt_dir( i, j );
+            if strcmp(obj.param.west, 'sommerfeld')
+                [c_A, v_A, c_b, v_b] = obj.w_pt_som( i, j );
+            else
+                [c_A, v_A, c_b, v_b] = obj.w_pt_dir( i, j );
+            end
         end
         
         function [c_A, v_A, c_b, v_b] = ne_pt( obj, i, j )
@@ -748,12 +764,12 @@ classdef BasicScheme
                 error('Not all side may be sommerfeld.');
             end
 
-            cond = strcmp(obj.param.north, 'sommerfeld') ...
+            cond = (strcmp(obj.param.north, 'sommerfeld') ...
                 || strcmp(obj.param.south, 'sommerfeld') ...
                 || strcmp(obj.param.east, 'sommerfeld') ...
-                || strcmp(obj.param.west, 'sommerfeld') ...
+                || strcmp(obj.param.west, 'sommerfeld')) ...
             && isempty(obj.sommerfeld);            
-            if cond
+            if cond 
                 error('A sommerfeld scheme must be set.');
             end            
         end

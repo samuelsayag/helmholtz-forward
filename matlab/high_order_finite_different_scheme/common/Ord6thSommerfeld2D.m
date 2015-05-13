@@ -22,7 +22,7 @@ classdef Ord6thSommerfeld2D
             v_A(1) = obj.scheme.a0 - obj.scheme.as * obj.s0; % central point            
             v_A(2) = obj.scheme.as; % east point
             v_A(3) = obj.scheme.ac; % south east point
-            v_A(4) = 2 * obj.scheme.as; % south point
+            v_A(4) = obj.scheme.as + 1/(2*obj.h); % south point
             v_A(5) = obj.scheme.ac; % south west point
             v_A(6) = obj.scheme.as; % west point            
         end
@@ -79,9 +79,12 @@ classdef Ord6thSommerfeld2D
         
         function s0 = s0(obj)
             obj.h; % dummy instruction
-            s0 = 2 * 1i * obj.beta * obj.h * ( 1 ...
+%             s0 = 2 * 1i * obj.beta * obj.h * ( 1 ...
+%                 - (obj.beta.^2 * obj.h.^2)/6 ...
+%                 + (obj.beta.^4 * obj.h.^4)/120 );  
+            s0 =  1i * obj.beta * ( 1 ...
                 - (obj.beta.^2 * obj.h.^2)/6 ...
-                + (obj.beta.^4 * obj.h.^4)/120 );            
+                + (obj.beta.^4 * obj.h.^4)/120 );              
         end        
         
         function obj = check_param(obj, h, beta, scheme)                                 
@@ -95,9 +98,9 @@ classdef Ord6thSommerfeld2D
                 @(x)validateattributes( x, schemes, {'nonempty'}));            
             
             parse( p, h, beta, scheme );            
-
-            obj.k = k;
+            
             obj.h = h;
+            obj.beta = beta;
             obj.scheme = scheme;
         end        
     end

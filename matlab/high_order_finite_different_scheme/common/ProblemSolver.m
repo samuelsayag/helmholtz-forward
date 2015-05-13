@@ -46,7 +46,7 @@ classdef ProblemSolver
             obj.param.dirichlet = DirichletBuilder( param ); 
             obj = obj.set_solver(solver);
             if nargin == 4
-                obj.check_sommerfeld(sommerfeld);
+                obj = obj.check_sommerfeld(sommerfeld);
             end
         end
         
