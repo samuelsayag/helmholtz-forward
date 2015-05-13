@@ -729,7 +729,7 @@ classdef BasicScheme
       
         function obj = check_sommerfeld(obj, sommerfeld)
             p = inputParser;
-            schemes = {'Ord6thSommerfeld2D'};
+            schemes = {'Ord6thSommerfeld2D', 'Ord2ndSommerfeld2D'};
             addRequired(p, 'sommerfeld', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));            
             parse(p, sommerfeld);
