@@ -67,8 +67,15 @@ classdef ProblemSolver
                 bs = BasicScheme(obj.param, obj.scheme);
             end
             mb = MatrixBuilder(bs);
+            
+            tic
+            display(sprintf('build the matrice...'));
             [ A, b ] = mb.build();
+            toc
+            tic
+            display(sprintf('solve Ax=b...'));            
             x = obj.solver(A, b);
+            toc
             x = transpose(reshape(x, obj.param.n, obj.param.m));
         end
     end
