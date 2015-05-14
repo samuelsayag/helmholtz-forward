@@ -18,6 +18,8 @@ classdef Ord2ndSommerfeld2D
         end
         
         function v_A = n_pt( obj )
+        % form the scheme :
+        % (-4 + (kh)² + 2ikh)u_i,j + 2 u_i,j-1 + u_i+1,j + u_i-1,j = 0 
             v_A = zeros(6,1);
             v_A(1) = obj.scheme.a0 + obj.scheme.as * obj.s0; % central point            
             v_A(2) = obj.scheme.as; % east point

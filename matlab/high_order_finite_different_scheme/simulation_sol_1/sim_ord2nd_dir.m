@@ -6,7 +6,7 @@ clear all;
 close all; clc;
 
 % basic parameter of the simulation
-param.k = 5;
+param.k = 20;
 param.h = 0.01;
 
 % definition of the place
