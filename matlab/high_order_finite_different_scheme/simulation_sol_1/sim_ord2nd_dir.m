@@ -5,7 +5,7 @@
 clear variables; close all; clc;
 
 % basic parameter of the simulation
-param.k = 10;
+param.k = 5;
 param.h = 0.02;
 
 % definition of the place
