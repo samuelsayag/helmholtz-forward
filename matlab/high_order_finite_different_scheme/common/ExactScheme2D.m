@@ -30,15 +30,46 @@ classdef ExactScheme2D
         % h = the step length (basic division of the grid)
         % theta = (optional) necessary to compute the exact theta function
         % instead the the bessel integral.
-            narginchk(2, 3)
+            narginchk(2, 3)            
+            obj = check_param( k, h );
+            
             if nargin == 2
                 obj.bessel = obj.bessel_std;
             elseif nargin == 3
-                obj = obj.check_theta(obj, bessel_p1);
+                obj = obj.check_theta( bessel_p1 );
             elseif nargin == 4
-                obj = obj.check_param(k, h);
-            end
+                obj = obj.check_integral( bessel_p1, bessel_p2 );
+            end            
         end        
+        
+        function a0 = a0(obj)
+        % return A0 coefficient
+            a0 = - 4 * obj.bessel(kh); 
+        end
+        
+        function as = as(obj)
+        % return the As coefficient
+            obj.h; % dummy instruction    
+            as = 1;
+        end
+        
+        function ac = ac(obj)
+        % return the Ac coefficient
+            obj.h; % dummy instruction<
+            ac = 0; 
+        end
+        
+        function bs = bs(obj)
+            % return the coefficient of the dirichlet point on SIDE
+            obj.h; % dummy instruction< 
+            bs = 1; 
+        end        
+        
+        function bc = bc(obj)
+            % return the coefficient of the dirichlet point on CORNER
+            obj.h; % dummy instruction< 
+            bc = 0; 
+        end
         
     end
     
@@ -58,6 +89,14 @@ classdef ExactScheme2D
             addRequired(p, 'theta', @isnumeric);
             parse(p, theta);
             obj.bessel = @(x) obj.bessel_exact(x, theta);
+        end
+        
+        function obj = check_integral(obj, bessel_p1, bessel_p2)
+            p = inputParser;
+            addRequired(p, 'bessel_p1', @isnumeric);
+            addRequired(p, 'bessel_p2', @isnumeric);
+            parse(p, bessel_p1, bessel_p2);
+            obj.bessel = @(x) obj.bessel_integral(x, bessel_p1, bessel_p2);            
         end
         
     end 

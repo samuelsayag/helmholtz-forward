@@ -43,8 +43,7 @@ classdef Ord2ndHelmholtz2D
             % return the coefficient of the dirichlet point on SIDE
             obj.h; % dummy instruction< 
             bs = 1; 
-        end
-        
+        end        
         
         function bc = bc(obj)
             % return the coefficient of the dirichlet point on CORNER
