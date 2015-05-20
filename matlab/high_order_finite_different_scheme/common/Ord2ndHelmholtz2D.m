@@ -7,8 +7,8 @@ classdef Ord2ndHelmholtz2D
     %DISCRETIZATIONS    
     
     properties (SetAccess = public)
-        k = 0;
-        h = 0;
+        k = [];
+        h = [];
     end
     
     methods (Access = public)
@@ -23,12 +23,14 @@ classdef Ord2ndHelmholtz2D
         function a0 = a0(obj)
         % return A0 coefficient
             a0 = - 4 + (obj.k * obj.h)^2; 
+%             a0 = + 4 - (obj.k * obj.h)^2; 
         end
         
         function as = as(obj)
         % return the As coefficient
             obj.h; % dummy instruction    
-            as = 1; 
+            as = 1;
+%             as = -1;
         end
         
         function ac = ac(obj)
@@ -49,7 +51,9 @@ classdef Ord2ndHelmholtz2D
             obj.h; % dummy instruction< 
             bc = 0; 
         end
-        
+    end
+    
+    methods (Access = private)
         function obj = check_param(obj, k, h)
             narginchk(3, 3)
             p = inputParser;

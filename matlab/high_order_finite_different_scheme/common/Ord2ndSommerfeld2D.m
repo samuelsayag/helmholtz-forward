@@ -41,7 +41,7 @@ classdef Ord2ndSommerfeld2D
         
         function v_A = s_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 + obj.scheme.as * obj.s0; % central point            
+            v_A(1) = obj.scheme.a0 - obj.scheme.as * obj.s0; % central point            
             v_A(2) = 2 * obj.scheme.as; % north point
             v_A(3) = obj.scheme.ac; % north east point
             v_A(4) = obj.scheme.as; % east point

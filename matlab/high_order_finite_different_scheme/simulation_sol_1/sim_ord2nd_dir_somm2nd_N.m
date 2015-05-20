@@ -14,24 +14,17 @@ param.c = -1/2;
 param.d = 1/2;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
-
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 param.north = 'sommerfeld';
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
-
-% beta = sqrt(param.k.^2 - pi.^2);
-beta = param.k;
+beta = sqrt(param.k.^2 - pi.^2);
+% beta = param.k;
 sommerfeld = Ord2ndSommerfeld2D( param.h, beta, scheme );
 
 solver = @(A, b) A\b;
-
 ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
-            
-% full(A)
-% full(b)
-% full(x)            
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
 err

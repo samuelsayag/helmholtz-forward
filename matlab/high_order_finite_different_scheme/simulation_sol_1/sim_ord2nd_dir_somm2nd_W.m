@@ -17,13 +17,19 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
+param.west = 'sommerfeld';
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
-solver = @(A, b) A\b;
-% solver = @(A, b) bicgstab(A,b, 1e-7, 10000);
+beta = sqrt(param.k.^2 - pi.^2);
+sommerfeld = Ord2ndSommerfeld2D( param.h, beta, scheme );
 
-param
-ps = ProblemSolver(param, scheme, solver);
+solver = @(A, b) A\b;
+
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
+            
+% full(A)
+% full(b)
+% full(x)            
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
 err
