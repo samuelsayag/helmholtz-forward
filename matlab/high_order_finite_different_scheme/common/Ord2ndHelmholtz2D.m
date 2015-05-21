@@ -38,18 +38,6 @@ classdef Ord2ndHelmholtz2D
             obj.h; % dummy instruction<
             ac = 0; 
         end
-        
-        function bs = bs(obj)
-            % return the coefficient of the dirichlet point on SIDE
-            obj.h; % dummy instruction< 
-            bs = 1; 
-        end        
-        
-        function bc = bc(obj)
-            % return the coefficient of the dirichlet point on CORNER
-            obj.h; % dummy instruction< 
-            bc = 0; 
-        end
     end
     
     methods (Access = private)

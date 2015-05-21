@@ -6,7 +6,7 @@ clear variables; close all; clc;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.02;
+param.h = 0.01;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
