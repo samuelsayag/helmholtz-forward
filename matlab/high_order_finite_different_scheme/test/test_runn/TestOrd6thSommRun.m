@@ -1,5 +1,5 @@
 close all; clearvars; clc;
 
-testCase = TestBasicScheme();
+testCase = TestOrd6thSommerfeld2D();
 res = run(testCase);
 res

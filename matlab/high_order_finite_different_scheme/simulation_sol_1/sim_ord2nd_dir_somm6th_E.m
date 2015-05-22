@@ -5,8 +5,8 @@
 close all; clearvars; clc;
 
 % basic parameter of the simulation
-param.k = 50;
-param.h = 0.01;
+param.k = 10;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -19,13 +19,13 @@ param.n = (param.b - param.a)/param.h + 1;
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 param.east = 'sommerfeld';
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
-sommerfeld = Ord6thSommerfeld2D( param.h, param.k, scheme );
+beta = sqrt(param.k.^2 - pi.^2);
+sommerfeld = Ord6thSommerfeld2D( param.h, beta );
 solver = @(A, b) A\b;
 
 ps = ProblemSolver(param, scheme, solver, sommerfeld);
-tic
 [ A, b, sol ] = ps.solve();
-toc            
+
 % full(A)
 % full(b)
 % full(x)            

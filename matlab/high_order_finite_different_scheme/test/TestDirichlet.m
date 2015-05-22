@@ -19,7 +19,7 @@ classdef TestDirichlet  < matlab.unittest.TestCase
             param.dirichlet = @(x,y) helm_sol1( x, y, param.k );            
             param.dirichlet = DirichletBuilder( param );
             
-            param
+%             param
             
             x = linspace(param.a-param.h, param.b+param.h, param.m + 2);
             y = linspace(param.d+param.h, param.c-param.h, param.n + 2);            

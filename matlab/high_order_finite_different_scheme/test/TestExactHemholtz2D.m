@@ -3,11 +3,28 @@ classdef TestExactHemholtz2D < matlab.unittest.TestCase
     
     methods (Test)
         
-        function test_a0_coeff(testCase)
+        function test_a0_J0_coeff(testCase)
             scheme = ExactScheme2D(10, 0.1);
             t = {'not expected result for coefficient a0. '...
                 'Please recheck the class ExactScheme2D'};
-            e = scheme.a0 - (-3.060790746231866);
+            e = abs(scheme.a0 - (-3.060790746231866));
+            testCase.verifyLessThan(e, 1e-15, strjoin(t));            
+        end
+        
+        function test_a0_integral_coeff(testCase)
+            scheme = ExactScheme2D(10, 0.1, 0, pi);
+            t = {'not expected result for coefficient a0. '...
+                'Please recheck the class ExactScheme2D'};
+            e = abs(scheme.a0 - (-3.060790746231866));
+            testCase.verifyLessThan(e, 1e-15, strjoin(t));            
+        end
+        
+        function test_a0_exact_coeff(testCase)
+            scheme = ExactScheme2D(10, 0.1, pi/4);
+            t = {'not expected result for coefficient a0. '...
+                'Please recheck the class ExactScheme2D'};
+            
+            e = abs(scheme.a0 - (-3.040978388302521));
             testCase.verifyLessThan(e, 1e-15, strjoin(t));            
         end
                 

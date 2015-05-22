@@ -47,6 +47,7 @@ classdef ProblemSolver
             obj = obj.set_solver(solver);
             if nargin == 4
                 obj = obj.check_sommerfeld(sommerfeld);
+                obj.sommerfeld = sommerfeld;
             end
         end
         
@@ -62,7 +63,8 @@ classdef ProblemSolver
             % in the properties and the given scheme also described in the
             % properties of this class.
             if ~isempty(obj.sommerfeld)
-                bs = BasicScheme(obj.param, obj.scheme, obj.sommerfeld);
+                bss = BasicSommScheme( obj.scheme, obj.sommerfeld );
+                bs = BasicScheme(obj.param, obj.scheme, bss);
             else
                 bs = BasicScheme(obj.param, obj.scheme);
             end
@@ -104,12 +106,12 @@ classdef ProblemSolver
         end
       
         function obj = check_sommerfeld(obj, sommerfeld)
-            p = inputParser;
-            schemes = {'Ord6thSommerfeld2D', 'Ord2ndSommerfeld2D'};
+            p = inputParser;            
+            sommerfelds = {'Ord6thSommerfeld2D', 'Ord2ndSommerfeld2D', ...
+                'ExactSommerfeld2D'};
             addRequired(p, 'sommerfeld', ...
-                @(x)validateattributes( x, schemes, {'nonempty'}));            
-            parse(p, sommerfeld);
-            obj.sommerfeld = sommerfeld;
+                @(x)validateattributes( x, sommerfelds, {'nonempty'}));        
+            parse(p, sommerfeld);           
         end
         
         function obj = check_solver(obj, solver)

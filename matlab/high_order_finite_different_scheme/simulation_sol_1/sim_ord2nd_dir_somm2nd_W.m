@@ -20,7 +20,7 @@ param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 param.west = 'sommerfeld';
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
 beta = sqrt(param.k.^2 - pi.^2);
-sommerfeld = Ord2ndSommerfeld2D( param.h, beta, scheme );
+sommerfeld = Ord2ndSommerfeld2D( param.h, beta );
 
 solver = @(A, b) A\b;
 

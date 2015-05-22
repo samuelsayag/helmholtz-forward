@@ -1,13 +1,23 @@
-classdef TestOrd6thHemholtz2D < matlab.unittest.TestCase                                
-    %TESTORD6THHEMHOLTZ2D test the class ORD2NDHEMHOLTZ2D    
+classdef TestOrd6thSommerfeld2D < matlab.unittest.TestCase                                
+    %TESTORD6THSOMMERFELD2D test the class ORD6THSOMMERFELD2D    
      
     methods (Test)
         
-        function test_n_pt(testCase)
-            scheme = Ord6thHelmholtz2D(sqrt(30), 1, 3);
-            t = {'not expected result for coefficient a0. '...
-                'Please recheck the class Ord2ndHelmholtz2D'};
-            testCase.verifyEqual(scheme.a0, 57/3, strjoin(t));
+        
+        function test_sx(testCase)
+            scheme = Ord6thSommerfeld2D(0.1, 10);
+            t = {'not expected result for coefficient sx. '...
+                'Please recheck the class Ord6thSommerfeld2D'};
+            coeff = 2 * (1-1/6+1/120) * 1i;
+            testCase.verifyEqual(scheme.sx, coeff, strjoin(t));
+        end
+        
+        function test_sy(testCase)
+            scheme = Ord6thSommerfeld2D(0.1, 10);
+            t = {'not expected result for coefficient sy. '...
+                'Please recheck the class Ord6thSommerfeld2D'};
+            coeff = 2 * (1-1/6+1/120) * 1i;
+            testCase.verifyEqual(scheme.sy, coeff, strjoin(t));
         end
         
     end   
