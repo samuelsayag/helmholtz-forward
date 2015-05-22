@@ -28,10 +28,16 @@ classdef ExactScheme2D
         % Ord2ndHelmholtz
         % k = the k of an Helmholtz equation 
         % h = the step length (basic division of the grid)
-        % theta = (optional) necessary to compute the exact theta function
-        % instead the the bessel integral.
-            narginchk(2, 3)            
-            obj = check_param( k, h );
+        % Optional parameters:
+        % bessel_p1 = the first parameter it may have two meanings. If the
+        % function choosen is bessel at exact theta this parameter is the
+        % angle theta needed for computation (see: bessel_exact_theta 
+        % function. If two parameter are given as it is the first bound for
+        % the integral (see bessel_integral)
+        % bessel_p2 = the second bound of the bessel integral.
+        
+            narginchk(2, 4)            
+            obj = obj.check_param( k, h );
             
             if nargin == 2
                 obj.bessel = obj.bessel_std;
@@ -44,7 +50,7 @@ classdef ExactScheme2D
         
         function a0 = a0(obj)
         % return A0 coefficient
-            a0 = - 4 * obj.bessel(kh); 
+            a0 = - 4 * obj.bessel(obj.k * obj.h); 
         end
         
         function as = as(obj)
@@ -57,18 +63,6 @@ classdef ExactScheme2D
         % return the Ac coefficient
             obj.h; % dummy instruction<
             ac = 0; 
-        end
-        
-        function bs = bs(obj)
-            % return the coefficient of the dirichlet point on SIDE
-            obj.h; % dummy instruction< 
-            bs = 1; 
-        end        
-        
-        function bc = bc(obj)
-            % return the coefficient of the dirichlet point on CORNER
-            obj.h; % dummy instruction< 
-            bc = 0; 
         end
         
     end

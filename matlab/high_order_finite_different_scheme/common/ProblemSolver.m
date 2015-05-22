@@ -85,7 +85,7 @@ classdef ProblemSolver
             p = inputParser;
 
             schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
-                'Ord6thHelmholtz2D'};
+                'Ord6thHelmholtz2D', 'ExactScheme2D'};
             addRequired(p, 'scheme', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));
                         
