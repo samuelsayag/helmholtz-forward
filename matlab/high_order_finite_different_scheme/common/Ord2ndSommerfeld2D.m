@@ -32,7 +32,7 @@ classdef Ord2ndSommerfeld2D
             s0 = 2 * 1i * obj.beta * obj.h ;   
         end        
         
-        function obj = check_param(obj, h, beta, scheme)                                 
+        function obj = check_param(obj, h, beta)                                 
             p = inputParser;           
             
             addRequired(p, 'h', @isnumeric);   
