@@ -21,13 +21,15 @@ scheme = Ord2ndHelmholtz2D(param.k, param.h);
 beta = sqrt(param.k.^2 - pi.^2);
 sommerfeld = Ord2ndSommerfeld2D( param.h, beta);
 
-param
+% define the solver
 solver = @(A, b) A\b;
-ps = ProblemSolver(param, scheme, solver, sommerfeld);
 
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
+
+param
 err
 err_r
 err_i

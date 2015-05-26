@@ -6,7 +6,7 @@ clear variables; close all; clc;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.02;
+param.h = 0.01;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -15,12 +15,10 @@ param.d = 1/2;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
-% boundary definition
+% dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-param.west = 'sommerfeld';
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
-beta = sqrt(param.k.^2 - pi.^2);
-sommerfeld = Ord2ndSommerfeld2D( param.h, beta );
+theta = 0; % exact theta calculation
+scheme = ExactScheme2D(param.k);
 
 % define the solver
 solver = @(A, b) A\b;

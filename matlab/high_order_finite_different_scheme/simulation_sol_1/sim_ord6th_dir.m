@@ -18,17 +18,16 @@ param.n = (param.b - param.a)/param.h + 1;
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 scheme = Ord6thHelmholtz2D(param.k, param.h);
+
+% define the solver
 solver = @(A, b) A\b;
 
-param
-ps = ProblemSolver(param, scheme, solver);
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
-            
-% full(A)
-% full(b)
-% full(x)            
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
+
+param
 err
 err_r
 err_i

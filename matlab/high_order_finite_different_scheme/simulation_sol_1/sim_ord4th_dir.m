@@ -19,15 +19,15 @@ param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
 scheme = Ord4thHelmholtz2D(param.k, param.h, 0);
 solver = @(A, b) A\b;
 
-param
-ps = ProblemSolver(param, scheme, solver);
+% define the solver
+solver = @(A, b) A\b;
+
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
-            
-% full(A)
-% full(b)
-% full(x)            
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
+
+param
 err
 err_r
 err_i
