@@ -22,7 +22,7 @@ scheme = Ord6thHelmholtz2D(param.k, param.h);
 % define the solver
 solver = @(A, b) A\b;
 
-ps = ProblemSolver(param, scheme, solver, sommerfeld);
+ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
 [err, err_r, err_i] = ErrorHandler( param, sol );

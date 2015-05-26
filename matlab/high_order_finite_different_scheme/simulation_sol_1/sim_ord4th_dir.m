@@ -22,7 +22,7 @@ solver = @(A, b) A\b;
 % define the solver
 solver = @(A, b) A\b;
 
-ps = ProblemSolver(param, scheme, solver, sommerfeld);
+ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
 [err, err_r, err_i] = ErrorHandler( param, sol );

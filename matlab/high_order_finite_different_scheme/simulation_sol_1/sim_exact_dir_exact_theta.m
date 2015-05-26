@@ -17,13 +17,13 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-theta = 0; % exact theta calculation
-scheme = ExactScheme2D(param.k);
+theta = pi/4; % exact theta calculation
+scheme = ExactScheme2D(param.k, param.h, theta);
 
 % define the solver
 solver = @(A, b) A\b;
 
-ps = ProblemSolver(param, scheme, solver, sommerfeld);
+ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
