@@ -17,10 +17,11 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-scheme = ExactScheme2D( param.k, param.h );
+scheme = Ord2ndHelmholtz2D(param.k, param.h);
 
 % define the solver
 solver = @(A, b) A\b;
+% solver = @(A, b) bicgstab(A,b, 1e-7, 10000);
 
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
