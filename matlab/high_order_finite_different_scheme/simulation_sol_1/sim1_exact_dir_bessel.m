@@ -9,7 +9,7 @@ theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.02;
+param.h = 0.01;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -39,24 +39,3 @@ error
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
 compare_graphs( param,  sol, error, axis_scale, 1);
 
-% % graphical representation
-% x = linspace(param.a,param.b, param.m);
-% y = linspace(param.d, param.c, param.n);
-% [X,Y] = meshgrid( x, y );
-% 
-% figure(1)
-% subplot(1, 2, 1);
-% mesh(X, Y, real(sol));
-% title 'Real part'
-% subplot(1, 2, 2);
-% mesh(X, Y, imag(sol));
-% title 'Img part'
-% 
-% figure(2)
-% theor = helm_sol1_2D( X, Y, param.k );
-% subplot(1, 2, 1);
-% mesh(X, Y, real(theor));
-% title 'Real part'
-% subplot(1, 2, 2);
-% mesh(X, Y, imag(theor));
-% title 'Img part'
