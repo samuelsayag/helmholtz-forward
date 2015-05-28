@@ -5,7 +5,8 @@
 clear variables; close all; clc;
 
 % modeled solution
-theor = @(x, y, k) helm_sol1_2D( x, y, k );
+theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
+theta = 0;
 
 % basic parameter of the simulation
 param.k = 10;
@@ -19,8 +20,8 @@ param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
-param.dirichlet = @(x,y) theor( x, y, param.k );
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
+param.dirichlet = @(x,y) theor( x, y, param.k , theta);
+scheme = ExactScheme2D(param.k, param.h);
 
 % define the solver
 solver = @(A, b) A\b;

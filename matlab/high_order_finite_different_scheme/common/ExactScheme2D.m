@@ -43,14 +43,16 @@ classdef ExactScheme2D
                 obj.bessel = obj.bessel_std;
             elseif nargin == 3
                 obj = obj.check_theta( bessel_p1 );
+                obj.bessel = @(x) obj.bessel_exact(x, bessel_p1);
             elseif nargin == 4
                 obj = obj.check_integral( bessel_p1, bessel_p2 );
+                obj.bessel = @(x) obj.bessel_integral(x, bessel_p1, bessel_p2);
             end            
         end        
         
         function a0 = a0(obj)
         % return A0 coefficient
-            a0 = - 4 * obj.bessel(obj.k * obj.h); 
+            a0 = -4 * obj.bessel(obj.k * obj.h); 
         end
         
         function as = as(obj)
@@ -81,16 +83,14 @@ classdef ExactScheme2D
         function obj = check_theta(obj, theta)
             p = inputParser;
             addRequired(p, 'theta', @isnumeric);
-            parse(p, theta);
-            obj.bessel = @(x) obj.bessel_exact(x, theta);
+            parse(p, theta);            
         end
         
         function obj = check_integral(obj, bessel_p1, bessel_p2)
             p = inputParser;
             addRequired(p, 'bessel_p1', @isnumeric);
             addRequired(p, 'bessel_p2', @isnumeric);
-            parse(p, bessel_p1, bessel_p2);
-            obj.bessel = @(x) obj.bessel_integral(x, bessel_p1, bessel_p2);            
+            parse(p, bessel_p1, bessel_p2);                        
         end
         
     end 
