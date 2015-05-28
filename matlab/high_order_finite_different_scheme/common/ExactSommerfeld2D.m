@@ -9,12 +9,12 @@ classdef ExactSommerfeld2D
     end
     
     methods 
-        function obj = ExactSommerfeld2D( h, beta, theta )
+        function obj = ExactSommerfeld2D( h, k, theta )
         % Ord6thSommerfeld2D
         % h: the the step of the grid
         % beta: parameter of the formula (pi - k^2 for instance)
             narginchk(3, 3)
-            obj = obj.check_param( h, beta, theta);            
+            obj = obj.check_param( h, k, theta);            
         end
         
         function sx = sx( obj )

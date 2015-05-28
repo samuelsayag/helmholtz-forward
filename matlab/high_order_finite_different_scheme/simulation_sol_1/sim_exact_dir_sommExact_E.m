@@ -14,14 +14,12 @@ param.c = -1/2;
 param.d = 1/2;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
-
 % boundary function
 param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
-param.north = 'sommerfeld';
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
-% beta = sqrt(param.k.^2 - pi.^2);
-% beta = -pi/param.k;
-sommerfeld = Ord2ndSommerfeld2D( param.h, beta);
+param.east = 'sommerfeld';
+scheme = ExactScheme2D(param.k, param.h);
+theta = acos(-(-sqrt(param.k.^2 - pi.^2)/param.k));
+sommerfeld = ExactSommerfeld2D( param.h, param.k, theta);
 
 % define the solver
 solver = @(A, b) A\b;
