@@ -10,7 +10,7 @@ theta = pi/4;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.2;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -21,7 +21,7 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
-scheme = ExactScheme2D(param.k, param.h, theta);
+scheme = ExactScheme2D(param.k, param.h);
 
 % define the solver
 solver = @(A, b) A\b;
@@ -30,8 +30,8 @@ param
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
-full(A)
-full(b)
+% full(A)
+% full(b)
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
 error.total = err;
