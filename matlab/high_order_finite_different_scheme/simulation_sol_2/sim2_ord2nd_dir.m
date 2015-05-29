@@ -6,11 +6,11 @@ clear variables; close all; clc;
 
 % modeled solution
 theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
-theta = 0;
+theta = pi/4;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -29,12 +29,11 @@ solver = @(A, b) A\b;
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
-[err, err_r, err_i] = ErrorHandler( param, sol );
-error.total = err;
-error.real = err_r;
-error.img = err_i;
-
 param
+ps = ProblemSolver(param, scheme, solver);
+[ A, b, sol ] = ps.solve();
+
+error = ErrorHandler( param, sol );
 error
 
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];

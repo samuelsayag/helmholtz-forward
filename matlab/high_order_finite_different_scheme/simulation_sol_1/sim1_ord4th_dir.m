@@ -22,15 +22,11 @@ solver = @(A, b) A\b;
 % define the solver
 solver = @(A, b) A\b;
 
+param
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
-[err, err_r, err_i] = ErrorHandler( param, sol );
-error.total = err;
-error.real = err_r;
-error.img = err_i;
-
-param
+error = ErrorHandler( param, sol );
 error
 
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];

@@ -19,7 +19,7 @@ classdef BasicSommScheme
         
         function v_A = n_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 + ...
+            v_A(1) = obj.scheme.a0 - ...
                 obj.scheme.as * obj.sommerfeld.sy; % central point            
             v_A(2) = obj.scheme.as; % east point
             v_A(3) = obj.scheme.ac; % south east point

@@ -26,15 +26,11 @@ scheme = Ord2ndHelmholtz2D(param.k, param.h);
 solver = @(A, b) A\b;
 % solver = @(A, b) bicgstab(A,b, 1e-7, 10000);
 
+param
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
 
-[err, err_r, err_i] = ErrorHandler( param, sol );
-error.total = err;
-error.real = err_r;
-error.img = err_i;
-
-param
+error = ErrorHandler( param, sol );
 error
 
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
