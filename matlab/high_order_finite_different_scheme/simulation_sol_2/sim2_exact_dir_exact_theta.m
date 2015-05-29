@@ -14,8 +14,8 @@ param.h = 0.01;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
-param.c = -1/2; 
-param.d = 1/2;
+param.c = 0; 
+param.d = 1;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 

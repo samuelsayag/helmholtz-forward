@@ -1,4 +1,4 @@
-function [ sol ] = analytic_sol_2D( k, theta, X, Y )
+function [ sol ] = helm_sol2_2D( k, theta, X, Y )
 % ANALYTIC_SOL_2D 
 % Compute the analytic solution to the Helmholtz equation in 2D.
 % param:

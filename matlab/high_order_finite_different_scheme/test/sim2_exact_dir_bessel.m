@@ -6,11 +6,11 @@ clear variables; close all; clc;
 
 % modeled solution
 theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
-theta = 0;
+theta = pi/4;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.2;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -21,20 +21,22 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
+scheme = ExactScheme2D(param.k, param.h, theta);
 
 % define the solver
 solver = @(A, b) A\b;
 
+param
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
+
+full(A)
+full(b)
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
 error.total = err;
 error.real = err_r;
 error.img = err_i;
-
-param
 error
 
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];

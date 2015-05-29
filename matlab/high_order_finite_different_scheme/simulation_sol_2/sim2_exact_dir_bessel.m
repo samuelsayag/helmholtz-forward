@@ -10,12 +10,12 @@ theta = 0;
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.5;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
-param.c = -1/2; 
-param.d = 1/2;
+param.c = 0; 
+param.d = 1;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
@@ -25,10 +25,12 @@ scheme = ExactScheme2D(param.k, param.h);
 
 % define the solver
 solver = @(A, b) A\b;
-% solver = @(A, b) bicgstab(A,b, 1e-7, 10000);
 
 ps = ProblemSolver(param, scheme, solver);
 [ A, b, sol ] = ps.solve();
+
+full(A)
+full(b)
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
 error.total = err;

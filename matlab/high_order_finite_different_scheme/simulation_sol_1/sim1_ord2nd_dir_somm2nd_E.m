@@ -19,8 +19,8 @@ param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 % boundary function
 param.dirichlet = @(x,y) theor( x, y, param.k );
-param.east = 'sommerfeld';
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
+param.east = 'sommerfeld';
 beta = sqrt(param.k.^2 - pi.^2);
 sommerfeld = Ord2ndSommerfeld2D( param.h, beta);
 

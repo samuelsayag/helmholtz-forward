@@ -19,14 +19,17 @@ param.d = 1;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
-% dirichlet function
+% boundary condition
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
-scheme = Ord2ndHelmholtz2D(param.k, param.h);
+scheme = Ord4thHelmholtz2D(param.k, param.h);
+param.east = 'sommerfeld';
+beta = + param.k * cos(theta);
+sommerfeld = Ord6thSommerfeld2D( param.h, beta);
 
 % define the solver
 solver = @(A, b) A\b;
 
-ps = ProblemSolver(param, scheme, solver);
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
 
 [err, err_r, err_i] = ErrorHandler( param, sol );
