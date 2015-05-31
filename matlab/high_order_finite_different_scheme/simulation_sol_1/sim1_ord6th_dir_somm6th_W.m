@@ -2,11 +2,10 @@
 % ITERATIVE SCHEMES FOR HIGH ORDER COMPACT DISCRETIZATIONS
 % TO THE EXTERIOR HELMHOLTZ EQUATION
 
-clear variables; close all; clc;
+close all; clearvars; clc;
 
 % modeled solution
-theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
-theta = pi/4;
+theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
 param.k = 10;
@@ -14,17 +13,17 @@ param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
-param.c = 0; 
-param.d = 1;
+param.c = -1/2; 
+param.d = 1/2;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
-% boundary condition
-param.dirichlet = @(x,y) theor( x, y, param.k , theta);
+% dirichlet function
+param.dirichlet = @(x,y) theor( x, y, param.k );
+param.west = 'sommerfeld';
 scheme = Ord6thHelmholtz2D(param.k, param.h);
-param.east = 'sommerfeld';
-beta = - param.k * cos(theta);
-sommerfeld = Ord6thSommerfeld2D( param.h, beta);
+beta = sqrt(param.k.^2 - pi.^2);
+sommerfeld = Ord6thSommerfeld2D( param.h, beta );
 
 % define the solver
 solver = @(A, b) A\b;

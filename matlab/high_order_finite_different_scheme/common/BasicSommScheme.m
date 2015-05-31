@@ -21,22 +21,22 @@ classdef BasicSommScheme
             v_A = zeros(6,1);
             v_A(1) = obj.scheme.a0 - ...
                 obj.scheme.as * obj.sommerfeld.sy; % central point            
-            v_A(2) = obj.scheme.as; % east point
-            v_A(3) = obj.scheme.ac; % south east point
+            v_A(2) = obj.scheme.as - obj.scheme.ac * obj.sommerfeld.sy; % east point
+            v_A(3) = 2 * obj.scheme.ac; % south east point
             v_A(4) = 2 * obj.scheme.as; % south point
-            v_A(5) = obj.scheme.ac; % south west point
-            v_A(6) = obj.scheme.as; % west point            
+            v_A(5) = 2 * obj.scheme.ac; % south west point
+            v_A(6) = obj.scheme.as - obj.scheme.ac * obj.sommerfeld.sy; % west point            
         end
         
         function v_A = e_pt( obj )
             v_A = zeros(6,1);
             v_A(1) = obj.scheme.a0 - ...
                 obj.scheme.as * obj.sommerfeld.sx; % central point
-            v_A(2) = obj.scheme.as; % north point
-            v_A(3) = obj.scheme.as; % south point
-            v_A(4) = obj.scheme.ac; % south west point
+            v_A(2) = obj.scheme.as - obj.scheme.ac * obj.sommerfeld.sx; % north point
+            v_A(3) = obj.scheme.as - obj.scheme.ac * obj.sommerfeld.sx; % south point
+            v_A(4) = 2 * obj.scheme.ac; % south west point
             v_A(5) = 2 * obj.scheme.as; % west point            
-            v_A(6) = obj.scheme.ac; % north west point
+            v_A(6) = 2 * obj.scheme.ac; % north west point
         end
         
         function v_A = s_pt( obj )
@@ -44,21 +44,21 @@ classdef BasicSommScheme
             v_A(1) = obj.scheme.a0 + ...
                 obj.scheme.as * obj.sommerfeld.sy; % central point
             v_A(2) = 2 * obj.scheme.as; % north point
-            v_A(3) = obj.scheme.ac; % north east point
-            v_A(4) = obj.scheme.as; % east point
-            v_A(5) = obj.scheme.as; % west point
-            v_A(6) = obj.scheme.ac; % north west point
+            v_A(3) = 2 * obj.scheme.ac; % north east point
+            v_A(4) = obj.scheme.as + obj.scheme.ac * obj.sommerfeld.sy; % east point
+            v_A(5) = obj.scheme.as + obj.scheme.ac * obj.sommerfeld.sy; % west point
+            v_A(6) = 2 * obj.scheme.ac; % north west point
         end        
         
         function v_A = w_pt( obj )
             v_A = zeros(6,1);
             v_A(1) = obj.scheme.a0 + ...
                 obj.scheme.as * obj.sommerfeld.sx; % central point
-            v_A(2) = obj.scheme.as; % north point
-            v_A(3) = obj.scheme.ac; % north east point
+            v_A(2) = obj.scheme.as + obj.scheme.ac * obj.sommerfeld.sx; % north point
+            v_A(3) = 2 * obj.scheme.ac; % north east point
             v_A(4) = 2 * obj.scheme.as; % east point
-            v_A(5) = obj.scheme.ac; % south east point
-            v_A(6) = obj.scheme.as; % south point
+            v_A(5) = 2 * obj.scheme.ac; % south east point
+            v_A(6) = obj.scheme.as + obj.scheme.ac * obj.sommerfeld.sx; % south point
         end        
         
         function v_A = ne_pt_som_dir( obj )
