@@ -120,15 +120,15 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            t = all(strcmp({obj.param.north, obj.param.east}, ...
-                obj.dir_dir));
-            if t % all dirichlet
+            t = strcmp({obj.param.north, obj.param.east}, ...
+                obj.dir_dir);
+            if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.ne_pt_dir( i, j );            
-            elseif ~t % all sommerfeld
+            elseif ~any(t) % all sommerfeld
             elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
-                [c_A, v_A, c_b, v_b] = obj.ne_pt_som_dir( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_som_dir( i, j );
             else % dir_som
-                [c_A, v_A, c_b, v_b] = obj.ne_pt_dir_som( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_dir_som( i, j );
             end        
         end
                 
@@ -136,15 +136,15 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            t = all(strcmp({obj.param.south, obj.param.east}, ...
-                obj.dir_dir));
-            if t % all dirichlet
+            t = strcmp({obj.param.south, obj.param.east}, ...
+                obj.dir_dir);
+            if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.se_pt_dir( i, j );                    
-            elseif ~t % all sommerfeld
+            elseif ~any(t) % all sommerfeld
             elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
-                [c_A, v_A, c_b, v_b] = obj.se_pt_som_dir( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.se_pt_som_dir( i, j );
             else % dir_som
-                [c_A, v_A, c_b, v_b] = obj.se_pt_dir_som( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.se_pt_dir_som( i, j );
             end            
         end        
         
@@ -152,15 +152,15 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            t = all(strcmp({obj.param.south, obj.param.west}, ...
-                obj.dir_dir));
-            if t % all dirichlet
+            t = strcmp({obj.param.south, obj.param.west}, ...
+                obj.dir_dir);
+            if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.sw_pt_dir( i, j );                                    
-            elseif ~t % all sommerfeld
+            elseif ~any(t) % all sommerfeld
             elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
-                [c_A, v_A, c_b, v_b] = obj.sw_pt_som_dir( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_som_dir( i, j );
             else % dir_som
-                [c_A, v_A, c_b, v_b] = obj.sw_pt_dir_som( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_dir_som( i, j );
             end                        
         end
         
@@ -168,15 +168,15 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            t = all(strcmp({obj.param.north, obj.param.west}, ...
-                obj.dir_dir));
-            if t % all dirichlet
+            t = strcmp({obj.param.north, obj.param.west}, ...
+                obj.dir_dir);
+            if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.nw_pt_dir( i, j );                                    
-            elseif ~t % all sommerfeld
+            elseif ~any(t) % all sommerfeld
             elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
-                [c_A, v_A, c_b, v_b] = obj.nw_pt_som_dir( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_som_dir( i, j );
             else % dir_som
-                [c_A, v_A, c_b, v_b] = obj.nw_pt_dir_som( obj, i, j );
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_dir_som( i, j );
             end                                    
         end
         
@@ -749,7 +749,7 @@ classdef BasicScheme
                 + obj.scheme.ac * obj.dir_sw(i,j) );            
         end
         
-        function [v_b] = w_half_nw_cornet_dirichlet( obj, i, j )
+        function [v_b] = w_half_nw_corner_dirichlet( obj, i, j )
             % The west half of the north west corner is provided here as a
             % dirichlet boundary.
             % return:
@@ -761,7 +761,7 @@ classdef BasicScheme
                 + obj.scheme.ac * obj.dir_nw(i,j) );             
         end                
         
-        function [v_b] = n_half_nw_cornet_dirichlet( obj, i, j )
+        function [v_b] = n_half_nw_corner_dirichlet( obj, i, j )
             % The west half of the north west corner is provided here as a
             % dirichlet boundary.
             % return:
@@ -889,56 +889,56 @@ classdef BasicScheme
             c_A = obj.ne_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.n_half_ne_pt();
-            v_b = obj.e_half_ne_corner_dirichlet();            
+            v_b = obj.e_half_ne_corner_dirichlet( i, j );            
         end
         
         function [c_A, v_A, c_b, v_b] = ne_pt_dir_som( obj, i, j )
             c_A = obj.ne_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.e_half_ne_pt();
-            v_b = obj.n_half_ne_corner_dirichlet();
+            v_b = obj.n_half_ne_corner_dirichlet( i, j );
         end        
                 
         function [c_A, v_A, c_b, v_b] = se_pt_som_dir( obj, i, j )
             c_A = obj.se_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.s_half_se_pt();
-            v_b = obj.e_half_se_corner_dirichlet();
+            v_b = obj.e_half_se_corner_dirichlet( i, j );
         end           
     
-        function [c_A, v_A, c_b, v_b] = se_pt_dir_somm( obj, i, j )
+        function [c_A, v_A, c_b, v_b] = se_pt_dir_som( obj, i, j )
             c_A = obj.se_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.e_half_se_pt();
-            v_b = obj.s_half_se_corner_dirichlet();
+            v_b = obj.s_half_se_corner_dirichlet( i, j );
         end        
             
         function [c_A, v_A, c_b, v_b] = sw_pt_som_dir( obj, i, j )
             c_A = obj.sw_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.s_half_sw_pt();
-            v_b = obj.w_half_sw_corner_dirichlet();
+            v_b = obj.w_half_sw_corner_dirichlet( i, j );
         end         
             
-        function [c_A, v_A, c_b, v_b] = sw_pt_dir_somm( obj, i, j )
+        function [c_A, v_A, c_b, v_b] = sw_pt_dir_som( obj, i, j )
             c_A = obj.sw_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.w_half_sw_pt();
-            v_b = obj.s_half_sw_corner_dirichlet();
+            v_b = obj.s_half_sw_corner_dirichlet( i, j );
         end         
             
         function [c_A, v_A, c_b, v_b] = nw_pt_som_dir( obj, i, j )
             c_A = obj.nw_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.n_half_nw_pt();
-            v_b = obj.w_half_nw_corner_dirichlet();
+            v_b = obj.w_half_nw_corner_dirichlet( i, j );
         end         
             
-        function [c_A, v_A, c_b, v_b] = nw_pt_dir_somm( obj, i, j )
+        function [c_A, v_A, c_b, v_b] = nw_pt_dir_som( obj, i, j )
             c_A = obj.nw_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.w_half_nw_pt();
-            v_b = obj.n_half_nw_corner_dirichlet();
+            v_b = obj.n_half_nw_corner_dirichlet( i, j );
         end                         
         
         function obj = check_param(obj, param, scheme)
