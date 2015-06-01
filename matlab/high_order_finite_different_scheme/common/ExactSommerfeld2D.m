@@ -6,15 +6,20 @@ classdef ExactSommerfeld2D
         h;
         beta;
         theta;
+        scheme;
     end
     
     methods 
-        function obj = ExactSommerfeld2D( h, k, theta )
+        function obj = ExactSommerfeld2D( h, k, theta, scheme)
         % Ord6thSommerfeld2D
         % h: the the step of the grid
         % beta: parameter of the formula (pi - k^2 for instance)
-            narginchk(3, 3)
-            obj = obj.check_param( h, k, theta);            
+            narginchk(4, 4)
+            obj = obj.check_param( h, k, theta, scheme);            
+            obj.h = h;
+            obj.beta = theta;
+            obj.theta = theta;
+            obj.scheme = scheme;
         end
         
         function sx = sx( obj )
@@ -23,8 +28,30 @@ classdef ExactSommerfeld2D
         
         function sy = sy( obj )
             sy =  obj.s0( @(x) x * sin(obj.theta) );   
-        end        
+        end
         
+        function a0 = corner_a0(side)
+            % the coefficient of the sommerfeld corner in the exact scheme
+            % depend on the type of side (N= NE, E=SE, S=SW, W=NW if the
+            % convention is to turn always clockwise)           
+            if strcmp(side, 'north')
+                a0 = - obj.scheme.a0 + obj.sx + obj.sy;
+            elseif strcmp(side, 'east')
+                a0 = - obj.scheme.a0 + obj.sx - obj.sy;
+            elseif strcmp(side, 'south')
+                a0 = - obj.scheme.a0 - obj.sx - obj.sy;
+            elseif strcmp(side, 'west')
+                a0 = - obj.scheme.a0 - obj.sx + obj.sy;
+            else
+               error('not valid side to get corner coefficient'); 
+            end
+                
+        end
+        
+        function as = corner_as(obj)
+            obj.h; % dummy instruction to erase warning
+            as = 1;
+        end        
     end
     
     methods (Access = private)     
@@ -33,18 +60,16 @@ classdef ExactSommerfeld2D
             s0 =  2 * 1i * sin(f_h(obj.beta) * obj.h);   
         end        
         
-        function obj = check_param( obj, h, beta, theta )                                 
+        function obj = check_param( obj, h, theta, scheme )                                 
             p = inputParser;           
             
             addRequired(p, 'h', @isnumeric);   
             addRequired(p, 'beta', @isnumeric);     
             addRequired(p, 'theta', @isnumeric);
+            addRequired(p, 'scheme', ...
+                @(x)validateattributes( x, 'ExactScheme2D', {'nonempty'})); 
             
-            parse( p, h, beta, theta);            
-            
-            obj.h = h;
-            obj.beta = beta;
-            obj.theta = theta;
+            parse( p, h, theta, scheme);                        
         end        
     end
     

@@ -16,7 +16,7 @@ classdef TestDirichlet  < matlab.unittest.TestCase
             param.n = (param.b - param.a)/param.h + 1;
 
             % dirichlet function
-            param.dirichlet = @(x,y) helm_sol1( x, y, param.k );            
+            param.dirichlet = @(x,y) helm_sol1_2D( x, y, param.k );            
             param.dirichlet = DirichletBuilder( param );
             
 %             param
@@ -27,7 +27,7 @@ classdef TestDirichlet  < matlab.unittest.TestCase
             
             % build a matrix with just the helm func value on border and
             % zeros elswhere
-            An = helm_sol1( X, Y, param.k );
+            An = helm_sol1_2D( X, Y, param.k );
             An(2:param.m+1, 2:param.n+1) = 0;
             
             % we build a similar matrix but withe the dirichlet builder

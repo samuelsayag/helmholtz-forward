@@ -24,6 +24,18 @@ classdef Ord2ndSommerfeld2D
             sy =  obj.s0;   
         end 
         
+        function a0 = corner_a0(side)        
+            possible = {'north', 'east', 'south', 'west'};
+            if strcmp(side, possible)
+                bh = obj.beta * obj.h;
+                a0 = -2 + 1/2 * (bh).^2 + 1i * sqrt(2) * bh; 
+            end
+        end
+        
+        function as = corner_as(obj)
+            obj.h; % dummy instruction to erase warning
+            as = 1;
+        end         
     end
     
     methods (Access = private)     

@@ -3,6 +3,10 @@ classdef BasicScheme
     %9-point stencil scheme (which may be specialized in a 5-point
     %scheme).
     
+    properties (SetAccess = private)
+       dir_dir = {'dirichlet', 'dirichlet'}
+    end
+    
     properties (SetAccess = public)
         % An instance of a scheme object that expose parameter of the
         % scheme in the form : A0 u_ij + As sig_s + Ac sig_c = 0
@@ -116,28 +120,64 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            [c_A, v_A, c_b, v_b] = obj.ne_pt_dir( i, j );        
+            t = all(strcmp({obj.param.north, obj.param.east}, ...
+                obj.dir_dir));
+            if t % all dirichlet
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_dir( i, j );            
+            elseif ~t % all sommerfeld
+            elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_som_dir( obj, i, j );
+            else % dir_som
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_dir_som( obj, i, j );
+            end        
         end
                 
         function [c_A, v_A, c_b, v_b] = se_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            [c_A, v_A, c_b, v_b] = obj.se_pt_dir( i, j );                    
+            t = all(strcmp({obj.param.south, obj.param.east}, ...
+                obj.dir_dir));
+            if t % all dirichlet
+                [c_A, v_A, c_b, v_b] = obj.se_pt_dir( i, j );                    
+            elseif ~t % all sommerfeld
+            elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
+                [c_A, v_A, c_b, v_b] = obj.se_pt_som_dir( obj, i, j );
+            else % dir_som
+                [c_A, v_A, c_b, v_b] = obj.se_pt_dir_som( obj, i, j );
+            end            
         end        
         
         function [c_A, v_A, c_b, v_b] = sw_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            [c_A, v_A, c_b, v_b] = obj.sw_pt_dir( i, j );                    
+            t = all(strcmp({obj.param.south, obj.param.west}, ...
+                obj.dir_dir));
+            if t % all dirichlet
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_dir( i, j );                                    
+            elseif ~t % all sommerfeld
+            elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_som_dir( obj, i, j );
+            else % dir_som
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_dir_som( obj, i, j );
+            end                        
         end
         
         function [c_A, v_A, c_b, v_b] = nw_pt( obj, i, j )
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            [c_A, v_A, c_b, v_b] = obj.nw_pt_dir( i, j );                    
+            t = all(strcmp({obj.param.north, obj.param.west}, ...
+                obj.dir_dir));
+            if t % all dirichlet
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_dir( i, j );                                    
+            elseif ~t % all sommerfeld
+            elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_som_dir( obj, i, j );
+            else % dir_som
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_dir_som( obj, i, j );
+            end                                    
         end
         
     end
@@ -575,7 +615,7 @@ classdef BasicScheme
                 + obj.scheme.ac * obj.dir_ne(i,j)....
                 + obj.scheme.as * obj.dir_e(i,j)....
                 + obj.scheme.ac * obj.dir_se(i,j) ); 
-        end
+        end        
         
         function [v_A, v_b] = se_pt_value_dirichlet( obj, i, j )
             % provide the NE side stencil points value + dirichlet
@@ -636,6 +676,102 @@ classdef BasicScheme
                 + obj.scheme.as * obj.dir_n(i,j)...
                 + obj.scheme.ac * obj.dir_ne(i,j) );             
         end                
+
+        function [v_b] = n_half_ne_corner_dirichlet( obj, i, j )
+            % The north half of the north east corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_nw(i,j)...
+                + obj.scheme.as * obj.dir_n(i,j) ...
+                + obj.scheme.ac * obj.dir_ne(i,j) ); 
+        end        
+
+        function [v_b] = e_half_ne_corner_dirichlet( obj, i, j )
+            % The east half of the north east corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_ne(i,j)....
+                + obj.scheme.as * obj.dir_e(i,j)....
+                + obj.scheme.ac * obj.dir_se(i,j) ); 
+        end        
+        
+        function [v_b] = e_half_se_corner_dirichlet( obj, i, j )
+            % The east half of the south east corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_ne(i,j)...
+                + obj.scheme.as * obj.dir_e(i,j)...
+                + obj.scheme.ac * obj.dir_se(i,j) );             
+        end
+        
+        function [v_b] = s_half_se_corner_dirichlet( obj, i, j )
+            % The south half of the south east corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_se(i,j) ...
+                + obj.scheme.as * obj.dir_s(i,j)...
+                + obj.scheme.ac * obj.dir_sw(i,j) );             
+        end
+        
+        function [v_b] = s_half_sw_corner_dirichlet( obj, i, j )
+            % The south half of the south west corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_sw(i,j)...
+                + obj.scheme.as * obj.dir_s(i,j)...
+                + obj.scheme.ac * obj.dir_se(i,j) );            
+        end
+        
+        function [v_b] = w_half_sw_corner_dirichlet( obj, i, j )
+            % The west half of the south west corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_nw(i,j)...
+                + obj.scheme.as * obj.dir_w(i,j)...
+                + obj.scheme.ac * obj.dir_sw(i,j) );            
+        end
+        
+        function [v_b] = w_half_nw_cornet_dirichlet( obj, i, j )
+            % The west half of the north west corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_sw(i,j)...
+                + obj.scheme.as * obj.dir_w(i,j)...
+                + obj.scheme.ac * obj.dir_nw(i,j) );             
+        end                
+        
+        function [v_b] = n_half_nw_cornet_dirichlet( obj, i, j )
+            % The west half of the north west corner is provided here as a
+            % dirichlet boundary.
+            % return:
+            %   v_b: the coeff value in the vector b        
+            
+            % value is dirichlet for other point 
+            v_b = -( obj.scheme.ac * obj.dir_nw(i,j)...
+                + obj.scheme.as * obj.dir_n(i,j)...
+                + obj.scheme.ac * obj.dir_ne(i,j) );             
+        end                        
         
         function [c_A, v_A, c_b, v_b] = n_pt_som( obj, i, j )
             c_A = obj.n_pt_coordinate( i, j );
@@ -704,6 +840,106 @@ classdef BasicScheme
             % No dirichlet the b vector receive 0
             v_b = 0;
         end        
+        
+        function [v_A, v_b] = ne_pt_value_som( obj )
+            % provide the north side stencil points value + sommerfeld
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.ne_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end        
+        
+        function [v_A, v_b] = se_pt_value_som( obj )
+            % provide the north side stencil points value + sommerfeld
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.se_pt();                        
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end
+        
+        function [v_A, v_b] = sw_pt_value_som( obj )
+            % provide the north side stencil points value + sommerfeld
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.sw_pt();                                    
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end
+        
+        function [v_A, v_b] = nw_pt_value_som( obj )
+            % provide the north side stencil points value + sommerfeld
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            v_A = obj.sommerfeld.nw_pt();                                    
+            % No dirichlet the b vector receive 0
+            v_b = 0;
+        end        
+                
+        function [c_A, v_A, c_b, v_b] = ne_pt_som_dir( obj, i, j )
+            c_A = obj.ne_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.n_half_ne_pt();
+            v_b = obj.e_half_ne_corner_dirichlet();            
+        end
+        
+        function [c_A, v_A, c_b, v_b] = ne_pt_dir_som( obj, i, j )
+            c_A = obj.ne_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.e_half_ne_pt();
+            v_b = obj.n_half_ne_corner_dirichlet();
+        end        
+                
+        function [c_A, v_A, c_b, v_b] = se_pt_som_dir( obj, i, j )
+            c_A = obj.se_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.s_half_se_pt();
+            v_b = obj.e_half_se_corner_dirichlet();
+        end           
+    
+        function [c_A, v_A, c_b, v_b] = se_pt_dir_somm( obj, i, j )
+            c_A = obj.se_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.e_half_se_pt();
+            v_b = obj.s_half_se_corner_dirichlet();
+        end        
+            
+        function [c_A, v_A, c_b, v_b] = sw_pt_som_dir( obj, i, j )
+            c_A = obj.sw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.s_half_sw_pt();
+            v_b = obj.w_half_sw_corner_dirichlet();
+        end         
+            
+        function [c_A, v_A, c_b, v_b] = sw_pt_dir_somm( obj, i, j )
+            c_A = obj.sw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.w_half_sw_pt();
+            v_b = obj.s_half_sw_corner_dirichlet();
+        end         
+            
+        function [c_A, v_A, c_b, v_b] = nw_pt_som_dir( obj, i, j )
+            c_A = obj.nw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.n_half_nw_pt();
+            v_b = obj.w_half_nw_corner_dirichlet();
+        end         
+            
+        function [c_A, v_A, c_b, v_b] = nw_pt_dir_somm( obj, i, j )
+            c_A = obj.nw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.w_half_nw_pt();
+            v_b = obj.n_half_nw_corner_dirichlet();
+        end                         
         
         function obj = check_param(obj, param, scheme)
             p = inputParser;
