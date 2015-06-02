@@ -21,7 +21,7 @@ param.n = (param.b - param.a)/param.h + 1;
 param.dirichlet = @(x,y) theor( x, y, param.k );
 scheme = Ord2ndHelmholtz2D(param.k, param.h);
 param.east = 'sommerfeld';
-beta = sqrt(param.k.^2 - pi.^2);
+beta.x = sqrt(param.k.^2 - pi.^2);
 sommerfeld = Ord2ndSommerfeld2D( param.h, beta);
 
 % define the solver

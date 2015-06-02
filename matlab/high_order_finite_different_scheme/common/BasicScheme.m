@@ -125,6 +125,7 @@ classdef BasicScheme
             if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.ne_pt_dir( i, j );            
             elseif ~any(t) % all sommerfeld
+                [c_A, v_A, c_b, v_b] = obj.ne_pt_som_som( i, j );
             elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
                 [c_A, v_A, c_b, v_b] = obj.ne_pt_som_dir( i, j );
             else % dir_som
@@ -141,6 +142,7 @@ classdef BasicScheme
             if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.se_pt_dir( i, j );                    
             elseif ~any(t) % all sommerfeld
+                [c_A, v_A, c_b, v_b] = obj.se_pt_som_som( i, j );                
             elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
                 [c_A, v_A, c_b, v_b] = obj.se_pt_som_dir( i, j );
             else % dir_som
@@ -157,6 +159,7 @@ classdef BasicScheme
             if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.sw_pt_dir( i, j );                                    
             elseif ~any(t) % all sommerfeld
+                [c_A, v_A, c_b, v_b] = obj.sw_pt_som_som( i, j );                
             elseif strcmp(obj.param.south, 'sommerfeld') % som_dir
                 [c_A, v_A, c_b, v_b] = obj.sw_pt_som_dir( i, j );
             else % dir_som
@@ -173,6 +176,7 @@ classdef BasicScheme
             if all(t) % all dirichlet
                 [c_A, v_A, c_b, v_b] = obj.nw_pt_dir( i, j );                                    
             elseif ~any(t) % all sommerfeld
+                [c_A, v_A, c_b, v_b] = obj.nw_pt_som_som( i, j );                
             elseif strcmp(obj.param.north, 'sommerfeld') % som_dir
                 [c_A, v_A, c_b, v_b] = obj.nw_pt_som_dir( i, j );
             else % dir_som
@@ -562,7 +566,6 @@ classdef BasicScheme
             c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
             c_A(3) = obj.lin_lab(l, obj.lab_w(i,j)); % west point
             c_A(4) = obj.lin_lab(l, obj.lab_nw(i,j)); % north west point
-
         end
         
         function [c_A, c_b] = sw_pt_coordinate( obj, i, j )
@@ -577,8 +580,7 @@ classdef BasicScheme
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_n(i,j)); % north point
             c_A(3) = obj.lin_lab(l, obj.lab_ne(i,j)); % north east point
-            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
-            
+            c_A(4) = obj.lin_lab(l, obj.lab_e(i,j)); % east point            
         end
         
         function [c_A, c_b] = nw_pt_coordinate( obj, i, j )
@@ -593,8 +595,7 @@ classdef BasicScheme
             c_A(1) = obj.lin_lab(l, l); % central point            
             c_A(2) = obj.lin_lab(l, obj.lab_e(i,j)); % east point
             c_A(3) = obj.lin_lab(l, obj.lab_se(i,j)); % south east point
-            c_A(4) = obj.lin_lab(l, obj.lab_s(i,j)); % south point
-            
+            c_A(4) = obj.lin_lab(l, obj.lab_s(i,j)); % south point            
         end
         
         function [v_A, v_b] = ne_pt_value_dirichlet( obj, i, j )
@@ -840,51 +841,7 @@ classdef BasicScheme
             % No dirichlet the b vector receive 0
             v_b = 0;
         end        
-        
-        function [v_A, v_b] = ne_pt_value_som( obj )
-            % provide the north side stencil points value + sommerfeld
-            % return:
-            %   v_A: the coeff value of the different stencil points
-            %   in the matrix A
-            %   v_b: the coeff value in the vector b
-            v_A = obj.sommerfeld.ne_pt();            
-            % No dirichlet the b vector receive 0
-            v_b = 0;
-        end        
-        
-        function [v_A, v_b] = se_pt_value_som( obj )
-            % provide the north side stencil points value + sommerfeld
-            % return:
-            %   v_A: the coeff value of the different stencil points
-            %   in the matrix A
-            %   v_b: the coeff value in the vector b
-            v_A = obj.sommerfeld.se_pt();                        
-            % No dirichlet the b vector receive 0
-            v_b = 0;
-        end
-        
-        function [v_A, v_b] = sw_pt_value_som( obj )
-            % provide the north side stencil points value + sommerfeld
-            % return:
-            %   v_A: the coeff value of the different stencil points
-            %   in the matrix A
-            %   v_b: the coeff value in the vector b
-            v_A = obj.sommerfeld.sw_pt();                                    
-            % No dirichlet the b vector receive 0
-            v_b = 0;
-        end
-        
-        function [v_A, v_b] = nw_pt_value_som( obj )
-            % provide the north side stencil points value + sommerfeld
-            % return:
-            %   v_A: the coeff value of the different stencil points
-            %   in the matrix A
-            %   v_b: the coeff value in the vector b
-            v_A = obj.sommerfeld.nw_pt();                                    
-            % No dirichlet the b vector receive 0
-            v_b = 0;
-        end        
-                
+                        
         function [c_A, v_A, c_b, v_b] = ne_pt_som_dir( obj, i, j )
             c_A = obj.ne_pt_coordinate( i, j );            
             c_b = obj.dirichlet_coordinate( i, j );            
@@ -939,7 +896,59 @@ classdef BasicScheme
             c_b = obj.dirichlet_coordinate( i, j );            
             v_A = obj.sommerfeld.w_half_nw_pt();
             v_b = obj.n_half_nw_corner_dirichlet( i, j );
-        end                         
+        end                                 
+                
+        function [c_A, v_A, c_b, v_b] = ne_pt_som_som( obj, i, j )
+            % provide the north east corner sommerfeld coefficient
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            c_A = obj.ne_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.ne_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;              
+        end        
+                        
+        function [c_A, v_A, c_b, v_b] = se_pt_som_som( obj, i, j )
+            % provide the south east corner sommerfeld coefficient
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            c_A = obj.se_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.se_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;              
+        end
+                
+        function [c_A, v_A, c_b, v_b] = sw_pt_som_som( obj, i, j )
+            % provide the south west corner sommerfeld coefficient
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            c_A = obj.sw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.sw_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;              
+        end
+                
+        function [c_A, v_A, c_b, v_b] = nw_pt_som_som( obj, i, j )
+            % provide the north west corner sommerfeld coefficient
+            % return:
+            %   v_A: the coeff value of the different stencil points
+            %   in the matrix A
+            %   v_b: the coeff value in the vector b
+            c_A = obj.nw_pt_coordinate( i, j );            
+            c_b = obj.dirichlet_coordinate( i, j );            
+            v_A = obj.sommerfeld.nw_pt();            
+            % No dirichlet the b vector receive 0
+            v_b = 0;              
+        end
         
         function obj = check_param(obj, param, scheme)
             p = inputParser;

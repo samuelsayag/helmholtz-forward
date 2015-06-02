@@ -23,7 +23,7 @@ param.n = (param.b - param.a)/param.h + 1;
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
 scheme = Ord6thHelmholtz2D(param.k, param.h);
 param.east = 'sommerfeld';
-beta = - param.k * cos(theta);
+beta.x = - param.k * cos(theta);
 sommerfeld = Ord6thSommerfeld2D( param.h, beta);
 
 % define the solver

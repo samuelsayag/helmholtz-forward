@@ -139,9 +139,40 @@ classdef BasicSommScheme
                 obj.scheme.ac * obj.sommerfeld.sy; % east point
             v_A(3) = 2 * obj.scheme.ac; % south east point
             v_A(4) = 2 * obj.scheme.as; % south point            
-        end                 
+        end
+        function v_A = ne_pt(obj)
+            v_A = zeros(4,1);
+            v_A(1) = obj.sommerfeld.corner_a0('north'); % central point            
+            v_A(2) = obj.sommerfeld.corner_as(); % south point
+            v_A(3) = 0; % south west point
+            v_A(4) = obj.sommerfeld.corner_as(); % west point    
+        end
+
+        function v_A = se_pt(obj)
+            v_A = zeros(4,1);
+            v_A(1) = obj.sommerfeld.corner_a0('east'); % central point            
+            v_A(2) = obj.sommerfeld.corner_as(); % north point
+            v_A(3) = obj.sommerfeld.corner_as(); % west point
+            v_A(4) = 0; % north west point    
+        end
+
+        function v_A = sw_pt(obj)
+            v_A = zeros(4,1);                                    
+            v_A(1) = obj.sommerfeld.corner_a0('south'); % central point            
+            v_A(2) = obj.sommerfeld.corner_as(); % north point
+            v_A(3) = 0; % north east point
+            v_A(4) = obj.sommerfeld.corner_as(); % east point    
+        end
+
+        function v_A = nw_pt(obj)
+            v_A = zeros(4,1);
+            v_A(1) = obj.sommerfeld.corner_a0('west'); % central point            
+            v_A(2) = obj.sommerfeld.corner_as(); % east point
+            v_A(3) = 0; % south east point
+            v_A(4) = obj.sommerfeld.corner_as(); % south point    
+        end            
     end
-    
+
     methods ( Access = private )
         
         function obj = check_param(obj, scheme, sommerfeld)                                 

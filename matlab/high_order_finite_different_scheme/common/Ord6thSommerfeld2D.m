@@ -17,28 +17,40 @@ classdef Ord6thSommerfeld2D
         end
         
         function sx = sx( obj )
-            sx =  obj.s0;   
+            sx =  obj.s0(obj.beta.x);   
         end
         
         function sy = sy( obj )
-            sy =  obj.s0;   
+            sy =  obj.s0(obj.beta.y);   
         end 
         
     end
     
     methods (Access = private)     
         
-        function s0 = s0(obj)
-            s0 = 2 * 1i * obj.beta * obj.h * ( 1 ...
-                - (obj.beta * obj.h).^2/6 ...
-                + (obj.beta * obj.h).^4/120 );  
+        function s0 = s0(obj, beta)
+            s0 = 2 * 1i * beta * obj.h * ( 1 ...
+                - (beta * obj.h).^2/6 ...
+                + (beta * obj.h).^4/120 );  
         end        
         
         function obj = check_param(obj, h, beta )                                 
             p = inputParser;           
             
             addRequired(p, 'h', @isnumeric);   
-            addRequired(p, 'beta', @isnumeric);     
+            function res = valide_beta(beta)
+                validateattributes( beta, {'struct'}, {'nonempty'});
+                resx = isfield(beta, 'x');
+                if resx
+                    validateattributes( beta.x, {'numeric'}, {'nonempty'});
+                end
+                resy = isfield(beta, 'y');
+                if resy
+                    validateattributes( beta.y, {'numeric'}, {'nonempty'});                
+                end
+                res = resx || resy;
+            end
+            addRequired(p, 'beta', @(x)valide_beta(x));     
             
             parse( p, h, beta );            
             

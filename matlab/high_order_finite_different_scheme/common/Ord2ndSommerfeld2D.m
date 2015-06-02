@@ -11,17 +11,18 @@ classdef Ord2ndSommerfeld2D
         function obj = Ord2ndSommerfeld2D( h, beta )
         % Ord2ndSommerfeld2D
         % h: the the step of the grid
-        % beta: parameter of the formula (pi - k^2 for instance)
+        % beta_x: the parameter such that du_x/dx + i * beta_x = 0
+        % beta_y: the parameter such that du_x/dx + i * beta_y = 0                    
             narginchk(2, 2)
             obj = obj.check_param( h, beta);            
         end
         
         function sx = sx( obj )
-            sx =  obj.s0;   
+            sx =  obj.s0(obj.beta.x);   
         end
         
         function sy = sy( obj )
-            sy =  obj.s0;   
+            sy =  obj.s0(obj.beta.y);   
         end 
         
         function a0 = corner_a0(side)        
@@ -40,15 +41,28 @@ classdef Ord2ndSommerfeld2D
     
     methods (Access = private)     
         
-        function s0 = s0(obj)
-            s0 = 2 * 1i * obj.beta * obj.h ;   
+        function s0 = s0(obj, beta)
+            s0 = 2 * 1i * beta * obj.h ;   
         end        
         
         function obj = check_param(obj, h, beta)                                 
             p = inputParser;           
             
             addRequired(p, 'h', @isnumeric);   
-            addRequired(p, 'beta', @isnumeric);     
+            
+            function res = valide_beta(beta)
+                validateattributes( beta, {'struct'}, {'nonempty'});
+                resx = isfield(beta, 'x');
+                if resx
+                    validateattributes( beta.x, {'numeric'}, {'nonempty'});
+                end
+                resy = isfield(beta, 'y');
+                if resy
+                    validateattributes( beta.y, {'numeric'}, {'nonempty'});                
+                end
+                res = resx || resy;
+            end
+            addRequired(p, 'beta', @(x)valide_beta(x));     
             
             parse( p, h, beta );            
             
