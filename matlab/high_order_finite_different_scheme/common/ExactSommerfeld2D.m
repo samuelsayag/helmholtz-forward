@@ -35,13 +35,13 @@ classdef ExactSommerfeld2D
             % depend on the type of side (N= NE, E=SE, S=SW, W=NW if the
             % convention is to turn always clockwise)           
             if strcmp(side, 'north')
-                a0 = - obj.scheme.a0 + obj.sx + obj.sy;
+                a0 = - obj.scheme.a0 + 2*obj.sx + 2*obj.sy;
             elseif strcmp(side, 'east')
-                a0 = - obj.scheme.a0 + obj.sx - obj.sy;
+                a0 = - obj.scheme.a0 + 2*obj.sx - 2*obj.sy;
             elseif strcmp(side, 'south')
-                a0 = - obj.scheme.a0 - obj.sx - obj.sy;
+                a0 = - obj.scheme.a0 - 2*obj.sx - 2*obj.sy;
             elseif strcmp(side, 'west')
-                a0 = - obj.scheme.a0 - obj.sx + obj.sy;
+                a0 = - obj.scheme.a0 - 2*obj.sx + 2*obj.sy;
             else
                error('not valid side to get corner coefficient'); 
             end
@@ -50,7 +50,7 @@ classdef ExactSommerfeld2D
         
         function as = corner_as(obj)
             obj.h; % dummy instruction to erase warning
-            as = 1;
+            as = -2;
         end        
     end
     
