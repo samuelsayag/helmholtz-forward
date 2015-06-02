@@ -30,7 +30,7 @@ classdef ExactSommerfeld2D
             sy =  obj.s0( @(x) x * sin(obj.theta) );   
         end
         
-        function a0 = corner_a0(side)
+        function a0 = corner_a0(obj, side)
             % the coefficient of the sommerfeld corner in the exact scheme
             % depend on the type of side (N= NE, E=SE, S=SW, W=NW if the
             % convention is to turn always clockwise)           
