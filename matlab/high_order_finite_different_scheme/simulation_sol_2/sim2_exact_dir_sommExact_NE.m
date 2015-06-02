@@ -22,7 +22,8 @@ param.n = (param.b - param.a)/param.h + 1;
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
 scheme = ExactScheme2D(param.k, param.h);
-param.south = 'sommerfeld';
+param.north = 'sommerfeld';
+param.east = 'sommerfeld';
 beta = -param.k;
 sommerfeld = ExactSommerfeld2D( param.h, beta, theta, scheme);
 

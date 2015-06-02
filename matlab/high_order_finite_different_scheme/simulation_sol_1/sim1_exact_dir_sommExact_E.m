@@ -23,7 +23,7 @@ scheme = ExactScheme2D(param.k, param.h);
 
 theta = acos(-(-sqrt(param.k.^2 - pi.^2)/param.k));
 param.east = 'sommerfeld';
-sommerfeld = ExactSommerfeld2D( param.h, param.k, theta);
+sommerfeld = ExactSommerfeld2D( param.h, param.k, theta, scheme);
 
 % define the solver
 solver = @(A, b) A\b;

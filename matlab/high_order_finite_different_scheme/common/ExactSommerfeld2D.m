@@ -17,7 +17,7 @@ classdef ExactSommerfeld2D
             narginchk(4, 4)
             obj = obj.check_param( h, k, theta, scheme);            
             obj.h = h;
-            obj.beta = theta;
+            obj.beta = k;
             obj.theta = theta;
             obj.scheme = scheme;
         end
@@ -60,18 +60,19 @@ classdef ExactSommerfeld2D
             s0 =  2 * 1i * sin(f_h(obj.beta) * obj.h);   
         end        
         
-        function obj = check_param( obj, h, theta, scheme )                                 
+        function obj = check_param( obj, h, beta, theta, scheme )                                 
             p = inputParser;           
             
             addRequired(p, 'h', @isnumeric);   
             addRequired(p, 'beta', @isnumeric);     
             addRequired(p, 'theta', @isnumeric);
+            schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
+                            'Ord6thHelmholtz2D', 'ExactScheme2D'};            
             addRequired(p, 'scheme', ...
-                @(x)validateattributes( x, 'ExactScheme2D', {'nonempty'})); 
+                @(x)validateattributes( x, schemes, {'nonempty'})); 
             
-            parse( p, h, theta, scheme);                        
+            parse( p, h, beta, theta, scheme);                        
         end        
     end
     
 end
-

@@ -24,7 +24,7 @@ param.dirichlet = @(x,y) theor( x, y, param.k , theta);
 scheme = ExactScheme2D(param.k, param.h);
 param.north = 'sommerfeld';
 beta = -param.k;
-sommerfeld = ExactSommerfeld2D( param.h, beta, theta);
+sommerfeld = ExactSommerfeld2D( param.h, beta, theta, scheme);
 
 % define the solver
 solver = @(A, b) A\b;
