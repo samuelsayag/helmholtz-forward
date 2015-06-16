@@ -19,21 +19,21 @@ sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
 sim_param.c = 0;
-sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
-sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
+sim_param.m = (sim_param.b - sim_param.a)./sim_param.h + 1;
+sim_param.n = (sim_param.d - sim_param.c)./sim_param.h + 1;
 
 sim_param.theta = pi/4;
 
 % dirichlet boundary
 % parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j-1) * params.h);
+    params.theta, (i-1) * params.h, (j-2) * params.h);
 sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
-% sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, i * params.h, (j+1) * params.h);
-% sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, (i+1) * params.h, j * params.h);
+    params.theta, (i-2) * params.h, (j-1) * params.h);
+% params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, (i-1) * params.h, (j) * params.h);
+% params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+%     params.theta, (i) * params.h, (j-1) * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -73,8 +73,8 @@ params = [params, param];
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
 c_k = mat2cell(k', ones(1, d_k));
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+x = linspace(sim_param.a, sim_param.b, sim_param.m);
+y = linspace(sim_param.d, sim_param.c, sim_param.n);
 [X,Y] = meshgrid(x,y);
 
 % calculate the error for each simulation

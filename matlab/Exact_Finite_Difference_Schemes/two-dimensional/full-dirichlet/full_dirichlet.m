@@ -9,11 +9,11 @@ pause on;
 
 % generic parameters of the simulations
 sim_param.h = [0.02];
-k = [10];
+% k = [10];
 % k = [25];
 % k = [150, 100, 70];
 % k = sqrt(2)* [30, 25, 20];
-%k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+k = sqrt(2)* [30, 25, 20, 15, 10, 5];
 % k = sqrt(2)* [30, 25, 20];
 sim_param.a = 0;
 sim_param.b = 1;
@@ -37,32 +37,32 @@ sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,...
 sols = {};
 params = {};
 
-% simu interior std
-sim_param.interior = 'std';
-[ sol, param ] = simulation_k_2D( k, sim_param );
-sols = [sols, sol];
-params = [params, param];
-
-% simu interior NEW
-sim_param.interior = 'new';
-[ sol, param ] = simulation_k_2D( k, sim_param );
-sols = [sols, sol];
-params = [params, param];
-
-% % standard boundary condition
-% % simu interior std, Sommerfeld boundary NEW
+% % simu interior std
 % sim_param.interior = 'std';
-% sim_param.boundary = 'new';
 % [ sol, param ] = simulation_k_2D( k, sim_param );
 % sols = [sols, sol];
 % params = [params, param];
 % 
-% % simu interior NEW, Sommerfeld boundary NEW
+% % simu interior NEW
 % sim_param.interior = 'new';
-% sim_param.boundary = 'new';
 % [ sol, param ] = simulation_k_2D( k, sim_param );
 % sols = [sols, sol];
 % params = [params, param];
+
+% standard boundary condition
+% simu interior std, Sommerfeld boundary NEW
+sim_param.interior = 'std';
+sim_param.boundary = 'std';
+[ sol, param ] = simulation_k_2D( k, sim_param );
+sols = [sols, sol];
+params = [params, param];
+
+% simu interior NEW, Sommerfeld boundary NEW
+sim_param.interior = 'new';
+sim_param.boundary = 'new';
+[ sol, param ] = simulation_k_2D( k, sim_param );
+sols = [sols, sol];
+params = [params, param];
 
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
