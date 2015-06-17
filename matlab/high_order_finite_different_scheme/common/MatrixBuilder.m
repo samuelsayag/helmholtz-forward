@@ -3,7 +3,7 @@ classdef MatrixBuilder
     %instanciate and is responsible for building the matrix and vector b
     %such that : Ax=b with x the solution of the problem.
     
-    properties (SetAccess = public)
+    properties (SetAccess = private)
         scheme; % the basic scheme object
     end
     

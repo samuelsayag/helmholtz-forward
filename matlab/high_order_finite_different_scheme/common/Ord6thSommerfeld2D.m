@@ -24,6 +24,18 @@ classdef Ord6thSommerfeld2D < SommerfeldScheme
             sy =  obj.s0(obj.beta.y);   
         end 
         
+        function a0 = corner_a0(side)        
+            possible = {'north', 'east', 'south', 'west'};
+            if strcmp(side, possible)
+                a0 = 0; 
+            end
+        end
+        
+        function as = corner_as(obj)
+            obj.h; % dummy instruction to erase warning
+            as = 1;
+        end         
+        
     end
     
     methods (Access = private)     

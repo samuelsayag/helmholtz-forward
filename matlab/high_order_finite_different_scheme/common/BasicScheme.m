@@ -7,7 +7,7 @@ classdef BasicScheme
        dir_dir = {'dirichlet', 'dirichlet'}
     end
     
-    properties (SetAccess = public)
+    properties (SetAccess = private)
         % An instance of a scheme object that expose parameter of the
         % scheme in the form : A0 u_ij + As sig_s + Ac sig_c = 0
         % 2012 Erlangga, Turkel - ITERATIVE SCHEMES FOR HIGH ORDER COMPACT 

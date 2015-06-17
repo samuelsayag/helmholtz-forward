@@ -4,14 +4,16 @@ classdef TestOrd2ndSommerfeld2D < matlab.unittest.TestCase
     methods (Test)
         
         function test_sx(testCase)
-            scheme = Ord2ndSommerfeld2D(0.1, 10);
+            beta.x = 10;
+            scheme = Ord2ndSommerfeld2D(0.1, beta);
             t = {'not expected result for coefficient sx. '...
                 'Please recheck the class Ord2ndSommerfeld2D'};
             testCase.verifyEqual(scheme.sx, 2i, strjoin(t));
         end
         
         function test_sy(testCase)
-            scheme = Ord2ndSommerfeld2D(0.1, 10);
+            beta.y = 10;
+            scheme = Ord2ndSommerfeld2D(0.1, beta);
             t = {'not expected result for coefficient sy. '...
                 'Please recheck the class Ord2ndSommerfeld2D'};
             testCase.verifyEqual(scheme.sy, 2i, strjoin(t));

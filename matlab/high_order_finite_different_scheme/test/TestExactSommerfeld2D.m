@@ -7,8 +7,8 @@ classdef TestExactSommerfeld2D < matlab.unittest.TestCase
             h = 0.1;
             k = 10;
             theta = 0;
-            
-            scheme = ExactSommerfeld2D(h, k, theta);
+            somm = Ord2ndHelmholtz2D(k, h);
+            scheme = ExactSommerfeld2D(h, k, theta, somm);
             t = {'not expected result for coefficient sx. '...
                 'Please recheck the class ExactSommerfeld2D'};         
             
@@ -21,7 +21,8 @@ classdef TestExactSommerfeld2D < matlab.unittest.TestCase
             k = 10;
             theta = pi/2;
 
-            scheme = ExactSommerfeld2D(h, k, theta);
+            somm = Ord2ndHelmholtz2D(k, h);
+            scheme = ExactSommerfeld2D(h, k, theta, somm);
             t = {'not expected result for coefficient sy. '...
                 'Please recheck the class ExactSommerfeld2D'};         
             
