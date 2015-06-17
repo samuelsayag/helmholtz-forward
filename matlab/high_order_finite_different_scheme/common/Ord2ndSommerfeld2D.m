@@ -1,4 +1,4 @@
-classdef Ord2ndSommerfeld2D
+classdef Ord2ndSommerfeld2D < SommerfeldScheme
     %ORD2NDSOMMERFELD2D Summary of this class goes here
     %   Detailed explanation goes here
     

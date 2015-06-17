@@ -1,4 +1,4 @@
-classdef ExactScheme2D
+classdef ExactScheme2D  < CentralScheme
     %EXACTSCHEME2D This class contain the code for the so called exacte
     %scheme the appear in two of the following articles.
     %

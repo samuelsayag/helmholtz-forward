@@ -1,4 +1,4 @@
-classdef ExactSommerfeld2D
+classdef ExactSommerfeld2D < SommerfeldScheme
     %EXACTSOMMERFELD2D Summary of this class goes here
     %   Detailed explanation goes here
     
