@@ -3,11 +3,11 @@
 % 1D and 2D problem.
 % These simulations are for the 2D problem
 %==========================================================================
-close all; clear all; clc;
+close all; clear variables; clc;
 addpath(genpath('..\..\..\..\matlab'));
 
 % generic parameters of the simulations
-sim_param.h = [0.2];
+sim_param.h = [0.02];
 angle_div = 20;
 theta = pi/2 * 1/angle_div * linspace(0, angle_div, angle_div + 1);
 d_theta =size(theta,2);
@@ -17,21 +17,21 @@ sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
 sim_param.c = 0;
-sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
-sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
+sim_param.m = (sim_param.b - sim_param.a)./sim_param.h + 1;
+sim_param.n = (sim_param.d - sim_param.c)./sim_param.h + 1;
 sim_param.interior = 'new';
 sim_param.boundary = 'new';
 
 % dirichlet boundary
 % parameters necessary to compute boundary points
 S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j-1) * params.h);
+    params.theta, (i-1) * params.h, (j-2) * params.h);
 W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
+    params.theta, (i-2) * params.h, (j-1) * params.h);
 N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j+1) * params.h);
+    params.theta, (i-1) * params.h, (j) * params.h);
 E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i+1) * params.h, j * params.h);
+    params.theta, (i) * params.h, (j-1) * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -84,8 +84,8 @@ elapsed
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
 res_theta = mat2cell(theta', ones(1, d_theta));
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+x = linspace(sim_param.a, sim_param.b, sim_param.m);
+y = linspace(sim_param.d, sim_param.c, sim_param.n);
 [X,Y] = meshgrid(x,y);
 
 % calculate the error for each simulation
@@ -135,7 +135,7 @@ end
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 cptFigure = 1;
 
-for i = 1:dimTheta
+for i = 1:size(theta, 2)
     figure(cptFigure);        
     k = mod(i-1, 6) + 1;
     subplot(2, 3, k)
