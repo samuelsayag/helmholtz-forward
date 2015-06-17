@@ -1,4 +1,4 @@
-close all; clear variables; clc;
+close all; clear variables; clc;format shortE;
 % the step size we want to try
 h = [1e-1, 5e-2, 1e-2, 5e-3, 1e-3]';
 
@@ -15,8 +15,6 @@ du_cent = 1/2 * (du_plus + du_moins);
 d3_u = 1./(6 * h) .* (2 * sin(x0 + h) + 3 * sin(x0) - 6 * sin(x0 - h) + sin(x0 - 2 * h));  
 % the "real" function
 du_v = cos(x0);
-
-format long
 
 % display error
 % Note: the order of the error

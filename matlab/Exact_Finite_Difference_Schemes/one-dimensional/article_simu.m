@@ -3,7 +3,7 @@
 % 1D and 2D problem.
 % These simulation are for the 1D problem
 %==========================================================================
-close all; clear all; clc;
+close all; clear all; clc;format short;
 addpath(genpath('..\..\..\matlab'));
 h = [1e-2];
 k = [1e1, 3e1, 5e1, 7e1, 1e2, 1.5e2];

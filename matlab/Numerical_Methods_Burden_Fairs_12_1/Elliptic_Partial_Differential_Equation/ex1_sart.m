@@ -1,7 +1,6 @@
-clear;
-clc;
+close all; clear all; clc;format short;
 
-dim = [3, 3];
+dim = [50, 50];
 
 % build the matrix
 [A, b] = build_two_dimensional_problem( dim(1), dim(2),... 
@@ -9,8 +8,8 @@ dim = [3, 3];
     'dirichlet_boundary');
 
 %-------- display some debug info ------------------
-full(A)
-full(b')
+% full(A)
+% full(b')
 % -------- display some debug info ------------------
 tstart = tic;
 
@@ -21,6 +20,15 @@ options.nonneg = true;
 telapsed = toc(tstart);
 %------------------- display some result -----------------------------
 size(x)
-reshape(x, dim)
+sol = transpose(reshape(x, dim));
 numIter
 telapsed
+
+
+x = linspace(0,0.5, 50);
+y = linspace(0.5, 0, 50);
+[X,Y] = meshgrid( x, y );
+mesh(X, Y, sol);
+axis([0 0.5 0 0.5 0 100])
+t4 = sprintf('Heat repartition  R = {(x,y) | 0 < x < 0.5, 0 < y < 0.5}\n u(0,y) = 0, u(x,0) = 0, u(x,0.5) = 200x, and u(0.5,y) = 200y');
+title(t4)
