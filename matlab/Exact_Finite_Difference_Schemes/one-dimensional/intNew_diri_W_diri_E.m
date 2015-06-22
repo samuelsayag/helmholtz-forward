@@ -3,7 +3,7 @@ function [A, b, x, params] = intNew_diriW_diriE()
 % Summary of this function goes here
 %   Detailed explanation goes here
 
-close all; clear all; clc;
+close all; clear variables; clc;
 
 x = [];
 
@@ -12,7 +12,7 @@ params.k = 10;
 params.h = 0.01;
 a = 0;
 b = 1;
-params.m = ((b-a-h)./params.h);
+params.m = ((params.b-params.a-params.h)./params.h);
 params.interior = 'new';
 params.boundary = 'dirichlet';
 params.dirichlet.W = @(params, A, b, i) 1;

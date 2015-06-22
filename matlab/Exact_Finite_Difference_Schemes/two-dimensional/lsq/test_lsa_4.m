@@ -6,11 +6,11 @@
 addpath(genpath('..\..\..\..\matlab'));
 
 % definition of the dirichlet function with the search theta
-s_theta = pi/3;
+s_theta = pi/4;
 p.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    s_theta, i * params.h, (j-1) * params.h);
+    params.theta, (i-1) * params.h, (j-2) * params.h);
 p.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    s_theta, (i-1) * params.h, j * params.h);
+    params.theta, (i-2) * params.h, (j-1) * params.h);
 % p.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
 %     s_theta, i * params.h, (j+1) * params.h);
 % p.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
@@ -24,8 +24,8 @@ p.a = 0;
 p.b = 1;
 p.d = 1;
 p.c = 0;
-p.m = (p.b - p.a)./p.h;
-p.n = (p.d - p.c)./p.h;
+p.m = (p.b - p.a)./p.h+1;
+p.n = (p.d - p.c)./p.h+1;
 p.interior = 'new';
 p.boundary = 'new';
 
@@ -42,7 +42,7 @@ af = @(t) analytic_sol_2D(p.k, t, X, Y);
 % parameter of the non linear least square algorithm
 lsp.theta1 = 0;
 lsp.theta2 = pi/2;
-lsp.na     = 100;
+lsp.na     = 50;
 lsp.pr     = 1e-3;
 
 res = lsa_4(p, af, lsp);

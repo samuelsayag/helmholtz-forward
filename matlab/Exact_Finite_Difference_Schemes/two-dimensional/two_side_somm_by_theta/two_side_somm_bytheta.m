@@ -121,7 +121,7 @@ for i = 1:size(error,2)
     cpt_graph = mod(i-1, nb_col * 2) + 1;
     subplot(2,2,cpt_graph);    
     plot(cos(theta), cell2mat(error(:,i)));
-    title (sprintf('%s', title2{2+i}));
+    title (sprintf('Sommerfeld: %s', title2{2+i}));
     xlabel 'cos(theta)';
     ylabel 'error';    
 end
@@ -133,18 +133,18 @@ end
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % GRAPHICAL REPRESENTATION - BEGIN
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-cptFigure = 1;
-
-for i = 1:size(theta, 2)
-    figure(cptFigure);        
-    k = mod(i-1, 6) + 1;
-    subplot(2, 3, k)
-    plot3(X, Y, real(analytic{i}));        
-    title (sprintf('theta: %0.4f',theta(i)));
-    if k == 6
-        cptFigure = cptFigure + 1;
-    end
-end
+% cptFigure = 1;
+% 
+% for i = 1:size(theta, 2)
+%     figure(cptFigure);        
+%     k = mod(i-1, 6) + 1;
+%     subplot(2, 3, k)
+%     plot3(X, Y, real(analytic{i}));        
+%     title (sprintf('theta: %0.4f',theta(i)));
+%     if k == 6
+%         cptFigure = cptFigure + 1;
+%     end
+% end
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % GRAPHICAL REPRESENTATION - END

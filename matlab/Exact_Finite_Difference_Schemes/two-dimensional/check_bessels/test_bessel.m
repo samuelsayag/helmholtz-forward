@@ -14,18 +14,18 @@ r = cell(8, 5);
 r(1,:) = {'', '', 'J0(kh)', 'J0(kh)', 'J0(kh)'};
 r(2,:) = {'kh', 'k', 'sum [0,pi]', 'exact theta', 'matlab'};
 
-% coef = 1;
+coef = 4;
 for j=1:size(k,2)
     i = j + 2;
     kh = k(j) * h;
     r{i, 1} = kh;
     r{i, 2} = k(j);
-    r{i, 3} = bessel_integral(kh);
-    r{i, 4} = bessel_exact_theta(kh, theta);
-    r{i, 5} = besselj(0, kh);       
-%     r{i, 3} = coef * bessel_integral(kh);
-%     r{i, 4} = coef * bessel_exact_theta(kh, theta);
-%     r{i, 5} = coef * besselj(0, kh);       
+%     r{i, 3} = bessel_integral(kh);
+%     r{i, 4} = bessel_exact_theta(kh, theta);
+%     r{i, 5} = besselj(0, kh);       
+    r{i, 3} = coef * bessel_integral(kh);
+    r{i, 4} = coef * bessel_exact_theta(kh, theta);
+    r{i, 5} = coef * besselj(0, kh);       
 end
 
 r

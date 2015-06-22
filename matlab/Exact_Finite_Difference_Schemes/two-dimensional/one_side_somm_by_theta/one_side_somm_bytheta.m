@@ -3,7 +3,7 @@
 % 1D and 2D problem.
 % These simulations are for the 2D problem
 %==========================================================================
-close all; clear all; clc;
+close all; clear variables; clc;
 addpath(genpath('..\..\..\..\matlab'));
 
 % generic parameters of the simulations
@@ -25,13 +25,14 @@ sim_param.boundary = 'new';
 % dirichlet boundary
 % parameters necessary to compute boundary points
 S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j-1) * params.h);
+    params.theta, (i-1) * params.h, (j-2) * params.h);
 W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
+    params.theta, (i-2) * params.h, (j-1) * params.h);
 N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j+1) * params.h);
+    params.theta, (i-1) * params.h, (j) * params.h);
 E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i+1) * params.h, j * params.h);
+    params.theta, (i) * params.h, (j-1) * params.h);
+
 
 % declaration of solution structures
 sols = {};

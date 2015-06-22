@@ -6,7 +6,7 @@
 %close all; clear all; clc;
 
 % define the parameter of the solution
-k = 30 * sqrt(2);
+k = 10 * sqrt(2);
 theta = pi/4;
 % define the region we want to have the solution on
 h = 0.01;

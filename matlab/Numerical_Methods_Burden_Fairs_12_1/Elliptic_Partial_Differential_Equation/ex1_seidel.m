@@ -1,6 +1,6 @@
 close all; clear all; clc;format short;
 
-n = 100;
+n = 3;
 dim = [n, n];
 % build the matrix
 [A, b] = build_two_dimensional_problem( dim(1), dim(2),...
@@ -27,6 +27,12 @@ size(x)
 sol = transpose(reshape(x, dim));
 numIter
 telapsed
+
+%-------- display some debug info ------------------
+full(A)
+full(b')
+full(sol)
+%-------- display some debug info ------------------
 
 
 x = linspace(0,0.5, n);

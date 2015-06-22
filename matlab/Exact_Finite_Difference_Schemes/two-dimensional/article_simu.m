@@ -43,7 +43,7 @@ params = [params, param];
 % simu interior NEW, Sommerfeld boundary NEW
 sim_param.interior = 'new';
 sim_param.boundary = 'new';
-sim_param.bessel = @(x) bessel_exact_theta(x, sim_param.theta);
+% sim_param.bessel = @(x) bessel_exact_theta(x, sim_param.theta);
 [ sol, param ] = simulation_k_2D( k, sim_param );
 sols = [sols, sol];
 params = [params, param];

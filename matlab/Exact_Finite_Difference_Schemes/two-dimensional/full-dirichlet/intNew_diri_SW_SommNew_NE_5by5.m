@@ -5,8 +5,8 @@
 
 close all; clear variables; clc;
 
-params.k = 5 * sqrt(2);
-params.h = 0.020;
+params.k = 5;
+params.h = 0.10;
 params.theta = pi/4;
 % parameters of the region
 params.a = 0; 
@@ -20,14 +20,14 @@ params.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,...
     params.theta, (i-1) * params.h, (j-2) * params.h);
 params.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
     params.theta, (i-2) * params.h, (j-1) * params.h);
-% params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, (i-1) * params.h, (j) * params.h);
-% params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-%     params.theta, (i) * params.h, (j-1) * params.h);
+params.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, (i-1) * params.h, (j) * params.h);
+params.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
+    params.theta, (i) * params.h, (j-1) * params.h);
 
 
 params.interior = 'new';
-params.boundary = 'new';
+% params.boundary = 'new';
 % params.bessel = @(x) bessel_exact_theta(x, params.theta);
 params.bessel = @(x) besselj(0, x);
 

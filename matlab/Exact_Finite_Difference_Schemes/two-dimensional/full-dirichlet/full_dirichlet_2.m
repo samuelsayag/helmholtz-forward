@@ -3,7 +3,7 @@
 % 1D and 2D problem.
 % These simulations are for the 2D problem
 %==========================================================================
-close all; clear all; clc;
+close all; clear variables; clc;
 addpath(genpath('..\..\..\matlab'));
 
 % generic parameters of the simulations
@@ -11,7 +11,8 @@ sim_param.h = [0.02];
 % k = [25];
 % k = [150, 100, 70];
 % k = sqrt(2)* [30, 25, 20];
-k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+k = sqrt(2)* [15, 10, 5];
+% k = sqrt(2)* [30, 25, 20, 15, 10, 5];
 d_k = size(k,2);
 
 
@@ -19,21 +20,22 @@ sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
 sim_param.c = 0;
-sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
-sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
+sim_param.m = (sim_param.b - sim_param.a)./sim_param.h+1;
+sim_param.n = (sim_param.d - sim_param.c)./sim_param.h+1;
 
-sim_param.theta = pi/4;
+sim_param.theta = pi/2;
 
 % dirichlet boundary
 % parameters necessary to compute boundary points
+% parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j-1) * params.h);
+    params.theta, (i-1) * params.h, (j-2) * params.h);
 sim_param.dirichlet.W = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i-1) * params.h, j * params.h);
+    params.theta, (i-2) * params.h, (j-1) * params.h);
 sim_param.dirichlet.N = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, i * params.h, (j+1) * params.h);
+    params.theta, (i-1) * params.h, (j) * params.h);
 sim_param.dirichlet.E = @(params, A, b, i, j) analytic_sol_2D(params.k,... 
-    params.theta, (i+1) * params.h, j * params.h);
+    params.theta, (i) * params.h, (j-1) * params.h);
 
 % declaration of solution structures
 sols = {};
@@ -69,8 +71,9 @@ params = [params, param];
 % prepare the meshgrid to calculate the analytic solution or to propose
 % graphical representation of the solutions
 c_k = mat2cell(k', ones(1, d_k));
-x = linspace(1, sim_param.m, sim_param.m) * sim_param.h;
-y = linspace(sim_param.n, 1, sim_param.n) * sim_param.h;
+% analytic solution
+x = linspace(sim_param.a, sim_param.b, sim_param.m);
+y = linspace(sim_param.d, sim_param.c, sim_param.n);
 [X,Y] = meshgrid(x,y);
 
 % calculate the error for each simulation
