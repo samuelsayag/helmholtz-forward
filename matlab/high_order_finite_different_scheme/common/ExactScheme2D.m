@@ -52,13 +52,13 @@ classdef ExactScheme2D  < CentralScheme
         
         function a0 = a0(obj)
         % return A0 coefficient
-            a0 = -4 * obj.bessel(obj.k * obj.h); 
+            a0 = 4 * obj.bessel(obj.k * obj.h); 
         end
         
         function as = as(obj)
         % return the As coefficient
             obj.h; % dummy instruction    
-            as = 1;
+            as = -1;
         end
         
         function ac = ac(obj)

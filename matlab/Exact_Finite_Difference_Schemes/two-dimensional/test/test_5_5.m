@@ -4,10 +4,10 @@ pause on;
 
 % generic parameters of the simulations
 % sim_param.h = 1e-2;
-sim_param.h = 5e-3;
+sim_param.h = 2e-1;
 
-% sim_param.k = [5];
-sim_param.k = [30 * sqrt(2)];
+sim_param.k = [5];
+% sim_param.k = [30 * sqrt(2)];
 
 sim_param.a = 0;
 sim_param.b = 1;

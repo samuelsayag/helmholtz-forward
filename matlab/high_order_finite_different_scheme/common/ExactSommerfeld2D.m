@@ -35,13 +35,13 @@ classdef ExactSommerfeld2D < SommerfeldScheme
             % depend on the type of side (N= NE, E=SE, S=SW, W=NW if the
             % convention is to turn always clockwise)           
             if strcmp(side, 'north')
-                a0 = - obj.scheme.a0 + 2*obj.sx + 2*obj.sy;
+                a0 = obj.scheme.a0 + obj.sx + obj.sy;
             elseif strcmp(side, 'east')
-                a0 = - obj.scheme.a0 + 2*obj.sx - 2*obj.sy;
+                a0 = obj.scheme.a0 + obj.sx - obj.sy;
             elseif strcmp(side, 'south')
-                a0 = - obj.scheme.a0 - 2*obj.sx - 2*obj.sy;
+                a0 = obj.scheme.a0 + obj.sx - obj.sy;
             elseif strcmp(side, 'west')
-                a0 = - obj.scheme.a0 - 2*obj.sx + 2*obj.sy;
+                a0 = obj.scheme.a0 - obj.sx + obj.sy;
             else
                error('not valid side to get corner coefficient'); 
             end
@@ -57,7 +57,7 @@ classdef ExactSommerfeld2D < SommerfeldScheme
     methods (Access = private)     
         
         function s0 = s0( obj, f_h )
-            s0 =  2 * 1i * sin(f_h(obj.beta) * obj.h);   
+            s0 = - 2 * 1i * sin(f_h(obj.beta) * obj.h);   
         end        
         
         function obj = check_param( obj, h, beta, theta, scheme )                                 
