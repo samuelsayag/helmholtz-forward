@@ -9,8 +9,8 @@ theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
 theta = pi/4;
 
 % basic parameter of the simulation
-param.k = 5;
-param.h = 2e-2;
+param.k = 10;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -19,15 +19,18 @@ param.d = 1;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 
-% dirichlet function
+% boundary condition
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
-scheme = ExactScheme2D(param.k, param.h);
+scheme = Ord2ndHelmholtz2D(param.k, param.h);
+param.north = 'sommerfeld';
+beta = - param.k * sin(theta);
+sommerfeld = Ord2ndSommerfeld2D( param.h, beta);
 
 % define the solver
 solver = @(A, b) A\b;
 
 param
-ps = ProblemSolver(param, scheme, solver);
+ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
 
 error = ErrorHandler( param, sol );

@@ -5,9 +5,9 @@
 
 clear variables; close all; clc;
 
-params.k = 50;
-params.h = 1e-2;
-params.theta = pi/3;
+params.k = 5;
+params.h = 2e-2;
+params.theta = pi/4;
 
 % parameters of the region
 params.a = 0; 

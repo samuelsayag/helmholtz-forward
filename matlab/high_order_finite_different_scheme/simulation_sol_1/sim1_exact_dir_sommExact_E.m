@@ -8,7 +8,7 @@ clear variables; close all; clc;
 theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
-param.k = 10;
+param.k = 20;
 param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
@@ -21,7 +21,7 @@ param.n = (param.b - param.a)/param.h + 1;
 param.dirichlet = @(x,y) theor( x, y, param.k );
 scheme = ExactScheme2D(param.k, param.h);
 
-theta = acos(-(-sqrt(param.k.^2 - pi.^2)/param.k));
+theta = acos((-sqrt(param.k.^2 - pi.^2)/param.k));
 param.east = 'sommerfeld';
 sommerfeld = ExactSommerfeld2D( param.h, param.k, theta, scheme);
 

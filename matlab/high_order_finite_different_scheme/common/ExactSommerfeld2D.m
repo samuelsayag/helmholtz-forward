@@ -39,7 +39,7 @@ classdef ExactSommerfeld2D < SommerfeldScheme
             elseif strcmp(side, 'east')
                 a0 = obj.scheme.a0 + obj.sx - obj.sy;
             elseif strcmp(side, 'south')
-                a0 = obj.scheme.a0 + obj.sx - obj.sy;
+                a0 = obj.scheme.a0 - obj.sx - obj.sy;
             elseif strcmp(side, 'west')
                 a0 = obj.scheme.a0 - obj.sx + obj.sy;
             else
