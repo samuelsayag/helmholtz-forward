@@ -4,9 +4,12 @@
 
 clear variables; close all; clc;
 
+% modeled solution
+theor = @(x, y, k) helm_sol1_2D( x, y, k );
+
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.02;
 % definition of the place
 param.a = 0; 
 param.b = 1;
@@ -15,9 +18,8 @@ param.d = 1/2;
 param.m = (param.d - param.c)/param.h + 1;
 param.n = (param.b - param.a)/param.h + 1;
 % boundary functions
-param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
+param.dirichlet = @(x,y) theor( x, y, param.k );
 scheme = Ord4thHelmholtz2D(param.k, param.h, 0);
-solver = @(A, b) A\b;
 
 % define the solver
 solver = @(A, b) A\b;

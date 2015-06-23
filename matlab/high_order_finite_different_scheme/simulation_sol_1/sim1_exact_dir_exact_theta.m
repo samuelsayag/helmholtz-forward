@@ -9,7 +9,7 @@ theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
@@ -20,7 +20,7 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k );
-theta = pi/4; % exact theta calculation
+theta = pi/4;
 scheme = ExactScheme2D(param.k, param.h, theta);
 
 % define the solver

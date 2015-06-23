@@ -9,7 +9,7 @@ theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
 param.k = 10;
-param.h = 0.01;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
