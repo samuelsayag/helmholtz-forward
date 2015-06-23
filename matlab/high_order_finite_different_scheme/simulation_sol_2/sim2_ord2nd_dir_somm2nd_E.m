@@ -9,7 +9,7 @@ theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
 theta = pi/4;
 
 % basic parameter of the simulation
-param.k = 5;
+param.k = 10;
 param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
