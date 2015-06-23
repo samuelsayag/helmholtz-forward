@@ -42,7 +42,7 @@ classdef Ord2ndSommerfeld2D < SommerfeldScheme
     methods (Access = private)     
         
         function s0 = s0(obj, beta)
-            s0 = 2 * 1i * beta * obj.h ;   
+            s0 = - 2 * 1i * beta * obj.h ;   
         end        
         
         function obj = check_param(obj, h, beta)                                 
