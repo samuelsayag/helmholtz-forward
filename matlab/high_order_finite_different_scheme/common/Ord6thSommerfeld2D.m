@@ -16,12 +16,12 @@ classdef Ord6thSommerfeld2D < SommerfeldScheme
             obj = obj.check_param( h, beta );            
         end
         
-        function sx = sx( obj )
-            sx =  obj.s0(obj.beta.x);   
+        function sox = sox( obj )
+            sox =  obj.s0(obj.beta.x);   
         end
         
-        function sy = sy( obj )
-            sy =  obj.s0(obj.beta.y);   
+        function soy = soy( obj )
+            soy =  obj.s0(obj.beta.y);   
         end 
         
         function a0 = corner_a0(side)        
@@ -38,10 +38,22 @@ classdef Ord6thSommerfeld2D < SommerfeldScheme
         
     end
     
+    methods (Static, Access = public )
+        % the coefficient of the point before the central point
+        function sb = sb ()
+           sb = -1; 
+        end 
+        
+        % the  coefficient of the point after the central point
+        function sf = sf ()        
+            sf = 1;
+        end          
+    end  
+    
     methods (Access = private)     
         
         function s0 = s0(obj, beta)
-            s0 = -2 * 1i * beta * obj.h * ( 1 ...
+            s0 = 2 * 1i * beta * obj.h * ( 1 ...
                 - (beta * obj.h).^2/6 ...
                 + (beta * obj.h).^4/120 );  
         end        

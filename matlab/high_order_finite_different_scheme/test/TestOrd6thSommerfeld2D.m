@@ -10,7 +10,7 @@ classdef TestOrd6thSommerfeld2D < matlab.unittest.TestCase
             t = {'not expected result for coefficient sx. '...
                 'Please recheck the class Ord6thSommerfeld2D'};
             coeff = 2 * (1-1/6+1/120) * 1i;
-            testCase.verifyEqual(scheme.sx, coeff, strjoin(t));
+            testCase.verifyEqual(scheme.sox, coeff, strjoin(t));
         end
         
         function test_sy(testCase)
@@ -19,7 +19,7 @@ classdef TestOrd6thSommerfeld2D < matlab.unittest.TestCase
             t = {'not expected result for coefficient sy. '...
                 'Please recheck the class Ord6thSommerfeld2D'};
             coeff = 2 * (1-1/6+1/120) * 1i;
-            testCase.verifyEqual(scheme.sy, coeff, strjoin(t));
+            testCase.verifyEqual(scheme.soy, coeff, strjoin(t));
         end
         
     end   

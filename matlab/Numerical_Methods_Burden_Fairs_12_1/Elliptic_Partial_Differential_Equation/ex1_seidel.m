@@ -1,6 +1,6 @@
 close all; clear variables; clc;format short;
 
-n = 11;
+n = 100;
 dim = [n, n];
 % build the matrix
 [Af, bf] = build_two_dimensional_problem( dim(1), dim(2),...

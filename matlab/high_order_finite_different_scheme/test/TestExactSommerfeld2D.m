@@ -12,8 +12,8 @@ classdef TestExactSommerfeld2D < matlab.unittest.TestCase
             t = {'not expected result for coefficient sx. '...
                 'Please recheck the class ExactSommerfeld2D'};         
             
-            coeff = -2 * 1i *(sin(h * k * cos(theta)));
-            testCase.verifyEqual(scheme.sx, coeff, strjoin(t));
+            coeff = 2 * 1i *(sin(h * k * cos(theta)));
+            testCase.verifyEqual(scheme.sox, coeff, strjoin(t));
         end
         
         function test_sy(testCase)
@@ -26,8 +26,8 @@ classdef TestExactSommerfeld2D < matlab.unittest.TestCase
             t = {'not expected result for coefficient sy. '...
                 'Please recheck the class ExactSommerfeld2D'};         
             
-            coeff = -2 * 1i *(sin(h * k * sin(theta)));
-            testCase.verifyEqual(scheme.sy, coeff, strjoin(t));
+            coeff = 2 * 1i *(sin(h * k * sin(theta)));
+            testCase.verifyEqual(scheme.soy, coeff, strjoin(t));
         end
         
     end   

@@ -12,7 +12,7 @@ theta = pi/4;
 % param.k = 10 * sqrt(2);
 % param.h = 0.02;
 param.k = 5;
-param.h = 0.2;
+param.h = 0.02;
 
 % definition of the area we simulate in it
 param.a = 0; 
@@ -27,7 +27,7 @@ param.dirichlet = @(x,y) theor( x, y, param.k , theta);
 scheme = ExactScheme2D(param.k, param.h);
 param.north = 'sommerfeld';
 param.west = 'sommerfeld';
-beta = param.k;
+beta = - param.k;
 sommerfeld = ExactSommerfeld2D( param.h, beta, theta, scheme);
 
 % define the solver

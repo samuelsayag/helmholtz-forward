@@ -41,7 +41,7 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             b(c_b) = v_b;
             %  full(A) % debug
             label = j + ( param.m - i ) * param.m;  
-            exp_A = [0 0 0 0 0 0 0 1 0 0 0 1 -3 1 0 0 0 1 0 0 0 0 0 0 0];
+            exp_A = [0 0 0 0 0 0 0 -1 0 0 0 -1 3 -1 0 0 0 -1 0 0 0 0 0 0 0];
             exp_b = 0;
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -77,8 +77,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [0 0 1 -3 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
-            exp_b = -5;
+            exp_A = [0 0 -1 3 -1 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
+            exp_b = 5;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -114,8 +114,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 -3 0 0 0 0 1];
-            exp_b = -5;
+            exp_A = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 -1 3 0 0 0 0 -1];
+            exp_b = 5;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -150,8 +150,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 -3 1 0];
-            exp_b = -5;
+            exp_A = [ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 -1 3 -1 0];
+            exp_b = 5;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -186,8 +186,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 -3 1 0 0 0 1 0 0 0 0];
-            exp_b = -5;
+            exp_A = [0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 3 -1 0 0 0 -1 0 0 0 0];
+            exp_b = 5;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -222,8 +222,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [0 0 0 1 -3 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
-            exp_b = -10;
+            exp_A = [0 0 0 -1 3 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
+            exp_b = 10;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -258,8 +258,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 -3];
-            exp_b = -10;
+            exp_A = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 -1 3];
+            exp_b = 10;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -294,8 +294,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 -3 1 0 0 0];
-            exp_b = -10;
+            exp_A = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 3 -1 0 0 0];
+            exp_b = 10;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...
@@ -330,8 +330,8 @@ classdef TestBasicScheme < matlab.unittest.TestCase
             
 %             full(A) % debug
             label = j + ( param.m - i ) * param.m;              
-            exp_A = [-3 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
-            exp_b = -10;
+            exp_A = [3 -1 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0];
+            exp_b = 10;
             
             t = {'matrix A, not expected coefficient at line: ', ...
                 sprintf('%d',label),...

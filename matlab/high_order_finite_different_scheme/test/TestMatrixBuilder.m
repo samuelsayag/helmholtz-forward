@@ -15,7 +15,7 @@ classdef TestMatrixBuilder < matlab.unittest.TestCase
 %             full(A)
 %             full(b)'
             
-            exp_A = [...
+            exp_A = -[...
             -3     1     0     1     0     0     0     0     0;
              1    -3     1     0     1     0     0     0     0; 
              0     1    -3     0     0     1     0     0     0;
@@ -26,7 +26,7 @@ classdef TestMatrixBuilder < matlab.unittest.TestCase
              0     0     0     0     1     0     1    -3     1;
              0     0     0     0     0     1     0     1    -3];
          
-            exp_b = [-10 -5 -10 -5  0 -5 -10 -5 -10]';
+            exp_b = -[-10 -5 -10 -5  0 -5 -10 -5 -10]';
             
             t = {'vector b is not correct ', ...
                 'Please recheck the class MatrixBuilder'};                        

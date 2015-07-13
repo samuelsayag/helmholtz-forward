@@ -3,20 +3,24 @@
 % TO THE EXTERIOR HELMHOLTZ EQUATION
 
 % clear all;
-close all; clc;
+close all; clear variables; clc;
+
+% modeled solution
+theor = @(x, y, k) helm_sol1_2D( x, y, k );
 
 % basic parameter of the simulation
-param.k = 10;
-param.h = 0.01;
+param.k = 30;
 % definition of the place
 param.a = 0; 
 param.b = 1;
 param.c = -1/2; 
 param.d = 1/2;
-param.m = (param.d - param.c)/param.h + 1;
-param.n = (param.b - param.a)/param.h + 1;
+size = 50;
+param.m = size;
+param.n = size;
+param.h = (param.d - param.c)/(param.m-1);
 % dirichlet function
-param.dirichlet = @(x,y) helm_sol1( x, y, param.k );
+param.dirichlet = @(x,y) theor( x, y, param.k );
 scheme = Ord6thHelmholtz2D(param.k, param.h);
 
 % define the solver

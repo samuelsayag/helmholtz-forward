@@ -25,7 +25,7 @@ classdef TestOrd2ndHemholtz2D < matlab.unittest.TestCase
             scheme = Ord2ndHelmholtz2D(testCase.k, testCase.h);
             t = {'not expected result for coefficient as. '...
                 'Please recheck the class Ord2ndHelmholtz2D'};
-            testCase.verifyEqual(scheme.as, 1, strjoin(t));
+            testCase.verifyEqual(scheme.as, -1, strjoin(t));
         end
                 
         function test_ac_coeff(testCase)

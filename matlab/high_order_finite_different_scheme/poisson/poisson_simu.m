@@ -35,6 +35,5 @@ axis_scale = [param.a param.b param.c param.d, 0, 110];
 figure(1)
 mesh(X, Y, real(sol));
 axis(axis_scale)
-t1 = sprintf('Heat repartition  R = {(x,y) | 0 < x < 0.5, 0 < y < 0.5}\n... u(0,y) = 0, u(x,0) = 0, u(x,0.5) = 200x, and u(0.5,y) = 200y\n, dim[%d,%d]',...
-    param.m, param.n);
+t1 = sprintf('Heat repartition');
 title(t1)

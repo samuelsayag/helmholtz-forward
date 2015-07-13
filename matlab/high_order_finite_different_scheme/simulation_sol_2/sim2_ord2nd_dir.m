@@ -10,7 +10,7 @@ theta = pi/4;
 
 % basic parameter of the simulation
 param.k = 5;
-param.h = 0.1;
+param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;

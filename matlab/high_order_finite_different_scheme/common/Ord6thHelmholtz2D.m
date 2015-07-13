@@ -45,6 +45,18 @@ classdef Ord6thHelmholtz2D  < CentralScheme
         end
     end
     
+    methods (Static, Access = public )
+        % the coefficient of the point before the central point
+        function sb = sb ()
+           sb = 1; 
+        end 
+        
+        % the  coefficient of the point after the central point
+        function sf = sf ()        
+            sf = -1;
+        end         
+    end    
+    
     methods (Access = private)
         function obj = check_param(obj, k, h, d)            
             p = inputParser;

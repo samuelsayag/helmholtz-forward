@@ -9,7 +9,7 @@ theor = @(x, y, k, theta) helm_sol2_2D( k, theta, x, y);
 theta = pi/4;
 
 % basic parameter of the simulation
-param.k = 50;
+param.k = 5;
 param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
@@ -23,7 +23,7 @@ param.n = (param.b - param.a)/param.h + 1;
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
 scheme = ExactScheme2D(param.k, param.h);
 param.north = 'sommerfeld';
-beta = -param.k;
+beta = - param.k;
 sommerfeld = ExactSommerfeld2D( param.h, beta, theta, scheme);
 
 % define the solver

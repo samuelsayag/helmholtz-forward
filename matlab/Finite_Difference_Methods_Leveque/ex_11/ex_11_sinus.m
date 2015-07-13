@@ -31,6 +31,7 @@ res
 % graph the err = f(h) 
 plot(log(h), log(abs(back_err)), '.-', log(h), log(forw_err), '.-', ...
     log(h), log(cent_err), '.-', log(h), log(abs(du_3_err)), '.-')
+
 % plot(h, back_err, h, forw_err, h, cent_err, '.-')
 title('Error (back, forw, cent) against step (h), log|E.h| = log(C) + p * log(h)')
 xlabel('step (h)')

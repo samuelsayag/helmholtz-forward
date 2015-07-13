@@ -22,12 +22,12 @@ classdef ExactSommerfeld2D < SommerfeldScheme
             obj.scheme = scheme;
         end
         
-        function sx = sx( obj )
-            sx =  obj.s0( @(x) x * cos(obj.theta) );   
+        function sox = sox( obj )
+            sox =  obj.s0( @(x) x * cos(obj.theta) );   
         end
         
-        function sy = sy( obj )
-            sy =  obj.s0( @(x) x * sin(obj.theta) );   
+        function soy = soy( obj )
+            soy =  obj.s0( @(x) x * sin(obj.theta) );   
         end
         
         function a0 = corner_a0(obj, side)
@@ -35,13 +35,13 @@ classdef ExactSommerfeld2D < SommerfeldScheme
             % depend on the type of side (N= NE, E=SE, S=SW, W=NW if the
             % convention is to turn always clockwise)           
             if strcmp(side, 'north')
-                a0 = obj.scheme.a0 + obj.sx + obj.sy;
+                a0 = obj.scheme.a0 + obj.sox + obj.soy;
             elseif strcmp(side, 'east')
-                a0 = obj.scheme.a0 + obj.sx - obj.sy;
+                a0 = obj.scheme.a0 + obj.sox - obj.soy;
             elseif strcmp(side, 'south')
-                a0 = obj.scheme.a0 - obj.sx - obj.sy;
+                a0 = obj.scheme.a0 - obj.sox - obj.soy;
             elseif strcmp(side, 'west')
-                a0 = obj.scheme.a0 - obj.sx + obj.sy;
+                a0 = obj.scheme.a0 - obj.sox + obj.soy;
             else
                error('not valid side to get corner coefficient'); 
             end
@@ -54,10 +54,22 @@ classdef ExactSommerfeld2D < SommerfeldScheme
         end        
     end
     
+    methods (Static, Access = public )
+        % the coefficient of the point before the central point
+        function sb = sb ()
+           sb = -1; 
+        end 
+        
+        % the  coefficient of the point after the central point
+        function sf = sf ()        
+            sf = 1;
+        end          
+    end    
+    
     methods (Access = private)     
         
         function s0 = s0( obj, f_h )
-            s0 = - 2 * 1i * sin(f_h(obj.beta) * obj.h);   
+            s0 = 2 * 1i * sin(f_h(obj.beta) * obj.h);   
         end        
         
         function obj = check_param( obj, h, beta, theta, scheme )                                 
