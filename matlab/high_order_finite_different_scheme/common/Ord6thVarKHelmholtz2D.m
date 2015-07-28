@@ -1,4 +1,4 @@
-classdef Ord6thHelmholtz2D_2  < CentralScheme
+classdef Ord6thVarKHelmholtz2D  < CentralScheme
     %ORD6THHELMHOLTZ2D this class contain the 4th order scheme for the
     %Helmholtz equation.
     %

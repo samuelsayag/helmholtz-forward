@@ -372,10 +372,11 @@ classdef BasicScheme
                 coord_func = @(i, j) ...
                     obj.lin_lab(line_label, obj.label(i,j));
                 return 
-            end
-            if strcmp(type_coord, 'll')
+            elseif strcmp(type_coord, 'll')
                 coord_func = @(i, j, line_label) obj.label(i,j);
                 return
+            else
+                error('Unknown function type of coordinate');
             end
         end
 
