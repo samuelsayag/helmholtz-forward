@@ -31,13 +31,13 @@ classdef MatrixBuilder
         end
         
         function [A, b] = build(obj)
-            % without parallelisation
-            % [A, b] = naive_building(obj);
+%             % without parallelisation
+%             [A, b] = naive_building(obj);
 
 %             % type 1 parallisation worker/chunk
 %             [A, b] = obj.parallel_1();
 
-            % type two parallisation parfor/variable slicing
+%             type two parallisation parfor/variable slicing
             [A, b] = obj.parallel_2();
         end
     end

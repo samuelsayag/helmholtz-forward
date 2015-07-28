@@ -8,14 +8,14 @@ y = linspace(param.d, param.c, param.n);
 [X,Y] = meshgrid( x, y );
 analytic = param.dirichlet( X, Y );
 
-diff = abs(transpose(analytic - computed_sol));
+diff = analytic - computed_sol;
+module_diff = abs(diff);
 
-err.total = max(sum(diff));
-err.real = norm( abs(transpose(real(analytic) - real(computed_sol))));
-err.img = norm( abs(transpose(imag(analytic) - imag(computed_sol))));
-err.norm = mean(sum(diff));
-err.std = std(sum(diff));
-err.min = min(sum(diff));
+% norm(X, Inf) = max(sum(abs(X')))
+err.normInf = norm(analytic - computed_sol, Inf);
+% Attention !!! if A is a matrix norm(A) <> norm(A(:)) 
+% norm(A) = max(svd(A))
+err.l2err = norm(module_diff(:),2) ./ norm(analytic(:),2);
 
 end
 
