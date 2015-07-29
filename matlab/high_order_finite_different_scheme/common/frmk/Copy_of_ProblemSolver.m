@@ -62,12 +62,11 @@ classdef ProblemSolver
             % proposed under the form of a param struct that is described
             % in the properties and the given scheme also described in the
             % properties of this class.
-            wrapped = obj.wrap(obj.scheme);
             if ~isempty(obj.sommerfeld)
                 bss = BasicSommScheme( obj.scheme, obj.sommerfeld );
-                bs = BasicScheme2(obj.param, wrapped, bss);                
+                bs = BasicScheme(obj.param, wrapped, bss);                
             else
-                bs = BasicScheme2(obj.param, wrapped);
+                bs = BasicScheme(obj.param, wrapped);
             end
             mb = MatrixBuilder(bs);
             
@@ -80,15 +79,6 @@ classdef ProblemSolver
             x = obj.solver(A, b);
             toc
             x = transpose(reshape(x, obj.param.n, obj.param.m));
-        end
-    end
-
-    methods(Static, Access = private)
-        function wrapped = wrap(scheme)
-            wrapped = scheme;
-            if isa(scheme, 'CentralScheme')
-                wrapped = CentralSchemeWrapper(scheme);
-            end
         end
     end
     

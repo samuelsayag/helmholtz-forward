@@ -16,7 +16,8 @@ classdef Ord2ndHelmholtz2D < CentralScheme
         function obj = Ord2ndHelmholtz2D(k, h)
         % Ord2ndHelmholtz
         % k = the k of an Helmholtz equation 
-        % h = the step length (basic division of the grid)            
+        % h = the step length (basic division of the grid)
+            narginchk(2, 2)
             obj = obj.check_param(k, h);
         end        
         

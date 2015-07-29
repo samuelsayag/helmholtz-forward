@@ -174,7 +174,7 @@ classdef MatrixBuilder
         function obj = check_param(obj, scheme)
             p = inputParser;
 
-            schemes = {'BasicScheme2'};
+            schemes = {'BasicScheme'};
             addRequired(p, 'scheme', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));
             
