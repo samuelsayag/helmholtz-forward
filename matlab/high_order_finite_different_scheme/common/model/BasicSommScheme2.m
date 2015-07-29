@@ -19,134 +19,118 @@ classdef BasicSommScheme2
         
         function v_A = n_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % east point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south east point
-            v_A(4) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south point
-            v_A(5) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south west point
-            v_A(6) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % west point            
+            v_A(1) = obj.scheme.c - obj.scheme.n .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
+            v_A(2) = obj.scheme.e - obj.scheme.ne .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % east point
+            v_A(3) = obj.scheme.se - obj.scheme.ne .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south east point
+            v_A(4) = obj.scheme.s -  obj.scheme.n .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south point
+            v_A(5) = obj.scheme.sw - obj.scheme.nw .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south west point
+            v_A(6) = obj.scheme.w - obj.scheme.nw .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % west point            
         end
         
         function v_A = e_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % north point
-            v_A(3) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % south point
-            v_A(4) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south west point
-            v_A(5) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % west point            
-            v_A(6) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % north west point
+            v_A(1) = obj.scheme.c - obj.scheme.e .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.ne .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % north point
+            v_A(3) = obj.scheme.s - obj.scheme.se .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % south point
+            v_A(4) = obj.scheme.sw - obj.scheme.se .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south west point
+            v_A(5) = obj.scheme.w - obj.scheme.e .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % west point            
+            v_A(6) = obj.scheme.nw - obj.scheme.ne .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % north west point
         end
         
         function v_A = s_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point
-            v_A(2) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north east point
-            v_A(4) = obj.scheme.as -...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % east point
-            v_A(5) = obj.scheme.as -...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % west point
-            v_A(6) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north west point
+            v_A(1) = obj.scheme.c - obj.scheme.s .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.s .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north point
+            v_A(3) = obj.scheme.ne - obj.scheme.se .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north east point
+            v_A(4) = obj.scheme.e - obj.scheme.se .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % east point
+            v_A(5) = obj.scheme.w - obj.scheme.sw .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % west point
+            v_A(6) = obj.scheme.nw - obj.scheme.sw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north west point
         end        
         
         function v_A = w_pt( obj )
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % north point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north east point
-            v_A(4) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % east point
-            v_A(5) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % south east point
-            v_A(6) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % south point
+            v_A(1) = obj.scheme.c - obj.scheme.w .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.nw .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % north point
+            v_A(3) = obj.scheme.ne - obj.scheme.nw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north east point
+            v_A(4) = obj.scheme.e - obj.scheme.w .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % east point
+            v_A(5) = obj.scheme.se - obj.scheme.sw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % south east point
+            v_A(6) = obj.scheme.s - obj.scheme.sw .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % south point
         end        
         
-        function v_A = n_half_ne_pt( obj )             
+        function v_A = n_half_ne_pt( obj )
+            % Sommerfeld is assumed on the North side but not on the East
+            % side (east side is Dirichlet).
             v_A = zeros(4,1);                                    
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
-            v_A(2) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south west point
-            v_A(4) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % west point
+            v_A(1) = obj.scheme.c - obj.scheme.n .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
+            v_A(2) = obj.scheme.s -  obj.scheme.n .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south point
+            v_A(3) = obj.scheme.sw - obj.scheme.nw .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south west point
+            v_A(4) = obj.scheme.w - obj.scheme.nw .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % west point            
         end
         
-        function v_A = e_half_ne_pt( obj )   
-            v_A = zeros(4,1);                                    
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point            
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % south point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south west point
-            v_A(4) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % west point
+        function v_A = e_half_ne_pt( obj )  
+            % Sommerfeld is assumed on the East side but not on the North
+            % side (Dirichlet).            
+            v_A = zeros(4,1);              
+            v_A(1) = obj.scheme.c - obj.scheme.e .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point
+            v_A(2) = obj.scheme.s - obj.scheme.se .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % south point
+            v_A(3) = obj.scheme.sw - obj.scheme.se .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south west point
+            v_A(4) = obj.scheme.w - obj.scheme.e .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % west point                   
         end
         
         function v_A = e_half_se_pt( obj )
-            v_A = [];             
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point            
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % north point
-            v_A(3) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % west point
-            v_A(4) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % north west point            
+            % Sommerfeld is assumed on the East side but not on the South
+            % side (Dirichlet).              
+            v_A = zeros(4,1);
+            v_A(1) = obj.scheme.c - obj.scheme.e .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.ne .* obj.sommerfeld.sox ./ obj.sommerfeld.sf; % north point
+            v_A(3) = obj.scheme.w - obj.scheme.e .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % west point            
+            v_A(4) = obj.scheme.nw - obj.scheme.ne .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % north west point                   
         end
         
-        function v_A = s_half_se_pt( obj )            
-            v_A = [];             
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point            
-            v_A(2) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north point
-            v_A(3) = obj.scheme.as -...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % west point
-            v_A(4) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north west point
+        function v_A = s_half_se_pt( obj )   
+            % Sommerfeld is assumed on the South side but not on the East
+            % side (Dirichlet).            
+            v_A = zeros(4,1);          
+            v_A(1) = obj.scheme.c - obj.scheme.s .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.s .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north point
+            v_A(3) = obj.scheme.w - obj.scheme.sw .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % west point
+            v_A(4) = obj.scheme.nw - obj.scheme.sw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north west point            
         end
         
         function v_A = s_half_sw_pt( obj )
-            v_A = [];
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point            
-            v_A(2) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north east point
-            v_A(4) = obj.scheme.as -...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % east point            
+            % Sommerfeld is assumed on the South side but not on the West
+            % side (Dirichlet).                        
+            v_A = zeros(4,1);
+            v_A(1) = obj.scheme.c - obj.scheme.s .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.s .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north point
+            v_A(3) = obj.scheme.ne - obj.scheme.se .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north east point
+            v_A(4) = obj.scheme.e - obj.scheme.se .* obj.sommerfeld.soy ./ obj.sommerfeld.sb; % east point
         end        
         
         function v_A = w_half_sw_pt( obj )            
-            v_A = [];
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point            
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % north point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % north east point
-            v_A(4) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % east point                        
+            v_A = zeros(4,1);  
+            v_A(1) = obj.scheme.c - obj.scheme.w .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.n - obj.scheme.nw .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % north point
+            v_A(3) = obj.scheme.ne - obj.scheme.nw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % north east point
+            v_A(4) = obj.scheme.e - obj.scheme.w .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % east point
         end        
         
         function v_A = w_half_nw_pt( obj )            
-            v_A = [];
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point            
-            v_A(2) = obj.scheme.as .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % east point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sf ./ obj.sommerfeld.sb); % south east point
-            v_A(4) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % south point            
+            v_A = zeros(4,1);  
+            v_A(1) = obj.scheme.c - obj.scheme.w .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % central point
+            v_A(2) = obj.scheme.e - obj.scheme.w .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % east point
+            v_A(3) = obj.scheme.se - obj.scheme.sw .* obj.sommerfeld.sf ./ obj.sommerfeld.sb; % south east point
+            v_A(4) = obj.scheme.s - obj.scheme.sw .* obj.sommerfeld.sox ./ obj.sommerfeld.sb; % south point        
         end         
         
-        function v_A = n_half_nw_pt( obj )            
-            v_A = [];
-            v_A(1) = obj.scheme.a0 - ...
-                obj.scheme.as .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
-            v_A(2) = obj.scheme.as - ...
-                obj.scheme.ac .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % east point
-            v_A(3) = obj.scheme.ac .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south east point
-            v_A(4) = obj.scheme.as .* (1 - obj.sommerfeld.sb ./ obj.sommerfeld.sf); % south point            
+        function v_A = n_half_nw_pt( obj ) 
+            % Sommerfeld is assumed on the North side but not on the West
+            % side (east side is Dirichlet).            
+            v_A = zeros(4,1);
+            v_A(1) = obj.scheme.c - obj.scheme.n .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % central point            
+            v_A(2) = obj.scheme.e - obj.scheme.ne .* obj.sommerfeld.soy ./ obj.sommerfeld.sf; % east point
+            v_A(3) = obj.scheme.se - obj.scheme.ne .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south east point
+            v_A(4) = obj.scheme.s -  obj.scheme.n .* obj.sommerfeld.sb ./ obj.sommerfeld.sf; % south point
         end
         
         function v_A = ne_pt(obj)
