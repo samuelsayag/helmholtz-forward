@@ -13,9 +13,12 @@ if b < 0
     error('k_sol_3:argChck', 'parameters: b >= 0 ');
 end
 
-k = @(x, y) a - b .* sin( c * x );
+% f = @(x) num2str(x);
+% k_str =  strcat(f(a), ' -  ', f(b), ' .* sin( ', f(c) , ' .* x )');
 
 beta = sqrt( a.^2 + b.^2 );
+
+k = @(x,y) a - b .* sin(c .* x);
 
 pSol = @(x,y) exp(- k(x,y)./c ) .* sin(beta .* y); 
 

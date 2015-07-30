@@ -20,19 +20,19 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         % h: the step length (basic division of the grid)
         h;
         str_k;
-        k;
-        Kx; 
-        Ky; 
-        Kxx; 
-        Kyy;
+        k2;
+        K2x; 
+        K2y; 
+        K2xx; 
+        K2yy;
     end
     
     methods (Access = public)
         
-        function obj = Ord6thVarKHelmholtz2D( h, k, Kx, Ky, Kxx, Kyy)        
+        function obj = Ord6thVarKHelmholtz2D( h, k2, K2x, K2y, K2xx, K2yy)        
             narginchk(6, 6);
-            [ obj.k, obj.Kx, obj.Ky, obj.Kxx, obj.Kyy ] = ...
-                check_param2( h, k, Kx, Ky, Kxx, Kyy );
+            [ obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
+                check_param2( h, k2, K2x, K2y, K2xx, K2yy );
         end
         
         % if the scheme need to be aware of the position of the indexes i
@@ -45,30 +45,39 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         
         % the central point coefficient
         function c = c(obj)
+            c = obj.a0;
         end
         % the north point coefficient
         function n = n(obj)
+            n = obj.as + obj.bs('north');
         end
         % the north east point coefficient
         function ne = ne(obj)
+            ne = obj.ac + obj.bc(+1, +1);
         end
         % the east point point coefficient
         function e = e(obj)
+            e = obj.as + obj.bs('east');
         end
         % the south east point coefficient
         function se = se(obj)
+            se = obj.ac + obj.bc(+1, -1);
         end
         % the south point coefficient
         function s = s(obj)
+            s = obj.as + obj.bs('south');
         end
         % the south west point coefficient
         function sw = sw(obj)
+            sw = obj.ac + obj.bc(-1, -1);
         end
         % the west point coefficient
         function w = w(obj)
+            w = obj.as + obj.bs('west');
         end
         % the north west point coefficient
         function nw = nw(obj)
+            nw = obj.ac + obj.bc(-1, +1);
         end
         
     end
@@ -76,23 +85,43 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
     methods (Access = private)
         
         function a0 = a0(obj)
-            kh = obj.k * obj.h;
-            D2 = (obj.Kxx(obj.i,obj.j) + obj.Kyy(obj.i,obj.j));
+            kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
+            D2 = (obj.K2xx(obj.i,obj.j) + obj.K2yy(obj.i,obj.j));
             a0 = -10/3 ...
-                + kh^2 * 41/45 ...
-                - kh^4 * 1/20 ...
+                + kh2 * 41/45 ...
+                - kh2^2 * 1/20 ...
                 + D2 .* obj.h.^4/20; 
         end
         
         function as = as(obj)
-            as = 2/3 + (obj.k * obj.h).^2 * 1/90; 
+            kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
+            as = 2/3 + kh2 * 1/90; 
         end
         
         function ac = ac(obj)
-            ac = 1/6 + (obj.k * obj.h).^2 * 1/90; 
+            kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
+            ac = 1/6 + kh2 * 1/90; 
         end
 
+        function bc  = bc(obj, s1, s2)
+            dk = s1 * obj.K2x(obj.i,obj.j) + s2 * obj.K2y(obj.i,obj.j);
+            bc = dk * obj.h.^3/120;
+        end
         
+        function bs  = bs(obj, axis)
+            if strcmp(axis,'north')
+                dk = obj.K2y(obj.i,obj.j);
+            elseif strcmp(axis,'south')
+                dk = - obj.K2y(obj.i,obj.j);
+            elseif strcmp(axis,'east')
+                dk = obj.K2x(obj.i,obj.j);
+            elseif strcmp(axis,'west')
+                dk = -obj.K2x(obj.i,obj.j);
+            end
+            
+            ck = 2/3 + (obj.k2(obj.i, obj.j) .* obj.h^2)/6;            
+            bs = obj.h.^3/20 .* ck * dk;
+        end        
 
     end
     
@@ -124,26 +153,26 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
     end 
     
     methods (Static, Access = public)
-        function [ k, Kx, Ky, Kxx, Kyy ] = ...
-                build_derivative(k_str)
-            
+        function [k2, K2x, K2y, K2xx, K2yy] = build_derivative(k)
+            % build the different derivative of k² needed for this scheme
+            % to comute the coefficient.
             syms x y; % declare 2 symbolic variables
-            toHandle = @(x) str2func(strcat('@(x,y)',char(x)));
+            tof = @( x ) matlabFunction( x );
             
-            ks = sym(k_str);
-            k = toHandle(ks);
+            k2s = sym(k).^2;
+            k2 = tof(k2s);
             
-            kxs = diff( ks, x );
-            Kx = toHandle(kxs);
+            k2xs = diff( k2s, x );
+            K2x = tof(k2xs);
             
-            kys = diff( ks, y );
-            Ky = toHandle(kys);
+            k2ys = diff( k2s, y );
+            K2y = tof(k2ys);
             
-            kxxs = diff(kxs);
-            Kxx = toHandle(kxxs);
+            k2xxs = diff(k2xs);
+            K2xx = tof(k2xxs);
             
-            kyys = diff(kys);
-            Kyy = toHandle(kyys);            
+            k2yys = diff(k2ys);
+            K2yy = tof(k2yys);            
         end        
     end
     
