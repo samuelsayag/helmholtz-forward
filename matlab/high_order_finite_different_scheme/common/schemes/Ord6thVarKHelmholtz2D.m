@@ -32,7 +32,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         function obj = Ord6thVarKHelmholtz2D( h, k2, K2x, K2y, K2xx, K2yy)        
             narginchk(6, 6);
             [ obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
-                check_param2( h, k2, K2x, K2y, K2xx, K2yy );
+                obj.check_param2( h, k2, K2x, K2y, K2xx, K2yy );
         end
         
         % if the scheme need to be aware of the position of the indexes i
@@ -157,7 +157,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
             % build the different derivative of k² needed for this scheme
             % to comute the coefficient.
             syms x y; % declare 2 symbolic variables
-            tof = @( x ) matlabFunction( x );
+            tof = @( z ) matlabFunction( z , 'Vars', [x,y]);
             
             k2s = sym(k).^2;
             k2 = tof(k2s);

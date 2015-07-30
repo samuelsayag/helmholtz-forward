@@ -24,15 +24,13 @@ param.h = (param.b - param.a)/ (param.n - 1);
 param.dirichlet = pSol;
 [k2, K2x, K2y, K2xx, K2yy] = ...
     Ord6thVarKHelmholtz2D.build_derivative( k );
-% scheme = Ord6thVarKHelmholtz2D( param.h, k2, K2x, K2y, K2xx, K2yy);
+scheme = Ord6thVarKHelmholtz2D( param.h, k2, K2x, K2y, K2xx, K2yy);
 
+% define the solver
+solver = @(A, b) A\b;
 
-
-% % define the solver
-% solver = @(A, b) A\b;
-% 
-% param
-% ps = ProblemSolver(param, scheme, solver);
+param
+ps = ProblemSolver(param, scheme, solver);
 % [ A, b, sol ] = ps.solve();
 % 
 % error = ErrorHandler( param, sol );
