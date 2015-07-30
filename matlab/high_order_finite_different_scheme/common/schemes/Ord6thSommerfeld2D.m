@@ -2,7 +2,7 @@ classdef Ord6thSommerfeld2D < SommerfeldScheme
     %ORD6THHELMHOLTZSOMMERFELD2D Summary of this class goes here
     %   Detailed explanation goes here
     
-    properties
+    properties (SetAccess = private)
         h;
         beta;
     end

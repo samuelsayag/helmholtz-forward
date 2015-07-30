@@ -23,22 +23,35 @@ classdef MatrixBuilder
         function obj = MatrixBuilder(basicScheme)
             obj = check_param(obj, basicScheme);
             obj.scheme = basicScheme;
-            obj.mn = basicScheme.m * basicScheme.n;            
+            obj.mn = basicScheme.m * basicScheme.n; 
+            
             % optimization zone
-            p = gcp();
-            obj.chunk_s = fix(obj.mn/p.NumWorkers);
             obj.stencil_size = 9;
         end
         
         function [A, b] = build(obj)
-%             % without parallelisation
-%             [A, b] = naive_building(obj);
+%==========================================================================
+%    NO PARALELISATION METHOD (maintain for debug and performance study)
+%==========================================================================                        
+            % without parallelisation
+            [A, b] = naive_building(obj);
 
+%==========================================================================
+%    DECOMMENT THIS CODE WATHEVER PARALLELISATION METHOD CHOOSEN
+%==========================================================================            
+%             p = gcp();
+%             obj.chunk_s = fix(obj.mn/p.NumWorkers);
+%             obj.stencil_size = 9;
+%==========================================================================
+%             FIRST PARALELISATION METHOD
+%==========================================================================            
 %             % type 1 parallisation worker/chunk
 %             [A, b] = obj.parallel_1();
-
+%==========================================================================
+%             SECOND PARALELISATION METHOD
+%==========================================================================            
 %             type two parallisation parfor/variable slicing
-            [A, b] = obj.parallel_2();
+%             [A, b] = obj.parallel_2();
         end
     end
     
@@ -55,7 +68,9 @@ classdef MatrixBuilder
             [C1, C2] = obj.get_index_vectors();                                    
             cartesian = size(C1,1); 
             line_labels = LabelHandler( obj.scheme.m, obj.scheme.n, C1, C2 );
-            look_up = sortrows([line_labels, C1, C2], 1);
+            tab_label = sortrows([line_labels, C1, C2], 1);
+            % avoid unecessary copy of tab_label in the parfor  
+            look_up = @(l,c) tab_label(l,c); 
             parfor l = 1:cartesian
                 [A_l, b_l] = obj.get_line_wrapper(look_up(l,2), look_up(l,3));
                 A(l,:) = A_l;
@@ -174,7 +189,7 @@ classdef MatrixBuilder
         function obj = check_param(obj, scheme)
             p = inputParser;
 
-            schemes = {'BasicScheme2'};
+            schemes = {'BasicScheme', 'BasicScheme2'};
             addRequired(p, 'scheme', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));
             

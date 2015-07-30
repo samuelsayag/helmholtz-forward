@@ -11,6 +11,10 @@ classdef (Abstract) NinePtStencil
     %     sw ------ s ------ se
     %
     methods (Abstract)
+        % if the scheme need to be aware of the position of the indexes i
+        % and j in the grid. So as to compute an (i,j) aware value
+        % function (ex: k(x,y), kx(x,y)...).
+        set_pos(i,j);
         % the central point coefficient
         c = c(obj);
         % the north point coefficient

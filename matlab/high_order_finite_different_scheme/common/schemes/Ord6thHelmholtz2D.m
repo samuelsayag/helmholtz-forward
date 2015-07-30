@@ -6,7 +6,7 @@ classdef Ord6thHelmholtz2D  < CentralScheme
     %2012 Erlangga, Turkel - ITERATIVE SCHEMES FOR HIGH ORDER COMPACT 
     %DISCRETIZATIONS
     
-    properties (SetAccess = public)
+    properties (SetAccess = private)
         k = 0;
         h = 0;
         delta = 0;

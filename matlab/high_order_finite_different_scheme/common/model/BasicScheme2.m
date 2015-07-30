@@ -388,15 +388,15 @@ classdef BasicScheme2
             %   v_b: the coeff value in the vector b
 
             v_A = zeros(9,1);            
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.ne(); % north east point
-            v_A(4) = obj.scheme.e(); % east point
-            v_A(5) = obj.scheme.se(); % south east point
-            v_A(6) = obj.scheme.s(); % south point
-            v_A(7) = obj.scheme.sw(); % south west point
-            v_A(8) = obj.scheme.w(); % west point
-            v_A(9) = obj.scheme.nw(); % north west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.ne; % north east point
+            v_A(4) = obj.scheme.e; % east point
+            v_A(5) = obj.scheme.se; % south east point
+            v_A(6) = obj.scheme.s; % south point
+            v_A(7) = obj.scheme.sw; % south west point
+            v_A(8) = obj.scheme.w; % west point
+            v_A(9) = obj.scheme.nw; % north west point
 
             v_b = 0; % value is null in vector b for a central point
         end
@@ -482,18 +482,18 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.e(); % east point
-            v_A(3) = obj.scheme.se(); % south east point
-            v_A(4) = obj.scheme.s(); % south point
-            v_A(5) = obj.scheme.sw(); % south west point
-            v_A(6) = obj.scheme.w(); % west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.e; % east point
+            v_A(3) = obj.scheme.se; % south east point
+            v_A(4) = obj.scheme.s; % south point
+            v_A(5) = obj.scheme.sw; % south west point
+            v_A(6) = obj.scheme.w; % west point
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.scheme.nw() * obj.dir_nw(i,j) ...
-                + obj.scheme.n() * obj.dir_n(i,j) ...
-                + obj.scheme.ne() * obj.dir_ne(i,j) );
+            v_b = - ( obj.scheme.nw * obj.dir_nw(i,j) ...
+                + obj.scheme.n * obj.dir_n(i,j) ...
+                + obj.scheme.ne * obj.dir_ne(i,j) );
         end             
         
         function [v_A, v_b] = e_pt_value_dirichlet( obj, i, j )
@@ -503,18 +503,18 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.s(); % south point
-            v_A(4) = obj.scheme.sw(); % south west point
-            v_A(5) = obj.scheme.w(); % west point
-            v_A(6) = obj.scheme.nw(); % north west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.s; % south point
+            v_A(4) = obj.scheme.sw; % south west point
+            v_A(5) = obj.scheme.w; % west point
+            v_A(6) = obj.scheme.nw; % north west point
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.scheme.ne() * obj.dir_ne(i,j)...
-                + obj.scheme.e() * obj.dir_e(i,j)...
-                + obj.scheme.se() * obj.dir_se(i,j) );
+            v_b = - ( obj.scheme.ne * obj.dir_ne(i,j)...
+                + obj.scheme.e * obj.dir_e(i,j)...
+                + obj.scheme.se * obj.dir_se(i,j) );
         end
         
         function [v_A, v_b] = s_pt_value_dirichlet( obj, i, j )
@@ -524,18 +524,18 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.ne(); % north east point
-            v_A(4) = obj.scheme.e(); % east point
-            v_A(5) = obj.scheme.w(); % west point
-            v_A(6) = obj.scheme.nw(); % north west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.ne; % north east point
+            v_A(4) = obj.scheme.e; % east point
+            v_A(5) = obj.scheme.w; % west point
+            v_A(6) = obj.scheme.nw; % north west point
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.scheme.se() * obj.dir_se(i,j)...
-                + obj.scheme.s() * obj.dir_s(i,j)...
-                + obj.scheme.sw() * obj.dir_sw(i,j) );
+            v_b = - ( obj.scheme.se * obj.dir_se(i,j)...
+                + obj.scheme.s * obj.dir_s(i,j)...
+                + obj.scheme.sw * obj.dir_sw(i,j) );
         end
         
         function [v_A, v_b] = w_pt_value_dirichlet( obj, i, j )
@@ -545,18 +545,18 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b
             v_A = zeros(6,1);
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.ne(); % north east point
-            v_A(4) = obj.scheme.e(); % east point
-            v_A(5) = obj.scheme.se(); % south east point
-            v_A(6) = obj.scheme.s(); % south point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.ne; % north east point
+            v_A(4) = obj.scheme.e; % east point
+            v_A(5) = obj.scheme.se; % south east point
+            v_A(6) = obj.scheme.s; % south point
             
             % !!! the sign here is strongly linked to the instance of the
             % scheme and the way it is written !!!
-            v_b = - ( obj.scheme.sw() * obj.dir_sw(i,j)...
-                + obj.scheme.w() * obj.dir_w(i,j)...
-                + obj.scheme.nw() * obj.dir_nw(i,j) );
+            v_b = - ( obj.scheme.sw * obj.dir_sw(i,j)...
+                + obj.scheme.w * obj.dir_w(i,j)...
+                + obj.scheme.nw * obj.dir_nw(i,j) );
         end
                     
         function [c_A, v_A, c_b, v_b] = ne_pt_dir( obj, type_coord, i, j )
@@ -596,17 +596,17 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b
             v_A = zeros(4,1);            
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.s(); % south point
-            v_A(3) = obj.scheme.sw(); % south west point
-            v_A(4) = obj.scheme.w(); % west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.s; % south point
+            v_A(3) = obj.scheme.sw; % south west point
+            v_A(4) = obj.scheme.w; % west point
             
             % value is dirichlet for other point 
-            v_b = -(obj.scheme.nw() * obj.dir_nw(i,j)...
-                + obj.scheme.n() * obj.dir_n(i,j) ...
-                + obj.scheme.ne() * obj.dir_ne(i,j)....
-                + obj.scheme.e() * obj.dir_e(i,j)....
-                + obj.scheme.se() * obj.dir_se(i,j) ); 
+            v_b = -(obj.scheme.nw * obj.dir_nw(i,j)...
+                + obj.scheme.n * obj.dir_n(i,j) ...
+                + obj.scheme.ne * obj.dir_ne(i,j)....
+                + obj.scheme.e * obj.dir_e(i,j)....
+                + obj.scheme.se * obj.dir_se(i,j) ); 
         end        
         
         function [v_A, v_b] = se_pt_value_dirichlet( obj, i, j )
@@ -616,17 +616,17 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b        
             v_A = zeros(4,1);            
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.w(); % west point
-            v_A(4) = obj.scheme.nw(); % north west point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.w; % west point
+            v_A(4) = obj.scheme.nw; % north west point
 
             % value is dirichlet for other point 
-            v_b = -(obj.scheme.ne() * obj.dir_ne(i,j)...
-                + obj.scheme.e() * obj.dir_e(i,j)...
-                + obj.scheme.se() * obj.dir_se(i,j) ...
-                + obj.scheme.s() * obj.dir_s(i,j)...
-                + obj.scheme.sw() * obj.dir_sw(i,j) );             
+            v_b = -(obj.scheme.ne * obj.dir_ne(i,j)...
+                + obj.scheme.e * obj.dir_e(i,j)...
+                + obj.scheme.se * obj.dir_se(i,j) ...
+                + obj.scheme.s * obj.dir_s(i,j)...
+                + obj.scheme.sw * obj.dir_sw(i,j) );             
         end
         
         function [v_A, v_b] = sw_pt_value_dirichlet( obj, i, j )
@@ -636,17 +636,17 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b        
             v_A = zeros(4,1);            
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.n(); % north point
-            v_A(3) = obj.scheme.ne(); % north east point
-            v_A(4) = obj.scheme.e(); % east point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.n; % north point
+            v_A(3) = obj.scheme.ne; % north east point
+            v_A(4) = obj.scheme.e; % east point
 
             % value is dirichlet for other point 
-            v_b = -( obj.scheme.nw() * obj.dir_nw(i,j)...
-                + obj.scheme.w() * obj.dir_w(i,j)...
-                + obj.scheme.sw() * obj.dir_sw(i,j)...
-                + obj.scheme.s() * obj.dir_s(i,j)...
-                + obj.scheme.se() * obj.dir_se(i,j) );            
+            v_b = -( obj.scheme.nw * obj.dir_nw(i,j)...
+                + obj.scheme.w * obj.dir_w(i,j)...
+                + obj.scheme.sw * obj.dir_sw(i,j)...
+                + obj.scheme.s * obj.dir_s(i,j)...
+                + obj.scheme.se * obj.dir_se(i,j) );            
         end
         
         function [v_A, v_b] = nw_pt_value_dirichlet( obj, i, j )
@@ -656,17 +656,17 @@ classdef BasicScheme2
             %   in the matrix A
             %   v_b: the coeff value in the vector b        
             v_A = zeros(4,1);            
-            v_A(1) = obj.scheme.c(); % central point            
-            v_A(2) = obj.scheme.e(); % east point
-            v_A(3) = obj.scheme.se(); % south east point
-            v_A(4) = obj.scheme.s(); % south point
+            v_A(1) = obj.scheme.c; % central point            
+            v_A(2) = obj.scheme.e; % east point
+            v_A(3) = obj.scheme.se; % south east point
+            v_A(4) = obj.scheme.s; % south point
 
             % value is dirichlet for other point 
-            v_b = -( obj.scheme.sw() * obj.dir_sw(i,j)...
-                + obj.scheme.sw() * obj.dir_w(i,j)...
-                + obj.scheme.nw() * obj.dir_nw(i,j)...
-                + obj.scheme.n() * obj.dir_n(i,j)...
-                + obj.scheme.ne() * obj.dir_ne(i,j) );             
+            v_b = -( obj.scheme.sw * obj.dir_sw(i,j)...
+                + obj.scheme.w * obj.dir_w(i,j)...
+                + obj.scheme.nw * obj.dir_nw(i,j)...
+                + obj.scheme.n * obj.dir_n(i,j)...
+                + obj.scheme.ne * obj.dir_ne(i,j) );             
         end                
 
         function [v_b] = n_half_ne_corner_dirichlet( obj, i, j )
@@ -676,9 +676,9 @@ classdef BasicScheme2
             %   v_b: the coeff value in the vector b
             
             % value is dirichlet for other point 
-            v_b = -( obj.scheme.nw() * obj.dir_nw(i,j)...
-                + obj.scheme.n() * obj.dir_n(i,j) ...
-                + obj.scheme.ne() * obj.dir_ne(i,j) ); 
+            v_b = -( obj.scheme.nw * obj.dir_nw(i,j)...
+                + obj.scheme.n * obj.dir_n(i,j) ...
+                + obj.scheme.ne * obj.dir_ne(i,j) ); 
         end        
 
         function [v_b] = e_half_ne_corner_dirichlet( obj, i, j )
@@ -965,7 +965,6 @@ classdef BasicScheme2
 %                 'Ord6thHelmholtz2D', 'Ord6thHelmholtz2D_2', ...
 %                 'ExactScheme2D', 'Poisson2D'};
             schemes = {'NinePtStencil'};
-
             addRequired(p, 'scheme', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));            
             

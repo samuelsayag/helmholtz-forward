@@ -64,10 +64,11 @@ classdef ProblemSolver
             % properties of this class.
             wrapped = obj.wrap(obj.scheme);
             if ~isempty(obj.sommerfeld)
-                bss = BasicSommScheme( obj.scheme, obj.sommerfeld );
+                bss = BasicSommScheme2( obj.scheme, obj.sommerfeld );
                 bs = BasicScheme2(obj.param, wrapped, bss);                
             else
-                bs = BasicScheme2(obj.param, wrapped);
+%                 bs = BasicScheme2(obj.param, wrapped);
+                bs = BasicScheme(obj.param, obj.scheme);
             end
             mb = MatrixBuilder(bs);
             
@@ -128,12 +129,12 @@ classdef ProblemSolver
         
         function obj = check_solver(obj, solver)
             p = inputParser;
-            
-           function valid_handle(x)
+
+            function valid_handle(x)
                 validateattributes( x, {'function_handle'}, {'nonempty'});
             end
             addRequired(p, 'solver', @(x)valid_handle(x))            
-            
+
             parse(p, solver);
         end    
     end
