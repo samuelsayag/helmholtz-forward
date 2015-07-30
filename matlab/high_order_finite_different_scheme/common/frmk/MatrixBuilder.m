@@ -33,15 +33,15 @@ classdef MatrixBuilder
 %==========================================================================
 %    NO PARALELISATION METHOD (maintain for debug and performance study)
 %==========================================================================                        
-            % without parallelisation
-            [A, b] = naive_building(obj);
+%             % without parallelisation
+%             [A, b] = naive_building(obj);
 
 %==========================================================================
 %    DECOMMENT THIS CODE WATHEVER PARALLELISATION METHOD CHOOSEN
 %==========================================================================            
-%             p = gcp();
-%             obj.chunk_s = fix(obj.mn/p.NumWorkers);
-%             obj.stencil_size = 9;
+            p = gcp();
+            obj.chunk_s = fix(obj.mn/p.NumWorkers);
+            obj.stencil_size = 9;
 %==========================================================================
 %             FIRST PARALELISATION METHOD
 %==========================================================================            
@@ -51,7 +51,7 @@ classdef MatrixBuilder
 %             SECOND PARALELISATION METHOD
 %==========================================================================            
 %             type two parallisation parfor/variable slicing
-%             [A, b] = obj.parallel_2();
+            [A, b] = obj.parallel_2();
         end
     end
     
