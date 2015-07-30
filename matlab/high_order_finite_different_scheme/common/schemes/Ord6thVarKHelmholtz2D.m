@@ -19,7 +19,6 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         % and (4) its second derivative with respect to x and y.
         % h: the step length (basic division of the grid)
         h;
-        str_k;
         k2;
         K2x; 
         K2y; 
@@ -31,14 +30,14 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         
         function obj = Ord6thVarKHelmholtz2D( h, k2, K2x, K2y, K2xx, K2yy)        
             narginchk(6, 6);
-            [ obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
+            [obj.h, obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
                 obj.check_param2( h, k2, K2x, K2y, K2xx, K2yy );
         end
         
         % if the scheme need to be aware of the position of the indexes i
         % and j in the grid. So as to compute an (i,j) aware value
         % function (ex: k(x,y), kx(x,y)...).
-        function set_pos(obj, i, j)
+        function obj = set_pos(obj, i, j)
             obj.i = i;
             obj.j = j;
         end             
@@ -153,7 +152,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
     end 
     
     methods (Static, Access = public)
-        function [k2, K2x, K2y, K2xx, K2yy] = build_derivative(k)
+        function [k2, K2x, K2y, K2xx, K2yy] = build_derivative(k, param)
             % build the different derivative of k² needed for this scheme
             % to comute the coefficient.
             syms x y; % declare 2 symbolic variables
@@ -173,7 +172,14 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
             
             k2yys = diff(k2ys);
             K2yy = tof(k2yys);            
-        end        
+            
+            k2 = indxFuncWrapper(param.a, param.c, param.h, k2);
+            K2x = indxFuncWrapper(param.a, param.c, param.h, K2x);
+            K2y = indxFuncWrapper(param.a, param.c, param.h, K2y);
+            K2xx = indxFuncWrapper(param.a, param.c, param.h, K2xx);
+            K2yy = indxFuncWrapper(param.a, param.c, param.h, K2yy);
+            
+        end
     end
     
 end

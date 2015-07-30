@@ -23,7 +23,7 @@ param.h = (param.b - param.a)/ (param.n - 1);
 % dirichlet function
 param.dirichlet = pSol;
 [k2, K2x, K2y, K2xx, K2yy] = ...
-    Ord6thVarKHelmholtz2D.build_derivative( k );
+    Ord6thVarKHelmholtz2D.build_derivative( k, param );
 scheme = Ord6thVarKHelmholtz2D( param.h, k2, K2x, K2y, K2xx, K2yy);
 
 % define the solver
@@ -31,10 +31,10 @@ solver = @(A, b) A\b;
 
 param
 ps = ProblemSolver(param, scheme, solver);
-% [ A, b, sol ] = ps.solve();
-% 
-% error = ErrorHandler( param, sol );
-% error
-% 
-% axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
-% compare_graphs( param,  sol, error, axis_scale, 1);
+[ A, b, sol ] = ps.solve();
+
+error = ErrorHandler( param, sol );
+error
+
+axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
+compare_graphs( param,  sol, error, axis_scale, 1);

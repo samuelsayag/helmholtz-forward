@@ -68,7 +68,7 @@ classdef BasicScheme
         end
         
         function [c_A, v_A, c_b, v_b] = c_pt( obj, type_coord, i, j )
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             l = obj.label(i,j);
             f_coord = obj.get_coordinate_func(type_coord, l);
             c_A = obj.c_pt_coordinate( f_coord, i, j );
@@ -80,7 +80,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            obj.scheme.set_pos(i,j);            
+            obj.scheme = obj.scheme.set_pos(i,j);            
             if strcmp(obj.param.north, 'sommerfeld')
                 [c_A, v_A, c_b, v_b] = obj.n_pt_som( type_coord, i, j );                
             else
@@ -92,7 +92,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).   
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             if strcmp(obj.param.east, 'sommerfeld')
                 [c_A, v_A, c_b, v_b] = obj.e_pt_som( type_coord, i, j );
             else
@@ -104,7 +104,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             if strcmp(obj.param.south, 'sommerfeld')
                 [c_A, v_A, c_b, v_b] = obj.s_pt_som( type_coord, i, j );
             else
@@ -116,7 +116,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer (Sommerfeld, Dirichlet,
             % Neumann, Robin...).
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             if strcmp(obj.param.west, 'sommerfeld')
                 [c_A, v_A, c_b, v_b] = obj.w_pt_som( type_coord, i, j );
             else
@@ -128,7 +128,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             t = strcmp({obj.param.north, obj.param.east}, ...
                 obj.dir_dir);
             if all(t) % all dirichlet
@@ -146,7 +146,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             t = strcmp({obj.param.south, obj.param.east}, ...
                 obj.dir_dir);
             if all(t) % all dirichlet
@@ -164,7 +164,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             t = strcmp({obj.param.south, obj.param.west}, ...
                 obj.dir_dir);
             if all(t) % all dirichlet
@@ -182,7 +182,7 @@ classdef BasicScheme
             % TODO introduce a strategy pattern. The result return will be
             % that of a function pointer that may handle pure Dirichlet,
             % and variable combination with Sommerfeld + Dirichlet
-            obj.scheme.set_pos(i,j);
+            obj.scheme = obj.scheme.set_pos(i,j);
             t = strcmp({obj.param.north, obj.param.west}, ...
                 obj.dir_dir);
             if all(t) % all dirichlet
