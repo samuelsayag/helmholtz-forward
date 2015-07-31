@@ -15,8 +15,8 @@ param.a = 0;
 param.b = pi;
 param.c = 0; 
 param.d = pi;
-param.n = 3; % number of column of the grid
-param.m = 3; % number of line of the grid
+param.n = 50; % number of column of the grid
+param.m = 50; % number of line of the grid
 % we deduce the step of the grid from this data
 param.h = (param.b - param.a)/ (param.n - 1);
 
@@ -36,5 +36,5 @@ ps = ProblemSolver(param, scheme, solver);
 error = ErrorHandler( param, sol );
 error
 
-axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
+axis_scale = [param.a, param.b, param.c, param.d, -5, 5];
 compare_graphs( param,  sol, error, axis_scale, 1);

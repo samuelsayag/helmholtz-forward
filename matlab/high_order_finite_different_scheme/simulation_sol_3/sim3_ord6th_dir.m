@@ -36,5 +36,5 @@ ps = ProblemSolver(param, scheme, solver);
 error = ErrorHandler( param, sol );
 error
 
-axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
+axis_scale = [param.a, param.b, param.c, param.d, -5, 5];
 compare_graphs( param,  sol, error, axis_scale, 1);
