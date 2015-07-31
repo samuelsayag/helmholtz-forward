@@ -20,7 +20,7 @@ beta = sqrt( a.^2 + b.^2 );
 
 k = @(x,y) a - b .* sin(c .* x);
 
-pSol = @(x,y) exp(- k(x,y)./c ) .* sin(beta .* y); 
+pSol = @(x,y) exp( - k(x,y)./c ) .* sin(beta .* y); 
 
 end
 

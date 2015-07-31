@@ -50,16 +50,15 @@ classdef CentralSchemeWrapper < NinePtStencil
         function nw = nw(obj)      
             nw = obj.scheme.ac;
         end
-    end
-    
-    methods (Static, Access = public)
-        function set_pos(i, j)
+        
+        function r = set_pos(obj, i, j)
             % do nothing with this for the moment.
             % Read the contract in the NinePtStencil Abstract class to
             % understand the intention.
-        end        
+            r = obj;
+        end                
     end
-    
+        
     methods (Access = private)
         function obj = check_param(obj, scheme)
             narginchk(2,2);

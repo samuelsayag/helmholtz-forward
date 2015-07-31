@@ -1,4 +1,4 @@
-function [ wrapper ] = indxFuncWrapper( x1, x2, h, wrappee )
+function [ wrapper ] = discreteWrapper( x1, x2, h, wrappee )
 %INDXFUNCWRAPPER wrapp the handle to and index dependent one
 
 x_val = @(x) x1 + (x-1) * h;

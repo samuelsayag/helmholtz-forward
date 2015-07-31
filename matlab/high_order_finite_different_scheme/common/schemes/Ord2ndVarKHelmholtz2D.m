@@ -1,4 +1,4 @@
-classdef Ord6thVarKHelmholtz2D  < NinePtStencil
+classdef Ord2ndVarKHelmholtz2D  < NinePtStencil
     %ORD6THHELMHOLTZ2D this class contain the 4th order scheme for the
     %Helmholtz equation.
     %
@@ -20,18 +20,13 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         % h: the step length (basic division of the grid)
         h;
         k2;
-        K2x; 
-        K2y; 
-        K2xx; 
-        K2yy;
     end
     
     methods (Access = public)
         
-        function obj = Ord6thVarKHelmholtz2D( h, k2, K2x, K2y, K2xx, K2yy)        
+        function obj = Ord6thVarKHelmholtz2D( h, k2)        
             narginchk(6, 6);
-            [obj.h, obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
-                obj.check_param2( h, k2, K2x, K2y, K2xx, K2yy );
+            [obj.h, obj.k2] = obj.check_param2( h, k2);
         end
         
         % if the scheme need to be aware of the position of the indexes i
@@ -92,17 +87,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
                 + D2 .* obj.h.^4/20; 
         end
         
-        function as = as(obj, axis)
-            if strcmp(axis,'north')
-                dk = obj.K2y( obj.i, obj.j );
-            elseif strcmp(axis,'south')
-                dk = - obj.K2y( obj.i, obj.j );
-            elseif strcmp(axis,'east')
-                dk = obj.K2x( obj.i, obj.j );
-            elseif strcmp(axis,'west')
-                dk = -obj.K2x( obj.i, obj.j );
-            end
-            
+        function as = as(obj)
             kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
             as = 2/3 + kh2 * 1/90; 
         end
@@ -151,43 +136,22 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
                 validateattributes( x, {'function_handle'}, {'nonempty'});
                 r = nargin(x) == 2;
             end
-            addRequired(p, 'k', @(x)valid_handle(x))            
-            addRequired(p, 'Kx', @(x)valid_handle(x))            
-            addRequired(p, 'Ky', @(x)valid_handle(x))            
-            addRequired(p, 'Kxx', @(x)valid_handle(x))            
-            addRequired(p, 'Kyy', @(x)valid_handle(x))            
+            addRequired(p, 'k', @(x)valid_handle(x))                    
                         
-            parse(p, h, k, Kx, Ky, Kxx, Kyy);
+            parse(p, h, k);
         end        
     end 
     
     methods (Static, Access = public)
-        function [k2, K2x, K2y, K2xx, K2yy] = build_derivative(k, param)
+        function [k2] = build_derivative(k, param)
             % build the different derivative of k² needed for this scheme
             % to comute the coefficient.
             syms x y; % declare 2 symbolic variables
-            tof = @( z ) matlabFunction( z , 'Vars', [x,y]);
-            
+            tof = @( z ) matlabFunction( z , 'Vars', [x,y]);            
             k2s = sym(k).^2;
-            k2 = tof(k2s);
-            
-            k2xs = diff( k2s, x );
-            K2x = tof(k2xs);
-            
-            k2ys = diff( k2s, y );
-            K2y = tof(k2ys);
-            
-            k2xxs = diff(k2xs);
-            K2xx = tof(k2xxs);
-            
-            k2yys = diff(k2ys);
-            K2yy = tof(k2yys);            
+            k2 = tof(k2s);                  
             
             k2 = discreteWrapper(param.a, param.c, param.h, k2);
-            K2x = discreteWrapper(param.a, param.c, param.h, K2x);
-            K2y = discreteWrapper(param.a, param.c, param.h, K2y);
-            K2xx = discreteWrapper(param.a, param.c, param.h, K2xx);
-            K2yy = discreteWrapper(param.a, param.c, param.h, K2yy);
             
         end
     end

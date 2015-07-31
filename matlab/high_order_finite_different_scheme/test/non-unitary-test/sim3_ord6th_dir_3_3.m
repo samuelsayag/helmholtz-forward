@@ -15,8 +15,8 @@ param.a = 0;
 param.b = pi;
 param.c = 0; 
 param.d = pi;
-param.n = 51; % number of column of the grid
-param.m = 51; % number of line of the grid
+param.n = 3; % number of column of the grid
+param.m = 3; % number of line of the grid
 % we deduce the step of the grid from this data
 param.h = (param.b - param.a)/ (param.n - 1);
 

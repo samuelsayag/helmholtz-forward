@@ -10,14 +10,15 @@ theta = pi/4;
 
 % basic parameter of the simulation
 param.k = 5;
-param.h = 0.02;
 % definition of the area we simulate in it
 param.a = 0; 
 param.b = 1;
 param.c = 0; 
 param.d = 1;
-param.m = (param.d - param.c)/param.h + 1;
-param.n = (param.b - param.a)/param.h + 1;
+param.m = 3;
+param.n = 3;
+
+param.h = (param.b - param.a)/ (param.n - 1);
 
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
