@@ -48,35 +48,35 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         end
         % the north point coefficient
         function n = n(obj)
-            n = obj.as + obj.bs('north');
+            n = obj.as('n') + obj.bs('n');
         end
         % the north east point coefficient
         function ne = ne(obj)
-            ne = obj.ac + obj.bc(+1, +1);
+            ne = obj.ac('ne') + obj.bc(+1, +1);
         end
         % the east point point coefficient
         function e = e(obj)
-            e = obj.as + obj.bs('east');
+            e = obj.as('e') + obj.bs('e');
         end
         % the south east point coefficient
         function se = se(obj)
-            se = obj.ac + obj.bc(+1, -1);
+            se = obj.ac('se') + obj.bc(+1, -1);
         end
         % the south point coefficient
         function s = s(obj)
-            s = obj.as + obj.bs('south');
+            s = obj.as('s') + obj.bs('s');
         end
         % the south west point coefficient
         function sw = sw(obj)
-            sw = obj.ac + obj.bc(-1, -1);
+            sw = obj.ac('sw') + obj.bc(-1, -1);
         end
         % the west point coefficient
         function w = w(obj)
-            w = obj.as + obj.bs('west');
+            w = obj.as('w') + obj.bs('w');
         end
         % the north west point coefficient
         function nw = nw(obj)
-            nw = obj.ac + obj.bc(-1, +1);
+            nw = obj.ac('nw') + obj.bc(-1, +1);
         end
         
     end
@@ -93,22 +93,28 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         end
         
         function as = as(obj, axis)
-            if strcmp(axis,'north')
-                dk = obj.K2y( obj.i, obj.j );
-            elseif strcmp(axis,'south')
-                dk = - obj.K2y( obj.i, obj.j );
-            elseif strcmp(axis,'east')
-                dk = obj.K2x( obj.i, obj.j );
-            elseif strcmp(axis,'west')
-                dk = -obj.K2x( obj.i, obj.j );
-            end
-            
-            kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
+            if strcmp(axis,'n')
+                kh2 = obj.k2( obj.i, obj.j + 1) * obj.h.^2;
+            elseif strcmp(axis,'s')
+                kh2 = obj.k2( obj.i, obj.j - 1) * obj.h.^2;
+            elseif strcmp(axis,'e')
+                kh2 = obj.k2( obj.i + 1, obj.j ) * obj.h.^2;
+            elseif strcmp(axis,'w')
+                kh2 = obj.k2( obj.i - 1, obj.j ) * obj.h.^2;
+            end           
             as = 2/3 + kh2 * 1/90; 
         end
         
-        function ac = ac(obj)
-            kh2 = obj.k2(obj.i,obj.j) * obj.h.^2;
+        function ac = ac(obj, axis)
+            if strcmp(axis,'ne')
+                kh2 = obj.k2( obj.i+1, obj.j+1 ) * obj.h.^2;
+            elseif strcmp(axis,'se')
+                kh2 = obj.k2( obj.i+1, obj.j-1) * obj.h.^2;
+            elseif strcmp(axis,'sw')
+                kh2 = obj.k2( obj.i-1, obj.j-1 ) * obj.h.^2;
+            elseif strcmp(axis,'nw')
+                kh2 = obj.k2( obj.i-1, obj.j+1 ) * obj.h.^2;
+            end                        
             ac = 1/6 + kh2 * 1/90; 
         end
 
@@ -118,17 +124,21 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         end
         
         function bs  = bs(obj, axis)
-            if strcmp(axis,'north')
-                dk = obj.K2y(obj.i,obj.j);
-            elseif strcmp(axis,'south')
-                dk = - obj.K2y(obj.i,obj.j);
-            elseif strcmp(axis,'east')
-                dk = obj.K2x(obj.i,obj.j);
-            elseif strcmp(axis,'west')
-                dk = -obj.K2x(obj.i,obj.j);
+            if strcmp(axis,'n')
+                dk = obj.K2y( obj.i, obj.j );
+                kh2 = obj.k2( obj.i, obj.j+1 ) * obj.h.^2;
+            elseif strcmp(axis,'s')
+                dk = - obj.K2y( obj.i, obj.j );
+                kh2 = obj.k2( obj.i, obj.j-1 ) * obj.h.^2;
+            elseif strcmp(axis,'e')
+                dk = obj.K2x( obj.i ,obj.j );
+                kh2 = obj.k2( obj.i+1, obj.j ) * obj.h.^2;
+            elseif strcmp(axis,'w')
+                dk = -obj.K2x( obj.i, obj.j );
+                kh2 = obj.k2( obj.i-1, obj.j ) * obj.h.^2;
             end
             
-            ck = 2/3 + (obj.k2(obj.i, obj.j) .* obj.h^2)/6;            
+            ck = 2/3 + kh2/6;            
             bs = obj.h.^3/20 .* ck * dk;
         end        
 
