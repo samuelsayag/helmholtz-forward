@@ -51,7 +51,6 @@ dfyy_a = tof(dfyys);
 dx = linspace(dx(1)-h, dx(2)+h, nb_pt+2);
 dy = linspace(dy(2)+h, dy(1)-h, nb_pt+2);
 [dX, dY] = meshgrid(dx,dy);
-
 fdd = f_a(dX, dY);
 
 fx = fdd(2:end-1, 2:end-1);

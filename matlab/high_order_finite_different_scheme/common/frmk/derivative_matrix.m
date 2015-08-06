@@ -20,35 +20,35 @@ f = f_mat(2:end-1, 2:end-1);
 % computation of the elementary differences
 % -------------------------------------------------------------------------
 
-fxplush = f_mat(2:end-1, 3:end);
-fxminush = f_mat(2:end-1, 1:end-2);
+fxplus_h = f_mat(2:end-1, 3:end);
+fxminus_h = f_mat(2:end-1, 1:end-2);
 
-fyplush = f_mat(1:end-2, 2:end-1);
-fyminush = f_mat(3:end, 2:end-1);
-
-% -------------------------------------------------------------------------
-% computation of the first derivative with respect to X
-% -------------------------------------------------------------------------
-% central difference O(h^2)
-fx = (fxplush - fxminush)  ./ (2*h);
+fyplus_h = f_mat(1:end-2, 2:end-1);
+fyminus_h = f_mat(3:end, 2:end-1);
 
 % -------------------------------------------------------------------------
 % computation of the first derivative with respect to X
 % -------------------------------------------------------------------------
 % central difference O(h^2)
-fy = (fyplush - fyminush)  ./ (2*h);
+fx = (fxplus_h - fxminus_h)  ./ (2*h);
+
+% -------------------------------------------------------------------------
+% computation of the first derivative with respect to X
+% -------------------------------------------------------------------------
+% central difference O(h^2)
+fy = (fyplus_h - fyminus_h)  ./ (2*h);
 
 % -------------------------------------------------------------------------
 % computation of the second derivative with respect to X
 % -------------------------------------------------------------------------
 % computation of the second derivative O(h^2)
-fxx = (fxplush - 2 * f + fxminush) ./ (h.^2);
+fxx = (fxplus_h - 2 * f + fxminus_h) ./ (h.^2);
 
 % -------------------------------------------------------------------------
 % computation of the second derivative with respect to Y
 % -------------------------------------------------------------------------
 % computation of the second derivative O(h^2)
-fyy = (fyplush - 2 * fy + fyminush) ./ (h.^2);
+fyy = (fyplus_h - 2 * fy + fyminus_h) ./ (h.^2);
 
 end
 

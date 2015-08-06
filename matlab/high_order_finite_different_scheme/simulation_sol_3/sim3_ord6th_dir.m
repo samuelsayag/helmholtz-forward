@@ -23,7 +23,7 @@ param.h = (param.b - param.a)/ (param.n - 1);
 % dirichlet function
 param.dirichlet = pSol;
 [k2, K2x, K2y, K2xx, K2yy] = ...
-    Ord6thVarKHelmholtz2D.build_derivative( k, param );
+    Ord6thVarKHelmholtz2D.build_analytic_derivative( k, param );
 scheme = Ord6thVarKHelmholtz2D( param.h, k2, K2x, K2y, K2xx, K2yy);
 
 % define the solver

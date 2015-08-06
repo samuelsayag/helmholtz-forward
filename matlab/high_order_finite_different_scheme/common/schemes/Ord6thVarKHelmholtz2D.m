@@ -172,26 +172,13 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
     end 
     
     methods (Static, Access = public)
-        function [k2, K2x, K2y, K2xx, K2yy] = build_derivative(k, param)
+        function [k2, K2x, K2y, K2xx, K2yy] = build_analytic_derivative(k, param)
             % build the different derivative of k² needed for this scheme
-            % to comute the coefficient.
-            syms x y; % declare 2 symbolic variables
-            tof = @( z ) matlabFunction( z , 'Vars', [x,y]);
+            % to compute the coefficient.
             
-            k2s = sym(k).^2;
-            k2 = tof(k2s);
-            
-            k2xs = diff( k2s, x );
-            K2x = tof(k2xs);
-            
-            k2ys = diff( k2s, y );
-            K2y = tof(k2ys);
-            
-            k2xxs = diff(k2xs);
-            K2xx = tof(k2xxs);
-            
-            k2yys = diff(k2ys);
-            K2yy = tof(k2yys);            
+            % we want to derive the square of k not k itself
+            k = @(x,y) k(x,y).^2;            
+            [ k2, K2x, K2y, K2xx, K2yy ] = derivative_analytic( k );
             
             k2 = discreteWrapper(param.a, param.c, param.h, k2);
             K2x = discreteWrapper(param.a, param.c, param.h, K2x);
@@ -200,6 +187,33 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
             K2yy = discreteWrapper(param.a, param.c, param.h, K2yy);
             
         end
+        
+        function [k2, K2x, K2y, K2xx, K2yy] = build_matricial_derivative(k, param)            
+            % build the different derivative of k² needed for this scheme
+            % to compute the coefficient.
+            
+            k2 = k.^2; 
+            % due to orientation of the matrix in matlab wich is diffent
+            % from the orientation in mathematics we have to wrapp these
+            % functions.            
+            fy = @(j) param.m+1-j; % conversion of the coordinate along y
+            fx = @(i) i; % conversion of the coordinate along x
+            wrapper = @(f_mat) @(x,y) f_mat(fy(y),fx(x)); % wrapper factory 
+            
+            [k2reduced, K2x, K2y, K2xx, K2yy] = ...
+                derivative_matrix( k2, param.h );
+            
+            K2x = wrapper(K2x);
+            K2y = wrapper(K2y);
+            K2xx = wrapper(K2xx);
+            K2yy = wrapper(K2yy);
+            
+            fy_k = @(j) size(k2,2)-j; % conversion of the coordinate along y
+            fx_k = @(i) i+1; % conversion of the coordinate along x
+            wrapp_k = @(f_mat) @(x,y) f_mat(fy_k(y),fx_k(x));
+            k2 = wrapp_k(k2);       
+        end
+        
     end
     
 end
