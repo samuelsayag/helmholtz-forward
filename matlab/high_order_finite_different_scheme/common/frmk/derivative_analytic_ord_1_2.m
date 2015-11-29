@@ -1,4 +1,4 @@
-function [ f, fx, fy, fxx, fyy ] = derivative_analytic( clos_f )
+function [ f, fx, fy, fxx, fyy ] = derivative_analytic_ord_1_2( clos_f )
 %DERIVATIVE_ANALYTIC compute a closure (pointer to function) of the
 %function f and its first and second derivative with respect to x and y
 %

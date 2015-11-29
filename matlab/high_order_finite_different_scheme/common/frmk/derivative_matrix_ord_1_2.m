@@ -1,4 +1,4 @@
-function [ f, fx, fy, fxx, fyy ] = derivative_matrix( f_mat, h )
+function [ f, fx, fy, fxx, fyy ] = derivative_matrix_ord_1_2( f_mat, h )
 % DERIVATIVE_MATRIX compute the first and second derivative of the matrix
 % with respect to x and to y.
 % Due to the type of difference used for the derivative (central difference

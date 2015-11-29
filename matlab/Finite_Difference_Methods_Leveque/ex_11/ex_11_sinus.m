@@ -18,24 +18,38 @@ du_v = cos(x0);
 
 % display error
 % Note: the order of the error
-back_err = du_v - du_moins; 
-forw_err = du_v - du_plus;
-cent_err = du_v - du_cent;
-du_3_err = du_v - d3_u;
+er = @(app) app - du_v;
+
+back_err = er(du_moins); 
+forw_err = er(du_plus);
+cent_err = er(du_cent);
+du_3_err = er(d3_u);
+
 res = {'h' 'Back Err' 'Forw Err' 'Cent Err' 'du_3_err'};
 f = @(m) mat2cell(m,ones(5,1));
-res = [res; f(h) f(back_err) f(forw_err) f(cent_err) f(du_3_err)];
+res = [res; f(h) f(forw_err) f(back_err) f(cent_err) f(du_3_err)];
 res
 
+% fitting
+ffit = @(y) polyfit(log(h), log(abs(y)), 1);
+pfit = @(val) val(1);
+cfit = @(val) exp(val(2));
+fitt = {'' '' 'fitting' '' ''};
+fitt = [fitt; {'p' pfit(ffit(forw_err)) pfit(ffit(back_err)) pfit(ffit(cent_err)) pfit(ffit(du_3_err))}];
+fitt = [fitt; {'C' cfit(ffit(forw_err)) cfit(ffit(back_err)) cfit(ffit(cent_err)) cfit(ffit(du_3_err))}];
+fitt 
 
 % graph the err = f(h) 
-plot(log(h), log(abs(back_err)), '.-', log(h), log(forw_err), '.-', ...
-    log(h), log(cent_err), '.-', log(h), log(abs(du_3_err)), '.-')
+plot(log(h), log(abs(forw_err)), '.-', log(h), log(abs(back_err)), '.-', ...
+    log(h), log(abs(cent_err)), '.-', log(h), log(abs(du_3_err)), '.-')
 
 % plot(h, back_err, h, forw_err, h, cent_err, '.-')
 title('Error (back, forw, cent) against step (h), log|E.h| = log(C) + p * log(h)')
 xlabel('step (h)')
 ylabel('errors')
-legend('backward', 'forward', 'central', 'du_3 O(h^3)', 'Location', 'SouthEast')
+legend('forward', 'backward', 'central', 'du_3 O(h^3)', 'Location', 'SouthEast')
+
+
+
 
 format longg

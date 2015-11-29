@@ -10,7 +10,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         % the position of the stencil in the grid. Is of use to calculate
         % postion aware function such as k,kx...
         i; % column index (the 'x' axis index)
-        j; % line index (the 'y' axix index)
+        j; % line index (the 'y' axix index)  
         
         % Ord2ndHelmholtz
         % (1) K, (2) Kx, (3) Ky, (4) Kxx, (5) Kyy : 
@@ -31,7 +31,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
         function obj = Ord6thVarKHelmholtz2D( h, k2, K2x, K2y, K2xx, K2yy)        
             narginchk(6, 6);
             [obj.h, obj.k2, obj.K2x, obj.K2y, obj.K2xx, obj.K2yy ] = ...
-                obj.check_param2( h, k2, K2x, K2y, K2xx, K2yy );
+                obj.check_param( h, k2, K2x, K2y, K2xx, K2yy );
         end
         
         % if the scheme need to be aware of the position of the indexes i
@@ -144,16 +144,10 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
 
     end
     
-    methods (Static, Access = private)
-        function [h, k] = check_param1(h, k)            
-            p = inputParser;
-            addRequired(p, 'h', @isnumeric);
-            addRequired(p, 'k', @ischar)                        
-            parse(p, h, k);
-        end        
+    methods (Static, Access = private)        
         
         function [h, k, Kx, Ky, Kxx, Kyy] ...
-                = check_param2( h, k, Kx, Ky, Kxx, Kyy )            
+                = check_param( h, k, Kx, Ky, Kxx, Kyy )            
             p = inputParser;
             
             addRequired(p, 'h', @isnumeric);
@@ -178,7 +172,7 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
             
             % we want to derive the square of k not k itself
             k = @(x,y) k(x,y).^2;            
-            [ k2, K2x, K2y, K2xx, K2yy ] = derivative_analytic( k );
+            [ k2, K2x, K2y, K2xx, K2yy ] = derivative_analytic_ord_1_2( k );
             
             k2 = discreteWrapper(param.a, param.c, param.h, k2);
             K2x = discreteWrapper(param.a, param.c, param.h, K2x);
@@ -200,8 +194,8 @@ classdef Ord6thVarKHelmholtz2D  < NinePtStencil
             fx = @(i) i; % conversion of the coordinate along x
             wrapper = @(f_mat) @(x,y) f_mat(fy(y),fx(x)); % wrapper factory 
             
-            [k2reduced, K2x, K2y, K2xx, K2yy] = ...
-                derivative_matrix( k2, param.h );
+            [~, K2x, K2y, K2xx, K2yy] = ...
+                derivative_matrix_ord_1_2( k2, param.h );
             
             K2x = wrapper(K2x);
             K2y = wrapper(K2y);

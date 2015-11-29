@@ -15,6 +15,9 @@ classdef BasicScheme
         % schemes = {'Ord2ndHelmholtz2D', 'Ord4thHelmholtz2D',...
         % 'Ord6thHelmholtz2D'};
         scheme = [];
+        % funcF to build the vector A x = (U+F) U(dirichlet), F function
+        % such that D²u + k²u = F(x,y) 
+        funcF = []
         % Sommerfeld constraint under the form of a scheme with coefficient
         % just as for the central scheme.
         sommerfeld  = [];
@@ -47,15 +50,25 @@ classdef BasicScheme
     end
     
     methods (Access = public)
-        function obj = BasicScheme(param, scheme, sommerfeld)
-            narginchk(2, 3);
+        function obj = BasicScheme(param, scheme, sommerfeld, funcF)
+            narginchk(2, 4);
             obj = obj.check_param(param, scheme);            
             obj.param = param;
             obj.scheme = scheme;
             obj.dirichlet = param.dirichlet;
+
             if nargin == 3
                 obj = obj.check_sommerfeld(sommerfeld);
+                obj.sommerfeld = sommerfeld;
             end
+            
+            if nargin == 4
+                obj = obj.check_sommerfeld(funcF);
+                obj.sommerfeld = sommerfeld;
+                obj = obj.check_funcF(funcF);
+                obj.funcF = funcF;                
+            end
+            
             obj = obj.check_boundary();
         end                
         
@@ -68,12 +81,13 @@ classdef BasicScheme
         end
         
         function [c_A, v_A, c_b, v_b] = c_pt( obj, type_coord, i, j )
-            obj.scheme = obj.scheme.set_pos(j,i);
+            obj.scheme = obj.scheme.set_pos(j,i);            
             l = obj.label(i,j);
             f_coord = obj.get_coordinate_func(type_coord, l);
             c_A = obj.c_pt_coordinate( f_coord, i, j );
             c_b = l;
             [v_A, v_b] = obj.c_pt_value();
+            v_b = obj.addF(i, j, v_b);
         end
         
         function [c_A, v_A, c_b, v_b] = n_pt( obj, type_coord, i, j )
@@ -86,6 +100,7 @@ classdef BasicScheme
             else
                 [c_A, v_A, c_b, v_b] = obj.n_pt_dir( type_coord, i, j );
             end
+            v_b = obj.addF(i, j, v_b);
         end
         
         function [c_A, v_A, c_b, v_b] = e_pt( obj, type_coord, i, j )
@@ -98,6 +113,7 @@ classdef BasicScheme
             else
                 [c_A, v_A, c_b, v_b] = obj.e_pt_dir( type_coord, i, j );
             end
+            v_b = obj.addF(i, j, v_b);
         end   
         
         function [c_A, v_A, c_b, v_b] = s_pt( obj, type_coord, i, j )
@@ -110,6 +126,7 @@ classdef BasicScheme
             else
                 [c_A, v_A, c_b, v_b] = obj.s_pt_dir( type_coord, i, j );
             end
+            v_b = obj.addF(i, j, v_b);
         end   
                 
         function [c_A, v_A, c_b, v_b] = w_pt( obj, type_coord, i, j )
@@ -122,6 +139,7 @@ classdef BasicScheme
             else
                 [c_A, v_A, c_b, v_b] = obj.w_pt_dir( type_coord, i, j );
             end
+            v_b = obj.addF(i, j, v_b);
         end
         
         function [c_A, v_A, c_b, v_b] = ne_pt( obj, type_coord, i, j )
@@ -139,7 +157,8 @@ classdef BasicScheme
                 [c_A, v_A, c_b, v_b] = obj.ne_pt_som_dir( type_coord, i, j );
             else % dir_som
                 [c_A, v_A, c_b, v_b] = obj.ne_pt_dir_som( type_coord, i, j );
-            end        
+            end
+            v_b = obj.addF(i, j, v_b);
         end
                 
         function [c_A, v_A, c_b, v_b] = se_pt( obj, type_coord, i, j )
@@ -157,7 +176,8 @@ classdef BasicScheme
                 [c_A, v_A, c_b, v_b] = obj.se_pt_som_dir( type_coord, i, j );
             else % dir_som
                 [c_A, v_A, c_b, v_b] = obj.se_pt_dir_som( type_coord, i, j );
-            end            
+            end
+            v_b = obj.addF(i, j, v_b);
         end        
         
         function [c_A, v_A, c_b, v_b] = sw_pt( obj, type_coord, i, j )
@@ -175,7 +195,8 @@ classdef BasicScheme
                 [c_A, v_A, c_b, v_b] = obj.sw_pt_som_dir( type_coord, i, j );
             else % dir_som
                 [c_A, v_A, c_b, v_b] = obj.sw_pt_dir_som( type_coord, i, j );
-            end                        
+            end
+            v_b = obj.addF(i, j, v_b);
         end
         
         function [c_A, v_A, c_b, v_b] = nw_pt( obj, type_coord, i, j )
@@ -193,7 +214,8 @@ classdef BasicScheme
                 [c_A, v_A, c_b, v_b] = obj.nw_pt_som_dir( type_coord, i, j );
             else % dir_som
                 [c_A, v_A, c_b, v_b] = obj.nw_pt_dir_som( type_coord, i, j );
-            end                                    
+            end 
+            v_b = obj.addF(i, j, v_b);
         end
         
     end
@@ -204,6 +226,11 @@ classdef BasicScheme
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     
     methods(Static, Access = private)
+        function v_b = addF(obj, i, j, v_b)
+            obj.funcF.set_pos(j,i);
+            v_b = v_b + obj.funcF.val;
+        end
+        
         function c_A = c_pt_coordinate( f_coord, i, j )
             % provide the central stencil points coordinate as matlab 
             % compliant linear labelling in the matrix A and vector b for
@@ -965,16 +992,11 @@ classdef BasicScheme
             v_b = 0;              
         end
         
-        function obj = check_param(obj, param, scheme)
+        function obj = check_param(obj, param, scheme, funcF)
             p = inputParser;
 
-%             schemes = {'Ord2ndHelmholtz2D',... 
-%                 'Ord4thHelmholtz2D', 'Ord4thHelmholtz2D_2', ...
-%                 'Ord6thHelmholtz2D', 'Ord6thHelmholtz2D_2', ...
-%                 'ExactScheme2D', 'Poisson2D'};
-            schemes = {'NinePtStencil'};
             addRequired(p, 'scheme', ...
-                @(x)validateattributes( x, schemes, {'nonempty'}));            
+                @(x)validateattributes( x, {'NinePtStencil'}, {'nonempty'}));            
             
             function res = valide_param(x)
                 validateattributes( x, {'struct'}, {'nonempty'});
@@ -992,12 +1014,18 @@ classdef BasicScheme
       
         function obj = check_sommerfeld(obj, sommerfeld)
             p = inputParser;
-            schemes = {'BasicSommScheme', 'BasicSommScheme2'};
+            schemes = {'BasicSommScheme'};
             addRequired(p, 'sommerfeld', ...
                 @(x)validateattributes( x, schemes, {'nonempty'}));            
-            parse(p, sommerfeld);
-            obj.sommerfeld = sommerfeld;
+            parse(p, sommerfeld);            
         end
+        
+        function obj = check_funcF(obj, funcF)
+            p = inputParser;
+            addRequired(p, 'funcF', ...
+                @(x)validateattributes( x, {'F'}, {'nonempty'}));                                    
+            parse(p, funcF);
+        end        
         
         function obj = check_boundary( obj )
             if ~ isfield(obj.param, 'north')
