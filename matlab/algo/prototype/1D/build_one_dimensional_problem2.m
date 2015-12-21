@@ -5,7 +5,7 @@ function [ A, b ] = build_one_dimensional_problem2( params, func_scheme)
 b = zeros(params.m,1);
 A = sparse(params.m, params.m);
  
-for i = 1: params.m
+ for i = 1: params.m
     [ A , b ] = feval(func_scheme, params, A, b, i);
 end
 

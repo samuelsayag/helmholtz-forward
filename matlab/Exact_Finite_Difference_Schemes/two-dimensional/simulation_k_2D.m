@@ -10,7 +10,7 @@ sols = cell(dk, 1);
 params = cell(dk, 1);
 
 cpt_sol = 1;
-sim_param
+
 for j = 1:size(k,2)
     % prepare temporary parameters
     sim_param.k = k(1,j);        

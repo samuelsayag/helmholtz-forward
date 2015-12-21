@@ -9,17 +9,18 @@ addpath(genpath('..\..\..\..\matlab'));
 pause on;
 
 % generic parameters of the simulations
-sim_param.h = [0.02];
-k = sqrt(2)* [30, 25, 20, 15, 10, 5];
+k = [10, 20, 30, 50, 100, 150];
 d_k = size(k, 2);
+sim_param.theta = pi/4;
 
 sim_param.a = 0;
 sim_param.b = 1;
 sim_param.d = 1;
 sim_param.c = 0;
-sim_param.theta = pi/4;
-sim_param.m = (sim_param.b - sim_param.a)./sim_param.h;
-sim_param.n = (sim_param.d - sim_param.c)./sim_param.h;
+sim_param.m = 100;
+sim_param.n = 100;
+sim_param.h = (sim_param.d - sim_param.c)./(sim_param.m - 1);
+
 % dirichlet boundary
 % parameters necessary to compute boundary points
 sim_param.dirichlet.S = @(params, A, b, i, j) analytic_sol_2D(params.k,... 

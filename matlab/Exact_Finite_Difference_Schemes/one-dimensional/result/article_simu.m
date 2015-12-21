@@ -80,7 +80,7 @@ plot(sols{i,4});
 title('NBC-NFD')
 axis equal
 
-close all;
+% close all;
 
 mt = sprintf('\t');
 kkk = cell(size(kk));

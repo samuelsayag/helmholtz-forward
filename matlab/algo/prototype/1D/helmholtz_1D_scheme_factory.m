@@ -197,71 +197,71 @@ function [A,b] = sommerfeld_side_generic_new(params, A, b, j, sgn, ...
 end
 
 
-function [A,b] = dirichlet_side_generic(params, A, b, i,...
+function [A,b] = dirichlet_side_generic(param, A, b, i,...
     ctrl_pt, dirich_f, int_pt)
-    [A, b] = feval(dirich_f, params, A, b, i);    
-    [A, b] = feval(ctrl_pt, params, A, b, i);
-    [A, b] = feval(int_pt, params, A, b, i);    
+    [A, b] = feval(dirich_f, param, A, b, i);    
+    [A, b] = feval(ctrl_pt, param, A, b, i);
+    [A, b] = feval(int_pt, param, A, b, i);    
 end
 
-function [A,b] = dirichlet_wrapper(params, A, b, i, func)
-    b(i) = b(i) + feval(func, params, A, b, i);
+function [A,b] = dirichlet_wrapper(param, A, b, i, func)
+    b(i) = b(i) + feval(func, param, A, b, i);
 end
 
-function check_params(params)
+function check_params(param)
 %     classes = {}
 %     attributes = {}
 
     classes = {'struct'};
     attributes = {'nonempty'};
-    validateattributes(params, classes, attributes);
+    validateattributes(param, classes, attributes);
         
     classes = {'single', 'double'};
     attributes = {'nonempty', '>', 0};
-    validateattributes(params.m, classes, attributes, 'params.m');
+    validateattributes(param.m, classes, attributes, 'params.m');
         
     classes = {'numeric'};
     attributes = {'nonempty', 'nonnegative'};
-    validateattributes(params.k, classes, attributes, 'params.k');
+    validateattributes(param.k, classes, attributes, 'params.k');
             
     classes = {'numeric'};
     attributes = {'nonempty', 'nonnegative'};
-    validateattributes(params.k, classes, attributes, 'params.k');
+    validateattributes(param.k, classes, attributes, 'params.k');
     
     classes = {'char'};
     attributes = {'nonempty'};
-    validateattributes(params.interior, classes, attributes, 'params.interior');    
+    validateattributes(param.interior, classes, attributes, 'params.interior');    
     
     validStrings = {'std', 'new'};
-    validatestring(params.interior,validStrings, 'params.interior');   
+    validatestring(param.interior,validStrings, 'params.interior');   
     
     classes = {'char'};
     attributes = {'nonempty'};
-    validateattributes(params.boundary, classes, attributes, 'params.boundary');    
+    validateattributes(param.boundary, classes, attributes, 'params.boundary');    
     
     validStrings = {'sommerfeld_new', 'sommerfeld_std', 'dirichlet'};
-    validatestring(params.boundary, validStrings, 'params.boundary');   
+    validatestring(param.boundary, validStrings, 'params.boundary');   
     
-    if ~isfield(params, 'dirichlet')
+    if ~isfield(param, 'dirichlet')
         error('helmoltz_1d_scheme:argChk',...
             'At least one source must be set (as Dirichlet).');
     end
         
     total_sommerfeld = ...
-       ~isfield(params.dirichlet, 'W') && ~isfield(params.dirichlet, 'E');
+       ~isfield(param.dirichlet, 'W') && ~isfield(param.dirichlet, 'E');
     if total_sommerfeld
         error('helmoltz_1d_scheme:argChk',...
         'At least one source must be set (as Dirichlet).');                
     end
     
     total_dirichlet = ...
-       isfield(params.dirichlet, 'W') && isfield(params.dirichlet, 'E');        
-    if ~isfield(params, 'boundary') && ~total_dirichlet
+       isfield(param.dirichlet, 'W') && isfield(param.dirichlet, 'E');        
+    if ~isfield(param, 'boundary') && ~total_dirichlet
         error('helmoltz_1d_scheme:argChk',...
             'parameter "params.boundary" must be set if not all the border are Dirichlet.');
     end
         
-    if ~total_dirichlet && strcmp(params.boundary, 'dirichlet')
+    if ~total_dirichlet && strcmp(param.boundary, 'dirichlet')
         error('helmoltz_two_2d_scheme:argChk',...
         'Either all bounds are Dirichlet either scheme for Sommerfeld computation (''sommerfeld_new'', ''sommerfeld_std'').');                
     end

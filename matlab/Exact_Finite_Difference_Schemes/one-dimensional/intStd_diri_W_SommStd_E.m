@@ -26,8 +26,8 @@ params.dirichlet.W = @(params, A, b, i) 1;
 [A, b] = build_one_dimensional_problem2(params, func_scheme);
 
 % debug
-full(A)
-b
+% full(A)
+% b
 
 %------------------- solve the system -----------------------------
 tstart = tic;

@@ -22,7 +22,7 @@ param.n = (param.b - param.a)/param.h + 1;
 
 % dirichlet function
 param.dirichlet = @(x,y) theor( x, y, param.k , theta);
-scheme = ExactScheme2D( param.k, param.h );
+scheme = ExactScheme2D( param.k, param.h, theta );
 param.north = 'sommerfeld';
 param.east = 'sommerfeld';
 beta = - param.k;
@@ -31,15 +31,14 @@ sommerfeld = ExactSommerfeld2D( param.h, beta, theta, scheme);
 % define the solver
 solver = @(A, b) A\b;
 
-param
+display('parameter of the simulation')
+display(param)
 ps = ProblemSolver(param, scheme, solver, sommerfeld);
 [ A, b, sol ] = ps.solve();
 
-% full(A)
-% full(b)
-
 error = ErrorHandler( param, sol );
-error
+display('error')
+display(error)
 
 axis_scale = [param.a, param.b, param.c, param.d, -1, 1];
 compare_graphs( param,  sol, error, axis_scale, 1);
